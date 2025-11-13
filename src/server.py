@@ -6,18 +6,18 @@ import mcp.types as types
 from mcp.server import NotificationOptions, Server
 from mcp.server.models import InitializationOptions
 
-from .tools import TOOLS, ToolHandler
+from .tools import ALL_TOOLS, UnifiedToolHandler
 
 
 # Create server instance
 app = Server("hwp-mcp-server")
-tool_handler = ToolHandler()
+tool_handler = UnifiedToolHandler()
 
 
 @app.list_tools()
 async def handle_list_tools() -> list[types.Tool]:
     """List available HWP automation tools."""
-    return TOOLS
+    return ALL_TOOLS
 
 
 @app.call_tool()

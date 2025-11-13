@@ -10,8 +10,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from hwp_client import HwpClient
-from types import DocumentState
+from action_table.client import ActionTableClient
+from common.types import DocumentState
+
+# Alias for backward compatibility
+HwpClient = ActionTableClient
 
 
 def test_action_table_coverage():

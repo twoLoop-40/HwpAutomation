@@ -1,6 +1,5 @@
 """HWP COM client wrapper with state management."""
 
-import os
 from pathlib import Path
 from typing import Optional, Any
 
@@ -23,7 +22,7 @@ from .types import (
     DocumentNotOpen,
     DocumentAlreadyOpen,
     InvalidState,
-    FileNotFoundError,
+    HwpFileNotFoundError,
     COMError,
 )
 
@@ -46,7 +45,8 @@ class HwpClient:
         try:
             pythoncom.CoInitialize()
         except Exception:
-            pass  # Already initialized
+            # COM already initialized - this is normal
+            pass
 
     def _create_hwp_instance(self) -> Any:
         """Create HWP COM instance."""
@@ -78,7 +78,7 @@ class HwpClient:
         """
         if not self._document.check_state(DocumentState.CLOSED):
             return HwpResult.fail(
-                f"Cannot create new document: current state is {self._document.state}"
+                f"Cannot create new document: current state is {self._document.state.value}"
             )
 
         try:
@@ -108,7 +108,7 @@ class HwpClient:
         """
         if not self._document.check_state(DocumentState.CLOSED):
             return HwpResult.fail(
-                f"Cannot open document: current state is {self._document.state}"
+                f"Cannot open document: current state is {self._document.state.value}"
             )
 
         # Validate file exists
@@ -144,15 +144,22 @@ class HwpClient:
         """
         Close the current document.
 
-        State transition: Opened → Closed
+        State transition: Any non-Closed → Closed
         Matches: FileClose action (NoParam)
+        
+        Note: Can close from OPENED, MODIFIED, or SAVED states.
+              If MODIFIED, unsaved changes will be lost.
         """
-        if not self._document.check_state(DocumentState.OPENED):
-            return HwpResult.fail(
-                f"Cannot close document: current state is {self._document.state}"
-            )
+        # Already closed
+        if self._document.check_state(DocumentState.CLOSED):
+            return HwpResult.fail("Document is already closed")
 
         try:
+            # Warn if closing modified document
+            warning = None
+            if self._document.check_state(DocumentState.MODIFIED):
+                warning = "Unsaved changes will be lost"
+
             # Execute FileClose action
             action = self.hwp.CreateAction("FileClose")
             if action is None:
@@ -167,7 +174,11 @@ class HwpClient:
             self._document.path = None
             self._document.transition_state(DocumentState.CLOSED)
 
-            return HwpResult.ok({"state": DocumentState.CLOSED.value})
+            result_data = {"state": DocumentState.CLOSED.value}
+            if warning:
+                result_data["warning"] = warning
+
+            return HwpResult.ok(result_data)
 
         except Exception as e:
             return HwpResult.fail(f"COM error: {e}")
@@ -176,13 +187,15 @@ class HwpClient:
         """
         Save the current document.
 
-        State transition: Modified → Saved
+        State transition: OPENED/MODIFIED/SAVED → SAVED
         Matches: FileSave action (NoParam)
+        
+        Note: Can save from OPENED (empty document) or MODIFIED states.
+              SAVED state allows re-saving.
         """
-        if not self._document.check_state(DocumentState.MODIFIED):
-            return HwpResult.fail(
-                f"Cannot save document: current state is {self._document.state}"
-            )
+        # Can't save if no document is open
+        if self._document.check_state(DocumentState.CLOSED):
+            return HwpResult.fail("No document open to save")
 
         try:
             # Execute FileSave action
@@ -210,13 +223,15 @@ class HwpClient:
         """
         Insert text into the document.
 
-        State transition: Opened → Modified
+        State transition: OPENED/MODIFIED → MODIFIED
         Matches: InsertText action (RequiredParam)
+        
+        Note: Can insert from OPENED or MODIFIED states.
+              SAVED state also allows insertion (becomes MODIFIED).
         """
-        if not self._document.check_state(DocumentState.OPENED):
-            return HwpResult.fail(
-                f"Cannot insert text: current state is {self._document.state}"
-            )
+        # Can't insert if no document is open
+        if self._document.check_state(DocumentState.CLOSED):
+            return HwpResult.fail("No document open")
 
         try:
             # Execute InsertText action
@@ -245,13 +260,14 @@ class HwpClient:
         """
         Create a table in the document.
 
-        State transition: Opened → Modified
+        State transition: OPENED/MODIFIED → MODIFIED
         Matches: TableCreate action (RequiredParam)
+        
+        Note: Can create from OPENED or MODIFIED states.
         """
-        if not self._document.check_state(DocumentState.OPENED):
-            return HwpResult.fail(
-                f"Cannot create table: current state is {self._document.state}"
-            )
+        # Can't create table if no document is open
+        if self._document.check_state(DocumentState.CLOSED):
+            return HwpResult.fail("No document open")
 
         if rows < 1 or cols < 1:
             return HwpResult.fail(f"Invalid table size: {rows}x{cols}")
@@ -293,3 +309,4 @@ class HwpClient:
             finally:
                 self._hwp = None
                 pythoncom.CoUninitialize()
+

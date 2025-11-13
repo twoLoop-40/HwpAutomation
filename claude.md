@@ -112,15 +112,61 @@ HwpResult: Success | Failure
 
 ---
 
+---
+
+### ✅ Step 5: 모듈화 리팩토링 (2025-11-13)
+**커밋**: Refactor to modular structure for future Automation support
+
+**완료 내용**:
+- 확장 가능한 모듈 구조로 리팩토링
+- `src/common/`: 공통 타입 및 유틸리티
+  - `types.py`: DocumentState, HwpResult, ParameterSet 등
+- `src/action_table/`: ActionTable 모듈 (HwpBooks/ActionTable_2504.pdf 기반)
+  - `client.py`: ActionTableClient (기존 HwpClient)
+  - `tools.py`: ACTION_TABLE_TOOLS, ActionTableToolHandler
+- `src/tools.py`: 통합 도구 레지스트리
+  - UnifiedToolHandler로 ActionTable + Automation 통합
+  - 네임스페이스 기반 라우팅 (hwp_action_*, hwp_auto_*)
+- `src/server.py`: 단일 MCP 서버로 모든 도구 제공
+- 테스트 파일 import 경로 업데이트
+
+**새로운 구조**:
+```
+src/
+├── common/           # 공통 타입 및 유틸리티
+│   ├── __init__.py
+│   └── types.py
+├── action_table/     # ActionTable 모듈
+│   ├── __init__.py
+│   ├── client.py     # ActionTableClient
+│   └── tools.py      # ACTION_TABLE_TOOLS
+├── automation/       # (향후) Automation 모듈
+│   ├── __init__.py
+│   ├── client.py     # AutomationClient
+│   └── tools.py      # AUTOMATION_TOOLS
+├── server.py         # 단일 통합 MCP 서버
+└── tools.py          # UnifiedToolHandler
+```
+
+**주요 특징**:
+- 단일 서버에서 ActionTable + Automation 통합 제공
+- 네임스페이스로 도구 구분 (hwp_action_*, hwp_auto_*)
+- 공통 코드 재사용 (types, 상태 관리)
+- 확장성: Automation 모듈 추가 준비 완료
+
+---
+
 ### 📋 다음 단계
-5. 의존성 설치 (uv venv, uv pip install)
-6. 테스트 실행 및 검증
-7. Claude Desktop 연동 테스트
+6. HwpAutomation_2504.pdf 기반 automation 모듈 구현
+7. 의존성 설치 및 통합 테스트
+8. Claude Desktop 연동 테스트
 
 ---
 
 ## 참고 자료
 - [MCP Specification](https://spec.modelcontextprotocol.io/)
-- HWP COM API: `HwpBooks/ActionTable_2504.pdf`
+- HWP COM API:
+  - ActionTable: `HwpBooks/ActionTable_2504.pdf`
+  - Automation: `HwpBooks/HwpAutomation_2504.pdf` (예정)
 - Idris2 Spec: `Specs/HwpMCP.idr`
 - Test Suite: `TestActionTable_2504/`
