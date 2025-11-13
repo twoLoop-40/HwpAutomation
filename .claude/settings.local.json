@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl which:*)",
+      "Bash(wsl find:*)",
+      "Bash(wsl head:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

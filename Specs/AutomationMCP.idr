@@ -36,6 +36,19 @@ Show AutoObjectType where
   show FormRadioButton = "IXHwpFormRadioButton"
   show (UnknownObject s) = "UnknownObject(" ++ s ++ ")"
 
+export
+Eq AutoObjectType where
+  HwpObject == HwpObject = True
+  HwpDocuments == HwpDocuments = True
+  HwpDocument == HwpDocument = True
+  HwpWindows == HwpWindows = True
+  HwpWindow == HwpWindow = True
+  FormPushButton == FormPushButton = True
+  FormCheckButton == FormCheckButton = True
+  FormRadioButton == FormRadioButton = True
+  (UnknownObject a) == (UnknownObject b) = a == b
+  _ == _ = False
+
 --------------------------------------------------------------------------------
 -- Property Definitions
 --------------------------------------------------------------------------------
