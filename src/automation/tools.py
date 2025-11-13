@@ -147,6 +147,79 @@ AUTOMATION_TOOLS = [
             "properties": {},
             "required": []
         }
+    ),
+    # State Query Tools (EventHandler Alternative - Option B)
+    # Based on Specs/AutomationState.idr
+    Tool(
+        name="hwp_auto_is_document_modified",
+        description="""[상태 조회] 문서 수정 여부 확인 (EventHandler DocumentChange 대체)
+
+        Agent 활용: 저장 여부 판단, 변경사항 감지
+        반환: {"is_modified": bool, "status": str}
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    ),
+    Tool(
+        name="hwp_auto_get_document_path",
+        description="""[상태 조회] 문서 경로 가져오기 (EventHandler DocumentAfterOpen/Save 대체)
+
+        Agent 활용: 문서 열림/저장 상태 감지, 파일 경로 확인
+        반환: {"has_path": bool, "path": str, "status": str}
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    ),
+    Tool(
+        name="hwp_auto_get_edit_mode",
+        description="""[상태 조회] 편집 모드 확인 (ReadOnly/Editable)
+
+        Agent 활용: 편집 가능 여부 사전 검증, 읽기 전용 감지
+        반환: {"edit_mode": str, "raw_value": int}
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    ),
+    Tool(
+        name="hwp_auto_get_document_count",
+        description="""[상태 조회] 열린 문서 개수 확인 (EventHandler DocumentAfterOpen/Close 대체)
+
+        Agent 활용: 문서 열림/닫힘 감지, 작업 전 문서 존재 확인
+        반환: {"count": int}
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    ),
+    Tool(
+        name="hwp_auto_get_state_snapshot",
+        description="""[상태 조회] 문서 상태 스냅샷 (통합 조회)
+
+        Agent 활용: 전체 상태를 한 번에 조회하여 효율적인 변경 감지
+        반환: {
+            "is_modified": bool,
+            "has_path": bool,
+            "path": str,
+            "edit_mode": str,
+            "document_count": int
+        }
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
     )
 ]
 
@@ -182,6 +255,12 @@ class AutomationToolHandler:
             "hwp_auto_get_hwp_property": self._handle_get_hwp_property,
             "hwp_auto_set_edit_mode": self._handle_set_edit_mode,
             "hwp_auto_quit": self._handle_quit,
+            # State query handlers (EventHandler alternative)
+            "hwp_auto_is_document_modified": self._handle_is_document_modified,
+            "hwp_auto_get_document_path": self._handle_get_document_path,
+            "hwp_auto_get_edit_mode": self._handle_get_edit_mode,
+            "hwp_auto_get_document_count": self._handle_get_document_count,
+            "hwp_auto_get_state_snapshot": self._handle_get_state_snapshot,
         }
 
         handler = handlers.get(name)
@@ -338,6 +417,63 @@ class AutomationToolHandler:
             return {
                 "success": True,
                 "quit": True
+            }
+        return {"success": False, "error": result.error}
+
+    # State Query Handlers (EventHandler Alternative - Option B)
+    # Based on Specs/AutomationState.idr
+
+    def _handle_is_document_modified(self, args: dict) -> dict:
+        """Handle hwp_auto_is_document_modified."""
+        result = self.client.is_document_modified()
+        if result.success:
+            return {
+                "success": True,
+                "is_modified": result.value["is_modified"],
+                "status": result.value["status"]
+            }
+        return {"success": False, "error": result.error}
+
+    def _handle_get_document_path(self, args: dict) -> dict:
+        """Handle hwp_auto_get_document_path."""
+        result = self.client.get_document_path()
+        if result.success:
+            return {
+                "success": True,
+                "has_path": result.value["has_path"],
+                "path": result.value["path"],
+                "status": result.value["status"]
+            }
+        return {"success": False, "error": result.error}
+
+    def _handle_get_edit_mode(self, args: dict) -> dict:
+        """Handle hwp_auto_get_edit_mode."""
+        result = self.client.get_edit_mode()
+        if result.success:
+            return {
+                "success": True,
+                "edit_mode": result.value["edit_mode"],
+                "raw_value": result.value["raw_value"]
+            }
+        return {"success": False, "error": result.error}
+
+    def _handle_get_document_count(self, args: dict) -> dict:
+        """Handle hwp_auto_get_document_count."""
+        result = self.client.get_document_count()
+        if result.success:
+            return {
+                "success": True,
+                "count": result.value["count"]
+            }
+        return {"success": False, "error": result.error}
+
+    def _handle_get_state_snapshot(self, args: dict) -> dict:
+        """Handle hwp_auto_get_state_snapshot."""
+        result = self.client.get_state_snapshot()
+        if result.success:
+            return {
+                "success": True,
+                **result.value  # Spread all snapshot fields
             }
         return {"success": False, "error": result.error}
 

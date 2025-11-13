@@ -96,6 +96,50 @@ ACTION_TABLE_TOOLS = [
             "required": [],
         },
     ),
+    Tool(
+        name="hwp_action_execute",
+        description="""[ActionTable] 범용 Action 실행 (Execute any ActionTable API action)
+
+        **지원 액션**: 132개 모든 ActionTable API 액션
+
+        **타입 안전**: parameter_table.json 기반 자동 파라미터 검증
+
+        **주요 액션 예시**:
+        - InsertText: 텍스트 삽입
+        - CharShape: 글자 모양 변경 (폰트, 크기, 굵기 등)
+        - ParaShape: 문단 모양 변경 (정렬, 줄간격 등)
+        - BorderFill: 테두리/배경 설정
+        - TableCreate: 표 생성
+        - DrawFillAttr: 그림 채우기 속성
+
+        **사용 예제**:
+        ```json
+        {
+          "action_id": "CharShape",
+          "parameters": {
+            "FaceNameHangul": "맑은 고딕",
+            "Height": 1000,
+            "Bold": 1
+          }
+        }
+        ```
+        """,
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "action_id": {
+                    "type": "string",
+                    "description": "Action ID (예: InsertText, CharShape, BorderFill)",
+                },
+                "parameters": {
+                    "type": "object",
+                    "description": "Action 파라미터 (key-value pairs)",
+                    "additionalProperties": True,
+                },
+            },
+            "required": ["action_id"],
+        },
+    ),
 ]
 
 
@@ -261,6 +305,43 @@ class ActionTableToolHandler:
 
         return [TextContent(type="text", text=state_info)]
 
+    def handle_execute_action(self, arguments: dict[str, Any]) -> list[TextContent]:
+        """Handle hwp_action_execute tool call."""
+        action_id = arguments.get("action_id")
+        params = arguments.get("parameters", {})
+
+        if not action_id:
+            return [
+                TextContent(
+                    type="text",
+                    text="❌ action_id가 필요합니다.",
+                )
+            ]
+
+        # Execute action with validation
+        result = self.client.execute_action(action_id, params)
+
+        if result.success:
+            params_str = "\n".join(f"  - {k}: {v}" for k, v in params.items()) if params else "  (없음)"
+            return [
+                TextContent(
+                    type="text",
+                    text=f"""✅ {action_id} 실행 완료
+
+**파라미터**:
+{params_str}
+
+**상태**: {result.value['state']}""",
+                )
+            ]
+        else:
+            return [
+                TextContent(
+                    type="text",
+                    text=f"❌ {action_id} 실행 실패:\n{result.error}",
+                )
+            ]
+
     def handle_call(self, name: str, arguments: dict[str, Any]) -> list[TextContent]:
         """Route tool call to appropriate handler."""
         handlers = {
@@ -271,6 +352,7 @@ class ActionTableToolHandler:
             "hwp_action_insert_text": self.handle_insert_text,
             "hwp_action_create_table": self.handle_create_table,
             "hwp_action_get_document_state": self.handle_get_document_state,
+            "hwp_action_execute": self.handle_execute_action,
         }
 
         handler = handlers.get(name)

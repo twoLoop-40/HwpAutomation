@@ -29,6 +29,8 @@ from ..common.types import (
     COMError,
 )
 
+from .param_validator import ParameterValidator
+
 
 class ActionTableClient:
     """
@@ -44,6 +46,7 @@ class ActionTableClient:
         """Initialize HWP COM client."""
         self._hwp: Optional[Any] = None
         self._document: DocumentHandle = DocumentHandle()
+        self._validator: ParameterValidator = ParameterValidator()
 
     def _ensure_com_initialized(self) -> None:
         """Ensure COM is initialized for the current thread."""
@@ -284,6 +287,111 @@ class ActionTableClient:
 
         except Exception as e:
             return HwpResult.fail(f"COM error: {e}")
+
+    def execute_action(
+        self,
+        action_id: str,
+        params: Optional[dict[str, Any]] = None
+    ) -> HwpResult:
+        """
+        Execute any ActionTable API action with type-safe parameter validation.
+
+        Based on Idris2 spec: executeAction : ActionID -> ParameterSet -> HwpResult
+
+        This is a universal action executor that supports all 132 ActionTable actions.
+        Parameters are validated against Schema/parameter_table.json and Specs/ParameterTypes.idr.
+
+        Args:
+            action_id: Action name (e.g., "InsertText", "CharShape", "BorderFill")
+            params: Parameter dictionary (e.g., {"Text": "Hello"})
+
+        Returns:
+            HwpResult with success/failure
+
+        Examples:
+            >>> # Insert text
+            >>> client.execute_action("InsertText", {"Text": "안녕하세요"})
+
+            >>> # Change character shape
+            >>> client.execute_action("CharShape", {
+            ...     "FaceNameHangul": "맑은 고딕",
+            ...     "Height": 1000,
+            ...     "Bold": 1
+            ... })
+
+            >>> # Set border/fill
+            >>> client.execute_action("BorderFill", {
+            ...     "BorderTypeLeft": 1,
+            ...     "BorderWidthLeft": 10
+            ... })
+        """
+        params = params or {}
+
+        # Step 1: Validate parameters
+        if params:
+            validation = self._validator.validate_all_parameters(action_id, params)
+
+            if not validation.success:
+                error_messages = [
+                    f"{err.param_name}: {err.message}" if err.param_name
+                    else err.message
+                    for err in validation.errors
+                ]
+                return HwpResult.fail(
+                    f"Parameter validation failed for {action_id}:\n" +
+                    "\n".join(f"  - {msg}" for msg in error_messages)
+                )
+
+            # Log warnings (unknown parameters, etc.)
+            if validation.warnings:
+                # Warnings don't block execution
+                pass
+
+        # Step 2: Create action
+        try:
+            action = self.hwp.CreateAction(action_id)
+            if action is None:
+                return HwpResult.fail(f"Action '{action_id}' not found")
+        except Exception as e:
+            return HwpResult.fail(f"Failed to create action '{action_id}': {e}")
+
+        # Step 3: Create and configure ParameterSet
+        try:
+            param_set = action.CreateSet()
+            action.GetDefault(param_set)
+
+            # Set parameters with type conversion
+            for param_name, value in params.items():
+                # Convert to appropriate PIT type
+                converted_value = self._validator.convert_to_pit_type(
+                    action_id, param_name, value
+                )
+                param_set.SetItem(param_name, converted_value)
+
+        except Exception as e:
+            return HwpResult.fail(f"Failed to set parameters for '{action_id}': {e}")
+
+        # Step 4: Execute action
+        try:
+            result = action.Execute(param_set)
+
+            if not result:
+                return HwpResult.fail(f"Action '{action_id}' execution returned false")
+
+            # Update document state for actions that modify the document
+            # (Note: This is a simplified heuristic - ideally we'd track this per action)
+            if action_id not in ["FileNew", "FileOpen", "FileClose", "FileSave", "FileQuit"]:
+                if self._document.check_state(DocumentState.OPENED):
+                    self._document.transition_state(DocumentState.MODIFIED)
+
+            return HwpResult.ok({
+                "action_id": action_id,
+                "parameters": params,
+                "state": self._document.state.value
+            })
+
+        except Exception as e:
+            return HwpResult.fail(f"Execution error for '{action_id}': {e}")
 
     def cleanup(self) -> None:
         """Clean up COM resources."""
