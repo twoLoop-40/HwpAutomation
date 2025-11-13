@@ -1,4 +1,4 @@
-"""Type definitions based on Specs/HwpMCP.idr formal specification."""
+"""Type definitions based on Specs/HwpCommon.idr formal specification."""
 
 from enum import Enum
 from typing import Union, Optional

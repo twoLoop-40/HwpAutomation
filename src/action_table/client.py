@@ -35,7 +35,7 @@ class ActionTableClient:
     """
     ActionTable HWP COM client wrapper with type-safe state management.
 
-    Based on the Idris2 formal specification in Specs/HwpMCP.idr and
+    Based on the Idris2 formal specification in Specs/ActionTableMCP.idr and
     ActionTable_2504.pdf reference document.
 
     Ensures safe state transitions and parameter validation for ActionTable operations.

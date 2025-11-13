@@ -156,10 +156,63 @@ src/
 
 ---
 
+### ✅ Step 6: Automation API 구현 (2025-11-13)
+**커밋**: Implement Automation API with OLE Object Model
+
+**완료 내용**:
+- **형식 명세 재구성**:
+  - `Specs/HwpCommon.idr`: 공통 타입 (DocumentState, HwpResult, ParamValue)
+  - `Specs/ActionTableMCP.idr`: ActionTable 전용 스펙 (기존 HwpMCP.idr에서 분리)
+  - `Specs/AutomationMCP.idr`: Automation 전용 스펙 (OLE Object Model)
+
+- **Automation API 구현**:
+  - `src/automation/client.py`: AutomationClient 클래스
+    - OLE Object Model 기반 (IHwpObject, IXHwpDocuments, IXHwpDocument)
+    - 속성 접근: get_property, set_property
+    - 메서드 호출: invoke_method
+    - 문서 작업: open_document, save_document, close_document
+  - `src/automation/tools.py`: AUTOMATION_TOOLS 정의
+    - 11개 도구: get_documents, open_document, get_active_document, etc.
+    - AutomationToolHandler 구현
+
+- **통합**:
+  - `src/tools.py`: UnifiedToolHandler에 Automation 라우팅 추가
+  - 네임스페이스 분리: hwp_action_* vs hwp_auto_*
+  - 단일 서버에서 ActionTable + Automation 동시 제공
+
+- **테스트 구조 개선**:
+  - `Tests/` 디렉토리로 통합
+    - `Tests/ActionTable/`: ActionTable API 테스트
+    - `Tests/Automation/`: Automation API 테스트
+  - Automation 테스트:
+    - `test_automation_basic.py`: 기본 워크플로우
+    - `test_automation_spec.py`: Idris 스펙 검증
+
+- **계획 문서**:
+  - `Schema/Step6_Automation_Plan.md`: 구현 계획 및 API 차이점 정리
+
+**API 비교**:
+
+| 항목 | ActionTable | Automation |
+|------|-------------|------------|
+| 패러다임 | Action 기반 | Object-Oriented (OLE) |
+| 호출 방식 | CreateAction("FileNew") | hwp.XHwpDocuments.Open() |
+| 도구 접두사 | hwp_action_* | hwp_auto_* |
+| 상태 관리 | DocumentState | Object properties |
+| 형식 명세 | ActionTableMCP.idr | AutomationMCP.idr |
+
+**주요 특징**:
+- 두 API 완전 병행 지원
+- 단일 MCP 서버, 네임스페이스로 구분
+- Idris 형식 명세 기반 타입 안전성
+- 공통 코드 재사용 (HwpCommon.idr, common/types.py)
+
+---
+
 ### 📋 다음 단계
-6. HwpAutomation_2504.pdf 기반 automation 모듈 구현
 7. 의존성 설치 및 통합 테스트
 8. Claude Desktop 연동 테스트
+9. 문서화 및 예제 추가
 
 ---
 
@@ -167,6 +220,10 @@ src/
 - [MCP Specification](https://spec.modelcontextprotocol.io/)
 - HWP COM API:
   - ActionTable: `HwpBooks/ActionTable_2504.pdf`
-  - Automation: `HwpBooks/HwpAutomation_2504.pdf` (예정)
-- Idris2 Spec: `Specs/HwpMCP.idr`
-- Test Suite: `TestActionTable_2504/`
+  - Automation: `HwpBooks/HwpAutomation_2504.pdf`
+- Idris2 Specs:
+  - Common: `Specs/HwpCommon.idr`
+  - ActionTable: `Specs/ActionTableMCP.idr`
+  - Automation: `Specs/AutomationMCP.idr`
+- Test Suites: `Tests/ActionTable/`, `Tests/Automation/`
+- Planning: `Schema/Step6_Automation_Plan.md`
