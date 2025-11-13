@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "hwp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\joonho.lee\\Projects\\AutoHwp",
+        "run",
+        "python",
+        "-m",
+        "src.server"
+      ]
+    }
+  }
+}

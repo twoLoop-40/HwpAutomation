@@ -56,10 +56,36 @@ HwpResult: Success | Failure
 
 ---
 
+### ✅ Step 3: MCP Tools 및 서버 구현 (2025-11-13)
+**커밋**: Implement MCP tools and server
+
+**완료 내용**:
+- `src/tools.py`: MCP 도구 정의 및 핸들러
+  - 7개 도구: create, open, close, save, insert_text, create_table, get_state
+  - ToolHandler 클래스로 도구 호출 라우팅
+  - 한글/영문 에러 메시지
+- `src/server.py`: MCP 서버 메인 엔트리포인트
+  - stdio transport 사용
+  - 비동기 처리
+  - 리소스 정리
+- `README.md`: 사용 설명서
+  - 설치 방법 (uv/pip)
+  - Claude Desktop 설정
+  - 도구 사용법
+  - 아키텍처 설명
+- `claude_desktop_config.json`: Claude Desktop 설정 예제
+
+**주요 특징**:
+- Idris mcpTools 스펙 완벽 구현
+- 타입 안전 파라미터 검증
+- 상태 기반 에러 메시지
+
+---
+
 ### 📋 다음 단계
-3. MCP Tools 정의 및 등록
-4. MCP 서버 메인 엔트리포인트
-5. 테스트 및 문서화
+4. 의존성 설치 및 테스트
+5. Claude Desktop 연동 테스트
+6. 문서화 완성
 
 ---
 
