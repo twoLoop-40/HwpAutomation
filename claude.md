@@ -82,10 +82,40 @@ HwpResult: Success | Failure
 
 ---
 
+### ✅ Step 4: 테스트 스위트 구현 (2025-11-13)
+**커밋**: Add test suite for ActionTable validation
+
+**완료 내용**:
+- `TestActionTable_2504/test_basic_workflow.py`: 기본 워크플로우 테스트
+  - 전체 문서 생명주기 검증 (Closed → Opened → Modified → Saved → Closed)
+  - 각 상태 전환 단계별 assertions
+  - 실제 HWP 작업 시뮬레이션 (텍스트 삽입, 표 생성)
+- `TestActionTable_2504/test_action_table.py`: Action Table 검증 테스트
+  - ActionTable_2504.pdf 기반 액션 커버리지 확인
+  - 파라미터 요구사항 검증 (NoParam/RequiredParam)
+  - 상태 전환 검증 (Idris 스펙 기반)
+  - 6개 핵심 액션 구현 확인
+- `TestActionTable_2504/README.md`: 테스트 문서
+  - 실행 방법
+  - 테스트 대상 액션 목록
+  - 상태 전환 다이어그램
+
+**주요 특징**:
+- Idris 스펙 기반 상태 전환 검증
+- ActionTable PDF 참조한 파라미터 검증
+- 실패 케이스 테스트 (잘못된 상태 전환)
+- uv 기반 테스트 실행
+
+**테스트 커버리지**:
+- 6/400+ 액션 구현 (FileNew, FileOpen, FileClose, FileSave, InsertText, TableCreate)
+- 핵심 문서 조작 기능 완료
+
+---
+
 ### 📋 다음 단계
-4. 의존성 설치 및 테스트
-5. Claude Desktop 연동 테스트
-6. 문서화 완성
+5. 의존성 설치 (uv venv, uv pip install)
+6. 테스트 실행 및 검증
+7. Claude Desktop 연동 테스트
 
 ---
 
@@ -93,3 +123,4 @@ HwpResult: Success | Failure
 - [MCP Specification](https://spec.modelcontextprotocol.io/)
 - HWP COM API: `HwpBooks/ActionTable_2504.pdf`
 - Idris2 Spec: `Specs/HwpMCP.idr`
+- Test Suite: `TestActionTable_2504/`
