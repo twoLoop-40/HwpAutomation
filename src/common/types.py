@@ -1,7 +1,7 @@
 """Type definitions based on Specs/HwpCommon.idr formal specification."""
 
 from enum import Enum
-from typing import Union, Optional
+from typing import Union, Optional, Any
 from pydantic import BaseModel, Field
 
 
@@ -89,8 +89,8 @@ class InvalidState(HwpError):
         )
 
 
-class FileNotFoundError(HwpError):
-    """File not found."""
+class HwpFileNotFoundError(HwpError):
+    """HWP file not found."""
     def __init__(self, path: str):
         super().__init__(f"File not found: {path}")
 
@@ -112,11 +112,11 @@ class DocumentHandle(BaseModel):
 class HwpResult(BaseModel):
     """Result type for HWP operations - matches Idris HwpResult monad."""
     success: bool
-    value: Optional[any] = None
+    value: Optional[Any] = None
     error: Optional[str] = None
 
     @classmethod
-    def ok(cls, value: any = None) -> "HwpResult":
+    def ok(cls, value: Any = None) -> "HwpResult":
         return cls(success=True, value=value)
 
     @classmethod

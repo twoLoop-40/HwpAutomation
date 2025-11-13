@@ -12,7 +12,7 @@ from .types import (
     DocumentAlreadyOpen,
     COMError,
     InvalidState,
-    FileNotFoundError,
+    HwpFileNotFoundError,
     DocumentHandle,
     HwpResult,
 )
@@ -29,7 +29,7 @@ __all__ = [
     "DocumentAlreadyOpen",
     "COMError",
     "InvalidState",
-    "FileNotFoundError",
+    "HwpFileNotFoundError",
     "DocumentHandle",
     "HwpResult",
 ]

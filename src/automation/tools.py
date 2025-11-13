@@ -4,24 +4,25 @@ Based on Specs/AutomationMCP.idr formal specification.
 """
 
 from typing import Any
+from mcp.types import Tool
 from .client import AutomationClient
 
 
 # MCP Tool definitions for Automation API
 AUTOMATION_TOOLS = [
-    {
-        "name": "hwp_auto_get_documents",
-        "description": "문서 컬렉션(IXHwpDocuments) 가져오기",
-        "inputSchema": {
+    Tool(
+        name="hwp_auto_get_documents",
+        description="문서 컬렉션(IXHwpDocuments) 가져오기",
+        inputSchema={
             "type": "object",
             "properties": {},
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_open_document",
-        "description": "HWP 문서 열기 (Automation API 사용)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_open_document",
+        description="HWP 문서 열기 (Automation API 사용)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "path": {
@@ -35,20 +36,20 @@ AUTOMATION_TOOLS = [
             },
             "required": ["path"]
         }
-    },
-    {
-        "name": "hwp_auto_get_active_document",
-        "description": "현재 활성 문서 가져오기",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_get_active_document",
+        description="현재 활성 문서 가져오기",
+        inputSchema={
             "type": "object",
             "properties": {},
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_get_document_property",
-        "description": "문서 속성 값 가져오기 (Path, IsModified, DocumentName 등)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_get_document_property",
+        description="문서 속성 값 가져오기 (Path, IsModified, DocumentName 등)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "property_name": {
@@ -58,11 +59,11 @@ AUTOMATION_TOOLS = [
             },
             "required": ["property_name"]
         }
-    },
-    {
-        "name": "hwp_auto_save_document",
-        "description": "문서 저장 (Automation API 사용)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_save_document",
+        description="문서 저장 (Automation API 사용)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "format": {
@@ -76,11 +77,11 @@ AUTOMATION_TOOLS = [
             },
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_close_document",
-        "description": "문서 닫기 (Automation API 사용)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_close_document",
+        description="문서 닫기 (Automation API 사용)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "save_changes": {
@@ -91,29 +92,29 @@ AUTOMATION_TOOLS = [
             },
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_get_windows",
-        "description": "창 컬렉션(IXHwpWindows) 가져오기",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_get_windows",
+        description="창 컬렉션(IXHwpWindows) 가져오기",
+        inputSchema={
             "type": "object",
             "properties": {},
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_get_active_window",
-        "description": "현재 활성 창 가져오기",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_get_active_window",
+        description="현재 활성 창 가져오기",
+        inputSchema={
             "type": "object",
             "properties": {},
             "required": []
         }
-    },
-    {
-        "name": "hwp_auto_get_hwp_property",
-        "description": "HWP 어플리케이션 속성 가져오기 (Version, IsEmpty, EditMode, Path)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_get_hwp_property",
+        description="HWP 어플리케이션 속성 가져오기 (Version, IsEmpty, EditMode, Path)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "property_name": {
@@ -123,11 +124,11 @@ AUTOMATION_TOOLS = [
             },
             "required": ["property_name"]
         }
-    },
-    {
-        "name": "hwp_auto_set_edit_mode",
-        "description": "편집 모드 설정 (0=읽기전용, 1-16=다양한 편집 모드)",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_set_edit_mode",
+        description="편집 모드 설정 (0=읽기전용, 1-16=다양한 편집 모드)",
+        inputSchema={
             "type": "object",
             "properties": {
                 "mode": {
@@ -137,16 +138,16 @@ AUTOMATION_TOOLS = [
             },
             "required": ["mode"]
         }
-    },
-    {
-        "name": "hwp_auto_quit",
-        "description": "HWP 어플리케이션 종료",
-        "inputSchema": {
+    ),
+    Tool(
+        name="hwp_auto_quit",
+        description="HWP 어플리케이션 종료",
+        inputSchema={
             "type": "object",
             "properties": {},
             "required": []
         }
-    }
+    )
 ]
 
 

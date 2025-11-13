@@ -3,7 +3,6 @@
 Based on HwpBooks/ActionTable_2504.pdf
 """
 
-import os
 from pathlib import Path
 from typing import Optional, Any
 
@@ -26,7 +25,7 @@ from ..common.types import (
     DocumentNotOpen,
     DocumentAlreadyOpen,
     InvalidState,
-    FileNotFoundError,
+    HwpFileNotFoundError,
     COMError,
 )
 
