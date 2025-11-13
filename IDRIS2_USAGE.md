@@ -11,31 +11,21 @@ AutoHwp 프로젝트는 Idris2 형식 명세를 사용하여 타입 안전성을
 
 ## 컴파일 체크
 
-### Bash에서 (Claude Code 권장)
+### Bash에서 (Claude Code)
+
+Idris2는 `~/.bashrc`에서 자동으로 로드됩니다 (PowerShell 프로필과 동일).
 
 ```bash
 # 전체 스펙 체크
 bash check_specs.sh
 
-# 개별 파일 체크
-source .bashrc
+# 개별 파일 체크 (idris2.sh는 전역 사용 가능)
 idris2.sh --check Specs/HwpCommon.idr
 ```
 
-### 수동 설정 (다른 프로젝트)
+### 다른 프로젝트에서도 동일하게 작동
 
-다른 프로젝트에서 Idris2를 사용하려면:
-
-1. 프로젝트 루트에 `.bashrc` 생성:
-   ```bash
-   source /c/Users/joonho.lee/Projects/InstallIdris2/init.sh
-   ```
-
-2. 스크립트에서 사용:
-   ```bash
-   source .bashrc
-   idris2.sh --check YourSpec.idr
-   ```
+Idris2 환경은 전역으로 설정되어 있으므로, 모든 프로젝트에서 자동으로 사용 가능합니다.
 
 자세한 내용은 `/c/Users/joonho.lee/Projects/InstallIdris2/BASH_SETUP.md` 참조.
 

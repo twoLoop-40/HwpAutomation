@@ -1,11 +1,7 @@
 #!/bin/bash
 # Idris2 spec compilation checker (Bash version)
 # Run with: bash check_specs.sh
-
-# Load Idris2 environment
-source .bashrc 2>/dev/null || {
-    echo "Warning: Could not load .bashrc, attempting to use idris2 directly"
-}
+# Note: Idris2 is auto-loaded from ~/.bashrc
 
 echo -e "\033[36mChecking Idris2 specifications...\033[0m"
 
