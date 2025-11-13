@@ -35,14 +35,24 @@ HwpResult: Success | Failure
 
 ---
 
-### 🔄 Step 2: 한글 COM 클라이언트 구현 (진행중)
-**목표**: win32com을 사용한 한글 COM wrapper
+### ✅ Step 2: 한글 COM 클라이언트 구현 (2025-11-13)
+**커밋**: Implement HWP COM client wrapper
 
-**구현 예정**:
-- [ ] HwpClient 클래스
-- [ ] 문서 열기/닫기/저장
-- [ ] 상태 전환 검증
-- [ ] 에러 처리
+**완료 내용**:
+- `src/hwp_client.py`: HwpClient 클래스 구현
+  - 문서 생성: `create_new_document()` (Closed → Opened)
+  - 문서 열기: `open_document(path)` (Closed → Opened)
+  - 문서 닫기: `close_document()` (Opened → Closed)
+  - 문서 저장: `save_document()` (Modified → Saved)
+  - 텍스트 삽입: `insert_text(text)` (Opened → Modified)
+  - 표 생성: `create_table(rows, cols)` (Opened → Modified)
+- 상태 전환 검증 로직
+- COM 리소스 정리 (cleanup)
+
+**주요 특징**:
+- Idris 스펙 기반 상태 전환 보장
+- HwpResult로 타입 안전한 에러 처리
+- Action Table PDF 참조한 정확한 Action 호출
 
 ---
 
