@@ -1,0 +1,7197 @@
+{
+  "metadata": {
+    "total_actions": 132,
+    "total_parameters": 1154,
+    "source": "ParameterSetTable_2504.pdf"
+  },
+  "actions": {
+    "ActionCrossRef": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_BSTR",
+        "subtype": "※command",
+        "description": "string 참조"
+      }
+    ],
+    "AutoFill": [
+      {
+        "param_name": "AutoFillSection",
+        "param_type": "PIT_UI",
+        "subtype": "자동",
+        "description": "채우기 섹션 : 0 = 기본, 1 = 사용자 정의"
+      },
+      {
+        "param_name": "AutoFillItem",
+        "param_type": "PIT_UI",
+        "subtype": "섹션의",
+        "description": "아이템 인덱스 : 0 ~"
+      }
+    ],
+    "AutoNum": [
+      {
+        "param_name": "NumType",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "NewNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "새",
+        "description": "시작 번호 (1 .. n)"
+      },
+      {
+        "param_name": "NumFormat",
+        "param_type": "PIT_UI2",
+        "subtype": "번호",
+        "description": "모양"
+      }
+    ],
+    "BookMark": [
+      {
+        "param_name": "Name",
+        "param_type": "PIT_BSTR",
+        "subtype": "책갈피",
+        "description": "이름"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "책갈피",
+        "description": "종류 : 0 = 일반 책갈피, 1 = 블록 책갈피"
+      },
+      {
+        "param_name": "Command",
+        "param_type": "PIT_UI",
+        "subtype": "책갈피",
+        "description": "명령의 종류 :"
+      }
+    ],
+    "BorderFill": [
+      {
+        "param_name": "BorderTypeLeft",
+        "param_type": "PIT_UI2",
+        "subtype": "4방향",
+        "description": "테두리 종류 : 왼쪽 [선 종류]"
+      },
+      {
+        "param_name": "BorderTypeRight",
+        "param_type": "PIT_UI2",
+        "subtype": "4방향",
+        "description": "테두리 종류 : 오른쪽"
+      },
+      {
+        "param_name": "BorderTypeTop",
+        "param_type": "PIT_UI2",
+        "subtype": "4방향",
+        "description": "테두리 종류 : 위"
+      },
+      {
+        "param_name": "BorderTypeBottom",
+        "param_type": "PIT_UI2",
+        "subtype": "4방향",
+        "description": "테두리 종류 : 아래"
+      },
+      {
+        "param_name": "BorderWidthLeft",
+        "param_type": "PIT_UI1",
+        "subtype": "4방향",
+        "description": "테두리 두께 : 왼쪽 [선 종류]"
+      },
+      {
+        "param_name": "BorderWidthRight",
+        "param_type": "PIT_UI1",
+        "subtype": "4방향",
+        "description": "테두리 두께 : 오른쪽"
+      },
+      {
+        "param_name": "BorderWidthTop",
+        "param_type": "PIT_UI1",
+        "subtype": "4방향",
+        "description": "테두리 두께 : 위"
+      },
+      {
+        "param_name": "BorderWidthBottom",
+        "param_type": "PIT_UI1",
+        "subtype": "4방향",
+        "description": "테두리 두께 : 아래"
+      },
+      {
+        "param_name": "BorderCorlorLeft",
+        "param_type": "PIT_UI44",
+        "subtype": "방향",
+        "description": "테두리 색깔 : 왼쪽 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "BorderColorRight",
+        "param_type": "PIT_UI44",
+        "subtype": "방향",
+        "description": "테두리 색깔 : 오른쪽 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "BorderColorTop",
+        "param_type": "PIT_UI44",
+        "subtype": "방향",
+        "description": "테두리 색깔 : 위 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "BorderColorBottom",
+        "param_type": "PIT_UI44",
+        "subtype": "방향",
+        "description": "테두리 색깔 :아래 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "SlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "슬래쉬",
+        "description": "대각선 플래그 : 비트 플래그의 조합으로 표현되며 각 위치의 비트는 다음을 나타낸 bit 0 = 하단 대각선 bit 1 = 중앙 대각선"
+      },
+      {
+        "param_name": "BackSlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "백슬래쉬",
+        "description": "대각선 플래그 : 비트 플래그의 조합으로 표현되며 각 위치의 비트는 다음을 나타낸 bit 0 = 하단 대각선 bit 1 = 중앙 대각선"
+      },
+      {
+        "param_name": "DiagonalType",
+        "param_type": "PIT_UI2",
+        "subtype": "선",
+        "description": "종류 셀에서는 대각선, 표에서는 자동으로 나눠진 경계선에서 사용"
+      },
+      {
+        "param_name": "DiagonalWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "종류6※ 대각선의 형태는 다음의 3가지의 아이템을 통해서 결정된다. - SlashFlag(BackSlashFlag) -> 괄호 안은 역슬래쉬의 경우 - CrookedSlashFlag1(CrookedSlashFlag2) - CounterSlashFlag(CounterBackSlashFlag) SlashFlag 는 대각선의 유형을 나타내며, 각각"
+      },
+      {
+        "param_name": "DiagonalColor",
+        "param_type": "PIT_UI4",
+        "subtype": "선",
+        "description": "색상 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR) 셀에서는 대각선, 표에서는 자동으로 나눠진 경계선에서 사용"
+      },
+      {
+        "param_name": "BorderFill3D",
+        "param_type": "PIT_UI1",
+        "subtype": "3차원",
+        "description": "효과 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Shadow",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "효과 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "FillAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawFillAttr 배경 채우기 속성"
+      },
+      {
+        "param_name": "CrookedSlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "꺾인",
+        "description": "대각선 플래그 (bit 0, 1이 각각 slash, back slash 의 가 운데 대각선이 꺾인 대각선임을 나타낸다.)"
+      },
+      {
+        "param_name": "BreakCellSeparateLine",
+        "param_type": "PIT_UI1",
+        "subtype": "자동으로",
+        "description": "나뉜 표의 경계선 설정 :"
+      },
+      {
+        "param_name": "ShadeFaceColorIncDec",
+        "param_type": "PIT_UI1",
+        "subtype": "음영",
+        "description": "비율 증가/감소. 음영 비율 증가/감소 엑션에서 전달 됨. 구현용으로만 쓰임. 이 아이템이 없으면(음영 비율 증가/감소는 없는 것이고 있다면 값 이 TRUE이면 증가, FALSE 이면 감소이다.)"
+      },
+      {
+        "param_name": "CounterSlashFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "슬래쉬",
+        "description": "대각선의 역방향 플래그(우상향 대각선) :"
+      },
+      {
+        "param_name": "CounterBackSlashFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "역슬래쉬",
+        "description": "대각선의 역방향 플래그(좌상향 대각선) :"
+      },
+      {
+        "param_name": "CenterLineFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "중심선",
+        "description": ": ( 0 = 중심선 없음, 1 = 중심선 있음) 더 자세한 내용은 하단의 ※ 중심선의 형태를 참고한다."
+      },
+      {
+        "param_name": "CrookedSlashFlag1",
+        "param_type": "PIT_UI1L",
+        "subtype": "ow",
+        "description": "Byte CrookedSlashFlag (슬래쉬 대각선의 꺾임 여부) (CrookedSlashFlag 를 쓰기 편하도록 CrookedSlashFlag1,2 로 나눔)"
+      },
+      {
+        "param_name": "CrookedSlashFlag2",
+        "param_type": "PIT_UI1H",
+        "subtype": "igh",
+        "description": "Byte CrookedSlashFlag (역슬래쉬 대각선의 꺾임 여부) (CrookedSlashFlag 를 쓰기 편하도록 CrookedSlashFlag1,2 로 나눔)7"
+      }
+    ],
+    "BorderFillExt": [
+      {
+        "param_name": "TypeHorz",
+        "param_type": "PIT_UI2",
+        "subtype": "중앙선",
+        "description": "종류 : 가로 [선 종류]"
+      },
+      {
+        "param_name": "TypeVert",
+        "param_type": "PIT_UI2",
+        "subtype": "중앙선",
+        "description": "종류 : 세로"
+      },
+      {
+        "param_name": "WidthHorz",
+        "param_type": "PIT_UI1",
+        "subtype": "중앙선",
+        "description": "두께 : 가로 [선 종류]"
+      },
+      {
+        "param_name": "WidthVert",
+        "param_type": "PIT_UI1",
+        "subtype": "중앙선",
+        "description": "두께 : 세로"
+      },
+      {
+        "param_name": "ColorHorz",
+        "param_type": "PIT_UI4",
+        "subtype": "중앙선",
+        "description": "색깔 : 가로 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "ColorVert",
+        "param_type": "PIT_UI4",
+        "subtype": "중앙선",
+        "description": "색깔 : 세로 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)107)BulletShape : 불릿 모양(글머리표 모양)"
+      }
+    ],
+    "BulletShape": [
+      {
+        "param_name": "HasCharShape",
+        "param_type": "PIT_UI1",
+        "subtype": "자체적인",
+        "description": "글자 모양을 사용할지 여부 :"
+      },
+      {
+        "param_name": "CharShape",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "글자 모양 (HasCharShape 가 1일 경우에만 사용)"
+      },
+      {
+        "param_name": "WidthAdjust",
+        "param_type": "PIT_I",
+        "subtype": "번호",
+        "description": "너비 보정 값 (HWPUNIT)"
+      },
+      {
+        "param_name": "TextOffset",
+        "param_type": "PIT_I",
+        "subtype": "본문과의",
+        "description": "거리 (percent or HWPUNIT)"
+      },
+      {
+        "param_name": "Alignment",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "정렬 :"
+      },
+      {
+        "param_name": "UseInstWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "너비를 문서 내 문자열의 너비에 따를지 여부 on / off"
+      },
+      {
+        "param_name": "AutoIndent",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "너비 자동 들여쓰기 여부 : 0 = 들여쓰기 안함, 1 = 들여쓰기"
+      },
+      {
+        "param_name": "TextOffsetType",
+        "param_type": "PIT_UI1",
+        "subtype": "본문과의",
+        "description": "거리 종류 : 0 = percent, 1 = HWPUNIT"
+      },
+      {
+        "param_name": "BulletChar",
+        "param_type": "PIT_UI2",
+        "subtype": "불릿",
+        "description": "문자 코드"
+      },
+      {
+        "param_name": "HasImage",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "글머리표 여부 : 0 = 일반 글머리표, 1 = 그림 글머리표"
+      },
+      {
+        "param_name": "BulletImage",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawFillAttr 글머리표 이미지"
+      },
+      {
+        "param_name": "CheckedBulletChar",
+        "param_type": "PIT_UI2",
+        "subtype": "체크된",
+        "description": "불릿 문자 코드"
+      },
+      {
+        "param_name": "Checkable",
+        "param_type": "PIT_UI1",
+        "subtype": "체크",
+        "description": "가능 여부"
+      }
+    ],
+    "Caption": [
+      {
+        "param_name": "Side",
+        "param_type": "PIT_UI1",
+        "subtype": "방향.",
+        "description": "0 = 왼쪽, 1 = 오른쪽, 2 = 위, 3 =  아래"
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_I",
+        "subtype": "캡션",
+        "description": "폭 (가로 방향일 때만 사용됨. 단위 HWPUNIT)"
+      },
+      {
+        "param_name": "Gap",
+        "param_type": "PIT_I",
+        "subtype": "캡션과",
+        "description": "틀 사이 간격(HWPUNIT)"
+      },
+      {
+        "param_name": "CapFullSize",
+        "param_type": "PIT_UI1",
+        "subtype": "캡션",
+        "description": "폭에 여백을 포함할지 여부 (세로 방향일 때만 사용됨) 갈무리 때 코어엔진에서 액션에게 보내는 정보(시작/끝점의 좌표). 내부에서만 사용된다."
+      }
+    ],
+    "CaptureEnd": [
+      {
+        "param_name": "BeginX",
+        "param_type": "PIT_I",
+        "subtype": "시작점과",
+        "description": "X 좌표(페이지 X좌표)"
+      },
+      {
+        "param_name": "BeginY",
+        "param_type": "PIT_I",
+        "subtype": "시작점과",
+        "description": "Y 좌표(페이지 Y좌표)"
+      },
+      {
+        "param_name": "EndX",
+        "param_type": "PIT_I",
+        "subtype": "끝점의",
+        "description": "X 좌표(페이지 X좌표)"
+      },
+      {
+        "param_name": "EndY",
+        "param_type": "PIT_I",
+        "subtype": "끝점의",
+        "description": "Y 좌표(페이지 Y좌표)"
+      },
+      {
+        "param_name": "PageNum",
+        "param_type": "PIT_UI",
+        "subtype": "페이지",
+        "description": "번호"
+      },
+      {
+        "param_name": "Path",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "경로, (한/글 2022부터 지원)"
+      },
+      {
+        "param_name": "Format",
+        "param_type": "PIT_I",
+        "subtype": "포맷",
+        "description": "번호, (한/글 2022부터 지원) Cell은 ListProperties 로부터 계승받았으므로 위 표에 정리된 Cell의 아이템들 이외에 ListProperties 의 아이템들을 사용할 수 있다."
+      }
+    ],
+    "Cell": [
+      {
+        "param_name": "HasMargin",
+        "param_type": "PIT_UI1",
+        "subtype": "테이블의",
+        "description": "기본 셀 여백 대신 자체 셀 여백을 적용할지 여부. (on / off)"
+      },
+      {
+        "param_name": "Protected",
+        "param_type": "PIT_UI1",
+        "subtype": "사용자",
+        "description": "편집을 막을지 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Header",
+        "param_type": "PIT_UI1",
+        "subtype": "제목",
+        "description": "셀인지 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_I4",
+        "subtype": "셀의",
+        "description": "폭 (HWPUNIT)"
+      },
+      {
+        "param_name": "Height",
+        "param_type": "PIT_I4",
+        "subtype": "셀의",
+        "description": "높이 (HWPUNIT)"
+      },
+      {
+        "param_name": "Editable",
+        "param_type": "PIT_UI1",
+        "subtype": "양식모드에서",
+        "description": "편집 가능 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Dirty",
+        "param_type": "PIT_UI1",
+        "subtype": "초기화",
+        "description": "상태인지 수정된 상태인지 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "CellCtrlData",
+        "param_type": "PIT_SET",
+        "subtype": "CtrlData",
+        "description": "셀 데이터 CellBorderFill 은 BorderFillExt 로부터 계승받았으므로 위 표에 정리된 CellBorderFill 의 아이템들 이외에 BorderFillExt 의 아이템들을 사용할 수 있다."
+      }
+    ],
+    "CellBorderFill": [
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용",
+        "description": "대상 : 0 = 선택된 셀, 1 = 전체 셀, 2 = 여러 셀에 걸쳐 적"
+      },
+      {
+        "param_name": "NoNeighborCell",
+        "param_type": "PIT_UI1",
+        "subtype": "주변",
+        "description": "셀에 선 모양을 적용하지 않을지 여부 (1이면 적용하지 않는"
+      },
+      {
+        "param_name": "TableBorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "표 테두리/배경"
+      },
+      {
+        "param_name": "AllCellsBorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "전체 셀의 테두리/배경"
+      },
+      {
+        "param_name": "SelCellsBorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "선택된 셀의 테두리/배경"
+      }
+    ],
+    "ChangeRome": [
+      {
+        "param_name": "Option",
+        "param_type": "PIT_UI1",
+        "subtype": "변환옵션",
+        "description": ":"
+      },
+      {
+        "param_name": "HanString",
+        "param_type": "PIT_BSTR",
+        "subtype": "변경시킬",
+        "description": "또는 변경된 한글문자"
+      }
+    ],
+    "CharShape": [
+      {
+        "param_name": "FaceNameHangul",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (한글)"
+      },
+      {
+        "param_name": "FaceNameLatin",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (영문)"
+      },
+      {
+        "param_name": "FaceNameHanja",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (한자)"
+      },
+      {
+        "param_name": "FaceNameJapanese",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (일본어)"
+      },
+      {
+        "param_name": "FaceNameOther",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (기타)"
+      },
+      {
+        "param_name": "FaceNameSymbol",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (심벌)"
+      },
+      {
+        "param_name": "FaceNameUser",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": "이름 (사용자)"
+      },
+      {
+        "param_name": "FontTypeHangul",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (한글) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeLatin",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (영문) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeHanja",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (한자) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeJapanese",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (일본어) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeOther",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (기타) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeSymbol",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (심벌) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontTypeUser",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 (사용자) : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "SizeHangul",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (한글) 10% - 250%"
+      },
+      {
+        "param_name": "SizeLatin",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (영문) 10% - 250%"
+      },
+      {
+        "param_name": "SizeHanja",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (한자) 10% - 250%"
+      },
+      {
+        "param_name": "SizeJapanese",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (일본어) 10% - 250%"
+      },
+      {
+        "param_name": "SizeOther",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (기타) 10% - 250%"
+      },
+      {
+        "param_name": "SizeSymbol",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (심벌) 10% - 250%"
+      },
+      {
+        "param_name": "SizeUser",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 크기 비율. (사용자) 10% - 250%"
+      },
+      {
+        "param_name": "RatioHangul",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (한글) 50% - 200%"
+      },
+      {
+        "param_name": "RatioLatin",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (영문) 50% - 200%"
+      },
+      {
+        "param_name": "RatioHanja",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (한자) 50% - 200%"
+      },
+      {
+        "param_name": "RatioJapanese",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (일본어) 50% - 200%"
+      },
+      {
+        "param_name": "RatioOther",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (기타) 50% - 200%"
+      },
+      {
+        "param_name": "RatioSymbol",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (심벌) 50% - 200%"
+      },
+      {
+        "param_name": "RatioUser",
+        "param_type": "PIT_UI1",
+        "subtype": "각",
+        "description": "언어별 장평 비율. (사용자) 50% - 200%"
+      },
+      {
+        "param_name": "SpacingHangul",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (한글) -50% - 50%"
+      },
+      {
+        "param_name": "SpacingHanja",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (한자) -50% - 50%"
+      },
+      {
+        "param_name": "SpacingJapanese",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (일본어) -50% - 50%"
+      },
+      {
+        "param_name": "SpacingOther",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (기타) -50% - 50%"
+      },
+      {
+        "param_name": "SpacingSymbol",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (심벌) -50% - 50%"
+      },
+      {
+        "param_name": "SpacingUser",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 자간. (사용자) -50% - 50%"
+      },
+      {
+        "param_name": "OffsetHangul",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (한글) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetLatin",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (영문) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetHanja",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (한자) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetJapanese",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (일본어) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetOther",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (기타) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetSymbol",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (심벌) -100% - 100%"
+      },
+      {
+        "param_name": "OffsetUser",
+        "param_type": "PIT_I1",
+        "subtype": "각",
+        "description": "언어별 오프셋. (사용자) -100% - 100%"
+      },
+      {
+        "param_name": "Bold",
+        "param_type": "PIT_UI1",
+        "subtype": "Bold",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Italic",
+        "param_type": "PIT_UI1",
+        "subtype": "Italic",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "SmallCaps",
+        "param_type": "PIT_UI1",
+        "subtype": "Small",
+        "description": "Caps : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Emboss",
+        "param_type": "PIT_UI1",
+        "subtype": "Emboss",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Engrave",
+        "param_type": "PIT_UI1",
+        "subtype": "Engrave",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "SuperScript",
+        "param_type": "PIT_UI1",
+        "subtype": "",
+        "description": "Superscript : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "SubScript",
+        "param_type": "PIT_UI1",
+        "subtype": "Subscript",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "UnderlineType",
+        "param_type": "PIT_UI1",
+        "subtype": "밑줄",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "OutlineType",
+        "param_type": "PIT_UI1",
+        "subtype": "외곽선",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "ShadowType",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "TextColor",
+        "param_type": "PIT_UI4",
+        "subtype": "글자색.",
+        "description": "(COLORREF) RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "ShadeColor",
+        "param_type": "PIT_UI4",
+        "subtype": "음영색.",
+        "description": "(COLORREF) RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "UnderlineShape",
+        "param_type": "PIT_UI1",
+        "subtype": "밑줄",
+        "description": "모양 : 선 종류"
+      },
+      {
+        "param_name": "ShadowOffsetX",
+        "param_type": "PIT_I1",
+        "subtype": "그림자",
+        "description": "간격 (X 방향) -100% - 100%"
+      },
+      {
+        "param_name": "ShadowOffsetY",
+        "param_type": "PIT_I1",
+        "subtype": "그림자",
+        "description": "간격 (Y 방향) -100% - 100%"
+      },
+      {
+        "param_name": "ShadowColor",
+        "param_type": "PIT_UI4",
+        "subtype": "그림자",
+        "description": "색 (COLORREF) RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "StrikeOutType",
+        "param_type": "PIT_UI1",
+        "subtype": "취소선",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "DiacSymMark",
+        "param_type": "PIT_UI1",
+        "subtype": "강조점",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "UseFontSpace",
+        "param_type": "PIT_UI1",
+        "subtype": "글꼴에",
+        "description": "어울리는 빈칸 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "UseKerning",
+        "param_type": "PIT_UI1",
+        "subtype": "커닝",
+        "description": ": 0 = off, 1 = on"
+      },
+      {
+        "param_name": "Height",
+        "param_type": "PIT_I4",
+        "subtype": "글자",
+        "description": "크기 (HWPUNIT)"
+      },
+      {
+        "param_name": "StrikeOutShape",
+        "param_type": "PIT_UI1",
+        "subtype": "취소선",
+        "description": "모양"
+      },
+      {
+        "param_name": "StrikeOutColor",
+        "param_type": "PIT_UI4",
+        "subtype": "취소선색",
+        "description": "(COLORREF)"
+      },
+      {
+        "param_name": "BorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "테두리/배경"
+      }
+    ],
+    "ChCompose": [
+      {
+        "param_name": "Chars",
+        "param_type": "PIT_BSTR",
+        "subtype": "겹쳐질",
+        "description": "글자들"
+      },
+      {
+        "param_name": "CircleType",
+        "param_type": "PIT_UI",
+        "subtype": "테두리",
+        "description": "타입"
+      },
+      {
+        "param_name": "CharSize",
+        "param_type": "PIT_I",
+        "subtype": "테두리",
+        "description": "내부 문자의 크기 비율 -6 ~ +2  (40%~120%)"
+      },
+      {
+        "param_name": "CheckCompose",
+        "param_type": "PIT_UI1",
+        "subtype": "테두리",
+        "description": "내부의 문자 겹치기 여부 TRUE= 겹치기:FALSE= 펼치기"
+      },
+      {
+        "param_name": "CharShapes",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "ChComposeShapes 겹쳐지는 문자들의 속성셋"
+      },
+      {
+        "param_name": "TextDir",
+        "param_type": "PIT_UI1",
+        "subtype": "텍스트",
+        "description": "방향2015) ChComposeShapes : 글자 겹치기 글자 속성셋"
+      },
+      {
+        "param_name": "CircleCharShape",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "겹쳐지는 문자들의 속성."
+      },
+      {
+        "param_name": "InnerCharShape1-9",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "겹쳐지는 문자들의 속성 1~"
+      }
+    ],
+    "CodeTable": [
+      {
+        "param_name": "Text",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입될",
+        "description": "스트링"
+      }
+    ],
+    "ColDef": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "단",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "Count",
+        "param_type": "PIT_UI1",
+        "subtype": "단",
+        "description": "개수. 1-255 까지."
+      },
+      {
+        "param_name": "SameSize",
+        "param_type": "PIT_UI1",
+        "subtype": "단의",
+        "description": "너비를 같도록 할지 여부 :"
+      },
+      {
+        "param_name": "SameGap",
+        "param_type": "PIT_I4",
+        "subtype": "단",
+        "description": "사이 간격(HWPUNIT) SAME_SIZE 가 1일 때만 사용된다."
+      },
+      {
+        "param_name": "WidthGap",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI2각",
+        "description": "단의 너비와 간격(HWPUNIT) col*2 = 단의 폭, col*2 + 1 = 단 사이 간격. 영역 전체의 폭을 Column ratio base (=32768) 로 보았을 때의 비율로 환산한다. SameSize 가 0일 때만 사용된다."
+      },
+      {
+        "param_name": "Layout",
+        "param_type": "PIT_UI1",
+        "subtype": "단",
+        "description": "방향 지정 :"
+      },
+      {
+        "param_name": "LineType",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "종류"
+      },
+      {
+        "param_name": "LineWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "종류"
+      },
+      {
+        "param_name": "LineColor",
+        "param_type": "PIT_UI4",
+        "subtype": "선",
+        "description": "색깔. (COLORREF) RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위",
+        "description": ":"
+      },
+      {
+        "param_name": "ApplyClass",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위의",
+        "description": "분류. 아래 값의 조합이다."
+      }
+    ],
+    "CtrlData": [
+      {
+        "param_name": "Name",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자가",
+        "description": "지정한 컨트롤의 이름."
+      }
+    ],
+    "DeleteCtrls": [
+      {
+        "param_name": "DeleteCtrlType",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI",
+        "description": "지울 개체 목록"
+      }
+    ],
+    "DocFilters": [
+      {
+        "param_name": "DocFilters",
+        "param_type": "PIT_BSTR",
+        "subtype": "'|'문자로",
+        "description": "분리된 필터 리스트 스트링(MFC 와 같은 방법)을 가져옴"
+      },
+      {
+        "param_name": "Format",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "필터 리스트를 string array 형태로 가져옴 (Export 시에만)"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1I",
+        "subtype": "mport",
+        "description": "리스트를 가져올 것인지 Export 리스트를 가져올 것인지의 관한 타입. Import = 1 Export = 0 (on input)"
+      },
+      {
+        "param_name": "Hide",
+        "param_type": "PIT_BSTR",
+        "subtype": "필터",
+        "description": "목록에서 제거를 위한 필터 아이템 Format 문자열. 구분자 '|' 사용3226)DocFindInfo : 문서 찾기"
+      }
+    ],
+    "DocFindInfo": [
+      {
+        "param_name": "ListID",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 리스트"
+      },
+      {
+        "param_name": "ParaID",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 문단"
+      },
+      {
+        "param_name": "Pos",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 글자"
+      }
+    ],
+    "DocumentInfo": [
+      {
+        "param_name": "CurPara",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 문단"
+      },
+      {
+        "param_name": "CurPos",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 오프셋"
+      },
+      {
+        "param_name": "CurParaLen",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 문단의 길이"
+      },
+      {
+        "param_name": "CurCtrl",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "리스트의 종류 기타 = 컨트롤 ID"
+      },
+      {
+        "param_name": "CurParaCount",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "리스트의 문단 수"
+      },
+      {
+        "param_name": "RootPara",
+        "param_type": "PIT_UI",
+        "subtype": "루트",
+        "description": "리스트의 현재 문단"
+      },
+      {
+        "param_name": "RootPos",
+        "param_type": "PIT_UI",
+        "subtype": "루트",
+        "description": "리스트의 현재 오프셋"
+      },
+      {
+        "param_name": "RootParaCout",
+        "param_type": "PIT_UI",
+        "subtype": "루트",
+        "description": "리스트의 문단 수"
+      },
+      {
+        "param_name": "DetailInfo",
+        "param_type": "PIT_I1",
+        "subtype": "자세한",
+        "description": "정보를 구할지 여부 Detail~ 로 시작하는 아이템의 정보를 얻기 위해서는 이 값을 1로 넣어준 후에 액션을 실행해준다 ."
+      },
+      {
+        "param_name": "DetailCharCount",
+        "param_type": "PIT_UI",
+        "subtype": "문서에",
+        "description": "포함된 글자 수"
+      },
+      {
+        "param_name": "DetailWordCount",
+        "param_type": "PIT_UI",
+        "subtype": "문서에",
+        "description": "포함된 어절 수"
+      },
+      {
+        "param_name": "DetailLineCount",
+        "param_type": "PIT_UI",
+        "subtype": "문서에",
+        "description": "포함된 줄 수"
+      },
+      {
+        "param_name": "DetailPageCount",
+        "param_type": "PIT_UI",
+        "subtype": "문서에",
+        "description": "포함된 쪽 수"
+      },
+      {
+        "param_name": "DetailCurPage",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "쪽 번호"
+      },
+      {
+        "param_name": "DetailCurPrtPage",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "쪽 번호 (인쇄 번호)"
+      },
+      {
+        "param_name": "SectionInfo",
+        "param_type": "PIT_UI",
+        "subtype": "구역의",
+        "description": "속성까지 구할지 여부 SecDef 아이템은 이 값을 1로 넣어준 후 액션을 실행한 후에 얻을 수 있다."
+      },
+      {
+        "param_name": "SecDef",
+        "param_type": "PIT_SET",
+        "subtype": "SecDef",
+        "description": "구역의 속성"
+      }
+    ],
+    "DrawArcType": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "호의",
+        "description": "유형 :"
+      },
+      {
+        "param_name": "Interval",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I",
+        "description": "확장타원(호)에서 호의 시작점과 끝점을 나타내게 한다. 정보를 얻을 때만 사용하도록 한다."
+      }
+    ],
+    "DrawCoordInfo": [
+      {
+        "param_name": "Count",
+        "param_type": "PIT_UI4",
+        "subtype": "점의",
+        "description": "개수"
+      },
+      {
+        "param_name": "Point",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I",
+        "description": "좌표 Array (X1,Y1), (X2,Y2), ..., (Xn,Yn)"
+      },
+      {
+        "param_name": "Line",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI1",
+        "description": "선 속성 Array( 곡선에서만 쓰임)"
+      }
+    ],
+    "DrawCtrlHyperlink": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_BSTR",
+        "subtype": "Command",
+        "description": "String 참조"
+      }
+    ],
+    "DrawEditDetail": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_UI",
+        "subtype": "Reserved",
+        "description": ""
+      },
+      {
+        "param_name": "Index",
+        "param_type": "PIT_UI",
+        "subtype": "고칠",
+        "description": "점의 인덱스"
+      },
+      {
+        "param_name": "PointX",
+        "param_type": "PIT_I",
+        "subtype": "점의",
+        "description": "X 좌표"
+      },
+      {
+        "param_name": "PointY",
+        "param_type": "PIT_I",
+        "subtype": "점의",
+        "description": "Y 좌표"
+      }
+    ],
+    "DrawFillAttr": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "배경",
+        "description": "유형"
+      },
+      {
+        "param_name": "GradationType",
+        "param_type": "PIT_I",
+        "subtype": "배경",
+        "description": "유형이 그러데이션일 때 그러데이션 형태"
+      },
+      {
+        "param_name": "GradationAngle",
+        "param_type": "PIT_I",
+        "subtype": "그러데이션의",
+        "description": "기울임(시작각)"
+      },
+      {
+        "param_name": "GradationCenterX",
+        "param_type": "PIT_I",
+        "subtype": "그러데이션의",
+        "description": "가로중심(중심 X 좌표)"
+      },
+      {
+        "param_name": "GradationCenterY",
+        "param_type": "PIT_I",
+        "subtype": "그러데이션의",
+        "description": "가로중심(중심 Y 좌표)"
+      },
+      {
+        "param_name": "GradationStep",
+        "param_type": "PIT_I",
+        "subtype": "그러데이션",
+        "description": "번짐 정도 (0..100)"
+      },
+      {
+        "param_name": "GradationColorNum",
+        "param_type": "PIT_I",
+        "subtype": "그러데이션의",
+        "description": "색 수"
+      },
+      {
+        "param_name": "GradationColor",
+        "param_type": "PIT_ARRAY",
+        "subtype": "",
+        "description": "PIT_I그러데이션의 색깔 (시작색, 중간색1,..중간색 n-2, 끝색) 2<= n <=10"
+      },
+      {
+        "param_name": "GradationIndexPos",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I그러데이션",
+        "description": "다음 색깔과의 거리(얼마나 번지고 나서 다음색깔로 가 는가)"
+      },
+      {
+        "param_name": "GradationStepCenter",
+        "param_type": "PIT_UI1",
+        "subtype": "그러데이션",
+        "description": "번짐 정도의 중심 (0..100)"
+      },
+      {
+        "param_name": "GradationAlpha",
+        "param_type": "PIT_UI1",
+        "subtype": "그러데이션",
+        "description": "투명도"
+      },
+      {
+        "param_name": "WinBrushFaceColor",
+        "param_type": "PIT_UI",
+        "subtype": "면",
+        "description": "색 (RGB 0x00BBGGRR)"
+      },
+      {
+        "param_name": "WinBrushHatchColor",
+        "param_type": "PIT_UI",
+        "subtype": "무늬",
+        "description": "색 (RGB 0x00BBGGRR)"
+      },
+      {
+        "param_name": "WinBrushFaceStyle",
+        "param_type": "PIT_I1",
+        "subtype": "무늬",
+        "description": "스타일"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTRS",
+        "subtype": "hapeObject",
+        "description": "의 배경을 그림으로 선택했을 경우. 또는 그림개체일 경우의 그림파일 경로"
+      },
+      {
+        "param_name": "Embedded",
+        "param_type": "PIT_UI1",
+        "subtype": "그림이",
+        "description": "문서에 직접 삽입(TRUE) / 파일로 연결(FALSE)"
+      },
+      {
+        "param_name": "PicEffect",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "효과"
+      },
+      {
+        "param_name": "Brightness",
+        "param_type": "PIT_I1",
+        "subtype": "명도",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "Contrast",
+        "param_type": "PIT_I1",
+        "subtype": "밝기",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "Reverse",
+        "param_type": "PIT_UI1",
+        "subtype": "반전",
+        "description": "유무"
+      },
+      {
+        "param_name": "DrawFillImageType",
+        "param_type": "PIT_IS",
+        "subtype": "hapeObject",
+        "description": "의 배경일 경우에만 의미 있는 아이템, 배경을 채우는 방식을 결정한다. (그림개체에는 해당사항 없음)"
+      },
+      {
+        "param_name": "SkipLeft",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 왼쪽 자르기"
+      },
+      {
+        "param_name": "SkipRight",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 오른쪽 자르기"
+      },
+      {
+        "param_name": "SkipTop",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 위 자르기"
+      },
+      {
+        "param_name": "SkipBottom",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 아래 자르기"
+      },
+      {
+        "param_name": "OriginalSizeX",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 원본 크기 X size"
+      },
+      {
+        "param_name": "OriginalSizeY",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 원본 크기 Y size"
+      },
+      {
+        "param_name": "InsideMarginRight",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (오른"
+      },
+      {
+        "param_name": "InsideMarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (위)"
+      },
+      {
+        "param_name": "InsideMarginBottom",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (아래)"
+      },
+      {
+        "param_name": "WindowsBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 면/무늬 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "GradationBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 그러데이션 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "ImageBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 그림 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "ImageCreateOnDrag",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "개체 생성 시 마우스로 끌어 생성할지 여부"
+      },
+      {
+        "param_name": "ImageAlpha",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "개체/배경 투명도"
+      },
+      {
+        "param_name": "FileNameStr",
+        "param_type": "PIT_BSTR",
+        "subtype": "브러쉬",
+        "description": "설정을 위한 itemid 그림 개체의 속성을 지정하기 위한 파라메터셋 . DrawFillAttr 에서 그림과 관련된 속성만 빼서 파라메터셋으로 지정되었다 . 현재 DrawFillAttr 와 상속관계가 지정되지 않았다. (차후 상속관계로 묶일 예정)"
+      }
+    ],
+    "DrawImageAttr": [
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTRS",
+        "subtype": "hapeObject",
+        "description": "의 배경을 그림으로 선택했을 경우 또는 그림개체일 경우의 그림파일 경로"
+      },
+      {
+        "param_name": "Embedded",
+        "param_type": "PIT_UI1",
+        "subtype": "그림이",
+        "description": "문서에 직접 삽입(TRUE) / 파일로 연결(FALSE)"
+      },
+      {
+        "param_name": "PicEffect",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "효과"
+      },
+      {
+        "param_name": "Brightness",
+        "param_type": "PIT_I1",
+        "subtype": "명도",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "Contrast",
+        "param_type": "PIT_I1",
+        "subtype": "밝기",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "Reverse",
+        "param_type": "PIT_UI1",
+        "subtype": "반전",
+        "description": "유무"
+      },
+      {
+        "param_name": "DrawFillImageType",
+        "param_type": "PIT_IS",
+        "subtype": "hapeObject",
+        "description": "의 배경일 경우에만 의미 있는 아이템, 배경을 채우는 방식을 결정한다. (그림개체에는 해당사항 없음)"
+      },
+      {
+        "param_name": "SkipLeft",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 왼쪽 자르기"
+      },
+      {
+        "param_name": "SkipRight",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 오른쪽 자르기"
+      },
+      {
+        "param_name": "SkipBottom",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 아래 자르기"
+      },
+      {
+        "param_name": "OriginalSizeX",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 원본 크기 X size"
+      },
+      {
+        "param_name": "OriginalSizeY",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 원본 크기 Y size"
+      },
+      {
+        "param_name": "InsideMarginLeft",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (왼쪽)"
+      },
+      {
+        "param_name": "InsideMarginRight",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (오른"
+      },
+      {
+        "param_name": "InsideMarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "그림",
+        "description": "개체일 경우에만 의미 있는 아이템, 이미지 안쪽 여백. (위) InsideMarginBotto"
+      },
+      {
+        "param_name": "WindowsBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 면/무늬 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "GradationBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 그러데이션 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "ImageBrush",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택된 brush 의 type이 그림 브러시인가를 나타냄"
+      },
+      {
+        "param_name": "ImageCreateOnDrag",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "개체 생성 시 마우스로 끌어 생성할지 여부 ImageCreateTreatA"
+      },
+      {
+        "param_name": "ImageAutoRotate",
+        "param_type": "PIT_UI1",
+        "subtype": "이미지",
+        "description": "자동 회전"
+      },
+      {
+        "param_name": "FileNameStr",
+        "param_type": "PIT_BSTR",
+        "subtype": "브러쉬",
+        "description": "설정을 위한 itemid"
+      },
+      {
+        "param_name": "ImageAlphaEffect",
+        "param_type": "PIT_I1",
+        "subtype": "이미지",
+        "description": "투명도 ImageUseTextInPic"
+      }
+    ],
+    "DrawImageScissoring": [
+      {
+        "param_name": "Xoffset",
+        "param_type": "PIT_I",
+        "subtype": "자를",
+        "description": "x축 오프셋"
+      },
+      {
+        "param_name": "Yoffset",
+        "param_type": "PIT_I",
+        "subtype": "자를",
+        "description": "y축 오프셋"
+      },
+      {
+        "param_name": "HandleIndex",
+        "param_type": "PIT_UI",
+        "subtype": "Reserved",
+        "description": ""
+      }
+    ],
+    "DrawLayOut": [
+      {
+        "param_name": "CreateNumPt",
+        "param_type": "PIT_UI",
+        "subtype": "생성할",
+        "description": "점의 수"
+      },
+      {
+        "param_name": "CreatePt",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I생성할",
+        "description": "점의 위치정보 POINT(x,y) 로 계산되므로 CreateNumPt*2 의 개수로 구성 됨."
+      },
+      {
+        "param_name": "CurveSegmentInfo",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI1",
+        "description": "곡선 세그먼트 정보"
+      }
+    ],
+    "DrawLineAttr": [
+      {
+        "param_name": "Alpha",
+        "param_type": "PIT_UI1",
+        "subtype": "투명도",
+        "description": ""
+      }
+    ],
+    "DrawRectType": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "모서리의",
+        "description": "곡률 지정 (0 ~ 50까지)"
+      }
+    ],
+    "DrawResize": [
+      {
+        "param_name": "Xoffset",
+        "param_type": "PIT_I",
+        "subtype": "그리기",
+        "description": "개체 X좌표 위치"
+      },
+      {
+        "param_name": "Yoffset",
+        "param_type": "PIT_I",
+        "subtype": "그리기",
+        "description": "개체 Y좌표 위치"
+      },
+      {
+        "param_name": "HandleIndex",
+        "param_type": "PIT_UI",
+        "subtype": "Reserved",
+        "description": ""
+      },
+      {
+        "param_name": "Mode",
+        "param_type": "PIT_UI",
+        "subtype": "Reserved",
+        "description": ""
+      }
+    ],
+    "DrawRotate": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_UI",
+        "subtype": "회전",
+        "description": "중심의 기준 설정"
+      },
+      {
+        "param_name": "CenterX",
+        "param_type": "PIT_I",
+        "subtype": "회전",
+        "description": "중심의 X 좌표"
+      },
+      {
+        "param_name": "CenterY",
+        "param_type": "PIT_I",
+        "subtype": "회전",
+        "description": "중심의 Y 좌표"
+      },
+      {
+        "param_name": "ObjectCenterX",
+        "param_type": "PIT_I",
+        "subtype": "그리기",
+        "description": "개체의 중심 X 좌표"
+      },
+      {
+        "param_name": "ObjectCenterY",
+        "param_type": "PIT_I",
+        "subtype": "그리기",
+        "description": "개체의 중심 Y 좌표"
+      },
+      {
+        "param_name": "Angle",
+        "param_type": "PIT_I",
+        "subtype": "회전",
+        "description": "각"
+      },
+      {
+        "param_name": "RotateImage",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "회전 여부"
+      }
+    ],
+    "DrawScAction": [
+      {
+        "param_name": "RotateCenterX",
+        "param_type": "PIT_I4",
+        "subtype": "회전",
+        "description": "중심 X 좌표"
+      },
+      {
+        "param_name": "RotateCenterY",
+        "param_type": "PIT_I4",
+        "subtype": "회전",
+        "description": "중심 Y 좌표"
+      },
+      {
+        "param_name": "RotateAngel",
+        "param_type": "PIT_I",
+        "subtype": "회전각",
+        "description": ""
+      },
+      {
+        "param_name": "HorzFlip",
+        "param_type": "PIT_UI",
+        "subtype": "수평",
+        "description": "flip (좌우 뒤집기)"
+      },
+      {
+        "param_name": "VertFlip",
+        "param_type": "PIT_UI",
+        "subtype": "수직",
+        "description": "flip (상하 뒤집기)"
+      }
+    ],
+    "DrawShadow": [
+      {
+        "param_name": "ShadowType",
+        "param_type": "PIT_I4",
+        "subtype": "그림자",
+        "description": "종류."
+      },
+      {
+        "param_name": "ShadowColor",
+        "param_type": "PIT_UI4",
+        "subtype": "그림자",
+        "description": "색 (COLORREF)"
+      },
+      {
+        "param_name": "ShadowOffsetX",
+        "param_type": "PIT_I4",
+        "subtype": "그림자",
+        "description": "X축 간격 (-48% ~ 48%)"
+      },
+      {
+        "param_name": "ShadowOffsetY",
+        "param_type": "PIT_I4",
+        "subtype": "그림자",
+        "description": "Y축 간격 (-48% ~ 48%)"
+      },
+      {
+        "param_name": "ShadowAlpha",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "투명도"
+      }
+    ],
+    "DrawShear": [
+      {
+        "param_name": "XFactor",
+        "param_type": "PIT_I",
+        "subtype": "X축",
+        "description": "기울이기 각도"
+      },
+      {
+        "param_name": "YFactor",
+        "param_type": "PIT_I",
+        "subtype": "Y축",
+        "description": "기울이기 각도"
+      }
+    ],
+    "DrawTextart": [
+      {
+        "param_name": "String",
+        "param_type": "PIT_BSTR",
+        "subtype": "글맵시에",
+        "description": "넣을 문자열 내용"
+      },
+      {
+        "param_name": "FontName",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": ""
+      },
+      {
+        "param_name": "FontStyle",
+        "param_type": "PIT_BSTR",
+        "subtype": "속성.",
+        "description": "값은 항상 0(Regular) 이다."
+      },
+      {
+        "param_name": "FontType",
+        "param_type": "PIT_UI1",
+        "subtype": "폰트",
+        "description": "종류 : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "LineSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "줄",
+        "description": "간격 (50 ~ 500)"
+      },
+      {
+        "param_name": "CharSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "글자간격",
+        "description": "(50 ~ 500)"
+      },
+      {
+        "param_name": "AlignType",
+        "param_type": "PIT_UI1",
+        "subtype": "정렬",
+        "description": "방식"
+      },
+      {
+        "param_name": "Shape",
+        "param_type": "PIT_UI1",
+        "subtype": "형태",
+        "description": "(0 ~ 54)"
+      },
+      {
+        "param_name": "ShadowType",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "종류."
+      },
+      {
+        "param_name": "ShadowOffsetX",
+        "param_type": "PIT_I1",
+        "subtype": "그림자",
+        "description": "X축 간격 (-48% ~ 48%)"
+      },
+      {
+        "param_name": "ShadowOffsetY",
+        "param_type": "PIT_I1",
+        "subtype": "그림자",
+        "description": "Y축 간격 (-48% ~ 48%)"
+      },
+      {
+        "param_name": "ShadowColor",
+        "param_type": "PIT_UI4",
+        "subtype": "그림자",
+        "description": "색 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "NumberOfLines",
+        "param_type": "PIT_UI1",
+        "subtype": "글맵시에",
+        "description": "넣을 문자열 내용의 줄 수"
+      }
+    ],
+    "DropCap": [
+      {
+        "param_name": "Style",
+        "param_type": "PIT_UI",
+        "subtype": "글자",
+        "description": "장식 모양"
+      },
+      {
+        "param_name": "FaceName",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": ""
+      },
+      {
+        "param_name": "LineStyle",
+        "param_type": "PIT_I",
+        "subtype": "선",
+        "description": "스타일"
+      },
+      {
+        "param_name": "LineWeight",
+        "param_type": "PIT_UI",
+        "subtype": "선",
+        "description": "굵기"
+      },
+      {
+        "param_name": "LineColor",
+        "param_type": "PIT_UI4",
+        "subtype": "선",
+        "description": "색 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "FaceColor",
+        "param_type": "PIT_UI4",
+        "subtype": "글꼴",
+        "description": "색 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "Spacing",
+        "param_type": "PIT_I",
+        "subtype": "본문과의",
+        "description": "간격"
+      }
+    ],
+    "Dutmal": [
+      {
+        "param_name": "ResultText",
+        "param_type": "PIT_BSTR",
+        "subtype": "본말",
+        "description": ""
+      },
+      {
+        "param_name": "SubText",
+        "param_type": "PIT_BSTR",
+        "subtype": "덧말",
+        "description": ""
+      },
+      {
+        "param_name": "PosType",
+        "param_type": "PIT_UI1",
+        "subtype": "덧말",
+        "description": "위치. 0 = 위, 1 = 아래."
+      },
+      {
+        "param_name": "FsizeRatio",
+        "param_type": "PIT_UI1",
+        "subtype": "덧말",
+        "description": "크기 Percent. 0=이면 기본 50%."
+      },
+      {
+        "param_name": "Option",
+        "param_type": "PIT_UI1",
+        "subtype": "옵션",
+        "description": ""
+      },
+      {
+        "param_name": "StyleNo",
+        "param_type": "PIT_UI1",
+        "subtype": "스타일번호",
+        "description": "(옵션이 켜있을 때)"
+      },
+      {
+        "param_name": "Align",
+        "param_type": "PIT_UI1",
+        "subtype": "덧말의",
+        "description": "좌우 Align."
+      },
+      {
+        "param_name": "Delete",
+        "param_type": "PIT_UI1",
+        "subtype": "덧말",
+        "description": "지움"
+      },
+      {
+        "param_name": "Modify",
+        "param_type": "PIT_UI1",
+        "subtype": "덧말",
+        "description": "편집 모드 여부 HwpCtrl 의 EngineProperties 에서 사용된다. 해당 액션은 존재하지 않음"
+      }
+    ],
+    "EngineProperties": [
+      {
+        "param_name": "DoAnyCursorEdit",
+        "param_type": "PIT_UI1",
+        "subtype": "마우스로",
+        "description": "두 번 누르기 한곳에 입력가능"
+      },
+      {
+        "param_name": "DoOutLineStyle",
+        "param_type": "PIT_UI1",
+        "subtype": "개요",
+        "description": "번호 삽입 문단에 개요 스타일 자동 적용"
+      },
+      {
+        "param_name": "InsertLock",
+        "param_type": "PIT_UI1",
+        "subtype": "삽입",
+        "description": "잠금"
+      },
+      {
+        "param_name": "TabMoveCell",
+        "param_type": "PIT_UI1",
+        "subtype": "표",
+        "description": "안에서 <Tab> 으로 셀 이동"
+      },
+      {
+        "param_name": "FaxDriver",
+        "param_type": "PIT_BSTR",
+        "subtype": "팩스",
+        "description": "드라이버"
+      },
+      {
+        "param_name": "PDFDriver",
+        "param_type": "PIT_BSTR",
+        "subtype": "PDF",
+        "description": "드라이버"
+      },
+      {
+        "param_name": "EnableAutoSpell",
+        "param_type": "PIT_UI1",
+        "subtype": "맞춤법",
+        "description": "도우미 작동"
+      },
+      {
+        "param_name": "OpenNewWindow",
+        "param_type": "PIT_UI1",
+        "subtype": "새창으로",
+        "description": "불러오기"
+      },
+      {
+        "param_name": "CtrlMaskAs2002",
+        "param_type": "PIT_UI1",
+        "subtype": "한글",
+        "description": "2002 방식으로 조판 부호 표시하기"
+      },
+      {
+        "param_name": "ShowGuildLines",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "투명선 보이기"
+      },
+      {
+        "param_name": "ImageAutoCheck",
+        "param_type": "PIT_UI1",
+        "subtype": "이미지",
+        "description": "파일의 경로 검사 다이얼로그 띄우기 유무. OptimizeWebHwpCop"
+      }
+    ],
+    "EqEdit": [
+      {
+        "param_name": "String",
+        "param_type": "PIT_BSTR",
+        "subtype": "수식",
+        "description": "스크립트."
+      },
+      {
+        "param_name": "BaseUnit",
+        "param_type": "PIT_I4",
+        "subtype": "수식이",
+        "description": "삽입되는 앞의 글자와 같은 높이 (기본 값은 POINT 10 )"
+      },
+      {
+        "param_name": "Color",
+        "param_type": "PIT_I4",
+        "subtype": "수식이",
+        "description": "삽입되는 글자 색과 같은 색 (기본 값은 WINDOWTEXT 색) RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)"
+      },
+      {
+        "param_name": "LineMode",
+        "param_type": "PIT_I4",
+        "subtype": "줄",
+        "description": "단위를 사용할지의 여부"
+      },
+      {
+        "param_name": "Version",
+        "param_type": "PIT_BSTR",
+        "subtype": "수식",
+        "description": "스크립트 버전 정보"
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI4",
+        "subtype": "수식",
+        "description": "속성 적용 범위"
+      },
+      {
+        "param_name": "VisualString",
+        "param_type": "PIT_BSTR",
+        "subtype": "수식",
+        "description": "비주얼 스크립트"
+      },
+      {
+        "param_name": "EqFontName",
+        "param_type": "PIT_BSTR",
+        "subtype": "폰트명",
+        "description": ""
+      }
+    ],
+    "ExchangeFootnoteEndNote": [
+      {
+        "param_name": "Flag",
+        "param_type": "PIT_UI1",
+        "subtype": "옵션",
+        "description": ""
+      }
+    ],
+    "FieldCtrl": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드의",
+        "description": "명령문"
+      },
+      {
+        "param_name": "Editable",
+        "param_type": "PIT_UI1",
+        "subtype": "일부분",
+        "description": "readonly mode에서 편집 가능한 필드인지 여부"
+      },
+      {
+        "param_name": "FieldDirty",
+        "param_type": "PIT_UI1",
+        "subtype": "필드가",
+        "description": "초기화 상태인지 수정되어 있는 상태인지 여부"
+      },
+      {
+        "param_name": "CtrlData",
+        "param_type": "PIT_SET",
+        "subtype": "CtrlData",
+        "description": "필드 이름 저장을 위한 영역"
+      },
+      {
+        "param_name": "User",
+        "param_type": "PIT_BSTR",
+        "subtype": "컨트롤",
+        "description": "데이터"
+      },
+      {
+        "param_name": "MemoType",
+        "param_type": "PIT_UI1",
+        "subtype": "메모",
+        "description": "타입, (한/글 2022부터 지원)"
+      }
+    ],
+    "FileConvert": [
+      {
+        "param_name": "Format",
+        "param_type": "PIT_BSTR",
+        "subtype": "변환",
+        "description": "포맷"
+      },
+      {
+        "param_name": "SrcFileList",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "Source 파일 리스트"
+      },
+      {
+        "param_name": "DestFileList",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "Destination 파일 리스트 HwpCtrl.GetFileInfo 에서 사용, 해당 액션은 존재하지 않음."
+      }
+    ],
+    "FileInfo": [
+      {
+        "param_name": "Format",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일의",
+        "description": "형식. HWP : 한글 파일 UNKNOWN : 알 수 없음."
+      },
+      {
+        "param_name": "VersionStr",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일의",
+        "description": "버전 문자열 ex)5.0.0.3"
+      },
+      {
+        "param_name": "VersionNum",
+        "param_type": "PIT_UI4",
+        "subtype": "파일의",
+        "description": "버전 ex) 0x05000003"
+      },
+      {
+        "param_name": "Encrypted",
+        "param_type": "PIT_I4",
+        "subtype": "암호",
+        "description": "여부 (현재는 파일 버전 3.0.0.0 이후 문서-한글97, 한글 워 디안, 한글 2002- 에 대해서만 판단한다.) -1 : 판단 할 수 없음 양수: 암호가 걸려 있음."
+      },
+      {
+        "param_name": "Compressed",
+        "param_type": "PIT_I4",
+        "subtype": "압축",
+        "description": "여부"
+      }
+    ],
+    "FileOpen": [
+      {
+        "param_name": "OpenReadOnly",
+        "param_type": "PIT_UI1",
+        "subtype": "읽기",
+        "description": "전용"
+      },
+      {
+        "param_name": "OpenFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "옵션",
+        "description": ""
+      },
+      {
+        "param_name": "SaveOverWrite",
+        "param_type": "PIT_UI1",
+        "subtype": "덮어",
+        "description": "쓰기"
+      },
+      {
+        "param_name": "ModifiedFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "Modify",
+        "description": "플래그"
+      },
+      {
+        "param_name": "Argument",
+        "param_type": "PIT_BSTR",
+        "subtype": "Argument",
+        "description": ""
+      },
+      {
+        "param_name": "SaveCMFDoc30",
+        "param_type": "PIT_UI1",
+        "subtype": "97",
+        "description": "호환 저장"
+      },
+      {
+        "param_name": "SaveHwp97",
+        "param_type": "PIT_UI1",
+        "subtype": "97",
+        "description": "문서로 저장"
+      },
+      {
+        "param_name": "SaveDistribute",
+        "param_type": "PIT_UI1",
+        "subtype": "배포용",
+        "description": "문서로 저장"
+      },
+      {
+        "param_name": "SaveDRMDoc",
+        "param_type": "PIT_UI1",
+        "subtype": "보안",
+        "description": "문서로 저장 FileOpen 과 멤버가 동일"
+      }
+    ],
+    "FileSaveAs": [
+      {
+        "param_name": "OpenReadOnly",
+        "param_type": "PIT_UI1",
+        "subtype": "읽기",
+        "description": "전용"
+      },
+      {
+        "param_name": "OpenFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "옵션",
+        "description": ""
+      },
+      {
+        "param_name": "SaveOverWrite",
+        "param_type": "PIT_UI1",
+        "subtype": "덮어",
+        "description": "쓰기"
+      },
+      {
+        "param_name": "ModifiedFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "Modify",
+        "description": "플래그"
+      },
+      {
+        "param_name": "Argument",
+        "param_type": "PIT_BSTR",
+        "subtype": "Argument",
+        "description": ""
+      },
+      {
+        "param_name": "SaveCMFDoc30",
+        "param_type": "PIT_UI1",
+        "subtype": "97",
+        "description": "호환 저장"
+      },
+      {
+        "param_name": "SaveHwp97",
+        "param_type": "PIT_UI1",
+        "subtype": "97",
+        "description": "문서로 저장"
+      },
+      {
+        "param_name": "SaveDistribute",
+        "param_type": "PIT_UI1",
+        "subtype": "배포용",
+        "description": "문서로 저장"
+      },
+      {
+        "param_name": "SaveDRMDoc",
+        "param_type": "PIT_UI1",
+        "subtype": "보안",
+        "description": "문서로 저장"
+      }
+    ],
+    "FileSaveBlock": [
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "이름"
+      },
+      {
+        "param_name": "Format",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "포맷"
+      },
+      {
+        "param_name": "Argument",
+        "param_type": "PIT_BSTR",
+        "subtype": "argument",
+        "description": ""
+      }
+    ],
+    "FileSendMail": [
+      {
+        "param_name": "To",
+        "param_type": "PIT_BSTR",
+        "subtype": "받는",
+        "description": "사람"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "메일",
+        "description": "보내기 유형: 0 = 본문, 1 = 첨부파일"
+      },
+      {
+        "param_name": "Subject",
+        "param_type": "PIT_BSTR",
+        "subtype": "제목",
+        "description": ""
+      },
+      {
+        "param_name": "Filepath",
+        "param_type": "PIT_BSRT",
+        "subtype": "사용자가",
+        "description": "직접 입력한 파일 (이 아이템은 Type 아이템이 1(첨부파 일)로 설정되어 있을 때만 유효하다)6556)FileSetSecurity : 배포용 문서"
+      }
+    ],
+    "FileSetSecurity": [
+      {
+        "param_name": "Password",
+        "param_type": "PIT_BSTR",
+        "subtype": "배포용",
+        "description": "문서 암호(7자리 이상 가능)"
+      },
+      {
+        "param_name": "NoPrint",
+        "param_type": "PIT_UI1",
+        "subtype": "프린트",
+        "description": "가능한 배포용 문서를 만들지의 여부"
+      },
+      {
+        "param_name": "NoCopy",
+        "param_type": "PIT_UI1",
+        "subtype": "문서",
+        "description": "내용 복사가 가능한 배포용 문서를 만들지의 여부"
+      }
+    ],
+    "FindReplace": [
+      {
+        "param_name": "FindString",
+        "param_type": "PIT_BSTR",
+        "subtype": "찾을",
+        "description": "문자열"
+      },
+      {
+        "param_name": "ReplaceString",
+        "param_type": "PIT_BSTR",
+        "subtype": "바꿀",
+        "description": "문자열"
+      },
+      {
+        "param_name": "Direction",
+        "param_type": "PIT_UI1",
+        "subtype": "찾을",
+        "description": "방향 :"
+      },
+      {
+        "param_name": "MatchCase",
+        "param_type": "PIT_UI1",
+        "subtype": "대소문자",
+        "description": "구별 (on / off)"
+      },
+      {
+        "param_name": "AllWordForms",
+        "param_type": "PIT_UI1",
+        "subtype": "문자열",
+        "description": "결합 (on / off)"
+      },
+      {
+        "param_name": "SeveralWords",
+        "param_type": "PIT_UI1",
+        "subtype": "여러",
+        "description": "단어 찾기 (on / off)"
+      },
+      {
+        "param_name": "UseWildCards",
+        "param_type": "PIT_UI1",
+        "subtype": "아무개",
+        "description": "문자 (on / off)"
+      },
+      {
+        "param_name": "WholeWordOnly",
+        "param_type": "PIT_UI1",
+        "subtype": "온전한",
+        "description": "낱말 (on / off)"
+      },
+      {
+        "param_name": "AutoSpell",
+        "param_type": "PIT_UI1",
+        "subtype": "토씨",
+        "description": "자동 교정 (on / off)"
+      },
+      {
+        "param_name": "ReplaceMode",
+        "param_type": "PIT_UI1",
+        "subtype": "찾아",
+        "description": "바꾸기 모드 (on / off)"
+      },
+      {
+        "param_name": "IgnoreFindString",
+        "param_type": "PIT_UI1",
+        "subtype": "찾을",
+        "description": "문자열 무시 (on / off) IgnoreReplaceStrin"
+      },
+      {
+        "param_name": "FindCharShape",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "찾을 글자 모양"
+      },
+      {
+        "param_name": "FindParaShape",
+        "param_type": "PIT_SET",
+        "subtype": "ParaShape",
+        "description": "찾을 문단 모양"
+      },
+      {
+        "param_name": "ReplaceCharShape",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "바꿀 글자 모양"
+      },
+      {
+        "param_name": "ReplaceParaShape",
+        "param_type": "PIT_SET",
+        "subtype": "ParaShape",
+        "description": "바꿀 문단 모양"
+      },
+      {
+        "param_name": "FindStyle",
+        "param_type": "PIT_BSTR",
+        "subtype": "찾을",
+        "description": "스타일"
+      },
+      {
+        "param_name": "ReplaceStyle",
+        "param_type": "PIT_BSTR",
+        "subtype": "바꿀",
+        "description": "스타일"
+      },
+      {
+        "param_name": "IgnoreMessage",
+        "param_type": "PIT_UI1",
+        "subtype": "메시지박스",
+        "description": "표시 안함. (on / off)"
+      },
+      {
+        "param_name": "HanjaFromHangul",
+        "param_type": "PIT_UI1",
+        "subtype": "한글임으로",
+        "description": "한자 차기"
+      },
+      {
+        "param_name": "FindJaso",
+        "param_type": "PIT_UI1",
+        "subtype": "자소로",
+        "description": "찾기 (on / off)"
+      },
+      {
+        "param_name": "FindRegExp",
+        "param_type": "PIT_UI1",
+        "subtype": "정규식(조건식)으로",
+        "description": "찾기 (on / off) (ver:0x06050107)"
+      },
+      {
+        "param_name": "FindType",
+        "param_type": "PIT_UI1",
+        "subtype": "다시",
+        "description": "찾기를 할 때 마지막으로 실행한 [찾기 TRUE] 를 할 것인가 [찾아가기 FALSE] 할 것인가의 여부 (ver:0x06050110)6758)FlashProperties : 플래시 파일 삽입 시 필요한 옵션"
+      }
+    ],
+    "FlashProperties": [
+      {
+        "param_name": "Base",
+        "param_type": "PIT_BSTR",
+        "subtype": "경로의",
+        "description": "Base"
+      },
+      {
+        "param_name": "Qulaity",
+        "param_type": "PIT_BSTR",
+        "subtype": "재생",
+        "description": "품질"
+      },
+      {
+        "param_name": "Scale",
+        "param_type": "PIT_BSTR",
+        "subtype": "스케일",
+        "description": ""
+      },
+      {
+        "param_name": "WMode",
+        "param_type": "PIT_BSTR",
+        "subtype": "윈도우",
+        "description": "모드"
+      },
+      {
+        "param_name": "AutoPlay",
+        "param_type": "PIT_UI1",
+        "subtype": "자동",
+        "description": "재생 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "LoopPlay",
+        "param_type": "PIT_UI1",
+        "subtype": "반복",
+        "description": "재생 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "ShowMenu",
+        "param_type": "PIT_UI1",
+        "subtype": "메뉴",
+        "description": "보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "BgColor",
+        "param_type": "PIT_UI4",
+        "subtype": "배경색",
+        "description": "(COLORREF)6859)FootnoteShape / EndnoteShape : 미주 / 각주 모양"
+      },
+      {
+        "param_name": "NumberFormat",
+        "param_type": "PIT_UI1",
+        "subtype": "번호모양",
+        "description": ""
+      },
+      {
+        "param_name": "UserChar",
+        "param_type": "PIT_UI2",
+        "subtype": "사용자",
+        "description": "기호 (WCHAR)"
+      },
+      {
+        "param_name": "PrefixChar",
+        "param_type": "PIT_UI2",
+        "subtype": "앞",
+        "description": "장식 문자 (WCHAR)"
+      },
+      {
+        "param_name": "Suffix",
+        "param_type": "PIT_UI2",
+        "subtype": "뒤",
+        "description": "장식 문자 (WCHAR)"
+      },
+      {
+        "param_name": "PlaceAt",
+        "param_type": "PIT_UI1",
+        "subtype": "위치",
+        "description": "- 각주용 옵션 (한 페이지 내에서 각주를 다단에 어떻게 위치시킬"
+      },
+      {
+        "param_name": "Restart",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "매기기"
+      },
+      {
+        "param_name": "NewNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "시작",
+        "description": "번호 (1 .. n) 번호 매기기 값이 ‘쪽마다 새로 시작’ 일 때만 사용된다."
+      },
+      {
+        "param_name": "LineLength",
+        "param_type": "PIT_I4",
+        "subtype": "구분선",
+        "description": "길이 (HWPUNIT)"
+      },
+      {
+        "param_name": "LineType",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "종류"
+      },
+      {
+        "param_name": "LineWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "굵기"
+      },
+      {
+        "param_name": "SpaceAboveLine",
+        "param_type": "PIT_I4",
+        "subtype": "구분선",
+        "description": "위 여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "SpaceBelowLine",
+        "param_type": "PIT_I4",
+        "subtype": "구분선",
+        "description": "아래 여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "SpaceBetweenNotes",
+        "param_type": "PIT_I4",
+        "subtype": "주석",
+        "description": "사이 여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "SuperScript",
+        "param_type": "PIT_UI1",
+        "subtype": "각주",
+        "description": "내용 중 번호 코드의 모양을 위첨자 형식으로 할지"
+      },
+      {
+        "param_name": "BeneathText",
+        "param_type": "PIT_UI1",
+        "subtype": "텍스트에",
+        "description": "이어 바로 출력할지 여부 (on / off)"
+      },
+      {
+        "param_name": "LineColor",
+        "param_type": "PIT_UI4",
+        "subtype": "선",
+        "description": "색깔 (COLORREF)"
+      }
+    ],
+    "FtpUpload": [
+      {
+        "param_name": "Server",
+        "param_type": "PIT_BSTR",
+        "subtype": "Ftp",
+        "description": "서버 내임"
+      },
+      {
+        "param_name": "UserName",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "이름"
+      },
+      {
+        "param_name": "Password",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "패스워드"
+      },
+      {
+        "param_name": "Directory",
+        "param_type": "PIT_BSTR",
+        "subtype": "디렉터리",
+        "description": ""
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "명"
+      },
+      {
+        "param_name": "SiteName",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "사이트 이름"
+      },
+      {
+        "param_name": "SaveType",
+        "param_type": "PIT_UI",
+        "subtype": "저장할",
+        "description": "포맷. 0 = HTML 1 = HWP"
+      }
+    ],
+    "FtpDownload": [
+      {
+        "param_name": "Server",
+        "param_type": "PIT_BSTR",
+        "subtype": "Ftp",
+        "description": "서버 내임"
+      },
+      {
+        "param_name": "UserName",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "이름"
+      },
+      {
+        "param_name": "Password",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "패스워드"
+      },
+      {
+        "param_name": "Directory",
+        "param_type": "PIT_BSTR",
+        "subtype": "디렉터리",
+        "description": ""
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "명"
+      },
+      {
+        "param_name": "SaveType",
+        "param_type": "PIT_UI",
+        "subtype": "저장할",
+        "description": "포맷. 0 = HTML 1 = HWP 2: OOXML"
+      }
+    ],
+    "GotoE": [
+      {
+        "param_name": "SetSelectionIndex",
+        "param_type": "PIT_UI1",
+        "subtype": "현재",
+        "description": "선택되어 있는 라디오 값"
+      },
+      {
+        "param_name": "DialogResult",
+        "param_type": "PIT_UI",
+        "subtype": "대화상자의",
+        "description": "반환값"
+      }
+    ],
+    "GridInfo": [
+      {
+        "param_name": "Method",
+        "param_type": "PIT_UI1",
+        "subtype": "격자",
+        "description": "방식"
+      },
+      {
+        "param_name": "Align",
+        "param_type": "PIT_UI1",
+        "subtype": "격자",
+        "description": "기준(쪽 = 0 / 종이 = 1)"
+      },
+      {
+        "param_name": "HorzAlign",
+        "param_type": "PIT_I",
+        "subtype": "격자",
+        "description": "기준 가로 offset (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "VertAlign",
+        "param_type": "PIT_I",
+        "subtype": "격자",
+        "description": "기준 세로 offset (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "격자",
+        "description": "모양"
+      },
+      {
+        "param_name": "HorzSpan",
+        "param_type": "PIT_UI",
+        "subtype": "가로",
+        "description": "간격 (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "VertSpan",
+        "param_type": "PIT_UI",
+        "subtype": "세로",
+        "description": "간격 (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "HorzRange",
+        "param_type": "PIT_U",
+        "subtype": "가로",
+        "description": "자석 범위 (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "VertRange",
+        "param_type": "PIT_U",
+        "subtype": "세로",
+        "description": "자석 범위 (단위 HWPUNIT)"
+      },
+      {
+        "param_name": "Show",
+        "param_type": "PIT_UI1",
+        "subtype": "격자",
+        "description": "보이기 ( on / off )"
+      },
+      {
+        "param_name": "ZOrder",
+        "param_type": "PIT_UI1",
+        "subtype": "격자",
+        "description": "위치(글 위/글 아래) (ZOrder)"
+      },
+      {
+        "param_name": "ViewLine",
+        "param_type": "PIT_UI1",
+        "subtype": "선격자",
+        "description": "보이기 종류"
+      }
+    ],
+    "HeaderFooter": [
+      {
+        "param_name": "HeaderFooterCtrlType",
+        "param_type": "PIT_UI",
+        "subtype": "머리말/꼬리말",
+        "description": "종류 : 0 = 머리말, 1 = 꼬리말"
+      },
+      {
+        "param_name": "HeaderFooterStyle",
+        "param_type": "PIT_UI",
+        "subtype": "머리말/꼬리말",
+        "description": "마당 스타일"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "머리말/꼬리말",
+        "description": "위치 : 0 = 양쪽, 1 = 짝수쪽, 2 = 홀수쪽"
+      }
+    ],
+    "HyperLink": [
+      {
+        "param_name": "Text",
+        "param_type": "PIT_BSTR",
+        "subtype": "하이퍼링크가",
+        "description": "표시되는 문자열"
+      },
+      {
+        "param_name": "Command",
+        "param_type": "PIT_BSTR",
+        "subtype": "Command",
+        "description": "String 참조"
+      },
+      {
+        "param_name": "NoLInk",
+        "param_type": "PIT_I",
+        "subtype": "\"연결",
+        "description": "안함\" 여부"
+      },
+      {
+        "param_name": "ShapeObject",
+        "param_type": "PIT_I",
+        "subtype": "그림",
+        "description": "및 그리기객체가 Selection 되어 있는지 여부"
+      },
+      {
+        "param_name": "DirectInsert",
+        "param_type": "PIT_I",
+        "subtype": "현재",
+        "description": "캐럿 위치에 무조건 하이퍼링크 삽입 여부 (블록지정 상태면 블록해제 후 삽입)7566)HyperlinkJump : 하이퍼링크 이동"
+      }
+    ],
+    "HyperlinkJump": [
+      {
+        "param_name": "Source",
+        "param_type": "PIT_BSTR",
+        "subtype": "Source",
+        "description": "에 대한 Object Path"
+      },
+      {
+        "param_name": "Target",
+        "param_type": "PIT_BSTR",
+        "subtype": "이동할",
+        "description": "Target 에 대한 Object Path"
+      }
+    ],
+    "Idiom": [
+      {
+        "param_name": "InputText",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입될",
+        "description": "스트링/끼워 넣을 파일"
+      },
+      {
+        "param_name": "InputType",
+        "param_type": "PIT_UI1",
+        "subtype": "입력기",
+        "description": "상용구/한글 상용구"
+      }
+    ],
+    "IndexMark": [
+      {
+        "param_name": "First",
+        "param_type": "PIT_BSTR",
+        "subtype": "첫",
+        "description": "번째 키"
+      },
+      {
+        "param_name": "Second",
+        "param_type": "PIT_BSTR",
+        "subtype": "두",
+        "description": "번째 키"
+      }
+    ],
+    "InputDateStyle": [
+      {
+        "param_name": "DateStyleType",
+        "param_type": "PIT_UI1",
+        "subtype": "문자열로",
+        "description": "넣기/코드로 넣기"
+      },
+      {
+        "param_name": "DateStyleDataForm",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "컨트롤의 안내문/지시문 ※ 필드(Field) 는 꺽쇠(『』)로 둘러싸인 정보를 말하며, 문서마당의 모든 정보는 필드로 구성된다. ※ ShowSingle 아이템은 OnPopupDialog() 수행 시, 원하는 페이지만 대화상자에 표시하고 싶을 때 사용한다.Item ID Type SubType Description"
+      }
+    ],
+    "InsertFieldTemplate": [
+      {
+        "param_name": "ShowSingle",
+        "param_type": "PIT_I",
+        "subtype": "문서마당",
+        "description": "정보 대화상자에서 페이지(탭) 보이기 옵션 : -1 = 모든 페이지 보이기"
+      },
+      {
+        "param_name": "TemplateDirection",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "컨트롤의 안내문/지시문"
+      },
+      {
+        "param_name": "TemplateHelp",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "컨트롤의 도움말"
+      },
+      {
+        "param_name": "TemplateName",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "이름 (name)"
+      },
+      {
+        "param_name": "TemplateType",
+        "param_type": "PIT_UI1",
+        "subtype": "필드의",
+        "description": "종류. TemplateDirection/Help/Name 의 값이 실제로 적용되는 위치 :"
+      },
+      {
+        "param_name": "Editable",
+        "param_type": "PIT_UI1",
+        "subtype": "필드의",
+        "description": "양식모드에서 편집여부"
+      },
+      {
+        "param_name": "ShowSingle",
+        "param_type": "PIT_UI",
+        "subtype": "문서",
+        "description": "마당 정보 PropertySheet 대화상자에서 원하는 페이지(탭) 만 보이기"
+      },
+      {
+        "param_name": "TemplateDirection",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "컨트롤의 안내문/지시문"
+      },
+      {
+        "param_name": "TemplateHelp",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "컨트롤의 도움말"
+      },
+      {
+        "param_name": "TemplateName",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "이름 (name)"
+      },
+      {
+        "param_name": "TemplateType",
+        "param_type": "PIT_UI1",
+        "subtype": "필드의",
+        "description": "종류"
+      },
+      {
+        "param_name": "Editable",
+        "param_type": "PIT_UI1",
+        "subtype": "부분편집",
+        "description": "모드에서 편집속성"
+      }
+    ],
+    "InsertFile": [
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입할",
+        "description": "파일의 이름"
+      },
+      {
+        "param_name": "FileFormat",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입할",
+        "description": "파일의 확장자"
+      },
+      {
+        "param_name": "FileArg",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입할",
+        "description": "파일의 Argument"
+      },
+      {
+        "param_name": "KeepSection",
+        "param_type": "PIT_UI1",
+        "subtype": "끼워",
+        "description": "넣을 문서를 구역으로 나누어 쪽 모양을 유지할지 여부 on / off (ver:0x0605010E)"
+      },
+      {
+        "param_name": "KeepCharshape",
+        "param_type": "PIT_UI1",
+        "subtype": "끼워",
+        "description": "넣을 문서의 글자 모양을 유지할지 여부 on / off"
+      },
+      {
+        "param_name": "KeepParashape",
+        "param_type": "PIT_UI1",
+        "subtype": "끼워",
+        "description": "넣을 문서의 문단 모양을 유지할지 여부 on / onff"
+      },
+      {
+        "param_name": "KeepStyle",
+        "param_type": "PIT_UI1",
+        "subtype": "끼워",
+        "description": "넣을 문서의 스타일을 유지할지 여부 on / onff"
+      },
+      {
+        "param_name": "MoveNextPos",
+        "param_type": "PIT_UI1",
+        "subtype": "삽입하고",
+        "description": "삽입된 파일 다음 위치로 이동할지 여부"
+      }
+    ],
+    "InsertText": [
+      {
+        "param_name": "Text",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입할",
+        "description": "텍스트"
+      }
+    ],
+    "KeyMacro": [
+      {
+        "param_name": "Index",
+        "param_type": "PIT_I",
+        "subtype": "정의(or",
+        "description": "실행)할 매크로의 인덱스."
+      },
+      {
+        "param_name": "RepeatCount",
+        "param_type": "PIT_I",
+        "subtype": "실행",
+        "description": "반복 횟수"
+      },
+      {
+        "param_name": "Name",
+        "param_type": "PIT_BSTR",
+        "subtype": "매크로",
+        "description": "이름"
+      }
+    ],
+    "Label": [
+      {
+        "param_name": "TopMargin",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "여백 : 위쪽"
+      },
+      {
+        "param_name": "LeftMargin",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "여백 : 왼쪽"
+      },
+      {
+        "param_name": "BoxWidth",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "크기 : 폭"
+      },
+      {
+        "param_name": "BoxLength",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "크기 : 길이"
+      },
+      {
+        "param_name": "MarginHor",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "크기 : 좌우"
+      },
+      {
+        "param_name": "BoxMarginVer",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "크기 : 상하"
+      },
+      {
+        "param_name": "LabelCols",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "개수 : 줄 수 (or 세로)"
+      },
+      {
+        "param_name": "LabelRows",
+        "param_type": "PIT_I4",
+        "subtype": "이름표",
+        "description": "개수 : 칸 수 (or 가로)"
+      },
+      {
+        "param_name": "LandScape",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "방향"
+      },
+      {
+        "param_name": "PageWidth",
+        "param_type": "PIT_I4",
+        "subtype": "문서의",
+        "description": "폭"
+      },
+      {
+        "param_name": "PageLen",
+        "param_type": "PIT_I4",
+        "subtype": "문서의",
+        "description": "길이"
+      },
+      {
+        "param_name": "TextGap",
+        "param_type": "PIT_I4",
+        "subtype": "",
+        "description": ""
+      },
+      {
+        "param_name": "PageCnt",
+        "param_type": "PIT_I",
+        "subtype": "",
+        "description": ""
+      }
+    ],
+    "LinkDocument": [
+      {
+        "param_name": "Name",
+        "param_type": "PIT_BSTR",
+        "subtype": "연결",
+        "description": "문서 FILE NAME"
+      },
+      {
+        "param_name": "PageInherit",
+        "param_type": "PIT_UI1",
+        "subtype": "TRUE",
+        "description": "= 쪽 번호 잇기, FALSE = 쪽 번호 잇지 않기."
+      },
+      {
+        "param_name": "FootnoteInherit",
+        "param_type": "PIT_UI1",
+        "subtype": "TRUE",
+        "description": "= 각주 번호 잇기, FALSE = 각주 번호 잇지 않기. HwpCtrl.GetPosBySet. SetPosBySet, HwpCtrlCode.GetAnchorPos 에서 사용, 해당 액션은 존재하지 않음."
+      }
+    ],
+    "ListParaPos": [
+      {
+        "param_name": "List",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 리스트"
+      },
+      {
+        "param_name": "Para",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 문단"
+      },
+      {
+        "param_name": "Pos",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "위치한 글자"
+      }
+    ],
+    "ListProperties": [
+      {
+        "param_name": "TextDirection",
+        "param_type": "PIT_UI1",
+        "subtype": "글자",
+        "description": "방향. (세부 스펙은 미정)"
+      },
+      {
+        "param_name": "LineWrap",
+        "param_type": "PIT_UI1",
+        "subtype": "경계에서",
+        "description": "줄 나눔 방식"
+      },
+      {
+        "param_name": "VertAlign",
+        "param_type": "PIT_UI1",
+        "subtype": "세로",
+        "description": "정렬"
+      },
+      {
+        "param_name": "MarginLeft",
+        "param_type": "PIT_I4",
+        "subtype": "각",
+        "description": "방향 여백 : 왼쪽"
+      },
+      {
+        "param_name": "MarginRight",
+        "param_type": "PIT_I4",
+        "subtype": "각",
+        "description": "방향 여백 : 오른쪽"
+      },
+      {
+        "param_name": "MarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "각",
+        "description": "방향 여백 : 위"
+      },
+      {
+        "param_name": "MarginBottom",
+        "param_type": "PIT_I4",
+        "subtype": "각",
+        "description": "방향 여백 : 아래"
+      }
+    ],
+    "MailMergeGenerate": [
+      {
+        "param_name": "Input",
+        "param_type": "PIT_UI1",
+        "subtype": "자료",
+        "description": "종류"
+      },
+      {
+        "param_name": "HwpPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "Hwp",
+        "description": "문서 경로."
+      },
+      {
+        "param_name": "HwpId",
+        "param_type": "PIT_UI",
+        "subtype": "Hwp",
+        "description": "문서 ID"
+      },
+      {
+        "param_name": "DbfPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "dbf",
+        "description": "file path"
+      },
+      {
+        "param_name": "DbfCode",
+        "param_type": "PIT_UI1",
+        "subtype": "dbf",
+        "description": "file codepage"
+      },
+      {
+        "param_name": "Output",
+        "param_type": "PIT_UI1",
+        "subtype": "출력",
+        "description": "방향"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "이름"
+      },
+      {
+        "param_name": "Continue",
+        "param_type": "PIT_UI1",
+        "subtype": "쪽번호",
+        "description": "잇기"
+      },
+      {
+        "param_name": "PrintSet",
+        "param_type": "PIT_SET",
+        "subtype": "Print",
+        "description": "인쇄 선택 사항"
+      },
+      {
+        "param_name": "Subject",
+        "param_type": "PIT_BSTR",
+        "subtype": "메일",
+        "description": "제목"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "메일",
+        "description": "종류"
+      },
+      {
+        "param_name": "Field",
+        "param_type": "PIT_BSTR",
+        "subtype": "메일",
+        "description": "주소 필드"
+      },
+      {
+        "param_name": "FieldUpdate",
+        "param_type": "PIT_UI1",
+        "subtype": "필드",
+        "description": "단위 업데이트"
+      },
+      {
+        "param_name": "NxlPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "넥셀",
+        "description": "파일 경로"
+      }
+    ],
+    "MakeContents": [
+      {
+        "param_name": "Make",
+        "param_type": "PIT_UI",
+        "subtype": "생성할",
+        "description": "차례의 종류, 다음의 값들의 조합이다"
+      },
+      {
+        "param_name": "Level",
+        "param_type": "PIT_I",
+        "subtype": "개요",
+        "description": "수준"
+      },
+      {
+        "param_name": "AutoTabRight",
+        "param_type": "PIT_I1",
+        "subtype": "문단",
+        "description": "오른쪽 끝 자동 탭 여부 : 0 = 자동 탭 사용안함, 1 = 자동 탭 사용"
+      },
+      {
+        "param_name": "Leader",
+        "param_type": "PIT_UI",
+        "subtype": "오른쪽",
+        "description": "끝 탭 채울 모양(선 종류)"
+      },
+      {
+        "param_name": "Styles",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI",
+        "description": "모을 스타일 목록"
+      },
+      {
+        "param_name": "StyleName",
+        "param_type": "PIT_BSTR",
+        "subtype": "모을",
+        "description": "스타일 이름들"
+      },
+      {
+        "param_name": "OutFileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "만들",
+        "description": "파일 이름. “”이면 현재 문서에 생성"
+      },
+      {
+        "param_name": "Position",
+        "param_type": "PIT_BSTR",
+        "subtype": "만들",
+        "description": "위치. 반드시 0이어야 한다. (글 컨트롤은 탭이 없으므로)"
+      },
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "만들",
+        "description": "차례 형식"
+      },
+      {
+        "param_name": "Hyperlink",
+        "param_type": "PIT_UI",
+        "subtype": "하이퍼링크",
+        "description": "연결"
+      }
+    ],
+    "MarkpenShape": [
+      {
+        "param_name": "Color",
+        "param_type": "PIT_UI4",
+        "subtype": "형광펜색",
+        "description": "(COLORREF)"
+      }
+    ],
+    "MasterPage": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_I4",
+        "subtype": "바탕쪽",
+        "description": "종류"
+      },
+      {
+        "param_name": "Duplicate",
+        "param_type": "PIT_UI1",
+        "subtype": "기존",
+        "description": "바탕쪽과 겹침 (On/Off)"
+      },
+      {
+        "param_name": "Front",
+        "param_type": "PIT_UI1",
+        "subtype": "바탕쪽과",
+        "description": "앞으로 보내기 (On/Off)"
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용대상",
+        "description": ""
+      },
+      {
+        "param_name": "CopySectionNumber",
+        "param_type": "PIT_UI4",
+        "subtype": "바탕쪽",
+        "description": "가져오기의 구역 번호"
+      },
+      {
+        "param_name": "CopyMasterPageTypes",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_UI4바탕쪽",
+        "description": "가져우기의 바탕쪽 종류들"
+      }
+    ],
+    "MemoShape": [
+      {
+        "param_name": "Width",
+        "param_type": "PIT_I4",
+        "subtype": "너비",
+        "description": "(HWPUNIT)"
+      },
+      {
+        "param_name": "LineType",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "종류"
+      },
+      {
+        "param_name": "LineWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "굵기"
+      },
+      {
+        "param_name": "LineColor",
+        "param_type": "PIT_UI4",
+        "subtype": "선",
+        "description": "색깔 (COLORREF)"
+      },
+      {
+        "param_name": "FillColor",
+        "param_type": "PIT_UI4",
+        "subtype": "채우기",
+        "description": "색깔 (COLORREF)"
+      },
+      {
+        "param_name": "ActiveFillColor",
+        "param_type": "PIT_UI4",
+        "subtype": "활성화된",
+        "description": "채우기 색깔 (COLORREF)"
+      },
+      {
+        "param_name": "MemoType",
+        "param_type": "PIT_UI4",
+        "subtype": "메모",
+        "description": "종류 - 현재 사용안 함 HwpCtrl.GetMousePos 에서 사용, 해당 액션은 존재하지 않음."
+      }
+    ],
+    "MousePos": [
+      {
+        "param_name": "XRelTo",
+        "param_type": "PIT_UI4",
+        "subtype": "가로",
+        "description": "상대적 기준"
+      },
+      {
+        "param_name": "YRelTo",
+        "param_type": "PIT_UI4",
+        "subtype": "세로",
+        "description": "상대적 기준"
+      },
+      {
+        "param_name": "Page",
+        "param_type": "PIT_UI4",
+        "subtype": "페이지",
+        "description": "번호 ( 0 based)"
+      },
+      {
+        "param_name": "X",
+        "param_type": "PIT_I4",
+        "subtype": "가로",
+        "description": "클릭한 위치 (HWPUNIT)"
+      },
+      {
+        "param_name": "Y",
+        "param_type": "PIT_I4",
+        "subtype": "세로",
+        "description": "클릭한 위치 (HWPUNIT)"
+      }
+    ],
+    "MovieProperties": [
+      {
+        "param_name": "Base",
+        "param_type": "PIT_BSTR",
+        "subtype": "동영상",
+        "description": "파일의 경로"
+      },
+      {
+        "param_name": "Caption",
+        "param_type": "PIT_BSTR",
+        "subtype": "자막",
+        "description": "파일의 경로"
+      },
+      {
+        "param_name": "AutoPlay",
+        "param_type": "PIT_UI1",
+        "subtype": "자동",
+        "description": "재생 여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "AutoRewind",
+        "param_type": "PIT_UI1",
+        "subtype": "되감기",
+        "description": "여부 : 0 = off, 1 = on"
+      },
+      {
+        "param_name": "ShowMenu",
+        "param_type": "PIT_UI1",
+        "subtype": "메뉴",
+        "description": "보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "ShowCtrlPanel",
+        "param_type": "PIT_UI1",
+        "subtype": "컨트롤",
+        "description": "패널 보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "ShowPosCtrl",
+        "param_type": "PIT_UI1",
+        "subtype": "위치",
+        "description": "컨트롤 보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "EnablePos",
+        "param_type": "PIT_UI1",
+        "subtype": "위치",
+        "description": "컨트롤 조절 여부 : 0 = Disable, 1 = Enable"
+      },
+      {
+        "param_name": "ShowTrackBar",
+        "param_type": "PIT_UI1",
+        "subtype": "음량",
+        "description": "조절막대(Track Bar) 보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "EnableTrack",
+        "param_type": "PIT_UI1",
+        "subtype": "음량",
+        "description": "조절 여부 : 0 = Disable, 1 = Enable"
+      },
+      {
+        "param_name": "ShowChaption",
+        "param_type": "PIT_UI1",
+        "subtype": "자막",
+        "description": "보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "ShowAudio",
+        "param_type": "PIT_UI1",
+        "subtype": "오디오",
+        "description": "설정 보이기 : 0 = Hide, 1 = Show"
+      },
+      {
+        "param_name": "ShowStatus",
+        "param_type": "PIT_UI1",
+        "subtype": "상태바",
+        "description": "보기 (진행시간 등을 표시) : 0 = Hide, 1 = Show"
+      }
+    ],
+    "OleCreation": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "생성",
+        "description": "방식"
+      },
+      {
+        "param_name": "Clsid",
+        "param_type": "PIT_BSTR",
+        "subtype": "클래스",
+        "description": "ID ('새로 개체 생성‘일 때 사용)"
+      },
+      {
+        "param_name": "Path",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "경로 (‘파일로 링크된 개체 생성’, ‘파일로부터 개체 생성’일 때 사용)"
+      },
+      {
+        "param_name": "Aspect",
+        "param_type": "PIT_I",
+        "subtype": "생성된",
+        "description": "OLE 개체를 아이콘으로 표시할지 여부 :"
+      },
+      {
+        "param_name": "IconMetafile",
+        "param_type": "PIT_BINDATA",
+        "subtype": "Aspect",
+        "description": "가 아이콘일 때 적용할 아이콘 데이터"
+      },
+      {
+        "param_name": "IconMM",
+        "param_type": "PIT_IA",
+        "subtype": "spect",
+        "description": "가 아이콘일 때 아이콘 매핑모드"
+      },
+      {
+        "param_name": "IconXext",
+        "param_type": "PIT_I",
+        "subtype": "Aspect",
+        "description": "가 아이콘일 때 X축 매핑단위"
+      },
+      {
+        "param_name": "IconYext",
+        "param_type": "PIT_I",
+        "subtype": "Aspect",
+        "description": "가 아이콘일 때 Y축 매핑단위"
+      },
+      {
+        "param_name": "InnerOCX",
+        "param_type": "PIT_I",
+        "subtype": "글",
+        "description": "내부에서 사용되는 OCX인지 여부 (예: 글의 Chart OLE)"
+      },
+      {
+        "param_name": "SoProperties",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "ShapeObject 초기 shape object 속성"
+      },
+      {
+        "param_name": "FlashProperties",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FlashProperties 플래시 파일 삽입 시 필요한 옵션 셋"
+      },
+      {
+        "param_name": "MovieProperties",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "MovieProperties 동영상 파일 삽입 시 필요한 옵션 셋 PageBorderFill 은 BorderFill 로부터 계승받았으므로 위 표에 정리된 PageBorderFill 의 아이템들 이외에 BorderFill 의 아이템들 을 사용할 수 있다."
+      }
+    ],
+    "PageBorderFill": [
+      {
+        "param_name": "TextBorder",
+        "param_type": "PIT_UI1",
+        "subtype": "TRUE",
+        "description": "= 본문 기준, FALSE = 종이 기준"
+      },
+      {
+        "param_name": "HeaderInside",
+        "param_type": "PIT_UI1",
+        "subtype": "머리말",
+        "description": "포함 (on / off)"
+      },
+      {
+        "param_name": "FooterInside",
+        "param_type": "PIT_UI1",
+        "subtype": "꼬리말",
+        "description": "포함 (on / off)"
+      },
+      {
+        "param_name": "FillArea",
+        "param_type": "PIT_UI1",
+        "subtype": "채울",
+        "description": "영역"
+      },
+      {
+        "param_name": "OffsetLeft",
+        "param_type": "PIT_I",
+        "subtype": "4방향",
+        "description": "간격 (HWPUNIT) : 왼쪽"
+      },
+      {
+        "param_name": "OffsetRight",
+        "param_type": "PIT_I",
+        "subtype": "4방향",
+        "description": "간격 (HWPUNIT) : 오른쪽"
+      },
+      {
+        "param_name": "OffsetTop",
+        "param_type": "PIT_I",
+        "subtype": "4방향",
+        "description": "간격 (HWPUNIT) : 위"
+      },
+      {
+        "param_name": "OffsetBottom",
+        "param_type": "PIT_I",
+        "subtype": "4방향",
+        "description": "간격 (HWPUNIT) : 아래"
+      },
+      {
+        "param_name": "BorderTypeLeft",
+        "param_type": "PIT_UI2",
+        "subtype": "왼쪽",
+        "description": "라인 스타일"
+      },
+      {
+        "param_name": "BorderTypeRight",
+        "param_type": "PIT_UI2",
+        "subtype": "오른쪽",
+        "description": "라인 스타일"
+      },
+      {
+        "param_name": "BorderTypeTop",
+        "param_type": "PIT_UI2",
+        "subtype": "위쪽",
+        "description": "라인 스타일"
+      },
+      {
+        "param_name": "BorderTypeBottom",
+        "param_type": "PIT_UI2",
+        "subtype": "아래쪽",
+        "description": "라인 스타일"
+      },
+      {
+        "param_name": "BorderWidthLeft",
+        "param_type": "PIT_UI1",
+        "subtype": "왼쪽",
+        "description": "테두리 두께"
+      },
+      {
+        "param_name": "BorderWidthRight",
+        "param_type": "PIT_UI1",
+        "subtype": "오른쪽",
+        "description": "테두리 두께"
+      },
+      {
+        "param_name": "BorderWidthTop",
+        "param_type": "PIT_UI1",
+        "subtype": "위쪽",
+        "description": "테두리 두께"
+      },
+      {
+        "param_name": "BorderWidthBottom",
+        "param_type": "PIT_UI1",
+        "subtype": "아래쪽",
+        "description": "테두리 두께"
+      },
+      {
+        "param_name": "BorderCorlorLeft",
+        "param_type": "PIT_UI4",
+        "subtype": "4방향",
+        "description": "테두리 색깔(COLORREF)"
+      },
+      {
+        "param_name": "BorderColorRight",
+        "param_type": "PIT_UI4",
+        "subtype": "4방향",
+        "description": "테두리 색깔(COLORREF)"
+      },
+      {
+        "param_name": "BorderColorTop",
+        "param_type": "PIT_UI4",
+        "subtype": "4방향",
+        "description": "테두리 색깔(COLORREF)"
+      },
+      {
+        "param_name": "BorderColorBottom",
+        "param_type": "PIT_UI4",
+        "subtype": "4방향",
+        "description": "테두리 색깔(COLORREF)"
+      },
+      {
+        "param_name": "SlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "슬래쉬",
+        "description": "대각선 플랙 (bit 0-2가 시계 방향으로 각각의 대각선 유무 를 나타냄"
+      },
+      {
+        "param_name": "BackSlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "백슬래쉬",
+        "description": "대각선 플랙 (bit 0-2가 반시계 방향으로 각각의 대각선 유무를 나타냄)97Item ID Type SubType Description"
+      },
+      {
+        "param_name": "DiagonalType",
+        "param_type": "PIT_UI2",
+        "subtype": "대각선",
+        "description": "종류 선 종류"
+      },
+      {
+        "param_name": "DiagonalWidth",
+        "param_type": "PIT_UI1",
+        "subtype": "대각선",
+        "description": "두께"
+      },
+      {
+        "param_name": "DiagonalColor",
+        "param_type": "PIT_UI4",
+        "subtype": "대각선",
+        "description": "색깔 (COLORREF)"
+      },
+      {
+        "param_name": "BorderFill3D",
+        "param_type": "PIT_UI1",
+        "subtype": "3차원",
+        "description": "효과 on/off"
+      },
+      {
+        "param_name": "Shadow",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "효과 on/off"
+      },
+      {
+        "param_name": "FillAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawFillAttr 배경 채우기 속성"
+      },
+      {
+        "param_name": "CrookedSlashFlag",
+        "param_type": "PIT_UI2",
+        "subtype": "꺽어진",
+        "description": "대각선 플랙 (bit 0, 1이 각각 slash, back slash 의 가 운데 대각선이 꺽어진 대각선임을 나타낸다.) BreakCellSeparate"
+      },
+      {
+        "param_name": "CounterSlashFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "슬래쉬",
+        "description": "대각선의 역방향 플랙(우상향 대각선) CounterBackSlashF"
+      },
+      {
+        "param_name": "CenterLineFlag",
+        "param_type": "PIT_UI1",
+        "subtype": "중심선",
+        "description": ""
+      },
+      {
+        "param_name": "CrookedSlashFlag1",
+        "param_type": "PIT_UI1",
+        "subtype": "상향",
+        "description": "꺾어진 대각선"
+      },
+      {
+        "param_name": "CrookedSlashFlag2",
+        "param_type": "PIT_UI1",
+        "subtype": "하향",
+        "description": "꺽어진 대각선"
+      }
+    ],
+    "PageDef": [
+      {
+        "param_name": "PaperWidth",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "가로 크기 (HWPUNIT)"
+      },
+      {
+        "param_name": "PaperHeight",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "세로 크기 (HWPUNIT)"
+      },
+      {
+        "param_name": "Landscape",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "방향. 0 = 좁게, 1 = 넓게"
+      },
+      {
+        "param_name": "LeftMargin",
+        "param_type": "PIT_I4",
+        "subtype": "왼쪽",
+        "description": "여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "RightMargin",
+        "param_type": "PIT_I4",
+        "subtype": "오른쪽",
+        "description": "여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "TopMargin",
+        "param_type": "PIT_I4",
+        "subtype": "위",
+        "description": "여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "BottomMargin",
+        "param_type": "PIT_I4",
+        "subtype": "아래",
+        "description": "여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "HeaderLen",
+        "param_type": "PIT_I4",
+        "subtype": "머리말",
+        "description": "길이 (HWPUNIT)"
+      },
+      {
+        "param_name": "FooterLen",
+        "param_type": "PIT_I4",
+        "subtype": "꼬리말",
+        "description": "길이 (HWPUNIT)"
+      },
+      {
+        "param_name": "GutterLen",
+        "param_type": "PIT_I4",
+        "subtype": "제본",
+        "description": "여백 (HWPUNIT)"
+      },
+      {
+        "param_name": "GutterType",
+        "param_type": "PIT_UI1",
+        "subtype": "편집",
+        "description": "방법."
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위",
+        "description": ""
+      },
+      {
+        "param_name": "ApplyClass",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위의",
+        "description": "분류 (대화상자를 호출할 경우 사용)"
+      }
+    ],
+    "PageHiding": [
+      {
+        "param_name": "Fields",
+        "param_type": "PIT_UI",
+        "subtype": "감출",
+        "description": "대상 비트 필드."
+      }
+    ],
+    "PageNumCtrl": [
+      {
+        "param_name": "PageStartsOn",
+        "param_type": "PIT_UI1",
+        "subtype": "페이지",
+        "description": "번호 적용 옵션."
+      }
+    ],
+    "PageNumPos": [
+      {
+        "param_name": "NumberFormat",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "모양 :"
+      },
+      {
+        "param_name": "UserChar",
+        "param_type": "PIT_UI2",
+        "subtype": "사용자",
+        "description": "기호(WCHAR). 글2007에선 더 이상 사용하지 않는다."
+      },
+      {
+        "param_name": "PrefixChar",
+        "param_type": "PIT_UI2",
+        "subtype": "앞",
+        "description": "장식 문자(WCHAR). 글2007에선 더 이상 사용하지 않는다."
+      },
+      {
+        "param_name": "SuffixChar",
+        "param_type": "PIT_UI2",
+        "subtype": "뒤",
+        "description": "장식 문자(WCHAR). 글2007에선 더 이상 사용하지 않는다."
+      },
+      {
+        "param_name": "SideChar",
+        "param_type": "PIT_UI2",
+        "subtype": "양쪽",
+        "description": "옆 장식 문자(WCHAR). L'-'만 사용할 수 있다."
+      },
+      {
+        "param_name": "DrawPos",
+        "param_type": "PIT_UI1",
+        "subtype": "번호",
+        "description": "위치"
+      },
+      {
+        "param_name": "NewNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "새",
+        "description": "시작 번호 (1 .. n)"
+      }
+    ],
+    "ParaShape": [
+      {
+        "param_name": "LeftMargin",
+        "param_type": "PIT_I4",
+        "subtype": "왼쪽",
+        "description": "여백 (URC)"
+      },
+      {
+        "param_name": "RightMargin",
+        "param_type": "PIT_I4",
+        "subtype": "오른쪽",
+        "description": "여백 (URC)"
+      },
+      {
+        "param_name": "Indentation",
+        "param_type": "PIT_I4",
+        "subtype": "들여쓰기/내어",
+        "description": "쓰기 (URC)"
+      },
+      {
+        "param_name": "PrevSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "문단",
+        "description": "간격 위 (URC)"
+      },
+      {
+        "param_name": "NextSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "문단",
+        "description": "간격 아래 (URC)"
+      },
+      {
+        "param_name": "LineSpacingType",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "간격 종류 (HWPUNIT)"
+      },
+      {
+        "param_name": "LineSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "줄",
+        "description": "간격 값. 줄 간격 종류(LineSpacingType) 에 따라 : - \"글자에 따라\"일 경우(0 - 500%) - “고정 값”일 경우(URC) - “여백만 지정”일 경우(URC)"
+      },
+      {
+        "param_name": "AlignType",
+        "param_type": "PIT_UI1",
+        "subtype": "정렬",
+        "description": "방식"
+      },
+      {
+        "param_name": "BreakLatinWord",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "나눔 단위 (라틴 문자)"
+      },
+      {
+        "param_name": "BreakNonLatinWord",
+        "param_type": "PIT_UI1",
+        "subtype": "단위",
+        "description": "(비 라틴 문자) TRUE = 글자, FALSE = 어절"
+      },
+      {
+        "param_name": "SnapToGrid",
+        "param_type": "PIT_UI1",
+        "subtype": "편집",
+        "description": "용지의 줄 격자 사용 (on / off)"
+      },
+      {
+        "param_name": "Condense",
+        "param_type": "PIT_UI1",
+        "subtype": "공백",
+        "description": "최소값 (0 - 75%)"
+      },
+      {
+        "param_name": "WidowOrphan",
+        "param_type": "PIT_UI1",
+        "subtype": "외톨이줄",
+        "description": "보호 (on / off)"
+      },
+      {
+        "param_name": "KeepWithNext",
+        "param_type": "PIT_UI1",
+        "subtype": "다음",
+        "description": "문단과 함께 (on / off)"
+      },
+      {
+        "param_name": "KeepLinesTogether",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "보호 (on / off)"
+      },
+      {
+        "param_name": "TextAlignment",
+        "param_type": "PIT_UI1",
+        "subtype": "세로",
+        "description": "정렬"
+      },
+      {
+        "param_name": "FontLineHeight",
+        "param_type": "PIT_UI1",
+        "subtype": "글꼴에",
+        "description": "어울리는 줄 높이 (on / off)"
+      },
+      {
+        "param_name": "HeadingType",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "머리 모양"
+      },
+      {
+        "param_name": "Level",
+        "param_type": "PIT_UI1",
+        "subtype": "단계",
+        "description": "(0 - 6)"
+      },
+      {
+        "param_name": "BorderConnect",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "테두리/배경 - 테두리 연결 (on / off)"
+      },
+      {
+        "param_name": "BorderText",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "테두리/배경 - 여백 무시 (0 = 단, 1 = 텍스트)"
+      },
+      {
+        "param_name": "BorderOffsetLeft",
+        "param_type": "PIT_I",
+        "subtype": "문단",
+        "description": "테두리/배경 - 4방향 간격 (HWPUNIT) : 왼쪽"
+      },
+      {
+        "param_name": "BorderOffsetRight",
+        "param_type": "PIT_I",
+        "subtype": "문단",
+        "description": "테두리/배경 - 4방향 간격 (HWPUNIT) : 오른쪽"
+      },
+      {
+        "param_name": "BorderOffsetTop",
+        "param_type": "PIT_I",
+        "subtype": "문단",
+        "description": "테두리/배경 - 4방향 간격 (HWPUNIT) : 위"
+      },
+      {
+        "param_name": "BorderOffsetBottom",
+        "param_type": "PIT_I",
+        "subtype": "문단",
+        "description": "테두리/배경 - 4방향 간격 (HWPUNIT) : 아래"
+      },
+      {
+        "param_name": "TailType",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "꼬리 모양 (마지막 꼬리 줄 적용) on/off"
+      },
+      {
+        "param_name": "LineWrap",
+        "param_type": "PIT_UI1",
+        "subtype": "글꼴에",
+        "description": "어울리는 줄 높이 (on/off)"
+      },
+      {
+        "param_name": "TabDef",
+        "param_type": "PIT_SET",
+        "subtype": "TabDef",
+        "description": "탭 정의"
+      },
+      {
+        "param_name": "Numbering",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "NumberingShape문단 번호 문단 머리 모양(HeadingType) 이 ‘개요’, ‘번호’ 일 때 사용"
+      },
+      {
+        "param_name": "Bullet",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "BulletShape불릿 모양 문단 머리 모양(HeadingType) 이 ‘불릿’(글머리표) 일 때 사용"
+      },
+      {
+        "param_name": "BorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "테두리/배경"
+      },
+      {
+        "param_name": "AutoSpaceEAsianEng",
+        "param_type": "PIT_UI1",
+        "subtype": "한글과",
+        "description": "영어 간격을 자동 조절 (on/off)"
+      },
+      {
+        "param_name": "AutoSpaceEAsianNum",
+        "param_type": "PIT_UI1",
+        "subtype": "한글과",
+        "description": "숫자 간격을 자동 조절 (on/off)"
+      },
+      {
+        "param_name": "SuppressLineNum",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "번호 표시 여부"
+      },
+      {
+        "param_name": "Checked",
+        "param_type": "PIT_UI1",
+        "subtype": "체크",
+        "description": "글머리표 사용시 체크 여부 (on/off)"
+      },
+      {
+        "param_name": "TextDir",
+        "param_type": "PIT_UI1",
+        "subtype": "텍스트",
+        "description": "방향 (한/글 2022부터 지원)10792)Password : 문서 암호"
+      }
+    ],
+    "Password": [
+      {
+        "param_name": "String",
+        "param_type": "PIT_BSTR",
+        "subtype": "암호",
+        "description": "문자열"
+      },
+      {
+        "param_name": "FullRange",
+        "param_type": "PIT_UI1",
+        "subtype": "TRUE",
+        "description": "= 유니코드 모든 문자를 사용, FALSE = 영문자만 사용"
+      },
+      {
+        "param_name": "Ask",
+        "param_type": "PIT_UI1",
+        "subtype": "TRUE",
+        "description": "= 문서 암호를 확인, FALSE = 문서 암호를 설정"
+      },
+      {
+        "param_name": "Level",
+        "param_type": "PIT_UI1",
+        "subtype": "0",
+        "description": "= 보안 수준 낮음, 1 = 보안 수준 높음"
+      },
+      {
+        "param_name": "RWAsk",
+        "param_type": "PIT_UI1",
+        "subtype": "읽기/쓰기",
+        "description": "암호 설정을 위해 새로 추가"
+      },
+      {
+        "param_name": "ReadString",
+        "param_type": "PIT_BSTR",
+        "subtype": "열기",
+        "description": "암호 문자열"
+      },
+      {
+        "param_name": "WriteString",
+        "param_type": "PIT_BSTR",
+        "subtype": "쓰기",
+        "description": "암호 문자열"
+      },
+      {
+        "param_name": "ReadOnly",
+        "param_type": "PIT_UI1",
+        "subtype": "0",
+        "description": "= 읽기 전용 아님, 1 = 읽기 전용 열기"
+      }
+    ],
+    "Preference": [
+      {
+        "param_name": "ShowSinglePage",
+        "param_type": "PIT_I",
+        "subtype": "환경",
+        "description": "설정 PropertySheet 에 표시할 PropertyPage 번호 (하나만 선택)"
+      },
+      {
+        "param_name": "ApplyLinkAttr",
+        "param_type": "PIT_UI1",
+        "subtype": "하이퍼링크",
+        "description": "글자 속성 문서 전체에 적용하기 여부 (on/off)"
+      },
+      {
+        "param_name": "ApplyForbidden",
+        "param_type": "PIT_BSTR",
+        "subtype": "(금칙",
+        "description": "처리) 새 문서에 기본 값으로 설정 (on/off)"
+      },
+      {
+        "param_name": "StartForbiddenStr",
+        "param_type": "PIT_BSTR",
+        "subtype": "(금칙",
+        "description": "처리) 새 문서에 적용할 줄 앞 금칙 문자열"
+      },
+      {
+        "param_name": "EndForbiddenStr",
+        "param_type": "PIT_BSTR",
+        "subtype": "(금칙",
+        "description": "처리) 새 문서에 적용할 줄 뒤 금칙 문자열"
+      },
+      {
+        "param_name": "UsePageLayout",
+        "param_type": "PIT_UI1",
+        "subtype": "새",
+        "description": "문서 속성을 변경하면 유효화된 값으로 판단하고 사용함 PasteObjectAsPict"
+      }
+    ],
+    "Presentation": [
+      {
+        "param_name": "Effect",
+        "param_type": "PIT_UI",
+        "subtype": "화면",
+        "description": "전환 효과"
+      },
+      {
+        "param_name": "Sound",
+        "param_type": "PIT_BINDATA",
+        "subtype": "효과음",
+        "description": ""
+      },
+      {
+        "param_name": "InvertText",
+        "param_type": "PIT_I",
+        "subtype": "검은색",
+        "description": "글자를 흰색으로"
+      },
+      {
+        "param_name": "ShowMode",
+        "param_type": "PIT_I",
+        "subtype": "자동",
+        "description": "전환 모드"
+      },
+      {
+        "param_name": "ShowPage",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "쪽"
+      },
+      {
+        "param_name": "ShowTime",
+        "param_type": "PIT_UI",
+        "subtype": "전환",
+        "description": "시간 (초)"
+      }
+    ],
+    "Print": [
+      {
+        "param_name": "Range",
+        "param_type": "PIT_UI1",
+        "subtype": "인쇄",
+        "description": "범위"
+      },
+      {
+        "param_name": "RangeCustom",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자가",
+        "description": "직접 입력한 인쇄 범위"
+      },
+      {
+        "param_name": "RangeIncludeLinkedDoc",
+        "param_type": "PIT_UI1",
+        "subtype": "연결된",
+        "description": "문서 포함"
+      },
+      {
+        "param_name": "NumCopy",
+        "param_type": "PIT_UI2",
+        "subtype": "인쇄",
+        "description": "매수"
+      },
+      {
+        "param_name": "Collate",
+        "param_type": "PIT_UI1",
+        "subtype": "한",
+        "description": "부씩 찍기"
+      },
+      {
+        "param_name": "PrintMethod",
+        "param_type": "PIT_UI1",
+        "subtype": "인쇄",
+        "description": "방법"
+      },
+      {
+        "param_name": "PrinterPaperSize",
+        "param_type": "PIT_I",
+        "subtype": "공급용지",
+        "description": "종류(DEVMODE.dmPaperSize)"
+      },
+      {
+        "param_name": "PrinterPaperWidth",
+        "param_type": "PIT_I",
+        "subtype": "공급용지",
+        "description": "종류(DEVMODE.dmPaperWidth)"
+      },
+      {
+        "param_name": "PrinterPaperLength",
+        "param_type": "PIT_I",
+        "subtype": "공급용지",
+        "description": "종류(DEVMODE.dmPaperLength)"
+      },
+      {
+        "param_name": "PrintAutoHeadNote",
+        "param_type": "PIT_UI1",
+        "subtype": "머리말",
+        "description": "자동 인쇄"
+      },
+      {
+        "param_name": "PrintAutoFootNote",
+        "param_type": "PIT_UI1",
+        "subtype": "꼬리말",
+        "description": "자동 인쇄"
+      },
+      {
+        "param_name": "PrintAutoHeadnoteLtext",
+        "param_type": "PIT_BSTR",
+        "subtype": "자동",
+        "description": "머리말의 왼쪽 String"
+      },
+      {
+        "param_name": "PrintAutoHeadnoteCtext",
+        "param_type": "PIT_BSTR",
+        "subtype": "자동",
+        "description": "머리말의 가운데 String"
+      },
+      {
+        "param_name": "PrintAutoFootnoteLtext",
+        "param_type": "PIT_BSTR",
+        "subtype": "자동",
+        "description": "꼬리말의 왼쪽 String"
+      },
+      {
+        "param_name": "PrintAutoFootnoteCtext",
+        "param_type": "PIT_BSTR",
+        "subtype": "자동",
+        "description": "꼬리말의 가운데 String"
+      },
+      {
+        "param_name": "PrintAutoFootnoteRtext",
+        "param_type": "PIT_BSTR",
+        "subtype": "자동",
+        "description": "꼬리말의 오른쪽 String"
+      },
+      {
+        "param_name": "PrinterName",
+        "param_type": "PIT_BSTR",
+        "subtype": "프린터",
+        "description": ""
+      },
+      {
+        "param_name": "PrintToFile",
+        "param_type": "PIT_UI1",
+        "subtype": "인쇄",
+        "description": "결과를 파일로 저장"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "인쇄",
+        "description": "결과를 저장할 파일 이름"
+      },
+      {
+        "param_name": "ReverseOrder",
+        "param_type": "PIT_UI1",
+        "subtype": "역순",
+        "description": "인쇄"
+      },
+      {
+        "param_name": "Pause",
+        "param_type": "PIT_UI2",
+        "subtype": "끊어",
+        "description": "찍기 매수"
+      },
+      {
+        "param_name": "PrintImage",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "개체"
+      },
+      {
+        "param_name": "PrintDrawObj",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체"
+      },
+      {
+        "param_name": "PrintClickHere",
+        "param_type": "PIT_UI1",
+        "subtype": "누름틀",
+        "description": ""
+      },
+      {
+        "param_name": "PrintCropMark",
+        "param_type": "PIT_UI1",
+        "subtype": "편집",
+        "description": "용지 표시"
+      },
+      {
+        "param_name": "IdcPrintWallPaper",
+        "param_type": "PIT_UI1",
+        "subtype": "배경",
+        "description": "그림"
+      },
+      {
+        "param_name": "LastBlankPage",
+        "param_type": "PIT_UI1",
+        "subtype": "빈",
+        "description": "마지막 쪽"
+      },
+      {
+        "param_name": "BinderHoleType",
+        "param_type": "PIT_UI1",
+        "subtype": "바인더",
+        "description": "구멍"
+      },
+      {
+        "param_name": "EvenOddPageType",
+        "param_type": "PIT_UI1",
+        "subtype": "홀짝",
+        "description": "인쇄"
+      },
+      {
+        "param_name": "ZoomX",
+        "param_type": "PIT_UI2",
+        "subtype": "가로",
+        "description": "확대"
+      },
+      {
+        "param_name": "ZoomY",
+        "param_type": "PIT_UI2",
+        "subtype": "세로",
+        "description": "확대"
+      },
+      {
+        "param_name": "Flags",
+        "param_type": "PIT_UI",
+        "subtype": "문제",
+        "description": "해결을 위한 고급 선택 사항"
+      },
+      {
+        "param_name": "Device",
+        "param_type": "PIT_UI1",
+        "subtype": "인쇄",
+        "description": "방향(장치)"
+      },
+      {
+        "param_name": "PrintFormObj",
+        "param_type": "PIT_UI1",
+        "subtype": "양식",
+        "description": "개체 출력여부"
+      },
+      {
+        "param_name": "PrintMarkPen",
+        "param_type": "PIT_UI1",
+        "subtype": "형광펜",
+        "description": "출력여부"
+      },
+      {
+        "param_name": "PrintMemo",
+        "param_type": "PIT_UI1",
+        "subtype": "메모",
+        "description": "출력여부"
+      },
+      {
+        "param_name": "PrintMemoContents",
+        "param_type": "PIT_UI1",
+        "subtype": "메모",
+        "description": "내용 출력여부"
+      },
+      {
+        "param_name": "PrintRevision",
+        "param_type": "PIT_UI1",
+        "subtype": "교정부호",
+        "description": "출력여부"
+      },
+      {
+        "param_name": "PrintWatermark",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "PrintWatermark 인쇄워터마크"
+      },
+      {
+        "param_name": "OverlapSize",
+        "param_type": "PIT_UI2",
+        "subtype": "나눠찍기시",
+        "description": "내용이 겹치는 크기"
+      },
+      {
+        "param_name": "UsingPagenum",
+        "param_type": "PIT_UI1",
+        "subtype": "문서의",
+        "description": "쪽 번호로 입력"
+      },
+      {
+        "param_name": "PrintBarcode",
+        "param_type": "PIT_UI1",
+        "subtype": "바코드",
+        "description": ""
+      },
+      {
+        "param_name": "PrintPronounce",
+        "param_type": "PIT_UI1",
+        "subtype": "한자/일어",
+        "description": "발음 표시"
+      },
+      {
+        "param_name": "PrintColorSet",
+        "param_type": "PIT_UI",
+        "subtype": "색",
+        "description": "변경 인쇄, 0 = normal, 1 = gary, 2 = light gray"
+      },
+      {
+        "param_name": "PrintWithoutBlank",
+        "param_type": "PIT_I",
+        "subtype": "빈",
+        "description": "쪽 없이 이어서 인쇄"
+      }
+    ],
+    "PrintToImage": [
+      {
+        "param_name": "Format",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "형식"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "그림",
+        "description": "경로"
+      },
+      {
+        "param_name": "ColorDepth",
+        "param_type": "PIT_UI1",
+        "subtype": "색상수",
+        "description": "(bits: 8, 16...)"
+      },
+      {
+        "param_name": "Resolution",
+        "param_type": "PIT_UI2",
+        "subtype": "해상도",
+        "description": ""
+      },
+      {
+        "param_name": "Range",
+        "param_type": "PIT_UI1",
+        "subtype": "인쇄",
+        "description": "범위"
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "너비(pixel), (한/글 2022부터 지원)"
+      },
+      {
+        "param_name": "Height",
+        "param_type": "PIT_UI",
+        "subtype": "그림",
+        "description": "높이(pixel), (한/글 2022부터 지원)"
+      }
+    ],
+    "PrintWatermark": [
+      {
+        "param_name": "WatermarkType",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "선택된 워터마크의 유형을 나타냄."
+      },
+      {
+        "param_name": "PosPage",
+        "param_type": "PIT_UI1",
+        "subtype": "워터마크의",
+        "description": "위치 기준 : 0 = 종이 기준, 1 = 쪽 기준"
+      },
+      {
+        "param_name": "TextWrap",
+        "param_type": "PIT_UI1",
+        "subtype": "워터마크의",
+        "description": "배치 : 0 = 글 뒤로, 1 = 글 앞으로"
+      },
+      {
+        "param_name": "AlphaText",
+        "param_type": "PIT_UI1",
+        "subtype": "글자",
+        "description": "투명도 (0 ~ 255)"
+      },
+      {
+        "param_name": "AlphaImage",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "투명도 (0 ~ 255)"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "그림",
+        "description": "파일의 경로 or 그림파일 삽입일 경우에는 binary data"
+      },
+      {
+        "param_name": "PicEffect",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "효과 :"
+      },
+      {
+        "param_name": "Brightness",
+        "param_type": "PIT_I1",
+        "subtype": "명도",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "Contrast",
+        "param_type": "PIT_I1",
+        "subtype": "밝기",
+        "description": "(-100 ~ 100)"
+      },
+      {
+        "param_name": "DrawFillImageType",
+        "param_type": "PIT_I",
+        "subtype": "채우기",
+        "description": "유형"
+      },
+      {
+        "param_name": "String",
+        "param_type": "PIT_BSTR",
+        "subtype": "글맵시에",
+        "description": "넣을 문자열 내용 : 내용"
+      },
+      {
+        "param_name": "FontName",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": ""
+      },
+      {
+        "param_name": "FontType",
+        "param_type": "PIT_UI1",
+        "subtype": "글꼴",
+        "description": "속성 : 0 = don't care, 1 = TTF, 2 = HFT"
+      },
+      {
+        "param_name": "FontSize",
+        "param_type": "PIT_I",
+        "subtype": "글꼴",
+        "description": "크기 (HWPUNIT : 2500(25pt) ~ 25400(254pt)"
+      },
+      {
+        "param_name": "ShadowType",
+        "param_type": "PIT_UI1",
+        "subtype": "그림자",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "ShadowOffsetX",
+        "param_type": "PIT_I1",
+        "subtype": "X축",
+        "description": "그림자 간격 (-48% ~ 48% )"
+      },
+      {
+        "param_name": "ShadowOffsetY",
+        "param_type": "PIT_I1",
+        "subtype": "Y축",
+        "description": "그림자 간격 (-48% ~ 48% )"
+      },
+      {
+        "param_name": "FontColor",
+        "param_type": "PIT_UI4",
+        "subtype": "글자색",
+        "description": "(COLORREF)"
+      },
+      {
+        "param_name": "RotateAngle",
+        "param_type": "PIT_I",
+        "subtype": "회전각도",
+        "description": "(-360 ~ 360)"
+      },
+      {
+        "param_name": "WaterMarkEff",
+        "param_type": "PIT_UI1",
+        "subtype": "워터마크",
+        "description": "효과 : 0 = off, 1 = on"
+      }
+    ],
+    "QCorrect": [
+      {
+        "param_name": "LauncherKey",
+        "param_type": "PIT_UI1",
+        "subtype": "빠른",
+        "description": "교정을 실행한 키 정보"
+      },
+      {
+        "param_name": "HyperLinkRunKey",
+        "param_type": "PIT_UI1",
+        "subtype": "URL",
+        "description": "또는 email 하이퍼링크 작성 키 정보"
+      }
+    ],
+    "RevisionDef": [
+      {
+        "param_name": "SignType",
+        "param_type": "PIT_UI",
+        "subtype": "교정부호",
+        "description": "종류 :"
+      },
+      {
+        "param_name": "SubText",
+        "param_type": "PIT_BSTR",
+        "subtype": "교정",
+        "description": "문자열 교정 문자열을 가질 수 있는 교정부호만 적용. 나머지는 무시"
+      },
+      {
+        "param_name": "Margin",
+        "param_type": "PIT_I4",
+        "subtype": "",
+        "description": "여백(HWPUNIT). 오른자리 옮김표와 왼자리 옮김표일 경우에만 적용."
+      },
+      {
+        "param_name": "BeginPos",
+        "param_type": "PIT_I4",
+        "subtype": "",
+        "description": "시작위치(HWPUNIT). 오른자리 옮김표와 왼자리 옮김표일 경우에만 적용."
+      }
+    ],
+    "SaveFootnote": [
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "이름"
+      },
+      {
+        "param_name": "Flag",
+        "param_type": "PIT_UI1",
+        "subtype": "옵션",
+        "description": ""
+      }
+    ],
+    "ScriptMacro": [
+      {
+        "param_name": "Index",
+        "param_type": "PIT_I",
+        "subtype": "정의(or",
+        "description": "실행)할 매크로의 인덱스"
+      },
+      {
+        "param_name": "RepeatCount",
+        "param_type": "PIT_I",
+        "subtype": "실행",
+        "description": "반복 횟수"
+      },
+      {
+        "param_name": "Name",
+        "param_type": "PIT_BSTR",
+        "subtype": "매크로",
+        "description": "이름"
+      },
+      {
+        "param_name": "Detail",
+        "param_type": "PIT_BSTR",
+        "subtype": "매크로",
+        "description": "설명"
+      }
+    ],
+    "SecDef": [
+      {
+        "param_name": "TextDirection",
+        "param_type": "PIT_UI1",
+        "subtype": "글자",
+        "description": "방향"
+      },
+      {
+        "param_name": "StartsOn",
+        "param_type": "PIT_UI1",
+        "subtype": "구역",
+        "description": "나눔으로 새 페이지가 생길 때의 페이지 번호 적용 옵션"
+      },
+      {
+        "param_name": "LineGrid",
+        "param_type": "PIT_I4",
+        "subtype": "세로로",
+        "description": "줄맞춤을 할지 여부."
+      },
+      {
+        "param_name": "CharGrid",
+        "param_type": "PIT_I4",
+        "subtype": "가로로",
+        "description": "줄맞춤을 할지 여부."
+      },
+      {
+        "param_name": "PageDef",
+        "param_type": "PIT_SET",
+        "subtype": "PageDef",
+        "description": "용지 설정 정보"
+      },
+      {
+        "param_name": "HideEmptyLine",
+        "param_type": "PIT_UI1",
+        "subtype": "빈",
+        "description": "줄 감춤 on / off"
+      },
+      {
+        "param_name": "SpaceBetweenColumns",
+        "param_type": "PIT_I4",
+        "subtype": "동일한",
+        "description": "페이지에서 서로 다른 단 사이의 간격"
+      },
+      {
+        "param_name": "TabStop",
+        "param_type": "PIT_I4",
+        "subtype": "기본",
+        "description": "탭 간격"
+      },
+      {
+        "param_name": "FootnoteShape",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FootnoteShape 각주 모양"
+      },
+      {
+        "param_name": "EndnoteShape",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FootnoteShape 미주 모양"
+      },
+      {
+        "param_name": "HideHeader",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 머리말 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "HideFooter",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 꼬리말 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "HideMasterPage",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 바탕쪽 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "HideBorder",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 테두리 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "HideFill",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 배경 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "HidePageNumPos",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 쪽번호 감추기 옵션 on / off"
+      },
+      {
+        "param_name": "FirstBorder",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 테두리 표시 옵션 on / off"
+      },
+      {
+        "param_name": "FirstFill",
+        "param_type": "PIT_UI1",
+        "subtype": "구역의",
+        "description": "첫 쪽에만 배경 표시 옵션 on / off"
+      },
+      {
+        "param_name": "OutlineShape",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "NumberingShape 개요 번호"
+      },
+      {
+        "param_name": "PageBorderFillBoth",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "PageBorderFill 쪽 테두리/배경  (양쪽)"
+      },
+      {
+        "param_name": "PageBorderFillEven",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "PageBorderFill 쪽 테두리/배경  (짝수)"
+      },
+      {
+        "param_name": "PageBorderFillOdd",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "PageBorderFill 쪽 테두리/배경  (홀수)"
+      },
+      {
+        "param_name": "PageNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "쪽",
+        "description": "시작 번호"
+      },
+      {
+        "param_name": "FigureNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "그림",
+        "description": "시작 번호"
+      },
+      {
+        "param_name": "TableNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "표",
+        "description": "시작 번호"
+      },
+      {
+        "param_name": "EquationNumber",
+        "param_type": "PIT_UI2",
+        "subtype": "수식",
+        "description": "시작 번호"
+      },
+      {
+        "param_name": "WongojiFormat",
+        "param_type": "PIT_UI1",
+        "subtype": "원고지",
+        "description": "방식의 포맷팅. CHAR_GRID 가 지정되어야 함."
+      },
+      {
+        "param_name": "MemoShape",
+        "param_type": "PIT_SET",
+        "subtype": "MemoShape",
+        "description": "메모 모양"
+      },
+      {
+        "param_name": "TextVerticalWidthHead",
+        "param_type": "PIT_I",
+        "subtype": "머리말/꼬리말",
+        "description": "세로쓰기 여부"
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위",
+        "description": ""
+      },
+      {
+        "param_name": "ApplyClass",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위의",
+        "description": "분류 (대화상자를 호출할 경우 사용)"
+      },
+      {
+        "param_name": "ApplyToPageBorderFill",
+        "param_type": "PIT_UI1",
+        "subtype": "채울",
+        "description": "영역 분류 (PageBorder 액션에서 사용)"
+      },
+      {
+        "param_name": "LineNumberRestart",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "번호 형식"
+      },
+      {
+        "param_name": "LineNumberCountBy",
+        "param_type": "PIT_UI2",
+        "subtype": "줄",
+        "description": "번호 표시 간격"
+      },
+      {
+        "param_name": "LineNumberDistance",
+        "param_type": "PIT_UI",
+        "subtype": "본문과의",
+        "description": "줄 번호 간격 (HWPUNIT)"
+      },
+      {
+        "param_name": "LineNumberStart",
+        "param_type": "PIT_UI2",
+        "subtype": "줄",
+        "description": "번호 시작 번호"
+      },
+      {
+        "param_name": "ShowLineNumbers",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "번호 표시 여부 (On/Off)"
+      },
+      {
+        "param_name": "SectionApplyString",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "PageBorderFill 적용 범위 서브셋, (한/글 2022부터 지원) 상기 파라메터셋은 실제로 글에서 사용되는 파라메터셋이 아닌 일종의 도구용 파라메터셋이다 . 즉, 글의 기능을 위해 존재하지 않는 위 파라메터셋은 GetSectionApplyString 과 GetSectionApplyTo 액션에서만 사용된다. 이 두 액션은 글의 상태에 따라 바뀌는 ApplyClass 와 ApplyTo 의 값을 쉽게 얻기 위해 고안되었다 ."
+      }
+    ],
+    "SectionApply": [
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용범위",
+        "description": "분류(ApplyClass) 에서 하나의 값"
+      },
+      {
+        "param_name": "String",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "ApplyTo 를 문자열로 변환한 값의 배열"
+      },
+      {
+        "param_name": "Index",
+        "param_type": "PIT_I",
+        "subtype": "ApplyTo",
+        "description": "를 변환한 ComboBox 의 Index"
+      },
+      {
+        "param_name": "ConvAplly2Index",
+        "param_type": "PIT_IA",
+        "subtype": "pplyTo",
+        "description": "값을 ComboBox 의 Index 로 변환할지 여부 FALSE 이면 IndexToApply 로 변환이 이루어진다 . (반대변환)"
+      },
+      {
+        "param_name": "Category",
+        "param_type": "PIT_I",
+        "subtype": "적용범위",
+        "description": "분류(ApplyClass) 를 사용자가 직접 설정할 때 사용. 아이템이 없으면 글이 현재 상태에 맞춰 적용범위 분류"
+      }
+    ],
+    "ShapeCopyPaste": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_I",
+        "subtype": "모양",
+        "description": "복사 종류"
+      },
+      {
+        "param_name": "CellAttr",
+        "param_type": "PIT_UI1",
+        "subtype": "셀",
+        "description": "모양 복사"
+      },
+      {
+        "param_name": "CellBorder",
+        "param_type": "PIT_UI1",
+        "subtype": "선",
+        "description": "모양 복사"
+      },
+      {
+        "param_name": "CellFill",
+        "param_type": "PIT_UI1",
+        "subtype": "셀",
+        "description": "배경 복사"
+      },
+      {
+        "param_name": "TypeBodyAndCellOnly",
+        "param_type": "PIT_I",
+        "subtype": "본문과",
+        "description": "셀 모양 둘 다 복사 or 셀 모양만 복사 ShapeObject 는 글의 컨트롤 중 편집영역을 자연스럽게 이동할 수 있는 개체를 말한다. 일반적으로 이런 개체들은 선택했을 때 글에서 ShapeObject 에 해당하는 컨트롤에는 표, 수식, 그림, OLE, 그리기 개체 등이 있다. 이 중 표와 수식은 ShapeObject 를 확 장해 자신만의 ParametetSet 을 사용한다. (\"Table\", \"EqEdit\")"
+      }
+    ],
+    "ShapeObject": [
+      {
+        "param_name": "TreatAsChar",
+        "param_type": "PIT_UI1",
+        "subtype": "글자처럼",
+        "description": "취급 on / off"
+      },
+      {
+        "param_name": "AffectsLine",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "간격에 영향을 줄지 여부 on / off (TreatAsChar 가 TRUE일 경우에만 사용된다)"
+      },
+      {
+        "param_name": "VertRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "세로",
+        "description": "위치의 기준. (TreatAsChar 가 FALSE 일 경우에만 사용된다)"
+      },
+      {
+        "param_name": "VertAlign",
+        "param_type": "PIT_UI1V",
+        "subtype": "ertRelTo",
+        "description": "값에 따른 상대적인 정렬 기준. VertRelTo 값이 2(문단영역)일 경우 0 값만 사용할 수 있다."
+      },
+      {
+        "param_name": "VertOffset",
+        "param_type": "PIT_I4V",
+        "subtype": "ertRelTo",
+        "description": "와 VertAlign 을 기준으로 한 Y축 위치 오프셋 값. HWPUNIT 단위."
+      },
+      {
+        "param_name": "HorzRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "가로",
+        "description": "위치의 기준."
+      },
+      {
+        "param_name": "HorzAlign",
+        "param_type": "PIT_UI1H",
+        "subtype": "orzRelTo",
+        "description": "값에 따른 상대적인 정렬 기준. HorzRelTo 값이 3(문단영역)일 경우 0~2 사이의 값만 사용할 수 있다.127Item ID Type SubType Description"
+      },
+      {
+        "param_name": "HorzOffset",
+        "param_type": "PIT_I4H",
+        "subtype": "orzRelTo",
+        "description": "와 HorzAlign 을 기준으로 한 X축 위치 오프셋 값. HWPUNIT 단위."
+      },
+      {
+        "param_name": "FlowWithText",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체의 세로 위치를 쪽 영역 안쪽으로 제한할지 여부 on / off VertRelTo 값이 2(문단영역)일 경우에만 의미가 있다."
+      },
+      {
+        "param_name": "AllowOverlap",
+        "param_type": "PIT_UI1",
+        "subtype": "다른",
+        "description": "개체와 겹치는 것을 허용할지 여부 on / off TreatAsChar 가 FALSE 일 때만 의미가 있으며, FlowWithText 가 TRUE이면 AllowOverlap 은 항상 FALSE 로 간주한다."
+      },
+      {
+        "param_name": "WidthRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "너비 기준."
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_I4",
+        "subtype": "개체",
+        "description": "너비 값. WidthRelTo 에 따라 값의 의미 및 단위가 달라진다. WidthRelTo 의미 및 단위"
+      },
+      {
+        "param_name": "HeightRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "높이 기준."
+      },
+      {
+        "param_name": "Height",
+        "param_type": "PIT_I4",
+        "subtype": "개체",
+        "description": "높이 값. HeightRelTo 에 다라 값의 의미 및 단위가 달라진다.128Item ID Type SubType Description HeightRelTo 의미 및 단위"
+      },
+      {
+        "param_name": "ProtectSize",
+        "param_type": "PIT_UI1",
+        "subtype": "크기",
+        "description": "보호 on / off"
+      },
+      {
+        "param_name": "TextWrap",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체와 본문 사이의 배치 방법."
+      },
+      {
+        "param_name": "TextFlow",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체의 좌/우 어느 쪽에 글을 배치할지 지정하는 옵션. TextWrap 의 값이 0일 때만 유효하다."
+      },
+      {
+        "param_name": "OutsideMarginLeft",
+        "param_type": "PIT_I4",
+        "subtype": "개체의",
+        "description": "바깥 여백. (왼쪽) HWPUNIT 단위"
+      },
+      {
+        "param_name": "OutsideMarginRight",
+        "param_type": "PIT_I4",
+        "subtype": "개체의",
+        "description": "바깥 여백. (오른쪽) HWPUNIT 단위"
+      },
+      {
+        "param_name": "OutsideMarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "개체의",
+        "description": "바깥 여백. (위) HWPUNIT 단위"
+      },
+      {
+        "param_name": "OutsideMarginBottom",
+        "param_type": "PIT_I4",
+        "subtype": "개체의",
+        "description": "바깥 여백. (아래) HWPUNIT 단위"
+      },
+      {
+        "param_name": "NumberingType",
+        "param_type": "PIT_UI1",
+        "subtype": "이",
+        "description": "개체가 속하는 번호 범주."
+      },
+      {
+        "param_name": "LayoutWidth",
+        "param_type": "PIT_I4",
+        "subtype": "개체가",
+        "description": "페이지에 배열될 때 계산되는 폭의 값"
+      },
+      {
+        "param_name": "LayoutHeight",
+        "param_type": "PIT_I4",
+        "subtype": "개체가",
+        "description": "페이지에 배열될 때 계산되는 높이 값"
+      },
+      {
+        "param_name": "Lock",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "보호하기 on / off"
+      },
+      {
+        "param_name": "HoldAnchorObj",
+        "param_type": "PIT_UI1",
+        "subtype": "쪽",
+        "description": "나눔 방지 on / off"
+      },
+      {
+        "param_name": "PageNumber",
+        "param_type": "PIT_UI",
+        "subtype": "개체가",
+        "description": "존재 하는 페이지"
+      },
+      {
+        "param_name": "AdjustSelection",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "Selection 상태 TRUE/FASLE"
+      },
+      {
+        "param_name": "AdjustTextBox",
+        "param_type": "PIT_UI1",
+        "subtype": "글상자로",
+        "description": "TRUE/FASLE"
+      },
+      {
+        "param_name": "AdjustPrevObjAttr",
+        "param_type": "PIT_UI1",
+        "subtype": "앞개체",
+        "description": "속성 따라가기 TRUE/FASLE129ShapeObject 는 위의 공통 ITEM 외에도 다음의 ITEM을 선택적으로 가질 수 있다."
+      },
+      {
+        "param_name": "ShapeDrawLayOut",
+        "param_type": "PIT_SET",
+        "subtype": "DrawLayOut",
+        "description": "그리기 개체의 Layout"
+      },
+      {
+        "param_name": "ShapeDrawLineAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawLineAttr 그리기 개체의 Line 속성"
+      },
+      {
+        "param_name": "ShapeDrawFillAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawFillAttr 그리기 개체의 Fill 속성"
+      },
+      {
+        "param_name": "ShapeDrawImageAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawImageAttr 그림 개체 속성"
+      },
+      {
+        "param_name": "ShapeDrawRectType",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawRectType 사각형 그리기 개체 유형"
+      },
+      {
+        "param_name": "ShapeDrawArcType",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawArcType 호 그리기 개체 유형"
+      },
+      {
+        "param_name": "ShapeDrawResize",
+        "param_type": "PIT_SET",
+        "subtype": "DrawResize",
+        "description": "그리기 개체 리사이징"
+      },
+      {
+        "param_name": "ShapeDrawRotate",
+        "param_type": "PIT_SET",
+        "subtype": "DrawRotate",
+        "description": "그리기 개체 회전"
+      },
+      {
+        "param_name": "ShapeDrawEditDetail",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawEditDetail 그리기 개체 EditDetail"
+      },
+      {
+        "param_name": "ShapeDrawImageScissoring",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawImageScissoring 그림 개체 자르기"
+      },
+      {
+        "param_name": "ShapeDrawScAction",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawScAction 그리기 개체 회전"
+      },
+      {
+        "param_name": "ShapeDrawCtrlHyperlink",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawCtrlHyperlink 그리기 개체 하이퍼링크"
+      },
+      {
+        "param_name": "ShapeDrawCoordInfo",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawCoordInfo 그리기 개체 좌표정보"
+      },
+      {
+        "param_name": "ShapeDrawShear",
+        "param_type": "PIT_SET",
+        "subtype": "DrawShear",
+        "description": "그리기 개체 기울이기"
+      },
+      {
+        "param_name": "ShapeDrawTextart",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "DrawTextart 글맵시"
+      },
+      {
+        "param_name": "ShapeDrawShadow",
+        "param_type": "PIT_SET",
+        "subtype": "DrawShadow",
+        "description": "그림자"
+      },
+      {
+        "param_name": "ShapeTableCell",
+        "param_type": "PIT_SET",
+        "subtype": "Cell",
+        "description": "셀 정보"
+      },
+      {
+        "param_name": "ShapeListProperties",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "ListProperties 서브 list 속성"
+      },
+      {
+        "param_name": "ShapeCaption",
+        "param_type": "PIT_SET",
+        "subtype": "Caption",
+        "description": "캡션"
+      },
+      {
+        "param_name": "ShapeFormGeneral",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormGeneral 양식개체 일반"
+      },
+      {
+        "param_name": "ShapeFormCommonAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormCommonAttr 양식개체 공통속성"
+      },
+      {
+        "param_name": "ShapeFormCharshapeattr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormCharshapeattr 양식개체 글자모양 속성"
+      },
+      {
+        "param_name": "ShapeFormButtonAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormButtonAttr 양식개체 버튼 속성"
+      },
+      {
+        "param_name": "ShapeFormComboboxAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormComboboxAttr 양식개체 콤보박스 속성"
+      },
+      {
+        "param_name": "ShapeFormEditAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormEditAttr 양식개체 에디트박스 속성"
+      },
+      {
+        "param_name": "ShapeFormScrollbarAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormScrollbarAttr 양식개체 스크롤바 속성"
+      },
+      {
+        "param_name": "ShapeFormListBoxAttr",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "FormListBoxAttr 양식개체 리스트박스 속성"
+      },
+      {
+        "param_name": "ShapeType",
+        "param_type": "PIT_UI1",
+        "subtype": "",
+        "description": "TablePropertyDialog 의 종류"
+      },
+      {
+        "param_name": "ShapeCellSize",
+        "param_type": "PIT_UI1",
+        "subtype": "셀",
+        "description": "크기 적용 여부 ( on / off )"
+      },
+      {
+        "param_name": "ShapeCreationMode",
+        "param_type": "PIT_UI1",
+        "subtype": "마우스로",
+        "description": "그리기 여부 ( on / off ) (DrawObjCreatorObject 에서 사용)"
+      },
+      {
+        "param_name": "ShapeComment",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "ShapeObjComment 개체 설명문"
+      }
+    ],
+    "ShapeObjectCopyPaste": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_I",
+        "subtype": "그리기",
+        "description": "모양 복사/붙여 넣기 종류 (예약.. 현재 사용하지 않음)"
+      },
+      {
+        "param_name": "ShapeObjectLine",
+        "param_type": "PIT_UI",
+        "subtype": "그리기",
+        "description": "선 모양 복사"
+      },
+      {
+        "param_name": "ShapeObjectFill",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "채우기 복사"
+      },
+      {
+        "param_name": "ShapeObjectSize",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체 크기 복사"
+      },
+      {
+        "param_name": "ShapeObjectShadow",
+        "param_type": "PIT_UI1",
+        "subtype": "그리기",
+        "description": "개체 그림자 복사"
+      },
+      {
+        "param_name": "ShapeObjectPicEffect",
+        "param_type": "PIT_UI1",
+        "subtype": "그림",
+        "description": "효과 복사"
+      }
+    ],
+    "Sort": [
+      {
+        "param_name": "KeyOption",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I4",
+        "description": "키 콤보에서 선택된 키를 저장함."
+      },
+      {
+        "param_name": "CheckJasoReverse",
+        "param_type": "PIT_UI1",
+        "subtype": "자소",
+        "description": "단위 비교 Flag - 종, 중, 초"
+      },
+      {
+        "param_name": "DelimiterType",
+        "param_type": "PIT_UI1",
+        "subtype": "필드",
+        "description": "구분 기호 형식 :"
+      },
+      {
+        "param_name": "DelimiterChars",
+        "param_type": "PIT_BSTR",
+        "subtype": "필드",
+        "description": "구분 기호들. DelimiterType 이 3(사용자 정의)일 경우에만"
+      },
+      {
+        "param_name": "IgnoreMultiDelimiter",
+        "param_type": "PIT_UI1",
+        "subtype": "연속되는",
+        "description": "구분기호 무시 Flag"
+      },
+      {
+        "param_name": "CheckFromRear",
+        "param_type": "PIT_UI1",
+        "subtype": "단어",
+        "description": "뒤에서 부터 비교 Flag"
+      },
+      {
+        "param_name": "CheckExtendYear",
+        "param_type": "PIT_UI1",
+        "subtype": "두",
+        "description": "자리 년도 확장 check Flag"
+      },
+      {
+        "param_name": "YearBase",
+        "param_type": "PIT_UI",
+        "subtype": "두",
+        "description": "자리 년도 시작 년도"
+      },
+      {
+        "param_name": "LangOrderType",
+        "param_type": "PIT_UI1",
+        "subtype": "사전언어순서",
+        "description": "값"
+      },
+      {
+        "param_name": "CheckJaso",
+        "param_type": "PIT_UI1",
+        "subtype": "자소",
+        "description": "단위 비교 Flag - 초, 중, 종"
+      },
+      {
+        "param_name": "EachPara",
+        "param_type": "PIT_UI1",
+        "subtype": "정렬시",
+        "description": "각 문단별 정렬 여부 Flag – 키 옵션이 “단어” 인 경우만 사용됨134109)Style : 스타일"
+      }
+    ],
+    "Style": [
+      {
+        "param_name": "Apply",
+        "param_type": "PIT_I",
+        "subtype": "적용할",
+        "description": "스타일 인덱스"
+      }
+    ],
+    "StyleDelete": [
+      {
+        "param_name": "Target",
+        "param_type": "PIT_I",
+        "subtype": "지워야할",
+        "description": "스타일 인덱스"
+      },
+      {
+        "param_name": "Alternation",
+        "param_type": "PIT_I",
+        "subtype": "대체할",
+        "description": "스타일 인덱스"
+      }
+    ],
+    "StyleTemplate": [
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일",
+        "description": "이름"
+      }
+    ],
+    "Sum": [
+      {
+        "param_name": "Sum",
+        "param_type": "PIT_BSTR",
+        "subtype": "합",
+        "description": ""
+      },
+      {
+        "param_name": "Average",
+        "param_type": "PIT_BSTR",
+        "subtype": "평균",
+        "description": ""
+      },
+      {
+        "param_name": "LineCount",
+        "param_type": "PIT_BSTR",
+        "subtype": "줄",
+        "description": "수"
+      },
+      {
+        "param_name": "Comma",
+        "param_type": "PIT_UI1",
+        "subtype": "세",
+        "description": "자리마다 쉼표로 자리 구분 (on / off)"
+      },
+      {
+        "param_name": "Option",
+        "param_type": "PIT_I4",
+        "subtype": "형식",
+        "description": "옵션"
+      },
+      {
+        "param_name": "Method",
+        "param_type": "PIT_I4",
+        "subtype": "동작",
+        "description": "옵션 (0:copy, 1: paste)"
+      }
+    ],
+    "SummaryInfo": [
+      {
+        "param_name": "Title",
+        "param_type": "PIT_BSTR",
+        "subtype": "제목",
+        "description": ""
+      },
+      {
+        "param_name": "Subject",
+        "param_type": "PIT_BSTR",
+        "subtype": "주제",
+        "description": ""
+      },
+      {
+        "param_name": "Author",
+        "param_type": "PIT_BSTR",
+        "subtype": "지은이",
+        "description": ""
+      },
+      {
+        "param_name": "Date",
+        "param_type": "PIT_BSTR",
+        "subtype": "날짜",
+        "description": ""
+      },
+      {
+        "param_name": "KeyWords",
+        "param_type": "PIT_BSTR",
+        "subtype": "키워드",
+        "description": ""
+      },
+      {
+        "param_name": "Comments",
+        "param_type": "PIT_BSTR",
+        "subtype": "기타",
+        "description": ""
+      },
+      {
+        "param_name": "CreationTimeLow",
+        "param_type": "PIT_UI4",
+        "subtype": "작성한",
+        "description": "날짜 (low)"
+      },
+      {
+        "param_name": "CreationTimeHigh",
+        "param_type": "PIT_UI4",
+        "subtype": "작성한",
+        "description": "날짜 (high)"
+      },
+      {
+        "param_name": "ModifiedTimeLow",
+        "param_type": "PIT_UI4",
+        "subtype": "마지막",
+        "description": "수정한 날짜 (low)"
+      },
+      {
+        "param_name": "ModifiedTimeHigh",
+        "param_type": "PIT_UI4",
+        "subtype": "마지막",
+        "description": "수정한 날짜 (high)"
+      },
+      {
+        "param_name": "PrintedTimeLow",
+        "param_type": "PIT_UI",
+        "subtype": "마지막",
+        "description": "인쇄한 날짜 (low)"
+      },
+      {
+        "param_name": "PrintedTimeHigh",
+        "param_type": "PIT_UI4",
+        "subtype": "마지막",
+        "description": "인쇄한 날짜 (high)"
+      },
+      {
+        "param_name": "LastSavedBy",
+        "param_type": "PIT_BSTR",
+        "subtype": "마지막",
+        "description": "저장한 사람 Characters PMT_INT 문서분량 (글자) Words PMT_INT 문서분량 (낱말) Lines PMT_INT 문서분량 (줄) Paragraphs PMT_INT 문서분량 (문단)"
+      },
+      {
+        "param_name": "DocVersion",
+        "param_type": "PIT_BSTR",
+        "subtype": "문서",
+        "description": "파일 버전"
+      },
+      {
+        "param_name": "HwpVersion",
+        "param_type": "PIT_BSTR",
+        "subtype": "문서를",
+        "description": "생성한 글 워드프로그램의 버전"
+      },
+      {
+        "param_name": "HanjaChar",
+        "param_type": "PIT_I1",
+        "subtype": "문서분량",
+        "description": "(한자 수) CharactersExceptS"
+      },
+      {
+        "param_name": "ExtractImagePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "그림",
+        "description": "파일 연결 경로 - 한/글 외부에서 사용함 ExtractImageBaseF"
+      },
+      {
+        "param_name": "ChangeImageExtTo",
+        "param_type": "PIT_BSTR",
+        "subtype": "변경할",
+        "description": "그림 파일의 확장자(TO)"
+      },
+      {
+        "param_name": "EmbedImagePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "삽입할",
+        "description": "연결 그림 파일의 경로 SelectedSummaryIn"
+      },
+      {
+        "param_name": "LicenseInfo",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "SummaryInfo 저작권 CCL, 공공누리 정보"
+      },
+      {
+        "param_name": "LicenseFlag",
+        "param_type": "PIT_UI4",
+        "subtype": "",
+        "description": "SummaryInfo 공공누리, CCL 플래그"
+      },
+      {
+        "param_name": "UserPropertyName",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "사용자 속성 – 이름, (한/글 2024부터 지원) UserPropertyForma"
+      },
+      {
+        "param_name": "tPIT_ARRAY",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "속성 - 형식, (한/글 2024부터 지원)"
+      },
+      {
+        "param_name": "UserPropertyValue",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "사용자 속성 - 값, (한/글 2024부터 지원)"
+      }
+    ],
+    "TabDef": [
+      {
+        "param_name": "AutoTabLeft",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "왼쪽 끝 탭 (on / off)"
+      },
+      {
+        "param_name": "AutoTabRight",
+        "param_type": "PIT_UI1",
+        "subtype": "문단",
+        "description": "오른쪽 끝 탭 (on / off)"
+      },
+      {
+        "param_name": "TabItem",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I각각의",
+        "description": "탭 정의. 하나의 탭 아이템은 세 개의 인수로 표현되어 있음."
+      },
+      {
+        "param_name": "DeleteTab",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I지운",
+        "description": "탭 위치 (URC) 첫 번째 값이 -1 이면 모두 지웠음을 의미한다.141115)Table : 표 Table 은 ShapeObject 로부터 계승받았으므로 위 표에 정리된 Table 의 아이템들 이외에 ShapeObject 의 아이템들을 사용할 수 있다."
+      }
+    ],
+    "Table": [
+      {
+        "param_name": "PageBreak",
+        "param_type": "PIT_UI1",
+        "subtype": "표가",
+        "description": "페이지 경계에 걸렸을 때의 처리 방식"
+      },
+      {
+        "param_name": "RepeatHeader",
+        "param_type": "PIT_UI1",
+        "subtype": "제목",
+        "description": "행을 반복할지 여부. (on / off)"
+      },
+      {
+        "param_name": "CellSpacing",
+        "param_type": "PIT_UI4",
+        "subtype": "셀",
+        "description": "간격(HTML 의 셀 간격과 동일 의미. HWPUNIT)"
+      },
+      {
+        "param_name": "CellMarginLeft",
+        "param_type": "PIT_I4",
+        "subtype": "기본",
+        "description": "셀 안쪽 여백(왼쪽)"
+      },
+      {
+        "param_name": "CellMarginRight",
+        "param_type": "PIT_I4",
+        "subtype": "기본",
+        "description": "셀 안쪽 여백(오른쪽)"
+      },
+      {
+        "param_name": "CellMarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "기본",
+        "description": "셀 안쪽 여백(위쪽)"
+      },
+      {
+        "param_name": "CellMarginBottom",
+        "param_type": "PIT_I4",
+        "subtype": "기본",
+        "description": "셀 안쪽 여백(아래쪽)"
+      },
+      {
+        "param_name": "BorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "표에 적용되는 테두리/배경"
+      },
+      {
+        "param_name": "TableCharInfo",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "TableChartInfo 표와 연결된 차트 정보 - 차트 미완성"
+      },
+      {
+        "param_name": "TableBorderFill",
+        "param_type": "PIT_SET",
+        "subtype": "BorderFill",
+        "description": "표에 적용되는 테두리/배경"
+      },
+      {
+        "param_name": "Cell",
+        "param_type": "PIT_SET",
+        "subtype": "Cell",
+        "description": "셀 속성"
+      },
+      {
+        "param_name": "TreatAsChar",
+        "param_type": "PIT_UI1",
+        "subtype": "글자처럼",
+        "description": "취급 on / off"
+      },
+      {
+        "param_name": "AffectsLine",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "간격에 영향을 줄지 여부 on / off TREAT_AS_CHAR = TRUE일 때만 사용됨"
+      },
+      {
+        "param_name": "VertRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "세로",
+        "description": "위치의 기준. TREAT_AS_CHAR = FALSE 일 때만 사용됨"
+      },
+      {
+        "param_name": "VertAlign",
+        "param_type": "PIT_UI1VERT",
+        "subtype": "_REL_TO",
+        "description": "에 대한 상대적인 배열 방식. VERT_REL_TO 의 값에 따라 가능한 범위가 제한된다."
+      },
+      {
+        "param_name": "VertOffset",
+        "param_type": "PIT_UI4VERT",
+        "subtype": "_REL_TO",
+        "description": "와 VERT_ALIGN 을 기준점으로 한 상대적인 오프셋 값. HWPUNIT 단위.142Item ID Type SubType Description"
+      },
+      {
+        "param_name": "HorzRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "가로",
+        "description": "위치의 기준. TREAT_AS_CHAR = FALSE 일 때만 사용됨"
+      },
+      {
+        "param_name": "HorzAlign",
+        "param_type": "PIT_UI1HORZ",
+        "subtype": "_REL_TO",
+        "description": "에 대한 상대적인 배열 방식."
+      },
+      {
+        "param_name": "HorzOffset",
+        "param_type": "PIT_I4HORZ",
+        "subtype": "_REL_TO",
+        "description": "와 HORZ_ALIGN 을 기준점으로 한 상대적인 오프셋 값. HWPUNIT 단위."
+      },
+      {
+        "param_name": "FlowWithText",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트의",
+        "description": "세로 위치를 본문 영역으로 제한할지 여부 on / off VERT_REL_TO = PARA일 때만 사용됨"
+      },
+      {
+        "param_name": "AllowOverlap",
+        "param_type": "PIT_UI1",
+        "subtype": "다른",
+        "description": "오브젝트와 겹치는 것을 허용할지 여부 on / off TREAT_AS_CHAR = FALSE 일 때만 사용됨 FLOW_WITH_TEXT = TRUE이면 언제나 FALSE 로 간주한다."
+      },
+      {
+        "param_name": "WidthRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트",
+        "description": "폭의 기준"
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트",
+        "description": "폭의 값 WIDTH_REL_TO 의 값에 따라 다음과 같은 다른 단위를 뜻한다."
+      },
+      {
+        "param_name": "HeightRelTo",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트",
+        "description": "높이의 기준"
+      },
+      {
+        "param_name": "Height",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트의",
+        "description": "높이 값 HEIGHT_REL_TO 의 값에 따라 다음과 같은 다른 단위를 뜻한다."
+      },
+      {
+        "param_name": "ProtectSize",
+        "param_type": "PIT_UI1",
+        "subtype": "크기",
+        "description": "보호 on / off"
+      },
+      {
+        "param_name": "TextWrap",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트",
+        "description": "주위를 텍스트가 어떻게 흘러갈지 지정하는 옵션. TREAT_AS_CHAR = FALSE 일 때만 사용됨"
+      },
+      {
+        "param_name": "TextFlow",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트의",
+        "description": "좌/우 어느쪽에 글을 배치할지 지정하는 옵션. TEXT_WRAP 가 SQUARE, TIGHT, THROUGH 일 때만 사용된다."
+      },
+      {
+        "param_name": "OutsideMarginLeft",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트의",
+        "description": "바깥 여백. HWPUNIT 단위 OutsideMarginRigh"
+      },
+      {
+        "param_name": "OutsideMarginTop",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트의",
+        "description": "바깥 여백. HWPUNIT 단위 OutsideMarginBott"
+      },
+      {
+        "param_name": "NumberingType",
+        "param_type": "PIT_UI1",
+        "subtype": "이",
+        "description": "개체가 속하는 번호 범주"
+      },
+      {
+        "param_name": "LayoutWidth",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트가",
+        "description": "페이지에 배열될 때 계산되는 폭의 값 글상자등이 늘어나면 늘어난 값을 계산해서 가진다. 단위는 HWPITID_SO_WIDTH 와 같다."
+      },
+      {
+        "param_name": "LayoutHeight",
+        "param_type": "PIT_I4",
+        "subtype": "오브젝트가",
+        "description": "페이지에 배열될 때 계산되는 높이 값"
+      },
+      {
+        "param_name": "Lock",
+        "param_type": "PIT_UI1",
+        "subtype": "오브젝트",
+        "description": "선택 가능 on / off"
+      },
+      {
+        "param_name": "HoldAnchorObj",
+        "param_type": "PIT_UI1",
+        "subtype": "쪽",
+        "description": "나눔방지 on/off"
+      },
+      {
+        "param_name": "PageNumber",
+        "param_type": "PIT_UI",
+        "subtype": "개체가",
+        "description": "존재 하는 페이지"
+      },
+      {
+        "param_name": "AdjustSelection",
+        "param_type": "PIT_UI1",
+        "subtype": "개체",
+        "description": "Selection 상태 TRUE/FASLE"
+      },
+      {
+        "param_name": "AdjustTextbox",
+        "param_type": "PIT_UI1",
+        "subtype": "글상자로",
+        "description": "TRUE/FASLE"
+      },
+      {
+        "param_name": "AdjustPrevObjAttr",
+        "param_type": "PIT_UI1",
+        "subtype": "앞개체",
+        "description": "속성 따라가기 TRUE/FASLE Dim TableSet As HwpParameterSet Set TableSet = HwpCtrl.CreateSet(\"Table\") TableSet.SetItem \"PageBreak\", 1 ← Table 의 아이템 TableSet.SetItem \"TreatAsChar\", True ← ShapeObject 의 아이템145116)TableCreation : 표 생성"
+      }
+    ],
+    "TableCreation": [
+      {
+        "param_name": "Rows",
+        "param_type": "PIT_UI2",
+        "subtype": "행",
+        "description": "수 (생략하면 5)"
+      },
+      {
+        "param_name": "Cols",
+        "param_type": "PIT_UI2",
+        "subtype": "칼럼",
+        "description": "수 (생략하면 5)"
+      },
+      {
+        "param_name": "RowHeight",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I4",
+        "description": "행의 디폴트 높이 (PIT_I4)"
+      },
+      {
+        "param_name": "ColWidth",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I4",
+        "description": "칼럼의 디폴트 폭 (PIT_I4)"
+      },
+      {
+        "param_name": "CellInfo",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_I4정보가",
+        "description": "없는 셀은 디폴트값을 따라가므로 모든 셀에 대해 정보를 줄 필요는 없다."
+      },
+      {
+        "param_name": "WidthType",
+        "param_type": "PIT_UI1",
+        "subtype": "너비",
+        "description": ""
+      },
+      {
+        "param_name": "HeightType",
+        "param_type": "PIT_UI1",
+        "subtype": "높이",
+        "description": ""
+      },
+      {
+        "param_name": "WidthValue",
+        "param_type": "PIT_I",
+        "subtype": "너비",
+        "description": "값"
+      },
+      {
+        "param_name": "HeightValue",
+        "param_type": "PIT_I",
+        "subtype": "높이",
+        "description": "값"
+      },
+      {
+        "param_name": "TableTemplateValue",
+        "param_type": "PIT_UI1",
+        "subtype": "표",
+        "description": "마당 적용 여부"
+      },
+      {
+        "param_name": "TableProperties",
+        "param_type": "PIT_SET",
+        "subtype": "Table",
+        "description": "초기 표 속성"
+      },
+      {
+        "param_name": "TableTemplate",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "TableTemplate 표마당 적용 속성"
+      },
+      {
+        "param_name": "TableDrawProperties",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "TableDrawPen 마우스로 선을 그릴 때 속성"
+      },
+      {
+        "param_name": "TextSelect",
+        "param_type": "PIT_I",
+        "subtype": "텍스트",
+        "description": "선택 여부"
+      }
+    ],
+    "TableDeleteLine": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "0",
+        "description": "= 줄, 1 = 칸"
+      }
+    ],
+    "TableDrawPen": [
+      {
+        "param_name": "Style",
+        "param_type": "PIT_UI2",
+        "subtype": "Table",
+        "description": "을 그리는 연필(펜)의 선 모양"
+      },
+      {
+        "param_name": "Width",
+        "param_type": "PIT_UI1",
+        "subtype": "Table",
+        "description": "을 그리는 연필(펜)의 선 굵기"
+      },
+      {
+        "param_name": "Color",
+        "param_type": "PIT_UI4T",
+        "subtype": "able",
+        "description": "을 그리는 연필(펜)의 선 색깔 RGB color 를 나타내기 위한 32비트 값 (0x00BBGGRR)148119)TableInsertLine : 표의 줄/칸 삽입"
+      }
+    ],
+    "TableInsertLine": [
+      {
+        "param_name": "Side",
+        "param_type": "PIT_UI1",
+        "subtype": "방향",
+        "description": ""
+      },
+      {
+        "param_name": "Count",
+        "param_type": "PIT_UI1",
+        "subtype": "개수",
+        "description": ""
+      }
+    ],
+    "TableSplitCell": [
+      {
+        "param_name": "Cols",
+        "param_type": "PIT_UI2",
+        "subtype": "칸",
+        "description": "수"
+      },
+      {
+        "param_name": "Rows",
+        "param_type": "PIT_UI2",
+        "subtype": "줄",
+        "description": "수"
+      },
+      {
+        "param_name": "DistributeHeight",
+        "param_type": "PIT_UI1",
+        "subtype": "줄",
+        "description": "높이를 같게"
+      },
+      {
+        "param_name": "Merge",
+        "param_type": "PIT_UI1",
+        "subtype": "나누기",
+        "description": "전에 합치기"
+      },
+      {
+        "param_name": "Mode2",
+        "param_type": "PIT_UI1",
+        "subtype": "셀",
+        "description": "나누기 모드 2, 셀 나누기를 할 때, adjust 를 생략하고 셀이 어 긋나는 것을 방지한다.150121)TableStrToTbl : 문자열을 표로"
+      }
+    ],
+    "TableStrToTbl": [
+      {
+        "param_name": "DelimiterType",
+        "param_type": "PIT_UI1",
+        "subtype": "분리",
+        "description": "문자(탭, 쉼표, 공백)"
+      },
+      {
+        "param_name": "UserDefine",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "정의 필드 구분 기호"
+      },
+      {
+        "param_name": "AutoOrDefine",
+        "param_type": "PIT_UI1",
+        "subtype": "자동으로",
+        "description": "할 것인지 분리 문자를 지정 할 것인지를 결정"
+      },
+      {
+        "param_name": "KeepSeperator",
+        "param_type": "PIT_UI1",
+        "subtype": "선택",
+        "description": "사항 (구분자 유지)"
+      },
+      {
+        "param_name": "DelimiterEtc",
+        "param_type": "PIT_BSTR",
+        "subtype": "기타",
+        "description": "문자 필드 구분 기호"
+      },
+      {
+        "param_name": "TableCreation",
+        "param_type": "PIT_SET",
+        "subtype": "",
+        "description": "TableCreation 만들 표 속성"
+      }
+    ],
+    "TableSwap": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "표",
+        "description": "뒤집기 형식"
+      },
+      {
+        "param_name": "SwapMargin",
+        "param_type": "PIT_UI1",
+        "subtype": "여백",
+        "description": "뒤집기 지원여부"
+      }
+    ],
+    "TableTblToStr": [
+      {
+        "param_name": "DelimiterType",
+        "param_type": "PIT_UI1",
+        "subtype": "분리",
+        "description": "문자(탭, 쉼표, 공백)"
+      },
+      {
+        "param_name": "UserDefine",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자",
+        "description": "정의 필드 구분 기호"
+      }
+    ],
+    "TableTemplate": [
+      {
+        "param_name": "Format",
+        "param_type": "PIT_UI",
+        "subtype": "적용할",
+        "description": "서식. 다음 값의 조합으로 구성된다."
+      },
+      {
+        "param_name": "ApplyTarger",
+        "param_type": "PIT_UI",
+        "subtype": "적용",
+        "description": "대상. 다음 값의 조합으로 구성된다."
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "표",
+        "description": "마당 파일 이름"
+      },
+      {
+        "param_name": "CreateMode",
+        "param_type": "PIT_UI1",
+        "subtype": "표",
+        "description": "만들기 모드 (표 만들기에서 제목줄에 제목 속성 넣기 위해)"
+      },
+      {
+        "param_name": "ThemeColor",
+        "param_type": "PIT_UI",
+        "subtype": "테마색",
+        "description": "설정. CtrlCode.Properties 에서 사용된다."
+      }
+    ],
+    "TextCtrl": [
+      {
+        "param_name": "CtrlData",
+        "param_type": "PIT_SET",
+        "subtype": "CtrlData",
+        "description": "컨트롤 이름 저장을 위한 영역"
+      }
+    ],
+    "TextVertical": [
+      {
+        "param_name": "Landscope",
+        "param_type": "PIT_UI1",
+        "subtype": "용지",
+        "description": "방향. 0 = 좁게, 1 = 넓게"
+      },
+      {
+        "param_name": "TextDirection",
+        "param_type": "PIT_UI2",
+        "subtype": "글자",
+        "description": "방향."
+      },
+      {
+        "param_name": "TextVerticalWidthHead",
+        "param_type": "PIT_I",
+        "subtype": "머리말/꼬리말",
+        "description": "세로쓰기 여부"
+      },
+      {
+        "param_name": "ApplyTo",
+        "param_type": "PIT_UI1",
+        "subtype": "적용",
+        "description": "대상"
+      },
+      {
+        "param_name": "ApplyClass",
+        "param_type": "PIT_UI1",
+        "subtype": "적용",
+        "description": "대상 분류. 적용 대상 분류는 현재 캐럿의 상태에 따라 ApplyTo 에 적용 가능한 대상을 한정짓는 역할을 한다. 내부적으로 값이 계산되므로 , 값을 참조하는 용도로만 사용하도록 한다. 다음의 값의 조합으로 구성된"
+      }
+    ],
+    "UserQCommandFile": [
+      {
+        "param_name": "Save",
+        "param_type": "PIT_I4",
+        "subtype": "저장",
+        "description": "(TRUE = Save, FALSE = Open)"
+      },
+      {
+        "param_name": "FileName",
+        "param_type": "PIT_BSTR",
+        "subtype": "파일명",
+        "description": ""
+      },
+      {
+        "param_name": "LoadType",
+        "param_type": "PIT_I4",
+        "subtype": "로드",
+        "description": "방법 (TRUE = Overwrite, FALSE = Merge)"
+      }
+    ],
+    "VersionInfo": [
+      {
+        "param_name": "SourcePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "버전",
+        "description": "비교용 소스 패스"
+      },
+      {
+        "param_name": "TargetPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "버전",
+        "description": "비교용 타겟 패스"
+      },
+      {
+        "param_name": "ItemStartIndex",
+        "param_type": "PIT_UI1",
+        "subtype": "버전",
+        "description": "비교를 보여줄 시작 히스토리 인덱스"
+      },
+      {
+        "param_name": "ItemEndIndex",
+        "param_type": "PIT_UI1",
+        "subtype": "버전",
+        "description": "비교를 보여줄 마지막 히스토리 인덱스"
+      },
+      {
+        "param_name": "ItemOverWrite",
+        "param_type": "PIT_UI1",
+        "subtype": "히스토리",
+        "description": "정보를 저장할 때 마지막 버전으로 덮어쓰는 플랙 (on/off) ItemSaveDescriptio"
+      },
+      {
+        "param_name": "TempFilePath",
+        "param_type": "PIT_ARRAY",
+        "subtype": "PIT_BSTR",
+        "description": "버전 비교용 임시파일 경로"
+      },
+      {
+        "param_name": "ItemInfoIndex",
+        "param_type": "PIT_UI4",
+        "subtype": "버전",
+        "description": "정보 얻어오기 및 삭제 시 사용될 인덱스"
+      },
+      {
+        "param_name": "SaveFilePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "버전",
+        "description": "저장 파일 경로(OCX 컨트롤용)"
+      },
+      {
+        "param_name": "ItemInfoWriter",
+        "param_type": "PIT_BSTR",
+        "subtype": "작성자",
+        "description": "정보 ItemInfoDescriptio"
+      },
+      {
+        "param_name": "ItemInfoTimeHi",
+        "param_type": "PIT_UI4",
+        "subtype": "날짜",
+        "description": "정보, FILETIME 의 HIWORD"
+      },
+      {
+        "param_name": "ItemInfoTimeLo",
+        "param_type": "PIT_UI4",
+        "subtype": "날짜",
+        "description": "정보, FILETIME 의 LOWORD"
+      },
+      {
+        "param_name": "ItemInfoLock",
+        "param_type": "PIT_UI1",
+        "subtype": "히스토리",
+        "description": "정보 수정 플랙"
+      },
+      {
+        "param_name": "VersionAutoSave",
+        "param_type": "PIT_UI1",
+        "subtype": "새",
+        "description": "버전으로 자동 저장 on/off VersionDiffSplitVi"
+      },
+      {
+        "param_name": "UsedStanTime",
+        "param_type": "PIT_UI1",
+        "subtype": "표준시",
+        "description": "사용 플랙"
+      },
+      {
+        "param_name": "UsedCert",
+        "param_type": "PIT_UI1",
+        "subtype": "공인인증서",
+        "description": "인증 사용 플랙"
+      },
+      {
+        "param_name": "FileDiff",
+        "param_type": "PIT_UI1",
+        "subtype": "문서",
+        "description": "비교 액션 플랙"
+      },
+      {
+        "param_name": "ResultSourcePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "문서",
+        "description": "비교 SRC 결과 파일 경로 (OCX 컨트롤용)"
+      },
+      {
+        "param_name": "ResultTargetPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "문서",
+        "description": "비교 TGT 결과 파일 경로 (OCX 컨트롤용)"
+      },
+      {
+        "param_name": "ResultMergedPath",
+        "param_type": "PIT_BSTR",
+        "subtype": "문서",
+        "description": "비교 Merged 결과 파일 경로 (OCX 컨트롤용)"
+      },
+      {
+        "param_name": "ResultOption",
+        "param_type": "PIT_UI1",
+        "subtype": "문서",
+        "description": "비교 결과 옵션 (0:메모, 1:교정부호) (OCX 컨트롤용)"
+      },
+      {
+        "param_name": "ResultShowMemo",
+        "param_type": "PIT_UI1",
+        "subtype": "문서",
+        "description": "비교 결과 메모를 화면에 보이게 할 지 여부(문서 비교 결과 옵션이 메모일 경우에 동작) (OCX 컨트롤용)158129)ViewProperties : 뷰의 속성"
+      }
+    ],
+    "ViewProperties": [
+      {
+        "param_name": "OptionFlag",
+        "param_type": "PIT_UI",
+        "subtype": "뷰",
+        "description": "옵션 플랙. 여러 개를 OR연산하여 지정할 수 있음."
+      },
+      {
+        "param_name": "ZoomType",
+        "param_type": "PIT_UI1",
+        "subtype": "화면",
+        "description": "확대 종류."
+      },
+      {
+        "param_name": "ZoomRatio",
+        "param_type": "PIT_UI2",
+        "subtype": "화면",
+        "description": "확대 종류가 “사용자 정의”인 경우 화면 확대 비율. 10% ~"
+      },
+      {
+        "param_name": "ZoomCntX",
+        "param_type": "PIT_UI1",
+        "subtype": "화면",
+        "description": "확대 종류가 “여러 쪽”인 경우 가로 페이지 수."
+      },
+      {
+        "param_name": "ZoomCntY",
+        "param_type": "PIT_UI1",
+        "subtype": "화면",
+        "description": "확대 종류가 “여러 쪽”인 경우 세로 페이지 수."
+      },
+      {
+        "param_name": "ZoomMirror",
+        "param_type": "PIT_UI1",
+        "subtype": "맞쪽",
+        "description": "보기. 페이지 수가 2의 배수일 때만 동작"
+      },
+      {
+        "param_name": "PageDir",
+        "param_type": "PIT_UI1",
+        "subtype": "쪽",
+        "description": "방향(HWPPAGE_DIR_VERT : 0, HWPPAGE_DIR_HORZ : 1)"
+      },
+      {
+        "param_name": "MouseWheelDir",
+        "param_type": "PIT_UI1",
+        "subtype": "마우스",
+        "description": "휠 방향(HWPWHEEL_DIR_VERT : 0, HWPWHEEL_DIR_HORZ : 1)"
+      },
+      {
+        "param_name": "DragDrop",
+        "param_type": "PIT_UI1",
+        "subtype": "드래그",
+        "description": "앤 드롭 지원 HwpCtrl.GetViewStatus 에서 사용, 해당 액션은 존재하지 않음."
+      }
+    ],
+    "ViewStatus": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI",
+        "subtype": "0",
+        "description": "(현재 View의 절대 Pos값만 지원함)"
+      },
+      {
+        "param_name": "ViewPosX",
+        "param_type": "PIT_I4",
+        "subtype": "현재",
+        "description": "뷰의 X값"
+      },
+      {
+        "param_name": "ViewPosY",
+        "param_type": "PIT_I4",
+        "subtype": "현재",
+        "description": "뷰의 Y값"
+      }
+    ],
+    "CompatibleDocument": [
+      {
+        "param_name": "TargetProgram",
+        "param_type": "PIT_UI",
+        "subtype": "대상",
+        "description": "프로그램"
+      },
+      {
+        "param_name": "Default",
+        "param_type": "PIT_UI",
+        "subtype": "대화상자",
+        "description": "기본 제공 여부"
+      },
+      {
+        "param_name": "CurrentVersion",
+        "param_type": "PIT_UI",
+        "subtype": "현재",
+        "description": "버전 여부"
+      }
+    ],
+    "PronounceInfo": [
+      {
+        "param_name": "Show",
+        "param_type": "PIT_UI1",
+        "subtype": "한자/일어",
+        "description": "발음 표시 보이기"
+      },
+      {
+        "param_name": "Position",
+        "param_type": "PIT_UI1",
+        "subtype": "표시",
+        "description": "위치"
+      },
+      {
+        "param_name": "Hanja",
+        "param_type": "PIT_UI1",
+        "subtype": "한자",
+        "description": "표시"
+      },
+      {
+        "param_name": "Japanese",
+        "param_type": "PIT_UI1",
+        "subtype": "일어",
+        "description": "표시"
+      },
+      {
+        "param_name": "FontName",
+        "param_type": "PIT_BSTR",
+        "subtype": "글꼴",
+        "description": ""
+      },
+      {
+        "param_name": "TextSize",
+        "param_type": "PIT_UI1",
+        "subtype": "글자",
+        "description": "크기"
+      },
+      {
+        "param_name": "TextColor",
+        "param_type": "PIT_UI4",
+        "subtype": "글자",
+        "description": "색"
+      },
+      {
+        "param_name": "Heterography",
+        "param_type": "PIT_UI1",
+        "subtype": "동자이음",
+        "description": "문자 표시 여부"
+      }
+    ],
+    "StyleItem": [
+      {
+        "param_name": "Type",
+        "param_type": "PIT_UI1",
+        "subtype": "스타일",
+        "description": "종류"
+      },
+      {
+        "param_name": "NameLocal",
+        "param_type": "PIT_BSTR",
+        "subtype": "스타일",
+        "description": "이름(로컬)"
+      },
+      {
+        "param_name": "NameEng",
+        "param_type": "PIT_BSTR",
+        "subtype": "스타일",
+        "description": "이름(영문)"
+      },
+      {
+        "param_name": "Next",
+        "param_type": "PIT_I",
+        "subtype": "다음",
+        "description": "스타일 인덱스"
+      },
+      {
+        "param_name": "LockForm",
+        "param_type": "PIT_UI1",
+        "subtype": "양식스타일",
+        "description": "보호"
+      },
+      {
+        "param_name": "CharShape",
+        "param_type": "PIT_SET",
+        "subtype": "CharShape",
+        "description": "글자 모양"
+      },
+      {
+        "param_name": "ParaShape",
+        "param_type": "PIT_SET",
+        "subtype": "ParaShape",
+        "description": "문단 모양"
+      }
+    ],
+    "SaveAsImage": [
+      {
+        "param_name": "ResizeImage",
+        "param_type": "PIT_UI1",
+        "subtype": "문서에",
+        "description": "삽입된 그림 오브젝트의 크기를 고려하여 최소 크기로 저장 여부."
+      },
+      {
+        "param_name": "DelCutting",
+        "param_type": "PIT_UI1",
+        "subtype": "잘라내기",
+        "description": "이미지 불필요한 부분 삭제 여부"
+      },
+      {
+        "param_name": "SaveAsFormat",
+        "param_type": "PIT_I",
+        "subtype": "다른이름으로",
+        "description": "저장한 포맷"
+      },
+      {
+        "param_name": "SaveDpiX",
+        "param_type": "PIT_UI",
+        "subtype": "변경될",
+        "description": "이미지 X축 DPI"
+      },
+      {
+        "param_name": "SaveDpiY",
+        "param_type": "PIT_UI",
+        "subtype": "변경될",
+        "description": "이미지 Y축 DPI"
+      },
+      {
+        "param_name": "SaveType",
+        "param_type": "PIT_UI1",
+        "subtype": "저장",
+        "description": "액션 타입(None = 0x00, insert = 0x01, SaveTime ="
+      },
+      {
+        "param_name": "MinWidth",
+        "param_type": "PIT_UI",
+        "subtype": "최소",
+        "description": "너비"
+      },
+      {
+        "param_name": "MinHeight",
+        "param_type": "PIT_UI",
+        "subtype": "최소",
+        "description": "높이"
+      },
+      {
+        "param_name": "ExtendFormat",
+        "param_type": "PIT_UI1",
+        "subtype": "지원",
+        "description": "포맷 확장, (한/글 2024부터 지원)"
+      },
+      {
+        "param_name": "Resolution",
+        "param_type": "PIT_UI",
+        "subtype": "제한",
+        "description": "해상도 설정(예 : 3840 * 2160), (한/글 2024부터 지원)"
+      },
+      {
+        "param_name": "AllFormat",
+        "param_type": "PIT_UI1",
+        "subtype": "모든",
+        "description": "이미지 포맷 변환, (한/글 2024부터 지원)"
+      }
+    ],
+    "BrailleConvert": [
+      {
+        "param_name": "ResultType",
+        "param_type": "PIT_UI1",
+        "subtype": "결과",
+        "description": "문자코드 형식"
+      },
+      {
+        "param_name": "CharHeight",
+        "param_type": "PIT_I4",
+        "subtype": "글자",
+        "description": "모양-크기"
+      },
+      {
+        "param_name": "FontName",
+        "param_type": "PIT_BSTR",
+        "subtype": "글자",
+        "description": "모양-글꼴"
+      },
+      {
+        "param_name": "FontType",
+        "param_type": "PIT_UI1",
+        "subtype": "글자",
+        "description": "모양-글꼴타입"
+      },
+      {
+        "param_name": "LineCharApply",
+        "param_type": "PIT_UI1",
+        "subtype": "줄/글자",
+        "description": "수 - 적용 여부"
+      },
+      {
+        "param_name": "LineCharType",
+        "param_type": "PIT_UI1",
+        "subtype": "줄/글자",
+        "description": "수 - 종류"
+      },
+      {
+        "param_name": "LineSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "줄/글자",
+        "description": "수 - 줄 간격"
+      },
+      {
+        "param_name": "CharSpacing",
+        "param_type": "PIT_I4",
+        "subtype": "줄/글자",
+        "description": "수 - 글자 간격"
+      },
+      {
+        "param_name": "PaperApply",
+        "param_type": "PIT_UI1",
+        "subtype": "용지",
+        "description": "- 적용 여부"
+      },
+      {
+        "param_name": "PaperType",
+        "param_type": "PIT_I4",
+        "subtype": "용지",
+        "description": "- 설정 용지 타입"
+      },
+      {
+        "param_name": "TargetView",
+        "param_type": "PIT_UI1",
+        "subtype": "결과",
+        "description": "새창/새탭 0:새창으로, 1:새탭으로"
+      }
+    ],
+    "PictureChange": [
+      {
+        "param_name": "PicturePath",
+        "param_type": "PIT_BSTR",
+        "subtype": "그림",
+        "description": "경로"
+      },
+      {
+        "param_name": "PictureEmbed",
+        "param_type": "PIT_UI1",
+        "subtype": "Embed",
+        "description": "여부"
+      }
+    ],
+    "PresentationRange": [
+      {
+        "param_name": "ExistPresentation",
+        "param_type": "PIT_UI1",
+        "subtype": "section",
+        "description": "에 프레젠테이션 설정 유무. 1 = 설정, 0 = 비설정."
+      }
+    ],
+    "DeletePage": [
+      {
+        "param_name": "Range",
+        "param_type": "PIT_UI1",
+        "subtype": "범위",
+        "description": ""
+      },
+      {
+        "param_name": "RangeCustom",
+        "param_type": "PIT_BSTR",
+        "subtype": "사용자가",
+        "description": "직접 입력한 범위"
+      },
+      {
+        "param_name": "UsingPagenum",
+        "param_type": "PIT_UI1",
+        "subtype": "문서의",
+        "description": "쪽 번호로 입력"
+      }
+    ],
+    "TrackChange": [
+      {
+        "param_name": "InsertShape",
+        "param_type": "PIT_UI1",
+        "subtype": "삽입",
+        "description": "모양"
+      },
+      {
+        "param_name": "InsertColor",
+        "param_type": "PIT_UI1",
+        "subtype": "삽입",
+        "description": "색"
+      },
+      {
+        "param_name": "DeleteShape",
+        "param_type": "PIT_UI1",
+        "subtype": "삭제",
+        "description": "모양"
+      },
+      {
+        "param_name": "DeleteColor",
+        "param_type": "PIT_UI1",
+        "subtype": "삭제",
+        "description": "색"
+      },
+      {
+        "param_name": "ChangeShape",
+        "param_type": "PIT_UI1",
+        "subtype": "변경",
+        "description": "모양"
+      },
+      {
+        "param_name": "ChangeColor",
+        "param_type": "PIT_UI1",
+        "subtype": "변경",
+        "description": "색"
+      },
+      {
+        "param_name": "Format",
+        "param_type": "PIT_UI1",
+        "subtype": "서식",
+        "description": "추적 여부"
+      },
+      {
+        "param_name": "FormatShape",
+        "param_type": "PIT_UI1",
+        "subtype": "서식",
+        "description": "추적 모양"
+      },
+      {
+        "param_name": "FormatColor",
+        "param_type": "PIT_UI1",
+        "subtype": "서식",
+        "description": "추적 색"
+      },
+      {
+        "param_name": "MemoWidth",
+        "param_type": "PIT_I4",
+        "subtype": "메모",
+        "description": "너비"
+      },
+      {
+        "param_name": "MemoLine",
+        "param_type": "PIT_UI1",
+        "subtype": "메모",
+        "description": "선 표시"
+      },
+      {
+        "param_name": "MemoColor",
+        "param_type": "PIT_UI1",
+        "subtype": "메모",
+        "description": "색"
+      },
+      {
+        "param_name": "Tooltip",
+        "param_type": "PIT_UI1",
+        "subtype": "툴팁",
+        "description": "표시"
+      }
+    ],
+    "PrivateInfoSecurity": [
+      {
+        "param_name": "Command",
+        "param_type": "PIT_BSTR",
+        "subtype": "command",
+        "description": "string"
+      },
+      {
+        "param_name": "Password",
+        "param_type": "PIT_BSTR",
+        "subtype": "개인",
+        "description": "정보 암호"
+      },
+      {
+        "param_name": "ChangePassword",
+        "param_type": "PIT_BSTR",
+        "subtype": "바꿀",
+        "description": "개인 정보 암호"
+      },
+      {
+        "param_name": "Pattern",
+        "param_type": "PIT_BSTR",
+        "subtype": "개인",
+        "description": "정보 패턴"
+      },
+      {
+        "param_name": "Telephone",
+        "param_type": "PIT_UI1",
+        "subtype": "전화번호",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Resident",
+        "param_type": "PIT_UI1",
+        "subtype": "주민등록번호",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Email",
+        "param_type": "PIT_UI1",
+        "subtype": "전자우편",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Account",
+        "param_type": "PIT_UI1",
+        "subtype": "계좌",
+        "description": "번호 (찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Credit",
+        "param_type": "PIT_UI1",
+        "subtype": "신용카드",
+        "description": "번호 (찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Address",
+        "param_type": "PIT_UI1",
+        "subtype": "주소",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Birthday",
+        "param_type": "PIT_UI1",
+        "subtype": "생년월일",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "IPAddress",
+        "param_type": "PIT_UI1",
+        "subtype": "인터넷주소",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "ForeignerNo",
+        "param_type": "PIT_UI1",
+        "subtype": "외국인등록번호",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "UserDef",
+        "param_type": "PIT_UI1",
+        "subtype": "사용자",
+        "description": "정의 (찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Etc",
+        "param_type": "PIT_UI1",
+        "subtype": "기타",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "NoMessageBox",
+        "param_type": "PIT_UI1",
+        "subtype": "메세지",
+        "description": "박스를 띄우지 않을지 여부"
+      },
+      {
+        "param_name": "DelHyperlink",
+        "param_type": "PIT_UI1",
+        "subtype": "하이퍼링크",
+        "description": "(이메일 연결)를 지울지 여부"
+      },
+      {
+        "param_name": "MarkChar",
+        "param_type": "PIT_UI",
+        "subtype": "개인",
+        "description": "정보 표시 문자"
+      },
+      {
+        "param_name": "MarkCharType",
+        "param_type": "PIT_UI",
+        "subtype": "표시",
+        "description": "문자 선택 사항"
+      },
+      {
+        "param_name": "PasswordOnOff",
+        "param_type": "PIT_UI1",
+        "subtype": "개인",
+        "description": "정보 보안 암호 설정/취소"
+      },
+      {
+        "param_name": "InfoType",
+        "param_type": "PIT_UI",
+        "subtype": "개인",
+        "description": "정보 Type(0: 정규표현식 -일반, 1:일반문자열 , 2:정규표현식 -주민번호, 3:주소검색, 4:외국인번호 , 5이상: 나머지 개인정보의 정규표현식 )"
+      },
+      {
+        "param_name": "License",
+        "param_type": "PIT_UI1",
+        "subtype": "운전면허",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Passport",
+        "param_type": "PIT_UI1",
+        "subtype": "여권번호",
+        "description": "(찾을 개인 정보 on/off)"
+      },
+      {
+        "param_name": "Encrypted",
+        "param_type": "PIT_UI1",
+        "subtype": "문서에",
+        "description": "암호화된 개인 정보 필드가 있을 때 여부"
+      },
+      {
+        "param_name": "UnregistPattern",
+        "param_type": "PIT_UI11712",
+        "subtype": ".기타",
+        "description": "정보 값 Description"
+      }
+    ]
+  }
+}

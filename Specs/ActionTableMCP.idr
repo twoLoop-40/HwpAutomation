@@ -3,6 +3,7 @@ module Specs.ActionTableMCP
 import Data.String
 import Data.List
 import public Specs.HwpCommon
+import public Specs.ParameterTypes
 
 %default total
 

@@ -37,6 +37,7 @@ Thumbs.db
 *.ibc
 build/
 
-# HWP files
+# HWP files (except templates)
 *.hwp
 *.hwpx
+!Tests/E2ETest/[양식]*.hwp

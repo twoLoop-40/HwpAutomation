@@ -3,7 +3,9 @@
     "allow": [
       "Bash(wsl which:*)",
       "Bash(wsl find:*)",
-      "Bash(wsl head:*)"
+      "Bash(wsl head:*)",
+      "Bash(python merge_problems.py:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

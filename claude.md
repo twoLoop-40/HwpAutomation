@@ -209,10 +209,65 @@ src/
 
 ---
 
+### ✅ Step 8: E2E Test - Problem Merge Workflow (2025-11-13)
+**커밋**: (Pending) E2E test: Merge 40 HWP files with Automation API
+
+**완료 내용**:
+- **E2E 테스트 시나리오**: CSV 기반 문제 파일 합치기
+  - 테스트 데이터: `Tests/E2ETest/[내신대비]휘문고_2_기말_1회_20251112_0905/`
+  - 40개 HWP 파일 (20문제 × 2파일씩)
+  - CSV로 origin_num 그룹화 정의
+
+- **스크립트 구현**:
+  - `Scripts/merge_problems.py`: ActionTable API 방식 (action 미구현으로 실패)
+  - `Scripts/merge_problems_automation.py`: Automation API 방식 ✅ **성공**
+  - `Scripts/merge_problems_mcp.py`: MCP 클라이언트 방식 (연결 이슈로 보류)
+
+- **성공한 작업 흐름** (`merge_problems_automation.py`):
+  1. 새 문서 생성 (`HAction.Run("FileNew")`)
+  2. B4 용지 설정 (257mm × 364mm)
+  3. 2단 편집 설정 (`ColumnDef` action)
+  4. CSV 순서대로 40개 파일 삽입 (`InsertFile` action)
+  5. 단 나누기 (`BreakColumn`) - 같은 문제 내 파일 사이
+  6. 페이지 나누기 (`BreakPage`) - 다른 문제 사이
+  7. 문서 저장 (`FileSaveAs_S`)
+
+- **결과**:
+  - ✅ 40/40 파일 성공적으로 삽입
+  - ✅ 1.3MB 출력 파일 생성
+  - ✅ B4 2단 레이아웃 적용 확인
+  - ✅ Automation API 실전 검증 완료
+
+- **교훈**:
+  - Automation API가 ActionTable보다 더 직관적
+  - `HAction.GetDefault()` + `Execute()` 패턴 유효
+  - 일부 속성은 존재하지 않을 수 있음 (예: `ColumnGap`)
+  - 파일 삽입 시 KeepSection, KeepCharshape, KeepParashape 옵션 중요
+
+- **MCP 방식 이슈 및 TODO**:
+  - `merge_problems_mcp.py` 작성 완료했으나 연결 타임아웃 발생
+  - 사용자 요청으로 직접 Python 방식 우선 실행
+  - `TODO.md`에 MCP 디버깅 및 AI Agent 테스트 계획 문서화
+  - 향후 Claude Desktop 통합 테스트 예정
+
+**주요 특징**:
+- 실제 업무 시나리오 검증 (문제 파일 합치기)
+- Automation API 전 기능 활용 (문서 생성, 설정, 삽입, 저장)
+- CSV 기반 메타데이터 처리
+- 복잡한 레이아웃 제어 (B4, 2단, 페이지/단 나누기)
+
+**테스트 통계**:
+- 입력: 40개 HWP 파일 (20문제 그룹)
+- 출력: 1.3MB HWP 문서
+- 성공률: 100% (40/40)
+- 레이아웃: B4 용지, 2단 편집
+
+---
+
 ### 📋 다음 단계
-7. 의존성 설치 및 통합 테스트
-8. Claude Desktop 연동 테스트
-9. 문서화 및 예제 추가
+9. MCP 연결 디버깅 및 AI Agent 통합 테스트
+10. ActionTable 파라미터 확장 (ParameterSetTable 파싱)
+11. Claude Desktop 연동 및 사용자 문서화
 
 ---
 
