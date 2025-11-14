@@ -264,10 +264,86 @@ src/
 
 ---
 
+### ✅ Step 9: AppV1 Copy/Paste 기반 문항 합병 성공 (2025-11-14)
+**커밋**: Add Idris2 ParallelMerge spec and InsertFile workflow
+
+**완료 내용**:
+
+**1. InsertFile 방식 실험 (실패)**:
+- HwpIdris ParameterSet 명세 기반 `KeepSection` 파라미터 테스트
+  - `KeepSection=0`: 구역 정보 무시
+  - `KeepSection=1`: 구역 정보 유지 (2단 구성 보존)
+- 결과: 두 방식 모두 파일들이 **별도 List로 분리**되어 BreakColumn 미작동
+- 근본 문제: InsertFile은 각 파일을 새 List(0, 1, 2, ...)로 삽입
+- BreakColumn은 **같은 List 내**에서만 작동 (추정)
+
+**2. Copy/Paste 방식으로 전환 (성공!)**:
+- `AppV1/merger.py`: 40문항 성공 로직 기반 ProblemMerger 클래스
+  - 검증된 워크플로우:
+    1. 양식 파일 열기
+    2. 각 문항 처리:
+       - 원본 파일 열기
+       - 1단으로 변환 (`convert_to_single_column`)
+       - 빈 Para 제거 (`remove_empty_paras`, 역순)
+       - SelectAll → Copy
+       - 대상에 Paste
+       - BreakColumn (마지막 제외)
+    3. 결과 저장
+
+- `AppV1/para_scanner.py`: **뒤에서부터** 빈 Para 제거
+  - `MoveDocEnd`에서 시작
+  - `MoveSelDown` + `Delete` 방식
+  - 빈 Para 연속 제거 가능
+  - 최종 위치: 문서 시작 (Copy 준비)
+
+**3. 테스트 결과**:
+
+| 테스트 | 문항 수 | 시간 | 페이지 | 성공률 | 평가 |
+|--------|---------|------|--------|--------|------|
+| 5개 파일 | 5 | 49.4초 | 6 | 100% | ✅ |
+| **41개 파일** | 41 | 403초 (6.7분) | 31 | **100%** | ✅ **상당히 깨끗함** |
+| 제거된 빈 Para | - | - | - | 140개 | - |
+
+**4. 성능 분석**:
+- 원본 E2E 테스트: 58.9초 (1.4초/문항)
+- AppV1 Merger: 403초 (9.8초/문항)
+- **차이 이유**: 각 파일 열기 → 전처리 → 닫기 반복
+- 최적화 방향: 전처리 병렬화 (LangGraph Send 패턴)
+
+**5. 주요 발견**:
+- BreakColumn은 **양식 파일(target)**에서 실행
+- Paste는 **전처리된 파일(source)**의 내용을 target에 붙여넣기
+- Copy/Paste 방식이 InsertFile보다 안정적
+- 페이지 수: 예상(21페이지) vs 실제(31페이지) - 허용 범위
+
+**변경 파일**:
+- `AppV1/merger.py`: 메인 합병 로직
+- `AppV1/para_scanner.py`: Para 스캔 및 역순 제거
+- `AppV1/column.py`: 1단 변환
+- `AppV1/file_inserter.py`: InsertFile 실험 (KeepSection 추가)
+- `AppV1/preprocessor.py`: 전처리 모듈 분리
+- `Tests/AppV1/test_merger_5files.py`: 5개 파일 테스트
+- `Tests/AppV1/test_merger_40files.py`: 41개 파일 테스트 ✅
+- `Tests/AppV1/test_insertfile_debug.py`: InsertFile 디버깅
+- `Tests/AppV1/test_keepsection_experiment.py`: KeepSection 실험
+
+**참조 문서**:
+- `HwpIdris/AppV1/ParallelMerge.idr`: 병렬 처리 명세
+- `HwpIdris/TYPE_SPECIFICATION.md`: HWP API 전체 타입 명세
+- `Schema/InsertFile_Sync_Analysis.md`: InsertFile 동기화 분석
+- `Tests/E2E/test_merge_40_problems_clean.py`: 검증된 40문항 성공 코드
+
+**다음 최적화 목표**:
+- 전처리 병렬화 (최대 20개 동시 처리)
+- LangGraph Send 패턴 적용
+- 전체 소요 시간 80% 단축 목표 (403초 → ~80초)
+
+---
+
 ### 📋 다음 단계
-9. MCP 연결 디버깅 및 AI Agent 통합 테스트
-10. ActionTable 파라미터 확장 (ParameterSetTable 파싱)
-11. Claude Desktop 연동 및 사용자 문서화
+10. 전처리 병렬화 구현 (LangGraph Send 또는 multiprocessing)
+11. MCP 연결 디버깅 및 AI Agent 통합 테스트
+12. Claude Desktop 연동 및 사용자 문서화
 
 ---
 
@@ -282,3 +358,52 @@ src/
   - Automation: `Specs/AutomationMCP.idr`
 - Test Suites: `Tests/ActionTable/`, `Tests/Automation/`
 - Planning: `Schema/Step6_Automation_Plan.md`
+
+---
+
+## 개발 가이드라인
+
+### HWP API 사용 시 참조 순서
+1. **HwpIdris 디렉토리 먼저 확인** (`HwpIdris/`)
+   - Idris2로 작성된 타입 안전 형식 명세
+   - 모든 HWP Action과 ParameterSet이 타입으로 정의됨
+   - 사용 예: 라인 이동이 필요하면 `HwpIdris/Actions/Navigation.idr` 확인
+
+2. **HwpIdris 주요 모듈**:
+   - `HwpIdris/Actions/` - 모든 HWP 액션 타입 정의
+     - `Navigation.idr`: 이동 관련 (MoveLineDown, MoveParaBegin 등)
+     - `Text.idr`: 텍스트 관련
+     - `Selection.idr`: 선택 관련
+     - `File.idr`: 파일 관련
+     - `Format.idr`: 서식 관련
+   - `HwpIdris/ParameterSets/` - Parameter 타입 정의
+     - `ColDef.idr`: 단 설정
+     - `CharShape.idr`: 글자 모양
+     - `ParaShape.idr`: 문단 모양
+   - `HwpIdris/Automation/Objects.idr` - Automation 객체 모델
+
+3. **HwpBooks PDF 문서** (상세 명세)
+   - ActionTable PDF는 보조 자료
+   - HwpIdris가 더 검색하기 쉽고 타입 안전함
+
+### 작업 순서
+```
+필요한 기능 확인
+  ↓
+HwpIdris에서 타입 검색 (*.idr 파일)
+  ↓
+Python 구현 (src/automation/ 또는 Tests/)
+  ↓
+테스트 작성 및 실행
+```
+
+### 예시
+- **라인별 텍스트 읽기 필요**
+  → `HwpIdris/Actions/Navigation.idr` 확인
+  → MoveLineDown, MoveLineBegin 등 발견
+  → Python으로 구현
+
+- **단 설정 필요**
+  → `HwpIdris/ParameterSets/ColDef.idr` 확인
+  → Count, SameGap 등 속성 확인
+  → Python으로 구현
