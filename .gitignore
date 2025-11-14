@@ -41,3 +41,16 @@ build/
 *.hwp
 *.hwpx
 !Tests/E2ETest/[양식]*.hwp
+
+# Test outputs and results
+Tests/Experiments/output/
+Tests/E2E/output/
+FunctionTest/output/
+AppV1/output/
+*_output.hwp
+*_result.hwp
+*_temp.hwp
+
+# CSV data files
+*.csv
+!Tests/E2ETest/**/problems.csv

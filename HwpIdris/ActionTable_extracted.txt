@@ -1,0 +1,1600 @@
+최종 수정일 : 2025년 4월 15일
+Action Table
+※ Action ID 중 빨간색 밑줄 친 ID는 Dummy Action으로서 내부적인 용도로만 쓰일 뿐 실제로 구현되지 않은 액션입니다.
+※ Action ID중 기울임 밑줄 친 ID는 글 컨트롤이 글 내부의 기능을 모방한 액션으로 으로써 글 내부에는 구현되어 있지 않지만, 필요
+에 의해 글 컨트롤에서 구현한 액션입니다.
+※ ParameterSet ID 의 기호 설명:
+Symbol Description
+ParameterSet 없음.
+-
+해당 Action에 대한 ParameterSet 이 존재하지 않거나, 필요없음을 나타냄.
+추가 예정.
++ 내부적으로는 ParameterSet을 사용하고 있지만, 사용하고 있는 ParameterSet이 아직 외부로 노출되지 않
+은 경우.
+HwpCtrl.Run 불가능.
+* ParameterSet이 있지만, 외부에서 ParameterSet을 만들어 주지 않으면 정상작동하지 않는 Action. 다른
+Action에 종속된 Action이거나, DocSummaryInfo와 같이 값을 읽어오기만 하는 Action일 경우 해담.
+1
+
+Action ID ParameterSet ID Description 비고
+AddHanjaWord + 한자단어 등록
+AllReplace FindReplace* 모두 바꾸기
+입력 자동 명령 파일 저장/로드
+(글메뉴의 [도구-빠른 교정-빠른 교정내용]에서
+AQcommandMerge UserQCommandFile*
+[입력 자동 명령 사용자 사전] 대화상자)
+ParameterSet을 직접 조작하여 사용함.
+AutoChangeHangul - 낱자모 우선
+AutoChangeRun - 동작
+AutoSpell Run - 맞춤법 ― 메뉴에서 맞춤법 도우미 동작 On/Off
+맞춤법 도우미를 통해 선택된 어휘로 변경
+AutoSpellSelect1 ~ 16 -
+(어휘는 1에서 최대 16까지)
+Average Sum 블록 평균
+BackwardFind FindReplace* 뒤로 찾기
+Bookmark BookMark 책갈피
+북마크 편집 대화상자 호출 액션 - 책갈피 작업창
+BookmarkEditDialog
+에서 편집 대화상자를 호출하기 위한 액션
+BreakColDef - 단 정의 삽입
+BreakColumn - 단 나누기
+BreakLine - line break
+BreakPage - 쪽 나누기
+BreakPara - 문단 나누기
+BreakSection - 구역 나누기
+BulletDlg ParaShape 글머리표 대화상자
+Cancel - ESC
+CaptionPosBottom ShapeObject 캡션 위치-아래
+2
+
+Action ID ParameterSet ID Description 비고
+CaptionPosLeftBottom ShapeObject 캡션 위치-왼쪽 아래
+CaptionPosLeftCenter ShapeObject 캡션 위치–왼쪽 가운데
+CaptionPosLeftTop ShapeObject 캡션 위치–왼쪽 위
+CaptionPosRightBottom ShapeObject 캡션 위치–오른쪽 아래
+CaptionPosRightCenter ShapeObject 캡션 위치–오른쪽 가운데
+CaptionPosRightTop ShapeObject 캡션 위치–오른쪽 위
+CaptionPosTop ShapeObject 캡션 위치-위
+CaptureDialog - 갈무리 끝
+CaptureHandler - 갈무리 시작
+CellBorder CellBorderFill 셀 테두리
+CellBorderFill CellBorderFill 셀 테두리
+CellFill CellBorderFill 셀 배경
+셀 테두리(여러 셀에 걸쳐 적용)
+CellZoneBorder CellBorderFill
+셀이 선택된 상태에서만 동작
+셀 테두리(여러 셀에 걸쳐 적용)
+CellZoneBorderFill CellBorderFill
+셀이 선택된 상태에서만 동작
+셀 배경(여러 셀에 걸쳐 적용)
+CellZoneFill CellBorderFill
+셀이 선택된 상태에서만 동작
+ChangeImageFileExtension SummaryInfo 연결 그림 확장자 바꾸기
+ChangeObject ShapeObject 개체 변경하기
+ChangeRome String + 로마자변환 - 입력받은 스트링 변환
+ChangeRome User String + 로마자 사용자 데이터 추가
+ChangeRome User + 로마자 사용자 데이터
+ChangeRome + 로마자변환
+3
+
+Action ID ParameterSet ID Description 비고
+CharShape CharShape 글자 모양
+CharShapeBold - 단축키: Alt+L(글자 진하게)
+CharShapeCenterline - 취소선(CenterLine)
+CharShapeDialog CharShape 글자 모양 대화상자(내부 구현용)
+CharShapeDialogWithoutBord 글자 모양 대화상자(내부 구현용, [글자 테두리]
+CharShape
+er 탭 제외)
+CharShapeEmboss - 양각
+CharShapeEngrave - 음각
+글자 크기(글자 모양 대화상자에서 Focus이동용
+CharShapeHeight -
+으로 사용)
+CharShapeHeightDecrease - 크기 작게 ALT+SHIFT+R
+CharShapeHeightIncrease - 크기 크게 ALT+SHIFT+E
+CharShapeItalic - 이탤릭 ALT + SHIFT + I
+글꼴 언어(글자 모양 대화상자에서 Focus이동용
+CharShapeLang -
+으로 사용)
+CharShapeNextFaceName - 다음 글꼴 ALT+SHIFT+F
+CharShapeNormal - 보통모양 ALT+SHIFT+C
+CharShapeOutline - 외곽선
+CharShapePrevFaceName - 이전 글꼴 ALT+SHIFT+G
+CharShapeShadow - 그림자
+자간(글자 모양 대화상자에서 Focus이동용으로
+CharShapeSpacing -
+사용)
+CharShapeSpacingDecrease - 자간 좁게 ALT+SHIFT+N
+CharShapeSpacingIncrease - 자간 넓게 ALT+SHIFT+W
+CharShapeSubscript - 아래첨자 ALT+SHIFT+S
+CharShapeSuperscript - 위첨자 ALT+SHIFT+P
+4
+
+Action ID ParameterSet ID Description 비고
+CharShapeSuperSubscript - 첨자 : "위첨자 -> 아래첨자 -> 보통" 반복
+CharShapeTextColorBlack - 글자색을 검정
+CharShapeTextColorBlue - 글자색을 파랑
+CharShapeTextColorBluish - 글자색을 청록
+CharShapeTextColorGreen - 글자색을 초록
+CharShapeTextColorRed - 글자색을 빨강
+CharShapeTextColorViolet - 글자색을 자주
+CharShapeTextColorWhite - 글자색을 흰색
+CharShapeTextColorYellow - 글자색을 노랑
+글꼴 이름(글자 모양 대화상자에서 Focus이동용
+CharShapeTypeFace -
+으로 사용)
+CharShapeUnderline - 밑줄 ALT+SHIFT+U
+장평(글자 모양 대화상자에서 Focus이동용으로
+CharShapeWidth -
+사용)
+CharShapeWidthDecrease - 장평 좁게 ALT+SHIFT+J
+CharShapeWidthIncrease - 장평 넓게 ALT+SHIFT+K
+Close - 현재 리스트를 닫고 상위 리스트로 이동.
+현재 리스트를 닫고 상위 리스트로 이동.
+CloseEx - Close의 확장 액션으로 전체화면 보기일 때 Root
+list로 빠져나온다. Shift+Esc
+Comment - 숨은 설명
+CommentDelete - 숨은 설명 지우기
+CommentModify - 숨은 설명 고치기
+CompatibleDocument CompatibleDocument 호환 문서
+5
+
+Action ID ParameterSet ID Description 비고
+ComposeChars ChCompose 글자 겹침
+ConvertBrailleSetting BrailleConvert
+ConvertCase ConvertCase 대소문자 바꾸기
+ConvertFullHalfWidth ConvertFullHalf 전각 반각 바꾸기
+ConvertHiraGata ConvertHiraToGata 일어 바꾸기
+간/번체 바꾸기
+ConvertJianFan ConvertJianFan
+Text가 선택된 상태에서만 동작
+ConvertOptGugyulToHangul ConvertToHangul 한글로 옵션 - 구결을 한글로
+ConvertOptHanjaToHangul ConvertToHangul 한글로 옵션 - 漢字를 한글로
+ConvertOptHanjaToHanjaHang
+ConvertToHangul 한글로 옵션 - 漢字를 漢字(한글)로
+ul
+ConvertToBraille BrailleConvert 점자 변환
+ConvertToBrailleSelected BrailleConvert
+ConvertToHangul ConvertToHangul 한글로
+Copy - 복사하기
+CopyPage 쪽 복사하기
+Cut - 오려두기
+Delete - Delete
+DeleteBack - Backspace
+DeleteCtrls DeleteCtrls 조판 부호 지우기
+DeleteDocumentMasterPage - 문서 전체 바탕쪽 삭제
+DeleteDutmal + 덧말 지우기
+누름틀/메모지우기
+DeleteField - 누름틀/메모 안의 내용은 지우지 않고, 단순히 누
+름틀만 지운다.
+DeleteFieldMemo - 메모 지우기
+DeleteLine - CTRL-Y (한줄 지우기)
+6
+
+Action ID ParameterSet ID Description 비고
+DeleteLineEnd - ALT-Y (현재 커서에서 줄 끝까지 지우기)
+DeletePage DeletePage 쪽 지우기
+DeletePrivateInfoMark - 개인 정보 감추기한 정보 다시보기
+DeletePrivateInfoMarkAtCur
+- 현재 캐럿 위치의 감추기한 개인 정보 다시 보기
+rentPos
+DeleteSectionMasterPage - 구역 바탕쪽 삭제
+DeleteWord - 단어 지우기 CTRL-T
+DeleteWordBack - CTRL-BS(Back Space)
+DocFindEnd FindReplace* 문서 찾기 종료
+DocFindInit FindReplace* 문서 찾기 초기화
+DocFindNext DocFindInfo* 문서 찾기 계속
+DocSummaryInfo SummaryInfo 문서 정보
+DocumentInfo DocumentInfo* 현재 문서에 대한 정보
+DocumentSecurity DocSecurity 문서 보안 설정
+DrawObjCancelOneStep - 다각형(곡선) 그리는 중 이전 선 지우기
+DrawObjCreatorArc ShapeObject 호 그리기
+DrawObjCreatorCanvas ShapeObject 캔버스 그리기
+DrawObjCreatorCurve ShapeObject 곡선 그리기
+DrawObjCreatorEllipse ShapeObject 원 그리기
+DrawObjCreatorFreeDrawing ShapeObject 펜
+DrawObjCreatorHorzTextBox ShapeObject 가로 글상자 만들기
+DrawObjCreatorLine ShapeObject 선 그리기
+DrawObjCreatorMultiArc ShapeObject 반복해서 호 그리기
+DrawObjCreatorMultiCanvas ShapeObject 반복해서 캔버스 그리기
+7
+
+Action ID ParameterSet ID Description 비고
+DrawObjCreatorMultiCurve ShapeObject 반복해서 곡선 그리기
+DrawObjCreatorMultiEllipse ShapeObject 반복해서 원 그리기
+DrawObjCreatorMultiFreeDra
+ShapeObject 반복해서 펜 그리기
+wing
+DrawObjCreatorMultiLine ShapeObject 반복해서 선 그리기
+DrawObjCreatorMultiPolygon ShapeObject 반복해서 다각형 그리기
+DrawObjCreatorMultiRectang
+ShapeObject 반복해서 사각형 그리기
+le
+DrawObjCreatorMultiTextBox ShapeObject 반복해서 글상자 그리기
+DrawObjCreatorObject ShapeObject 그리기 개체
+DrawObjCreatorPolygon ShapeObject 다각형 그리기
+DrawObjCreatorRectangle ShapeObject 사각형 그리기
+DrawObjCreatorTextBox ShapeObject 글상자
+DrawObjCreatorVertTextBox ShapeObject 세로 글상자 만들기
+DrawObjEditDetail - 그리기 개체 편집
+DrawObjOpenClosePolygon - 다각형 열기/닫기
+DrawObjTemplateLoad ShapeObject 그리기 마당에서 불러오기
+DrawObjTemplateSave - 그리기 마당에 등록
+그리기 개체 그림자 만들기/지우기
+DrawShapeObjShadow ShapeObject
+개체가 선택된 상태에서만 동작
+DropCap DropCap 문단 첫 글자 장식
+DutmalChars Dutmal 덧말 넣기
+EditFieldMemo - 메모 내용 편집
+EditParaDown 문단 옮기기
+EditParaUp 문단 옮기기
+8
+
+Action ID ParameterSet ID Description 비고
+EndnoteEndOfDocument SecDef 미주–문서의 끝
+EndnoteEndOfSection SecDef 미주–구역의 끝
+ExchangeFootnoteEnd
+EndnoteToFootnote 모든 미주를 각주로
+Note
+EquationCreate EqEdit 수식 만들기
+EquationModify EqEdit 수식 편집하기
+EquationPropertyDialog ShapeObject 수식 개체 속성 고치기
+Erase - 지우기
+ExchangeFootnoteEnd
+ExchangeFootnoteEndnote 각주/미주 변환
+Note
+ExecReplace FindReplace* 바꾸기(실행)
+ExtractImagesFromDoc SummaryInfo 삽입 그림을 연결 그림으로 추출
+FileClose - 문서 닫기
+FileNew - 새문서
+FileOpen - 파일 열기
+FileOpenMRU - 최근 작업 문서
+FilePassword Password 문서 암호
+FilePasswordChange Password 문서 암호 변경 및 해제
+FilePreview - 미리 보기
+FileQuit - 끝
+9
+
+Action ID ParameterSet ID Description 비고
+FileRWPasswordChange Password 문서 열기/쓰기 암호 설정
+FileRWPasswordNew Password 문서 열기/쓰기 암호 설정
+FileSave - 파일 저장
+FileSaveAs - 다른 이름으로 저장
+FileSaveAsImage Print 그림 포맷으로 저장하기
+FileSaveAsImageOption Print 그림 포맷으로 저장할 때 옵션 설정하기
+FileSaveOptionDlg 저장 옵션
+배포용 문서(출판 전용 문서).
+대화상자를 띄우지 않고 ParameterSet을 직접
+FileSetSecurity FileSetSecurity*
+설정하여 생성한다.
+예제는 “배포용 문서 만들기“ 참고
+FileTemplate FileOpen 문서마당
+FillColorShadeDec - 면 색 음영 비율 감소
+FillColorShadeInc - 면 색 음영 비율 증가
+FindAll FindReplace* 모두 찾기
+FindDlg FindReplace 찾기
+FindForeBackBookmark - 앞뒤로 찾아가기 : 책갈피
+FindForeBackCtrl - 앞뒤로 찾아가기 : 조판 부호
+FindForeBackFind - 앞뒤로 찾아가기 : 찾기
+FindForeBackLine - 앞뒤로 찾아가기 : 줄
+FindForeBackPage - 앞뒤로 찾아가기 : 페이지
+FindForeBackSection - 앞뒤로 찾아가기 : 구역
+10
+
+Action ID ParameterSet ID Description 비고
+FindForeBackStyle - 앞뒤로 찾아가기 : 스타일
+FindOption FindReplace 찾기 옵션 한/글 2024 부터 지원
+FootnoteBeneathText SecDef 각주–본문 아래
+FootnoteBottomOfEachColumn SecDef 다단 각주–각 단 아래
+FootnoteBottomOfMultiColum
+SecDef 다단 각주–전 단
+n
+FootnoteBottomOfRightColum
+SecDef 다단 각주–오른쪽 단 아래
+n
+FootnoteNoBeneathText SecDef 각주–꼬리말 바로 위
+FootnoteOption SecDef 각주/미주 모양
+ExchangeFootnoteEnd
+FootnoteToEndnote 모든 각주를 미주로
+Note
+FormDesignMode - 디자인 모드 변경
+FormObjCreatorCheckButton - Check버튼 넣기
+FormObjCreatorComboBox - ComboBox넣기
+FormObjCreatorEdit - Edit넣기
+FormObjCreatorListBox - ListBox넣기
+FormObjCreatorPushButton - Push버튼 넣기
+FormObjCreatorRadioButton - Radio버튼 넣기
+FormObjCreatorScrollBar - ScrollBar넣기
+11
+
+Action ID ParameterSet ID Description 비고
+ForwardFind FindReplace* 앞으로 찾기
+FrameStatusBar - 상태바 보이기/숨기기
+FtpDownload FtpDownload FTP서버에서 파일 다운 받아 문서 오픈하기
+FtpUpload FtpUpload 웹 서버로 올리기
+GetDefaultBullet ParaShape* 글머리표 디폴트 값
+GetDefaultParaNumber ParaShape* 문단번호 디폴트 값
+GetDocFilters DocFilters 유틸리티 액션
+로마자 스펠링(Rome Spelling)을 얻기 위한 액
+션이다.
+GetRome String ChangeRome* Run()으로 실행시키면 프로그램이 죽는다. 반드
+시 ParameterSet을 생성한 다음에 Execute()
+시킨다.
+GetSectionApplyString SectionApply 유틸리티 액션
+GetSectionApplyTo SectionApply 유틸리티 액션
+저장된 버전 정보/비교 Item을 얻어오는 액션이
+다.
+GetVersionItemInfo VersionInfo
+ParameterSet에 얻어올 Item의 Index값을 반
+드시 세팅한 후 사용한다.
+Goto GotoE 찾아가기
+GotoStyle GotoE 찾아가기-스타일(찾기/바꾸기 대화상자에서 사용)
+HanThDIC - 유의어 사전
+HeaderFooter HeaderFooter 머리말/꼬리말
+12
+
+Action ID ParameterSet ID Description 비고
+HeaderFooterDelete - 머리말 지우기
+HeaderFooterInsField HeaderFooter 코드 넣기
+HeaderFooterModify - 머리말/꼬리말 고치기
+HeaderFooterToNext - 이후 머리말
+HeaderFooterToPrev - 이전 머리말
+HiddenCredits - 인터넷 정보
+차례 숨기기([도구-차례/찾아보기-차례 숨기기]
+메뉴에 대응).
+HideTitle -
+적용여부는 Ctrl+G,C를 이용해 조판부호를 확인
+하면 알 수 있다.
+Him Config - 입력기 언어별 환경설정
+HimKbdChange - 바꾸기
+HwpCtrlEquationCreate97 - 수식 만들기(글97버전)
+HwpCtrlFileNew - 새문서
+HwpCtrlFileOpen - 파일 열기
+HwpCtrlFileSave - 파일 저장
+HwpCtrlFileSaveAs - 다른 이름으로 저장
+블록 저장 (글 컨트롤 전용).
+HwpCtrlFileSaveAsAutoBlock - 만약 텍스트가 선택되지 않은 경우에는 다른 이름
+으로 저장이 실행된다.
+블록 저장 (글 컨트롤 전용).
+HwpCtrlFileSaveAutoBlock - 만약 텍스트가 선택되지 않은 경우에는 저장하기가
+실행된다.
+HwpCtrlFindDlg - 찾기 대화상자
+HwpCtrlReplaceDlg - 바꾸기 대화상자
+HwpDic - 한컴 사전
+13
+
+Action ID ParameterSet ID Description 비고
+캐럿이 필드 안에 위치했는지 여부에 따라
+Hyperlink HyperLink
+Insert 또는 Modify 하이퍼링크 액션
+HyperlinkBackward - 하이퍼링크 뒤로
+HyperlinkForward - 하이퍼링크 앞으로
+HyperlinkJump HyperlinkJump 하이퍼링크 이동
+Idiom Idiom 상용구
+ImageFindPath - 그림 경로 찾기
+ImportCharactersFromPictur
+그림에서 글자 가져오기
+e
+IndexMark IndexMark 찾아보기 표시
+IndexMarkModify IndexMark 찾아보기 표시 고치기
+문자/코드 변환.
+현재 캐럿의 바로 앞 문자를 찾아서 문자이면 코드
+InputCodeChange -
+로, 코드이면 문자로 변환해준다.(변환 가능한 코
+드영역 0x0020 ~ 0x10FFFF 까지)
+InputCodeTable CodeTable 문자표
+날짜/시간 형식 지정해서 넣기 ([입력-날짜/시간
+InputDateStyle InputDateStyle
+-날짜/시간 형식]메뉴와 동일).
+InputHanja - 한자 변환
+InputHanjaBusu - 부수로 입력
+InputHanjaMean - 새김으로 입력
+InputPersonsNameHanja InputHanja 인명한자 변환
+InsertAutoNum - 번호 다시 넣기
+InsertCCLMark HyperLink CCL 넣기
+InsertChart OleCreation 차트 만들기
+InsertConnectLineArcBoth ShapeObject 개체 연결선(구부러진 양쪽 화살표 연결선)
+InsertConnectLineArcNoArro
+ShapeObject 개체 연결선(구부러진 연결선)
+w
+14
+
+Action ID ParameterSet ID Description 비고
+InsertConnectLineArcOneWay ShapeObject 개체 연결선(구부러진 화살표 연결선)
+InsertConnectLineMultiArcB 개체 연결선 반복해서 그리기(구부러진 양쪽 화살
+ShapeObject
+oth 표 연결선)
+InsertConnectLineMultiArcN 개체 연결선 반복해서 그리기(구부러진 양쪽 화살
+ShapeObject
+oArrow 표 연결선)
+InsertConnectLineMultiArcO 개체 연결선 반복해서 그리기(구부러진 양쪽 화살
+ShapeObject
+neWay 표 연결선)
+InsertConnectLineMultiStra 개체 연결선 반복해서 그리기(직선 양쪽 화살표 연
+ShapeObject
+ightBoth 결선)
+InsertConnectLineMultiStra
+ShapeObject 개체 연결선 반복해서 그리기(직선 연결선)
+ightNoArrow
+InsertConnectLineMultiStra 개체 연결선 반복해서 그리기(직선 화살표 연결
+ShapeObject
+ightOneWay 선)
+InsertConnectLineMultiStro 개체 연결선 반복해서 그리기(꺾인 양쪽 화살표 연
+ShapeObject
+keBoth 결선)
+InsertConnectLineMultiStro
+ShapeObject 개체 연결선 반복해서 그리기(꺾인 연결선)
+keNoArrow
+InsertConnectLineMultiStro 개체 연결선 반복해서 그리기(꺾인 화살표 연결
+ShapeObject
+keOneWay 선)
+InsertConnectLineStraightB
+ShapeObject 개체 연결선(직선 양쪽 화살표 연결선)
+oth
+InsertConnectLineStraightN
+ShapeObject 개체 연결선(직선 연결선)
+oArrow
+InsertConnectLineStraightO
+ShapeObject 개체 연결선(직선 화살표 연결선)
+neWay
+InsertConnectLineStrokeBot
+ShapeObject 개체 연결선(꺾인 양쪽 화살표 연결선)
+h
+InsertConnectLineStrokeNoA
+ShapeObject 개체 연결선(꺾인 연결선)
+rrow
+InsertConnectLineStrokeOne
+ShapeObject 개체 연결선(꺾인 화살표 연결선)
+Way
+InsertCpNo - 상용구 코드 넣기(현재 쪽 번호)
+15
+
+Action ID ParameterSet ID Description 비고
+InsertCpTpNo - 상용구 코드 넣기(현재 쪽/전체 쪽)
+InsertCrossReference ActionCrossRef 상호 참조 만들기(삽입하기)
+InsertDateCode - 상용구 코드 넣기(만든 날짜)
+상용구 코드 넣기(만든 사람, 현재 쪽, 만든 날
+InsertDocInfo -
+짜)
+InsertDocTitle InsertFieldTemplate 상용구 코드 넣기(문서 제목)
+InsertDocumentProperty InsertFieldTemplate 상호 참조 넣기
+InsertEndnote - 미주 입력
+InsertFieldCitation 인용
+필트컨트롤(누름틀,개인 정보, 문서요약 ...)을
+InsertFieldCtrl FieldCtrl
+추가한다.
+날짜/시간 코드로 넣기([입력-날짜/시간-날짜/시
+InsertFieldDateTime -
+간 코드]메뉴와 동일)
+파일 이름 넣기([입력-날짜/시간-파일 이름]메뉴
+InsertFieldFileName InsertFieldTemplate
+와 동일)
+InsertFieldMemo - 메모 넣기([입력-메모-메모 넣기]메뉴와 동일)
+메모고침표 넣기(현재 글메뉴에 없음, 메모와
+InsertFieldRevisionChagne -
+동일한 기능)
+InsertFieldTemplate InsertFieldTemplate 문서마당 정보
+InsertFile InsertFile 끼워 넣기
+InsertFileName InsertFieldTemplate 상용구 코드 넣기(파일 이름만)
+InsertFilePath InsertFieldTemplate 상용구 코드 넣기(파일 이름과 경로)
+InsertFixedWidthSpace - 고정폭 빈칸 삽입
+InsertFootnote - 각주 입력
+InsertHyperlink HyperlinkJump 하이퍼링크 만들기
+16
+
+Action ID ParameterSet ID Description 비고
+InsertIdiom Idiom 상용구 등록
+InsertLastPrintDate - 상용구 코드 넣기(마지막 인쇄한 날짜)
+InsertLastSaveBy - 상용구 코드 넣기(마지막 저장한 사람)
+InsertLastSaveDate - 상용구 코드 넣기(마지막 저장한 날짜)
+InsertLine - 선 넣기
+InsertLinkImageToDoc SummaryInfo 연결 그림을 문서에 삽입
+InsertMovie ShapeObject 동영상 파일 삽입
+InsertNonBreakingSpace - 묶음 빈칸 삽입
+InsertPageNum - 쪽 번호 넣기
+교정 부호 넣기([입력-교정 부호-교정 부호 넣기]
+InsertRevision RevisionDef
+메뉴와 동일)
+InsertRevisionAttach RevisionDef 교정 부호 넣기 : 붙임표
+InsertRevisionClipping RevisionDef 교정 부호 넣기 : 뺌표
+InsertRevisionDelete RevisionDef 교정 부호 넣기 : 지움표
+InsertRevisionHyperlink HyperLink 교정 부호 넣기 : 자료연결
+InsertRevisionInsert RevisionDef 교정 부호 넣기 : 넣음표
+InsertRevisionLeftMove RevisionDef 교정 부호 넣기 : 왼자리 옮김표
+InsertRevisionLine RevisionDef 교정 부호 넣기 : 줄표
+17
+
+Action ID ParameterSet ID Description 비고
+InsertRevisionLineAttach RevisionDef 교정 부호 넣기 : 줄 붙임표
+InsertRevisionLineInsert RevisionDef 교정 부호 넣기 : 줄 비움표
+InsertRevisionLineLink RevisionDef 교정 부호 넣기 : 줄 이음표
+InsertRevisionLineSeparate RevisionDef 교정 부호 넣기 : 줄 바꿈표
+InsertRevisionLineTransfer RevisionDef 교정 부호 넣기 : 줄 서로 바꿈표
+InsertRevisionLineTransfer
+RevisionDef 교정 부호 넣기 : 줄 서로 바꿈 나눔표(내부용)
+Split
+InsertRevisionPraise RevisionDef 교정 부호 넣기 : 칭찬표
+InsertRevisionRightMove RevisionDef 교정 부호 넣기 : 오른자리 옮김표
+InsertRevisionSawTooth RevisionDef 교정 부호 넣기 : 톱니표
+InsertRevisionSimpleChange RevisionDef 교정 부호 넣기 : 고침표
+InsertRevisionSpace RevisionDef 교정 부호 넣기 : 띄움표
+InsertRevisionSymbol RevisionDef 교정 부호 넣기 : 부호 넣음표
+InsertRevisionThinking RevisionDef 교정 부호 넣기 : 생각표
+18
+
+Action ID ParameterSet ID Description 비고
+InsertRevisionTransfer RevisionDef 교정 부호 넣기 : 자리 바꿈표
+InsertRevisionTransferSpli
+RevisionDef 교정 부호 넣기 : 자리바꿈 나눔표(내부용)
+t
+InsertSoftHyphen - 하이픈 삽입
+InsertSpace - 공백 삽입
+날짜/시간 넣기 - 문자열로 넣기([입력-날짜/시
+InsertStringDateTime -
+간-날짜/시간 문자열]메뉴와 동일)
+InsertTab - 탭 삽입
+InsertText InsertText 텍스트 삽입
+InsertTpNo - 상용구 코드 넣기(전체 쪽수)
+InsertUserName InsertFieldTemplate 상용구 코드 넣기(만든 사람)
+InsertVoice OleCreation 음성 삽입
+Jajun - 한자 자전
+LabelAdd - 라벨 새 쪽 추가하기
+LabelTemplate - 라벨 문서 만들기
+텍스트블록 상태에서 블록 왼쪽에 있는 탭(or 공
+LeftShiftBlock
+백)을 지운다.
+LinkDocument LinkDocument 문서 연결([파일-문서 연결]메뉴와 동일)
+글상자 연결
+LinkTextBox - 글상자가 선택되지 않았거나, 캐럿이 글상자 내부
+에 있지 않으면 동작하지 않는다.
+19
+
+Action ID ParameterSet ID Description 비고
+MacroDefine KeyMacro 매크로 정의
+MacroPause - 매크로 실행 일시 중지 (정의/실행)
+MacroPlay1 - 매크로 1
+MacroPlay10 - 매크로 10
+MacroPlay11 - 매크로 11
+MacroPlay2 - 매크로 2
+MacroPlay3 - 매크로 3
+MacroPlay4 - 매크로 4
+MacroPlay5 - 매크로 5
+MacroPlay6 - 매크로 6
+MacroPlay7 - 매크로 7
+MacroPlay8 - 매크로 8
+MacroPlay9 - 매크로 9
+20
+
+Action ID ParameterSet ID Description 비고
+MacroRepeat - 매크로 실행
+MacroRepeatDlg KeyMacro 매크로 실행
+MacroStop - 매크로 실행 중지 (정의/실행)
+MailMergeField - 메일 머지 필드(표시달기 or 고치기)
+MailMergeGenerate MailMergeGenerate 메일 머지 만들기
+MailMergeInsert FieldCtrl 메일 머지 표시 달기
+MailMergeModify FieldCtrl 메일 머지 고치기
+모든 버전비교 문서 만들기.
+현재 문서 및 문서가 가지고 있는 버전정보를 HML
+MakeAllVersionDiffs VersionInfo
+파일로 생성한다.(생성된 파일을 가지고 향 후 버
+전비교를 실행한다)
+MakeContents MakeContents 차례 만들기
+MakeIndex - 찾아보기 만들기
+한영 수동 전환.
+ManualChangeHangul - 현재 커서위치 또는 문단나누기 이전에 입력된 내
+용에 대해서 강제적으로 한/영 전환을 한다.
+ManuScriptTemplate FileOpen 원고지 쓰기
+MarkPenDelete 형광팬 삭제
+MarkPenNext 형광팬 이동(다음)
+21
+
+Action ID ParameterSet ID Description 비고
+MarkPenPrev 형광팬 이동(이전)
+형광펜, 선택된 Text영역의 배경을 형광펜으로 칠
+해준다.
+MarkPenShape MarkpenShape* Run() 실행불가, 반드시 MarkpenShape
+ParameterSet의 Color 아이템 값을 설정하고
+사용해야 함
+MarkPrivateInfo PrivateInfoSecurity 개인 정보 즉시 감추기(텍스트 블록 상태,암호화)
+제목 차례 표시([도구-차례/찾아보기-제목 차례
+표시]메뉴에 대응)
+MarkTitle - 차례 코드가 삽입되어 나중에 차례 만들기에서 사
+용할 수 있다.적용여부는 Ctrl+G,C를 이용해 조
+판부호를 확인하면 알 수 있다.
+MasterPage MasterPage 바탕쪽
+MasterPageDelete MasterPage* 바탕쪽 삭제바탕쪽 편집모드일 경우에만 동작한다.
+기존 바탕쪽과 겹침
+MasterPageDuplicate - 바탕쪽 편집상태가 활성화되어 있으며 [구역 마지
+막쪽], [구역임의 쪽]일 경우에만 사용 가능하다.
+바탕쪽 편집모드
+MasterPageEntry MasterPage
+바탕쪽이 존재할 때만 편집모드로 변환한다.
+MasterPageExcept - 첫 쪽 제외
+바탕쪽 앞으로 보내기
+MasterPageFront -
+바탕쪽 편집모드일 경우에만 동작한다.
+MasterPagePrevSection - 앞 구역 바탕쪽 사용
+MasterPageToNext - 이후 바탕쪽
+MasterPageToPrevious - 이전 바탕쪽
+MasterPageTypeDlg MasterPage* 바탕쪽 종류 다이얼로그 띄움
+MemoShape SecDef 메모 모양([입력-메모-메모 모양]메뉴와 동일함)
+MemoToNext - 다음 메모
+MemoToPrev - 이전 메모
+MessageBox + 메시지 박스
+22
+
+Action ID ParameterSet ID Description 비고
+ModifyBookmark BookMark 책갈피 고치기
+ModifyComposeChars - 고치기 - 글자 겹침
+ModifyCrossReference ActionCrossRef 상호 참조 고치기
+ModifyCtrl - 고치기 : 컨트롤
+ModifyDutmal - 고치기 - 덧말
+ModifyFieldClickhere InsertFieldTemplate 누름틀 정보 고치기
+ModifyFieldDate InsertFieldTemplate 날짜 필드 고치기
+날짜/시간 넣기 고치기.
+반드시 코드로 작성된 "날짜/시간"이어야하며 코
+ModifyFieldDateTime InputDateStyle
+드의 앞(누름틀 밖의)에 캐럿이 존재해야만 동작
+한다.
+ModifyFieldPath InsertFieldTemplate 문서 경로 필드 고치기
+ModifyFieldSummary InsertFieldTemplate 문서 요약 필드 고치기
+ModifyFieldUserInfo InsertFieldTemplate 개인 정보 필드 고치기
+고치기(채우기 속성 탭으로)
+만약 Ctrl(ShapeObject,누름틀, 날짜/시간 코
+드 등)이 선택되지 않았다면 역방향탐색
+ModifyFillProperty -
+(SelectCtrlReverse)을 이용해서 개체를 탐색
+한다. 채우기 속성이 없는 Ctrl일 경우에는 첫 번
+째 탭이 선택된 상태로 고치기 창이 뜬다.
+ModifyHyperlink HyperLink 하이퍼링크 고치기
+23
+
+Action ID ParameterSet ID Description 비고
+고치기(선/테두리 속성 탭으로)
+만약 Ctrl(ShapeObject,누름틀, 날짜/시간 코
+드 등)이 선택되지 않았다면 역방향탐색
+ModifyLineProperty -
+(SelectCtrlReverse)을 이용해서 개체를 탐색
+한다. 선/테두리 속성이 없는 Ctrl일 경우에는
+첫 번째 탭이 선택된 상태로 고치기 창이 뜬다.
+교정 부호 고치기ModifyFieldDateTime과 마찬
+ModifyRevision RevisionDef 가지로 정확히 교정부호(조판 부호)의 앞에 캐럿
+이 존재해야 실행된다.
+자료 연결(교정 부호) 고치기
+ModifyRevision과 마찬가지로 정확히 교정부호
+ModifyRevisionHyperlink HyperLink*
+(조판 부호)의 앞에 캐럿이 존재해야 실행된다.
+Run()으로 실행되지 않는다.
+ModifySecTextHorz TextVertical 가로 쓰기
+ModifySecTextVert TextVertical 세로 쓰기(영문 눕힘)
+ModifySecTextVertAll TextVertical 세로 쓰기(영문 세움)
+ModifySection SecDef 구역
+ModifyShapeObject - 고치기 - 개체 속성
+단의 시작점으로 이동한다. 단이 없을 경우에는 아
+MoveColumnBegin - 무동작도 하지 않는다. 해당 리스트 안에서만 동작
+한다.
+단의 끝점으로 이동한다. 단이 없을 경우에는 아무
+MoveColumnEnd - 동작도 하지 않는다. 해당 리스트 안에서만 동작한
+다.
+문서의 시작으로 이동.
+만약 셀렉션을 확장하는 경우에는
+MoveDocBegin -
+LIST_BEGIN/END와 동일하다. 현재 서브 리스트
+내에 있으면 빠져나간다.
+문서의 끝으로 이동.
+만약 셀렉션을 확장하는 경우에는
+MoveDocEnd -
+LIST_BEGIN/END와 동일하다. 현재 서브 리스트
+내에 있으면 빠져나간다.
+24
+
+Action ID ParameterSet ID Description 비고
+MoveDown - 캐럿을 (논리적 개념의) 아래로 이동시킨다.
+MoveLeft - 캐럿을 (논리적 개념의) 왼쪽으로 이동시킨다.
+MoveLineBegin - 현재 위치한 줄의 시작/끝으로 이동
+MoveLineDown - 한 줄 아래로 이동한다.
+MoveLineEnd - 현재 위치한 줄의 시작/끝으로 이동
+MoveLineUp - 한 줄 위로 이동한다.
+MoveListBegin - 현재 리스트의 시작으로 이동
+MoveListEnd - 현재 리스트의 끝으로 이동
+한 글자 뒤로 이동. 현재 리스트만을 대상으로 동
+MoveNextChar -
+작한다.
+MoveNextColumn - 뒤 단으로 이동
+다음 문단의 시작으로 이동. 현재 리스트만을 대상
+MoveNextParaBegin -
+으로 동작한다.
+한 글자 뒤로 이동. 서브 리스트를 옮겨 다닐 수
+MoveNextPos -
+있다.
+한 글자 뒤로 이동. 서브 리스트를 옮겨 다닐 수
+MoveNextPosEx - 있다. (머리말, 꼬리말, 각주, 미주, 글상자 포
+함)
+한 단어 뒤로 이동. 현재 리스트만을 대상으로 동
+MoveNextWord -
+작한다.
+현재 페이지의 시작점으로 이동한다.
+MovePageBegin - 만약 캐럿의 위치가 변경되었다면 화면이 전환되어
+쪽의 상단으로 페이지뷰잉이 맞춰진다.
+앞 페이지의 시작으로 이동. 현재 탑레벨 리스트가
+MovePageDown -
+아니면 탑레벨 리스트로 빠져나온다.
+현재 페이지의 끝점으로 이동한다.
+MovePageEnd - 만약 캐럿의 위치가 변경되었다면 화면이 전환되어
+쪽의 하단으로 페이지뷰잉이 맞춰진다.
+뒤 페이지의 시작으로 이동. 현재 탑레벨 리스트가
+MovePageUp -
+아니면 탑레벨 리스트로 빠져나온다.
+25
+
+Action ID ParameterSet ID Description 비고
+MoveParaBegin - 현재 위치한 문단의 시작/끝으로 이동
+MoveParaEnd - 현재 위치한 문단의 시작/끝으로 이동
+한 레벨 상위/탑레벨/루트 리스트로 이동한다.
+현재 루트 리스트에 위치해 있어 더 이상 상위 리
+스트가 없을 때는 위치 이동 없이 리턴한다. 이동
+MoveParentList -
+한 후의 위치는 상위 리스트에서 서브리스트가 속
+한 컨트롤 코드가 위치한 곳이다. 위치 이동시 셀
+렉션은 무조건 풀린다.
+한 글자 앞 이동. 현재 리스트만을 대상으로 동작
+MovePrevChar -
+한다.
+MovePrevColumn - 앞 단으로 이동
+앞 문단의 시작으로 이동. 현재 리스트만을 대상으
+MovePrevParaBegin -
+로 동작한다.
+앞 문단의 끝으로 이동. 현재 리스트만을 대상으로
+MovePrevParaEnd -
+동작한다.
+한 글자 앞으로 이동. 서브 리스트를 옮겨 다닐 수
+MovePrevPos -
+있다.
+한 글자 앞으로 이동. 서브 리스트를 옮겨 다닐 수
+MovePrevPosEx - 있다. (머리말, 꼬리말, 각주, 미주, 글상자 포
+함)
+한 단어 앞으로 이동. 현재 리스트만을 대상으로
+MovePrevWord -
+동작한다.
+MoveRight - 캐럿을 (논리적 개념의) 오른쪽으로 이동시킨다.
+한 레벨 상위/탑레벨/루트 리스트로 이동한다.
+현재 루트 리스트에 위치해 있어 더 이상 상위 리
+스트가 없을 때는 위치 이동 없이 리턴한다. 이동
+MoveRootList -
+한 후의 위치는 상위 리스트에서 서브리스트가 속
+한 컨트롤 코드가 위치한 곳이다. 위치 이동시 셀
+렉션은 무조건 풀린다.
+26
+
+Action ID ParameterSet ID Description 비고
+MoveScrollDown - 아래 방향으로 스크롤하면서 이동
+MoveScrollNext - 다음 방향으로 스크롤하면서 이동
+MoveScrollPrev - 이전 방향으로 스크롤하면서 이동
+MoveScrollUp - 위 방향으로 스크롤하면서 이동
+뒤 섹션으로 이동. 현재 루트 리스트가 아니면 루
+MoveSectionDown -
+트 리스트로 빠져나온다.
+앞 섹션으로 이동. 현재 루트 리스트가 아니면 루
+MoveSectionUp -
+트 리스트로 빠져나온다.
+MoveSelDocBegin - 셀렉션: 문서 처음
+MoveSelDocEnd - 셀렉션: 문서 끝
+MoveSelDown - 셀렉션: 캐럿을 (논리적 방향) 아래로 이동
+MoveSelLeft - 셀렉션: 캐럿을 (논리적 방향) 왼쪽으로 이동
+MoveSelLineBegin - 셀렉션: 줄 처음
+MoveSelLineDown - 셀렉션: 한줄 아래
+MoveSelLineEnd - 셀렉션: 줄 끝
+MoveSelLineUp - 셀렉션: 한줄 위
+MoveSelListBegin - 셀렉션: 리스트 처음
+MoveSelListEnd - 셀렉션: 리스트 끝
+MoveSelNextChar - 셀렉션: 다음 글자
+MoveSelNextParaBegin - 셀렉션: 다음 문단 처음
+MoveSelNextPos - 셀렉션: 다음 위치
+MoveSelNextWord - 셀렉션: 다음 단어
+MoveSelPageDown - 셀렉션: 페이지다운
+MoveSelPageUp - 셀렉션: 페이지 업
+MoveSelParaBegin - 셀렉션: 문단 처음
+27
+
+Action ID ParameterSet ID Description 비고
+MoveSelParaEnd - 셀렉션: 문단 끝
+MoveSelPrevChar - 셀렉션: 이전 글자
+MoveSelPrevParaBegin - 셀렉션: 이전 문단 시작
+MoveSelPrevParaEnd - 셀렉션: 이전 문단 끝
+MoveSelPrevPos - 셀렉션: 이전 위치
+MoveSelPrevWord - 셀렉션: 이전 단어
+MoveSelRight - 셀렉션: 캐럿을 (논리적 방향) 오른쪽으로 이동
+MoveSelTopLevelBegin - 셀렉션: 처음
+MoveSelTopLevelEnd - 셀렉션: 끝
+MoveSelUp - 셀렉션: 캐럿을 (논리적 방향) 위로 이동
+MoveSelViewDown - 셀렉션: 아래
+MoveSelViewUp - 셀렉션: 위
+MoveSelWordBegin - 셀렉션: 단어 처음
+MoveSelWordEnd - 셀렉션: 단어 끝
+MoveTopLevelBegin - 탑레벨 리스트의 시작으로 이동
+MoveTopLevelEnd - 탑레벨 리스트의 끝으로 이동
+한 레벨 상위/탑레벨/루트 리스트로 이동한다.
+현재 루트 리스트에 위치해 있어 더 이상 상위 리
+스트가 없을 때는 위치 이동 없이 리턴한다. 이동
+MoveTopLevelList -
+한 후의 위치는 상위 리스트에서 서브리스트가 속
+한 컨트롤 코드가 위치한 곳이다. 위치 이동시 셀
+렉션은 무조건 풀린다.
+MoveUp - 캐럿을 (논리적 개념의) 위로 이동시킨다.
+MoveViewBegin - 현재 뷰의 시작에 위치한 곳으로 이동
+28
+
+Action ID ParameterSet ID Description 비고
+현재 뷰의 크기만큼 아래로 이동한다. PgDn 키의
+MoveViewDown -
+기능이다.
+MoveViewEnd - 현재 뷰의 끝에 위치한 곳으로 이동
+현재 뷰의 크기만큼 위로 이동한다. PgUp 키의 기
+MoveViewUp -
+능이다.
+현재 위치한 단어의 시작으로 이동. 현재 리스트만
+MoveWordBegin -
+을 대상으로 동작한다.
+현재 위치한 단어의 끝으로 이동. 현재 리스트만을
+MoveWordEnd -
+대상으로 동작한다.
+MPBreakNewSection MasterPage 새 구역 만들기–바탕쪽 편집 상태에서
+바탕쪽 가져오기–다른 구역의 바탕쪽 종류와 내용
+MPCopyFromOtherSection Masterpage
+을 복사
+MPSectionToNext - 이후 구역으로
+MPSectionToPrevious - 이전 구역으로
+MPShowMarginBorder - 여백 보기–바탕쪽 편집 상태에서
+MultiColumn ColDef 다단
+NewNumber AutoNum 새 번호로 시작
+NewNumberModify AutoNum 새 번호 고치기
+NextTextBoxLinked - 연결된 글상자의 다음 글상자로 이동
+NoneTextArtShadow ShapeObject 글맵시 그림자 없음
+NoteDelete - 주석 지우기
+NoteModify - 주석 고치기
+NoteNoSuperscript SecDef 주석 번호 보통(윗 첨자 사용 안함)
+NoteNumProperty - 주석 번호 속성
+29
+
+Action ID ParameterSet ID Description 비고
+NoteSuperscript SecDef 주석 번호 작게(윗 첨자)
+NoteToNext - 주석 다음으로 이동
+NoteToPrev - 주석 앞으로 이동
+OleCreateNew OleCreation 개체 삽입
+OutlineNumber SecDef 개요번호
+PageBorder SecDef 쪽 테두리/배경
+쪽 테두리/배경(항상 테두리 탭이 선택되어 보인
+PageBorderTab SecDef
+다.)
+쪽 테두리/배경(항상 테두리 탭이 선택되어 보인
+PageFillTab SecDef
+다.)
+PageHiding PageHiding 감추기
+PageHidingModify PageHiding 감추기 고치기
+PageLandscape SecDef 용지 넓게
+PageMarginSetup SecDef 편집 용지(쪽 여백 설정) 한/글 2022 부터 지원
+PageNumPos PageNumPos 쪽 번호 매기기
+PageNumPosModify PageNumPos 쪽 번호 매기기
+PagePortrait SecDef 용지 좁게
+PageSetup SecDef 편집 용지
+PageSetupDL SecDef 편집 용지(쪽 여백 설정)
+ParagraphShape ParaShape 문단 모양
+ParagraphShapeAlignCenter - 가운데 정렬
+ParagraphShapeAlignDistrib
+- 배분 정렬
+ute
+ParagraphShapeAlignDivisio
+- 나눔 정렬
+n
+ParagraphShapeAlignJustify - 양쪽 정렬
+ParagraphShapeAlignLeft - 왼쪽 정렬
+ParagraphShapeAlignRight - 오른쪽 정렬
+30
+
+Action ID ParameterSet ID Description 비고
+ParagraphShapeDecreaseLeft
+- 왼쪽 여백 줄이기
+Margin
+ParagraphShapeDecreaseLine
+- 줄 간격을 점점 좁힘
+Spacing
+ParagraphShapeDecreaseMarg
+- 왼쪽-오른쪽 여백 줄이기
+in
+ParagraphShapeDecreaseRigh
+- 오른쪽 여백 키우기
+tMargin
+ParagraphShapeIncreaseLeft
+- 왼쪽 여백 키우기
+Margin
+ParagraphShapeIncreaseLine
+- 줄 간격을 점점 넓힘
+Spacing
+ParagraphShapeIncreaseMarg
+- 왼쪽-오른쪽 여백 키우기
+in
+ParagraphShapeIncreaseRigh
+- 오른쪽 여백 줄이기
+tMargin
+ParagraphShapeIndentAtCare
+- 첫 줄 내어 쓰기
+t
+ParagraphShapeIndentNegati
+- 첫 줄을 한 글자 내어 씀
+ve
+ParagraphShapeIndentPositi
+- 첫 줄을 한 글자 들여 씀
+ve
+ParagraphShapeProtect - 문단 보호
+ParagraphShapeSingleRow 한 줄로 입력
+ParagraphShapeWithNext - 다음 문단과 함께
+ParaNumberBullet ParaShape 문단번호/글머리표 한 수준 위로
+ParaNumberBulletLevelDown ParaShape 문단번호/글머리표 한 수준 아래로
+ParaNumberBulletLevelUp ParaShape 문단번호/글머리표 한 수준 위로
+ParaNumberDlg ParaShape 문단번호 대화상자
+ParaShapeDialog ParaShape 문단 모양 대화상자(내부 구현용)
+Paste - 붙이기
+31
+
+Action ID ParameterSet ID Description 비고
+PastePage - 쪽 붙여넣기
+PasteSpecial - 골라 붙이기
+PictureBulletDlg ParaShape 그림 글머리표 대화상자
+PictureChange PictureChange 그림 바꾸기
+PictureEffect1 - 그림 그레이 스케일
+PictureEffect2 - 그림 흑백으로
+PictureEffect3 - 그림 워터마크
+PictureEffect4 - 그림 효과 없음
+PictureEffect5 - 그림 밝기 증가
+PictureEffect6 - 그림 밝기 감소
+PictureEffect7 - 그림 명암 증가
+PictureEffect8 - 그림 명암 감소
+그림 넣기 (대화상자를 띄워 선택한 이미지 파일을
+PictureInsertDialog -
+문서에 삽입하는 액션 : API용)
+PictureLinkedToEmbedded - 연결된 그림을 모두 삽입그림으로
+PictureNoBrightness ShapeObject 그림 밝기 효과 없음
+PictureNoContrast ShapeObject 그림 대비 효과 없음
+PictureNoGlow ShapeObject 그림 네온 효과 없음
+PictureNoReflection ShapeObject 그림 반사 효과 없음
+32
+
+Action ID ParameterSet ID Description 비고
+PictureNoShadow ShapeObject 그림 그림자 효과 없음
+PictureNoSofeEdge ShapeObject 그림 부드러운 가장자리 효과 없음
+PictureNoStyle ShapeObject 그림 스타일 효과 없음
+PictureSave - 그림 빼내기
+PictureSaveAsAll SaveAsImage 삽입된 바이너리 그림 다른 형태로 저장.
+바이너리 그림을 다른 형태로 저장하는 옵션을 설
+PictureSaveAsOption SaveAsImage
+정
+PictureScissor - 그림 자르기
+PictureToOriginal - 그림 원래 그림으로
+Preference Preference 환경 설정
+Presentation Presentation 프레젠테이션
+PresentationDelete Presentation 프레젠테이션 삭제
+PresentationRange PresentationRange 프레젠테이션 범위 설정.
+PresentationSetup Presentation 프레젠테이션 설정
+연결된 글상자의 이전 글상자로 이동
+PrevTextBoxLinked - 현재 글상자가 선택되거나, 글상자 내부에 캐럿이
+존재하지 않으면 동작하지 않는다.
+Print Print 인쇄
+PrintSetup Print 인쇄옵션 - 워터 마크
+PrintToImage PrintToImage 그림으로 저장하기
+PrintToPDF Print PDF인쇄
+PrivateInfoChangePassword PrivateInfoSecurity 개인 정보 보안 암호 변경
+PrivateInfoSetPassword PrivateInfoSecurity 개인 정보 보안 암호 설정
+PutBullet ParaShape* 글머리표 달기
+33
+
+Action ID ParameterSet ID Description 비고
+PutNewParaNumber ParaShape* 문단번호 새 번호 시작하기
+PutOutlineNumber ParaShape* 개요번호 달기
+PutParaNumber ParaShape* 문단번호 달기
+QuickCommand Run - 입력 자동 명령 동작
+QuickCorrect Edit QCorrect 빠른 교정 ―내용 편집
+QuickCorrect Run - 빠른 교정 ―내용 편집
+QuickCorrect Sound - 빠른 교정 ― 메뉴에서 효과음 On/Off
+QuickCorrect - 빠른 교정 (실질적인 동작 Action)
+QuickMarkInsert0 ~ 9 - 쉬운 책갈피 - 삽입
+QuickMarkMove0 ~ 9 - 쉬운 책갈피 - 이동
+RecalcPageCount - 현재 페이지의 쪽 번호 재계산
+최근에 사용한 문자표 입력
+RecentCode - 최근에 사용한 문자표가 없을 경우에는 문자표 대
+화상자를 띄운다.
+Redo - 다시 실행
+RepeatFind FindReplace* 다시 찾기
+ReplaceDlg FindReplace 찾아 바꾸기
+ReplacePrivateInfoDlg - 개인 정보 찾아 숨기기(문자열 치환)
+ReplyMemo - 메모 회신 한/글 2022 부터 지원
+캐럿이 필드 안에 위치한 상태에서 Return Key에
+ReturnKeyInField -
+대한 액션 분기
+ReturnPrevPos - 직전위치로 돌아가기
+ReverseFind FindReplace* 거꾸로 찾기
+텍스트블록 상태에서 블록이 문단의 시작위치에서
+RightShiftBlock
+시작할 경우 블록 왼쪽에 탭을 삽입한다.
+SaveBlockAction FileSaveBlock 블록 저장하기
+SaveFootnote SaveFootnote 주석 저장
+34
+
+Action ID ParameterSet ID Description 비고
+새 버전으로 저장([파일-버전 비교/저장]메뉴를
+SaveHistoryItem VersionInfo 누르면 나타나는 대화상자에서 [새 버전 저장] 버
+튼을 누른 것과 동일)
+ScanHFTFonts 한/글 글꼴 검색
+매크로 정의
+ScrMacroDefine ScriptMacro 매크로 정의 대화상자를 띄우고, 설정이 끝나면 매
+크로를 기록한다.
+ScrMacroPause - 매크로 기록 일시정지/재시작
+ScrMacroPlay1 ~ 11 - #번 매크로 실행(Alt+Shift+#)
+스크립트 매크로 실행 대화상자([도구-매크로-스
+ScrMacroRepeatDlg ScriptMacro
+크립트 매크로 실행]메뉴와 동일)
+스크립트 매크로 보안 설정 대화상자([도구-매크
+ScrMacroSecurityDlg +
+로-스크립트 매크로 보안]메뉴와 동일)
+ScrMacroStop - 매크로 기록 중지
+SearchAddress + 주소 검색
+SearchForeign + 외래어사전검색
+SearchPrivateInfo - 개인 정보 찾아 감추기(암호화)
+Select - 선택 (F3 Key를 누른 효과)
+SelectAll - 모두 선택
+SelectColumn - 칸 블록 선택 (F4 Key를 누른 효과)
+SelectCtrlFront - 개체선택 정방향
+35
+
+Action ID ParameterSet ID Description 비고
+SelectCtrlReverse - 개체선택 역방향
+SelectPageNumShape AutoNum 쪽 번호 모양
+SendBrowserText - 브라우저로 보내기
+SendMailAttach FileSendMail 편지 보내기 - 첨부파일로
+SendMailText FileSendMail 편지 보내기 - 본문으로
+SetLineNumbers SecDef 줄 번호 넣기
+ShapeCopyPaste ShapeCopyPaste 모양 복사
+ShapeObjAlignBottom - 아래로 정렬
+ShapeObjAlignCenter - 가운데로 정렬
+ShapeObjAlignHeight - 높이 맞춤
+ShapeObjAlignHorzSpacing - 왼쪽/오른쪽 일정한 비율로 정렬
+ShapeObjAlignLeft - 왼쪽으로 정렬
+ShapeObjAlignMiddle - 중간 정렬
+ShapeObjAlignRight - 오른쪽으로 정렬
+ShapeObjAlignSize - 폭/높이 맞춤
+ShapeObjAlignTop - 위로 정렬
+ShapeObjAlignVertSpacing - 위/아래 일정한 비율로 정렬
+ShapeObjAlignWidth - 폭 맞춤
+ShapeObjAttachCaption - 캡션 넣기
+ShapeObjAttachTextBox - 글 상자로 만들기
+ShapeObjAttrDialog ShapeObject 틀 속성 환경설정
+ShapeObjBringForward - 앞으로
+ShapeObjBringInFrontOfText - 글 앞으로
+ShapeObjBringToFront - 맨 앞으로
+ShapeObjComment ShapeObject 개체 설명문 수정하기
+36
+
+Action ID ParameterSet ID Description 비고
+ShapeObjCtrlSendBehindText - 글 뒤로
+ShapeObjDetachCaption - 캡션 없애기
+ShapeObjDetachTextBox - 글상자 속성 없애기
+ShapeObjDialog ShapeObject 환경설정
+ShapeObjectCopyPast
+ShapeObjectCopy 그리기 모양 복사
+e
+ShapeObjectCopyPast
+ShapeObjectPaste 그리기 모양 붙여넣기
+e
+ShapeObjFillProperty - 고치기 대화상자중 fill tab
+ShapeObjGroup - 틀 묶기
+ShapeObjGuideLine 그리기 개체 안내선
+ShapeObjHorzFlip - 그리기 개체 좌우 뒤집기
+ShapeObjHorzFlipOrgState - 그리기 개체 좌우 뒤집기 원상태로 되돌리기
+ShapeObjInsertCaptionNum - 캡션 번호 넣기
+ShapeObjLineProperty - 고치기 대화상자중 line tab
+ShapeObjLineStyleOhter - 다른 선 종류
+ShapeObjLineWidthOhter - 다른 선 굵기
+ShapeObjLock - 개체 Lock
+ShapeObjMoveDown - 키로 움직이기(아래)
+ShapeObjMoveLeft - 키로 움직이기(왼쪽)
+ShapeObjMoveRight - 키로 움직이기(오른쪽)
+37
+
+Action ID ParameterSet ID Description 비고
+ShapeObjMoveUp - 키로 움직이기(위)
+ShapeObjNextObject - 이후 개채로 이동(tab키)
+ShapeObjNorm - 기본 도형 설정
+ShapeObjNoShade ShapeObject 채우기 색 음영 없음
+ShapeObjNoShadow ShapeObject 그림자 없음
+ShapeObjPrevObject - 이전 개체로 이동(shift + tab키)
+ShapeObjProtectSize ShapeObject 그리기 개체 크기 고정
+ShapeObjRandomAngleRotater ShapeObject 자유각 회전
+ShapeObjResizeDown - 키로 크기 조절(shift + 아래)
+ShapeObjResizeLeft - 키로 크기 조절(shift + 왼쪽)
+ShapeObjResizeRight - 키로 크기 조절(shift + 오른쪽)
+ShapeObjResizeUp - 키로 크기 조절(shift + 위)
+ShapeObjRightAngleRotater - 90도 회전
+ShapeObjRightAngleRotaterA
+- -90도 회전
+nticlockwise
+ShapeObjRotater - 자유각 회전(회전중심 고정)
+ShapeObjSaveAsPicture - 그리기개체를 그림으로 저장하기
+ShapeObjSelect - 틀 선택 도구
+ShapeObjSendBack - 뒤로
+ShapeObjSendToBack - 맨 뒤로
+그리기 개체 그림자를 큰 형태로 변경그림자가 없
+ShapeObjShadowEnlarge +
+으면 생성한다.
+그리기 개체 그림자를 밑으로 이동시킨다. 그림자
+ShapeObjShadowMoveDown +
+가 없으면 생성한다.
+그리기 개체 그림자를 왼쪽으로 이동시킨다. 그림
+ShapeObjShadowMoveLeft +
+자가 없으면 생성한다.
+ShapeObjShadowMoveOrginal + 그리기 개체 그림자 위치 원점으로(offset제거)
+38
+
+Action ID ParameterSet ID Description 비고
+그리기 개체 그림자를 오른쪽으로 이동시킨다. 그
+ShapeObjShadowMoveRight +
+림자가 없으면 생성한다.
+그리기 개체 그림자를 위로 이동시킨다. 그림자가
+ShapeObjShadowMoveUp +
+없으면 생성한다.
+그리기 개체 그림자를 작은 형태로 변경. 그림자가
+ShapeObjShadowNarrow +
+없으면 생성한다.
+ShapeObjShadowParellelLeft 그리기 개체 그림자를 원본 개체와 동일한 크기로
++
+Bottom 왼쪽하단에 생성한다.
+ShapeObjShadowParellelLeft 그리기 개체 그림자를 원본 개체와 동일한 크기로
++
+Top 왼쪽상단에 생성한다.
+ShapeObjShadowParellelRigh 그리기 개체 그림자를 원본 개체와 동일한 크기로
++
+tBottom 오른쪽하단에 생성한다.
+ShapeObjShadowParellelRigh 그리기 개체 그림자를 원본 개체와 동일한 크기로
++
+tTop 오른쪽상단에 생성한다.
+ShapeObjShadowShearLeftBot 그리기 개체 그림자를 왼쪽 뒷부분으로 눕혀서 생
++
+tom 성한다.
+그리기 개체 그림자를 왼쪽 앞부분으로 눕혀서 생
+ShapeObjShadowShearLeftTop +
+성한다.
+ShapeObjShadowShearRightBo 그리기 개체 그림자를 오른쪽 뒷부분으로 눕혀서
++
+ttom 생성한다.
+ShapeObjShadowShearRightTo 그리기 개체 그림자를 오른쪽 앞부분으로 눕혀서
++
+p 생성한다.
+ShapeObjShear ShapeObject 그리기 개체 기울이기
+ShapeObjShowGuideLine 그리기 개체 안내선
+ShapeObjShowGuideLineBase 그리기 안내선 한/글 2024 부터 지원
+ShapeObjTableSelCell - 테이블 선택상태에서 첫 번째 셀 선택하기
+ShapeObjTextBoxEdit - 글상자 선택상태에서 편집모드로 들어가기
+ShapeObjToggleTextBox - 도형 글 상자로 만들기- Toggle
+ShapeObjUngroup - 틀 풀기
+39
+
+Action ID ParameterSet ID Description 비고
+ShapeObjUnlockAll - 개체 Unlock All
+ShapeObjVertFlip - 그리기 개체 상하 뒤집기
+ShapeObjVertFlipOrgState - 그리기 개체 상하 뒤집기 원상태로 되돌리기
+ShapeObjWrapSquare - 직사각형
+ShapeObjWrapTopAndBottom - 자리 차지
+ShowLineNumbers SecDef 줄 번호 넣기
+Soft Keyboard - 보기
+Sort Sort 소트
+SpellingCheck - 맞춤법
+SplitMemoOpen - 메모창 열기
+Style Style 스타일 (글2005이하버전)
+StyleAdd Style 스타일 추가(글2007, 스타일 대화상자를 띄움)
+StyleChangeToCurrentShape StyleItem 스타일 현재 모양으로 바꾸기
+StyleClearCharStyle - 글자 스타일 해제
+StyleDelete StyleDelete 스타일 제거
+StyleEdit Style 스타일 편집
+StyleEx Style 스타일 (글2007)
+StyleParaNumberBullet ParaShape 문단번호/글머리표
+StyleShortcut1 - 스타일 단축키<Ctrl + 1>
+StyleShortcut10 - 스타일 단축키<Ctrl + 0>
+StyleShortcut2 - 스타일 단축키<Ctrl + 2>
+StyleShortcut3 - 스타일 단축키<Ctrl + 3>
+StyleShortcut4 - 스타일 단축키<Ctrl + 4>
+StyleShortcut5 - 스타일 단축키<Ctrl + 5>
+StyleShortcut6 - 스타일 단축키<Ctrl + 6>
+40
+
+Action ID ParameterSet ID Description 비고
+StyleShortcut7 - 스타일 단축키<Ctrl + 7>
+StyleShortcut8 - 스타일 단축키<Ctrl + 8>
+StyleShortcut9 - 스타일 단축키<Ctrl + 9>
+StyleTemplate StyleTemplate 스타일 마당
+Sum Sum 블록 합계
+SuppressLineNumbers 줄 번호 넣기
+TableAppendRow - 줄 추가
+TableAutoDrawPenStyleWidth
+TableDrawPen 표 그리기 선 모양
+Dlg
+TableAutoFill AutoFill* 자동 채우기
+TableAutoFillDlg AutoFill* 자동 채우기
+TableBreak Table 표 쪽 경계에서(나누지 않음)
+TableBreakCell Table 표 쪽 경계에서(나눔)
+TableBreakNone Table 표 쪽 경계에서(셀 단위로 나눔)
+TableCaptionPosBottom ShapeObject 테이블 캡션 위치-아래
+TableCaptionPosLeftBottom ShapeObject 테이블 캡션 위치–윈쪽 아래
+TableCaptionPosLeftCenter ShapeObject 테이블 캡션 위치–왼쪽 가운데
+TableCaptionPosLeftTop ShapeObject 테이블 캡션 위치–왼쪽 위
+TableCaptionPosRightBottom ShapeObject 테이블 캡션 위치–오른쪽 아래
+TableCaptionPosRightCenter ShapeObject 테이블 캡션 위치–오른쪽 가운데
+TableCaptionPosRightTop ShpaeObject 테이블 캡션 위치–오른쪽 위
+TableCaptionPosTop ShapeObject 테이블 캡션 위치-위
+para align + cell valign :테이블의 셀 내에
+TableCellAlignCenterBottom -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignCenterCenter -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignCenterTop -
+서만 동작함.
+41
+
+Action ID ParameterSet ID Description 비고
+para align + cell valign :테이블의 셀 내에
+TableCellAlignLeftBottom -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignLeftCenter -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignLeftTop -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignRightBottom -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignRightCenter -
+서만 동작함.
+para align + cell valign :테이블의 셀 내에
+TableCellAlignRightTop -
+서만 동작함.
+TableCellBlock - 셀 블록
+TableCellBlockCol - 셀 블록 (칸)
+TableCellBlockExtend - 셀 블록 연장(F5 + F5)
+TableCellBlockExtendAbs - 셀 블록 연장(SHIFT + F5)
+TableCellBlockRow - 셀 블록(줄)
+모든 셀 테두리 toggle(있음/없음). 셀 블록 상
+TableCellBorderAll -
+태일 경우에만 동작한다.
+가장 아래 셀 테두리 toggle(있음/없음). 셀 블
+TableCellBorderBottom -
+록 상태일 경우에만 동작한다.
+TableCellBorderDiagonalDow 대각선(⍂) 셀 테두리 toggle(있음/없음). 셀
+-
+n 블록 상태일 경우에만 동작한다.
+대각선(⍁) 셀 테두리 toggle(있음/없음). 셀
+TableCellBorderDiagonalUp -
+블록 상태일 경우에만 동작한다.
+모든 안쪽 셀 테두리 toggle(있음/없음). 셀 블
+TableCellBorderInside -
+록 상태일 경우에만 동작한다.
+모든 안쪽 가로 셀 테두리 toggle(있음/없음).
+TableCellBorderInsideHorz -
+셀 블록 상태일 경우에만 동작한다.
+모든 안쪽 세로 셀 테두리 toggle(있음/없음).
+TableCellBorderInsideVert -
+셀 블록 상태일 경우에만 동작한다.
+42
+
+Action ID ParameterSet ID Description 비고
+가장 왼쪽의 셀 테두리 toggle(있음/없음) 셀 블
+TableCellBorderLeft -
+록 상태일 경우에만 동작한다.
+모든 셀 테두리 지움. 셀 블록 상태일 경우에만 동
+TableCellBorderNo -
+작한다.
+바깥 셀 테두리 toggle(있음/없음) 셀 블록 상태
+TableCellBorderOutside -
+일 경우에만 동작한다.
+가장 오른쪽의 셀 테두리 toggle(있음/없음) 셀
+TableCellBorderRight -
+블록 상태일 경우에만 동작한다.
+가장 위의 셀 테두리 toggle(있음/없음) 셀 블록
+TableCellBorderTop -
+상태일 경우에만 동작한다.
+TableCellShadeDec CellBorderFill 셀 배경의 음영을 낮춘다.(결과적으로 밝아진다)
+셀 배경의 음영을 높인다.(결과적으로 어두워진
+TableCellShadeInc CellBorderFill
+다)
+TableCellTextHorz CellBorderFill 셀 문자 방향–가로 쓰기
+TableCellTextVert CellBorderFill 셀 음영 없음
+TableCellTextVertAll CellBorderFill 셀 문자 방향–세로 쓰기–영문 세움
+TableCellToggleDirection CellBorderFill 표 문자 방향- toggle
+TableColBegin - 셀 이동: 열 시작
+TableColEnd - 셀 이동: 열 끝
+TableColPageDown - 셀 이동: 페이지다운
+TableColPageUp - 셀 이동: 페이지 업
+TableCreate TableCreation 표 만들기
+TableDeleteCell - 셀 삭제
+TableDeleteColumn TableDeleteLine 칸 지우기
+TableDeleteComma - 세자리마다 자리점 빼기
+TableDeleteRow TableDeleteLine 줄-칸 지우기
+TableDeleteRowColumn TableDeleteLine 줄-칸 지우기
+TableDistributeCellHeight - 셀 높이를 같게
+TableDistributeCellWidth - 셀 너비를 같게
+43
+
+Action ID ParameterSet ID Description 비고
+TableDrawPen - 표 그리기
+TableEraser - 표 지우개
+TableFormula FieldCtrl 계산식
+TableFormulaAvgAuto - 블록 평균
+TableFormulaAvgHor - 가로 평균
+TableFormulaAvgVer - 세로 평균
+TableFormulaProAuto - 블록 곱
+TableFormulaProHor - 가로 곱
+TableFormulaProVer - 세로 곱
+TableFormulaSumAuto - 블록 합계
+TableFormulaSumHor - 가로 합계
+TableFormulaSumVer - 세로 합계
+TableInsertComma - 세자리마다 자리점 넣기
+TableInsertLeftColumn TableInsertLine 왼쪽 칸 삽입
+TableInsertLowerRow TableInsertLine 아래쪽 줄 삽입
+TableInsertRightColumn TableInsertLine 오른쪽 칸 삽입
+TableInsertRowColumn TableInsertLine 줄-칸 삽입
+TableInsertUpperRow TableInsertLine 위쪽 줄 삽입
+TableLeftCell - 셀 이동: 셀 왼쪽
+TableLowerCell - 셀 이동: 셀 아래
+TableMergeCell - 셀 합치기
+TableMergeTable - 표 붙이기
+TablePropertyDialog ShapeObject 표 고치기
+TableResizeCellDown - 셀 크기 변경: 셀 아래
+TableResizeCellLeft - 셀 크기 변경: 셀 왼쪽
+TableResizeCellRight - 셀 크기 변경: 셀 오른쪽
+44
+
+Action ID ParameterSet ID Description 비고
+TableResizeCellUp - 셀 크기 변경: 셀 위
+TableResizeDown - 셀 크기 변경
+셀 크기 변경: 셀 아래
+TableResizeExDown - TebleResizeDown과 다른 점은 셀 블록 상태가
+아니어도 동작한다는 점이다.
+셀 크기 변경: 셀 왼쪽
+TableResizeExLeft - TebleResizeLeft와 다른 점은 셀 블록 상태가
+아니어도 동작한다는 점이다.
+셀 크기 변경: 셀 오른쪽
+TableResizeExRight - TebleResizeRight와 다른 점은 셀 블록 상태가
+아니어도 동작한다는 점이다.
+셀 크기 변경: 셀 위
+TableResizeExUp - TebleResizeUp과 다른 점은 셀 블록 상태가 아
+니어도 동작한다는 점이다.
+TableResizeLeft - 셀 크기 변경
+TableResizeLineDown - 셀 크기 변경: 선아래
+TableResizeLineLeft - 셀 크기 변경: 선 왼쪽
+TableResizeLineRight - 셀 크기 변경: 선 오른쪽
+TableResizeLineUp - 셀 크기 변경: 선 위
+TableResizeRight - 셀 크기 변경
+TableResizeUp - 셀 크기 변경
+TableRightCell - 셀 이동: 셀 오른쪽
+TableRightCellAppend - 셀 이동: 셀 오른쪽에 이어서
+TableSplitCell TableSplitCell 셀 나누기
+TableSplitCellCol2 TableSplitCell 셀 칸 나누기
+TableSplitCellRow2 TableSplitCell 셀 줄 나누기
+TableSplitTable - 표 나누기
+TableStringToTable TableStrToTbl 문자열을 표로
+TableSubtractRow TableDeleteLine 표 줄 삭제
+45
+
+Action ID ParameterSet ID Description 비고
+TableSwap TableSwap 표 뒤집기
+TableTableToString TableTblToStr 표를 문자열로
+TableTemplate TableTemplate 표 마당
+TableTreatAsChar ShapeObject 표 글자처럼 취급
+TableUpperCell - 셀 이동: 셀 위
+TableVAlignBottom - 셀 세로정렬 아래
+TableVAlignCenter - 셀 세로정렬 가운데
+TableVAlignTop - 셀 세로정렬 위
+TextArtCreate + 글맵시
+TextArtModify + 글맵시 고치기
+TextArtShadow + 글맵시 그림자 넣기/빼기
+TextArtShadowMobeToDown ShapeObject 글맵시 그림자 위치 이동-아래로
+TextArtShadowMobeToLeft ShapeObject 글맵시 그림자 위치 이동-왼쪽으로
+TextArtShadowMobeToRight ShapeObject 글맵시 그림자 위치 이동-오른쪽으로
+TextArtShadowMoveToUp ShapeObject 글맵시 그림자 위치 이동-위로
+TextBoxAlignCenterBottom ShapeObject 글상자 정렬
+TextBoxAlignCenterCenter ShapeObject 글상자 정렬
+TextBoxAlignCenterTop ShapeObject 글상자 정렬
+TextBoxAlignLeftBottom ShapeObject 글상자 정렬
+TextBoxAlignLeftCenter ShapeObject 글상자 정렬
+TextBoxAlignLeftTop ShapeObject 글상자 정렬
+TextBoxAlignRightBottom ShapeObject 글상자 정렬
+TextBoxAlignRightCenter ShapeObject 글상자 정렬
+TextBoxAlignRightTop ShapeObject 글상자 정렬
+TextBoxTextHorz ShpaeObject 글상자 문자 방향–가로 쓰기
+TextBoxTextVert ShapeObject 글상자 문자 방향–세로 쓰기–영문 눕힘
+46
+
+Action ID ParameterSet ID Description 비고
+TextBoxTextVertAll ShapeObject 글상자 문자 방향–세로 쓰기–영문 세움
+TextBoxToggleDirection ShapeObject 글상자 문자 방향–세로/가로 토글
+TextBoxVAlignBottom ShapeObject 글상자 세로 정렬-아래
+TextBoxVAlignCenter ShapeObject 글상자 세로 정렬-가운데
+TextBoxVAlignTop ShapeObject 글상자 세로 정렬-위
+ToggleOverwrite - Toggle Overwrite
+TrackChangeApply - 변경추적:변경내용 적용
+TrackChangeApplyAll - 변경추적:문서에서 변경내용 모두 적용
+TrackChangeApplyNext - 변경추적:적용 후 다음으로 이동
+TrackChangeApplyPrev - 변경추적:적용 후 이전으로 이동
+TrackChangeApplyViewAll - 변경추적:표시된 변경내용 모두 적용
+TrackChangeAuthor - 변경추적:사용자 이름 변경
+TrackChangeCancel - 변경추적:변경내용 취소
+TrackChangeCancelAll - 변경추적:문서에서 변경내용 모두 취소
+TrackChangeCancelNext - 변경추적:취소 후 다음으로 이동
+TrackChangeCancelPrev - 변경추적:취소 후 이전으로 이동
+TrackChangeCancelViewAll - 변경추적:표시된 변경내용 모두 취소
+TrackChangeNext - 변경추적:다음 변경내용
+TrackChangeOption TrackChange 변경추적:변경 내용 추적 설정
+TrackChangePrev - 변경추적:이전 변경내용
+TrackChangeProtection Password 변경추적:변경추적 보호
+Undo - 되살리기
+UnlinkTextBox - 글상자 연결 끊기
+자동 채우기(TableAutoFill,
+UserAutoFill AutoFill*
+TableAutoFillDlg와 동일)
+VersionDelete VersionInfo* 버전정보 지우기
+47
+
+Action ID ParameterSet ID Description 비고
+VersionDeleteAll - 모든 버전정보 지우기
+VersionInfo VersionInfo 버전 정보
+VersionSave VersionInfo 버전 저장하기
+VerticalText TextVertical 세로쓰기
+ViewGridOption GridInfo 격자
+ViewIdiom - 상용구 보기
+ViewOptionColor 컬러로 보기 (회색조 보기 되돌리기 액션)
+ViewOptionColorCustom 사용자색 보기
+ViewOptionColorCustomOptio
+사용자색 설정
+n
+ViewOptionCtrlMark - 조판 부호
+ViewOptionGray 회색조 보기
+ViewOptionGuideLine - 안내선
+메모 보이기/숨기기([보기-메모-메모 보이기/숨
+ViewOptionMemo -
+기기]메뉴와 동일)
+메모 안내선 표시([보기-메모-메모 안내선 표시]
+ViewOptionMemoGuideline -
+메뉴와 동일)
+ViewOptionPaper - 쪽 윤곽 보기
+ViewOptionParaMark - 문단 부호
+ViewOptionPicture - 그림 보이기/숨기기([보기-그림]메뉴와 동일)
+ViewOptionPronounce PronounceInfo 한자/일어 발음 표시 (Toggle)
+ViewOptionPronounceSetting PronounceInfo 한자/일어 발음 표시 설정
+교정부호 보이기/숨기기([보기-교정부호]메뉴와
+ViewOptionRevision -
+동일)
+ViewOptionTrackChange - 변경추적 보기
+ViewOptionTrackChangeFinal - 변경추적 보기:최종본 보기
+ViewOptionTrackChangeFinal
+- 변경추적 보기:메모 및 변경 내용 최종본
+Memo
+48
+
+Action ID ParameterSet ID Description 비고
+ViewOptionTrackChangeInlin
+- 변경추적 보기:안내문에 표시
+e
+ViewOptionTrackChangeInser
+- 변경추적 보기:삽입 및 삭제
+tDelete
+ViewOptionTrackChangeOrigi
+- 변경추적 보기:원본 보기
+nal
+ViewOptionTrackChangeOrigi
+- 변경추적 보기:메모 및 변경 내용 원본
+nalMemo
+ViewOptionTrackChangeShape - 변경추적 보기:서식
+ViewOptionTrackChnageInfo - 변경추적 보기:변경 내용 보기
+ViewShowGrid GridInfo 격자 보이기
+ViewZoom ViewProperties 화면 확대(Ribbon)
+ViewZoomFitPage ViewProperties 화면 확대: 페이지에 맞춤
+ViewZoomFitWidth ViewProperties 화면 확대: 폭에 맞춤
+ViewZoomLock 화면 잠금
+ViewZoomNormal ViewProperties 화면 확대: 정상
+VoiceCommand Config - 음성 명령 설정
+VoiceCommand Resume - 음성 명령 레코딩 시작
+VoiceCommand Stop - 음성 명령 레코딩 중지
+VoiceCommand View + 음성 명령창 보이기
+VoiceCommand + 음성 명령 동작
+49
+
+- 예제 : 배포용 문서 만들기
+1. 배포용 문서 설정
+FileSetSecurity Action을 사용한다.
+암호는 ParameterSet Item으로 넘겨줘야 한다.
+2. 배포용 문서에서 편집가능 상태로 전환
+배포용 문서를 읽을 때 Open의 argument로 "distribute:true;" 옵션을 준다.
+암호는 사용자가 대화상자에 직접 입력해야 한다.
+3. 배포용 문서 해제
+배포용 문서를 일단 편집가능 상태로 전환한 상태에서 SaveAs 의 argument로 "distribute:false" 옵션을 준다.
+한/글과 달리 암호는 재확인하지 않는다.
+function SetDistribute()
+{
+var dact = pHwpCtrl.CreateAction("FileSetSecurity");
+var dset = null;
+if (dact)
+dset = dact.CreateSet();
+if (dact && dset) {
+dact.GetDefault(dset);
+dset.SetItem("Password", HwpControl.password.value);
+dset.SetItem("NoPrint", HwpControl.NoPrint.checked);
+dset.SetItem("NoCopy", HwpControl.NoCopy.checked);
+if (!dact.Execute(dset)) {
+var msg = "배포용 문서 만들기 실패";
+if (dset.Item("Password").length <= 6) {
+msg += "\n암호가 너무 짧습니다.";
+HwpControl.password.focus();
+alert(msg);
+return;
+}
+alert(msg);
+}
+} else {
+50
+
+var msg = "배포용 문서 만들기 실패";
+if (pHwpCtrl.EditMode & 0x10) // 배포용 문서는 0x10 flag 를 포함한다.
+msg += "\n이미 배포용 문서로 지정된 상태입니다.\n암호를 변경하기 위해서는 먼저 일반 문서로 변경하십시오."
+else if (pHwpCtrl.EditMode == 0)
+msg += "\n읽기 전용 문서입니다."
+alert(msg);
+}
+pHwpCtrl.focus();
+}
+- 예제 : 언더라인이 있는 문자열의 시작 pos를 얻어오는 예제
+function OnTestApi1()
+{
+pHwpCtrl.MovePos(3); // 커서를 문서의 맨 뒤로 이동
+var act = pHwpCtrl.CreateAction("BackwardFind"); // 뒤에서부터 찾는다.
+var set = act.CreateSet();
+act.GetDefault(set);
+set.SetItem("IgnoreFindString", 1);
+var subset = set.CreateItemSet("FindCharShape", "CharShape");
+subset.SetItem("UnderlineType", 1);
+act.Execute(set);
+var set;
+var list, para, pos;
+set = pHwpCtrl.GetPosBySet();
+list = set.Item("List");
+para = set.Item("Para");
+pos = set.Item("Pos");
+}
+- 예제 : 각 라인의 첫 번째 단어의 색깔을 바꾸는 예제
+function OnTestApi1()
+{
+// 현재줄의 맨 앞으로 커서를 옮긴후 한단어를 블럭지정한다.
+pHwpCtrl.Run("MoveLineBegin");
+pHwpCtrl.Run("Select");
+pHwpCtrl.Run("MoveSelNextWord");
+51
+
+// 블럭 지정된 단어의 글자 속성을 변경한다.
+var dAct = pHwpCtrl.CreateAction("CharShape");
+var dSet = dAct.CreateSet();
+dAct.GetDefault(dSet);
+dSet.SetItem("TextColor", 0xFF0000); // 글자 색을 파란색으로
+dAct.Execute(dSet);
+pHwpCtrl.Run("Cancel");
+}
+function OnTestApi2()
+{
+// 문서의 맨 처음에서 끝까지 돌면서 각 줄의 맨 처음 단어의 글자속성을 변경한다.
+pHwpCtrl.MovePos(2); // 페이지 맨 처음으로
+var con = true;
+while (con) {
+OnTestApi1(); // 현재줄의 맨 처음 단어 색깔 변경
+con = pHwpCtrl.MovePos(20); // 한줄 아래로 (예전 API 매뉴얼에는 21로 되어 있으나 잘못된 값임.
+// 한줄 위/아래로가 서로 값이 바뀌었음)
+}
+}
+52

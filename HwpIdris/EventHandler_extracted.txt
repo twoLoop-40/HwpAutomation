@@ -1,0 +1,134 @@
+최종 수정일 : 2025년 4월 15일
+한글 오토메이션
+Event Handler 추가 방법 (MFC/ATL)
+1. 이벤트 핸들러 클래스 추가
+(Visual Studio)
+프로젝트 > 클래스 추가 > Visual C++ > ATL > ATL 단순 개체
+
+// CHwpEventHandler
+class ATL_NO_VTABLE CHwpEventHandler :
+public CComObjectRootEx<CComSingleThreadModel>,
+public CComCoClass<CHwpEventHandler, &CLSID_HwpEventHandler>,
+public IDispatchImpl<IHwpEventHandler, &IID_IHwpEventHandler,
+&LIBID_HwpAutomationEventHandlerLib, /*wMajor =*/ 1, /*wMinor =*/ 0>
+{
+BEGIN_COM_MAP(CHwpObjectEventHandler)
+COM_INTERFACE_ENTRY(IHwpObjectEventHandler)
+COM_INTERFACE_ENTRY(IDispatch)
+END_COM_MAP()
+...
+}
+OBJECT_ENTRY_AUTO(__uuidof(HwpObjectEventHandler), CHwpObjectEventHandler)
+
+2. IHwpObjectEvents 인터페이스 구현
+1에서 생성한 클래스에 IHwpObjectEvents 인터페이스 구현
+class ATL_NO_VTABLE CHwpEventHandler :
+public CComObjectRootEx<CComSingleThreadModel>,
+public CComCoClass<CHwpEventHandler, &CLSID_HwpEventHandler>,
+public IDispatchImpl<IHwpEventHandler, &IID_IHwpEventHandler,
+&LIBID_HwpAutomationEventHandlerLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
+public IDispatchImpl<IHwpObjectEvents, &__uuidof(IHwpObjectEvents), &LIBID_HwpObjectLib, /*
+wMajor = */ 1>
+{
+BEGIN_COM_MAP(CHwpEventHandler)
+COM_INTERFACE_ENTRY(IHwpEventHandler)
+COM_INTERFACE_ENTRY2(IDispatch, IHwpObjectEvents)
+COM_INTERFACE_ENTRY(IHwpObjectEvents)
+END_COM_MAP()
+// IHwpObjectEvents Methods
+STDMETHOD(Quit)()
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent Quit"));
+return E_NOTIMPL;
+}
+STDMETHOD(CreateXHwpWindow)()
+{
+return E_NOTIMPL;
+}
+STDMETHOD(CloseXHwpWindow)()
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent CloseXHwpWindow"));
+return E_NOTIMPL;
+}
+STDMETHOD(NewDocument)(long newVal)
+{
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentBeforeClose)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentBeforeClose"));
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentBeforeOpen)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentBeforeOpen"));
+
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentAfterOpen)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentAfterOpen"));
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentBeforeSave)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentBeforeSave"));
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentAfterSave)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentAfterSave"));
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentAfterClose)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentAfterClose"));
+return E_NOTIMPL;
+}
+STDMETHOD(DocumentChange)(long newVal)
+{
+OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentChange"));
+return E_NOTIMPL;
+}
+...
+}
+※ IHwpObjectEvents의 GUID value을 알기 위해서는 #import 속성에 named_guids를 추가해야 함
+#import "progid:HWPFrame.HwpObject.2" raw_interfaces_only, raw_native_types, no_namespace,
+named_guids, auto_search
+
+3. 이벤트 핸들러 연결
+...
+COleException exception;
+if (m_app.CreateDispatch(_T("HWPFrame.HwpObject.2"), &exception) != NULL) {
+CXHwpWindows wins = m_app.get_XHwpWindows();
+CXHwpWindow win = wins.get_Active_XHwpWindow();
+win.put_Visible(TRUE);
+IConnectionPointContainer* pCPC = NULL;
+m_app.m_lpDispatch->QueryInterface(IID_IConnectionPointContainer, (void**)&pCPC);
+if (pCPC) {
+pCPC->FindConnectionPoint(__uuidof(IHwpObjectEvents), &m_pCP);
+if (m_pCP) {
+CComObject<CHwpObjectEventHandler>::CreateInstance(&m_pHwpEventHandler);
+if (m_pHwpEventHandler) {
+m_pHwpEventHandler->SetContainerInfo(&m_app);
+LPUNKNOWN p;
+m_pHwpEventHandler->QueryInterface(IID_IDispatch, (void**)&p);
+m_pCP->Advise(p, &m_dwHwpObjectEventHandlerCookie);
+}
+}
+}
+}
+CComObject<CHwpObjectEventHandler>* m_pHwpEventHandler;
+IConnectionPoint* m_pCP;
+DWORD m_dwHwpObjectEventHandlerCookie;
+
+4. 이벤트 핸들러 연결 해제
+if (m_pCP) {
+m_pCP->Unadvise(m_dwHwpObjectEventHandlerCookie);
+}
+if (m_pHwpEventHandler) {
+m_pHwpEventHandler->Release();
+}
+참고 자료
+https://learn.microsoft.com/en-us/cpp/preprocessor/hash-import-directive-cpp?view=msvc-170
+https://learn.microsoft.com/en-us/windows/win32/api/ocidl/nn-ocidl-iconnectionpoint
