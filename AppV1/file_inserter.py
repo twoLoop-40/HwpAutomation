@@ -10,6 +10,7 @@ from tempfile import mkdtemp
 import shutil
 
 from src.automation.client import AutomationClient
+from src.common.sync import wait_for_hwp_ready
 from .types import ProblemFile
 from .column import convert_to_single_column
 from .para_scanner import scan_paras, remove_empty_paras
@@ -49,7 +50,11 @@ def preprocess_and_save(problem: ProblemFile, temp_dir: Path) -> Tuple[bool, Pat
         # 4. 임시 파일로 저장
         temp_file = temp_dir / f"processed_{problem.index:03d}.hwp"
         hwp.SaveAs(str(temp_file.absolute()))
-        time.sleep(0.1)
+
+        # 저장 완료 대기 (동기화)
+        if not wait_for_hwp_ready(hwp, timeout=5.0):
+            client.cleanup()
+            return (False, None, "저장 시간 초과")
 
         # 정리
         client.close_document()
@@ -59,6 +64,54 @@ def preprocess_and_save(problem: ProblemFile, temp_dir: Path) -> Tuple[bool, Pat
 
     except Exception as e:
         return (False, None, str(e)[:50])
+
+
+def insert_file_and_break_column(hwp, file_path: Path, is_last: bool) -> bool:
+    """
+    InsertFile + BreakColumn 결합 시퀀스 (원자적 작업)
+
+    두 작업이 독립적으로 실행되는 것을 방지하고 동기화된 시퀀스로 처리
+
+    Args:
+        hwp: HWP COM 객체
+        file_path: 삽입할 파일 경로
+        is_last: 마지막 파일 여부 (BreakColumn 생략)
+
+    Returns:
+        성공 여부
+    """
+    try:
+        # 1. InsertFile 실행
+        hwp.HAction.GetDefault("InsertFile", hwp.HParameterSet.HInsertFile.HSet)
+        insert_params = hwp.HParameterSet.HInsertFile
+        insert_params.HSet.SetItem("FileName", str(file_path.absolute()))
+        insert_params.HSet.SetItem("FileFormat", "HWP")
+        insert_params.HSet.SetItem("KeepSection", 0)
+
+        if not hwp.HAction.Execute("InsertFile", insert_params.HSet):
+            return False
+
+        # 2. InsertFile 완료 대기
+        if not wait_for_hwp_ready(hwp, timeout=5.0):
+            return False
+
+        # 3. 문서 끝으로 이동 (InsertFile은 커서를 움직이지 않음)
+        hwp.Run("MoveDocEnd")
+        if not wait_for_hwp_ready(hwp, timeout=2.0):
+            return False
+
+        # 4. BreakColumn (마지막 파일 제외)
+        if not is_last:
+            hwp.Run("BreakColumn")
+            # BreakColumn은 더 긴 대기 시간 필요
+            if not wait_for_hwp_ready(hwp, timeout=3.0):
+                return False
+
+        return True
+
+    except Exception as e:
+        print(f' ❌ 오류: {str(e)[:30]}')
+        return False
 
 
 def merge_with_insertfile(
@@ -140,23 +193,13 @@ def merge_with_insertfile(
                 progress = (i / len(processed_files)) * 100
                 print(f'  [{i:2d}/{len(processed_files)}] ({progress:5.1f}%) {problem.name[:40]}', end='')
 
-                # InsertFile
-                target_hwp.HAction.GetDefault("InsertFile", target_hwp.HParameterSet.HInsertFile.HSet)
-                insert_params = target_hwp.HParameterSet.HInsertFile
-                insert_params.HSet.SetItem("FileName", str(temp_file.absolute()))
-                insert_params.HSet.SetItem("FileFormat", "HWP")
-                insert_params.HSet.SetItem("KeepSection", 0)
-
-                if target_hwp.HAction.Execute("InsertFile", insert_params.HSet):
+                # InsertFile + BreakColumn 결합 시퀀스 (원자적 작업)
+                is_last = (i == len(processed_files))
+                if insert_file_and_break_column(target_hwp, temp_file, is_last):
                     inserted += 1
                     print(f' ✅')
                 else:
                     print(f' ❌')
-
-                # BreakColumn (마지막 제외)
-                if i < len(processed_files):
-                    target_hwp.Run("BreakColumn")
-                    time.sleep(0.15)  # 칼럼 구분 완료 대기
 
             except Exception as e:
                 print(f' ❌ {str(e)[:30]}')
@@ -169,7 +212,12 @@ def merge_with_insertfile(
         print(f'\n[3단계] 저장 중...')
         output_path.parent.mkdir(parents=True, exist_ok=True)
         target_hwp.SaveAs(str(output_path.absolute()))
-        time.sleep(0.5)
+
+        # 저장 완료 대기
+        if not wait_for_hwp_ready(target_hwp, timeout=10.0):
+            print('❌ 저장 시간 초과')
+            target_client.cleanup()
+            return (False, 0, 0)
 
         page_count = target_hwp.PageCount
         file_size = output_path.stat().st_size
