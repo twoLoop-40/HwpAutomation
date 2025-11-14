@@ -340,10 +340,53 @@ src/
 
 ---
 
+### ✅ Step 10: 프로젝트 정리 및 문서화 (2025-11-14)
+**커밋**: Add comprehensive HWP type specs, schemas, and test suites
+
+**완료 내용**:
+
+**1. Idris2 타입 명세 체계화** (`HwpIdris/`):
+- Actions 모듈 (12개): Navigation, Selection, Text, File, Format, Table, Document, etc.
+- ParameterSets 모듈 (7개): ColDef, CharShape, ParaShape, SecDef, etc.
+- Automation 모듈: OLE Object Model
+- 워크플로우 명세: OneColOneProblem, MergeProblemFiles, ActionTable
+
+**2. 분석 문서** (`Schema/`): HWP 위치 제어, MoveSel 가이드, 문제 로직 분석 (4개)
+
+**3. 유틸리티** (`Scripts/`): PDF 파싱, API 추출, 문서 정리 (8개)
+
+**4. 테스트 구조화** (`Tests/`):
+- AppV1/: 구현 테스트 (6개)
+- E2E/: End-to-End 워크플로우 (7개)
+- Experiments/: 실험 코드 (11개, 루트에서 이동)
+- FunctionTest/: 기능 단위 테스트 (37개)
+
+**5. 기타**:
+- Specs/MergeWorkflow.idr
+- .gitignore 업데이트 (출력 디렉토리, CSV 제외)
+- ErrorImages/ 추가
+
+**통계**: 107 files, 28,706 insertions
+
+**프로젝트 구조**:
+```
+AutoHwp/
+├── HwpIdris/          # Idris2 타입 명세
+├── Schema/            # 분석 문서
+├── Scripts/           # 유틸리티
+├── Specs/             # 형식 명세
+├── Tests/             # 테스트 (AppV1, E2E, Experiments)
+├── FunctionTest/      # 기능 테스트
+├── AppV1/             # 메인 구현
+└── src/               # MCP 서버
+```
+
+---
+
 ### 📋 다음 단계
-10. 전처리 병렬화 구현 (LangGraph Send 또는 multiprocessing)
-11. MCP 연결 디버깅 및 AI Agent 통합 테스트
-12. Claude Desktop 연동 및 사용자 문서화
+11. 전처리 병렬화 구현 (LangGraph Send 또는 multiprocessing)
+12. MCP 연결 디버깅 및 AI Agent 통합 테스트
+13. Claude Desktop 연동 및 사용자 문서화
 
 ---
 
