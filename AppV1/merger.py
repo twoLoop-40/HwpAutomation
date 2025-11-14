@@ -112,13 +112,13 @@ class ProblemMerger:
             source_hwp.Run("Copy")
             time.sleep(0.15)
 
+            # 소스 파일 닫기 (CRITICAL: 붙여넣기 전에 닫기!)
+            source_hwp.Run("Cancel")
+            self.source_client.close_document()
+
             # Step 6: 붙여넣기 (test_merge_40_problems_clean.py 패턴)
             target_hwp.Run("Paste")
             time.sleep(0.15)
-
-            # 소스 파일 닫기 (붙여넣기 후!)
-            source_hwp.Run("Cancel")
-            self.source_client.close_document()
 
             print(f' ✅ Para:{len(paras):2d} 빈:{removed:2d}')
 
