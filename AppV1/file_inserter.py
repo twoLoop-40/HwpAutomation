@@ -66,16 +66,18 @@ def preprocess_and_save(problem: ProblemFile, temp_dir: Path) -> Tuple[bool, Pat
         return (False, None, str(e)[:50])
 
 
-def insert_file_and_break_column(hwp, file_path: Path, is_last: bool) -> bool:
+def insert_file_and_break_column(hwp, file_path: Path, is_last: bool, keep_section: int = 1) -> bool:
     """
     InsertFile + BreakColumn 결합 시퀀스 (원자적 작업)
 
-    두 작업이 독립적으로 실행되는 것을 방지하고 동기화된 시퀀스로 처리
+    HwpIdris 명세 기반: ParameterSet InsertFile
+    - KeepSection=1: 끼워 넣을 문서를 구역으로 나누어 쪽 모양을 유지
 
     Args:
         hwp: HWP COM 객체
         file_path: 삽입할 파일 경로
         is_last: 마지막 파일 여부 (BreakColumn 생략)
+        keep_section: 구역 정보 유지 (0: 무시, 1: 유지)
 
     Returns:
         성공 여부
@@ -86,7 +88,7 @@ def insert_file_and_break_column(hwp, file_path: Path, is_last: bool) -> bool:
         insert_params = hwp.HParameterSet.HInsertFile
         insert_params.HSet.SetItem("FileName", str(file_path.absolute()))
         insert_params.HSet.SetItem("FileFormat", "HWP")
-        insert_params.HSet.SetItem("KeepSection", 0)
+        insert_params.HSet.SetItem("KeepSection", keep_section)  # HwpIdris ParameterSet 명세
 
         if not hwp.HAction.Execute("InsertFile", insert_params.HSet):
             return False

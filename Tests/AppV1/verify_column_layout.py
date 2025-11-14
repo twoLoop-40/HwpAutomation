@@ -18,7 +18,7 @@ if sys.platform == 'win32':
 from src.automation.client import AutomationClient
 
 # 검증할 파일
-result_file = Path("Tests/AppV1/결과_InsertFile_5문항.hwp")
+result_file = Path("Tests/AppV1/결과_Merger_5문항.hwp")
 
 if not result_file.exists():
     print(f'❌ 파일이 없습니다: {result_file}')
