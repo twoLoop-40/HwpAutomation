@@ -383,10 +383,82 @@ HwpAutomation/
 
 ---
 
+### ✅ Step 11: V2 플러그인 아키텍처 구축 (2025-11-18)
+**커밋**: Implement V2 plugin architecture with modular structure
+
+**완료 내용**:
+
+**1. Idris2 V2 명세 작성** (`Specs/V2/`):
+- `ProjectStructure.idr`: 프로젝트 구조 정의
+- `Core.idr`: 공통 HWP API 명세
+- `Automation.idr`: 플러그인 시스템 명세
+- `UI.idr`: Tkinter UI 명세
+- `Plugins/Merger.idr`: Merger 플러그인 명세
+- `Plugins/MCP.idr`: MCP 플러그인 명세
+- `Main.idr`: 통합 모듈 (✅ 컴파일 성공!)
+
+**2. Core 모듈 생성** (`core/`):
+- `hwp_client.py`: pywin32 COM 클라이언트
+- `automation_client.py`: Automation API (기존 src/automation)
+- `types.py`: 공통 타입
+- `sync.py`: 동기화 유틸
+
+**3. 플러그인 시스템** (`automations/`):
+- `base.py`: AutomationBase 추상 클래스
+- `registry.py`: 플러그인 레지스트리 (싱글톤)
+- `@register_plugin` 데코레이터
+
+**4. Merger 플러그인** (`automations/merger/`):
+- AppV1 전체를 merger 플러그인으로 이동
+- `plugin.py`: MergerPlugin 클래스 (AutomationBase 상속)
+- 기존 merger.py, preprocessor.py 등 유지
+
+**5. MCP 플러그인** (`automations/mcp/`):
+- src/ 내용을 mcp 플러그인으로 이동
+- `plugin.py`: MCPPlugin 클래스
+- `server.py`, `tools.py`: 기존 MCP 서버
+
+**6. Tkinter UI 런처** (`ui/`):
+- `main.py`: HwpAutomationLauncher
+- 플러그인 자동 로드 및 표시
+- 카드 방식 UI (선택 → 실행)
+
+**7. 프로젝트 재구성**:
+- HwpIdris/V2, Integration, AppV1 → Specs/ 이동
+- HwpIdris/는 순수 HWP API 명세만 유지
+- README_V2.md 작성
+
+**새 프로젝트 구조**:
+```
+HwpAutomation/
+├── core/              # 공통 HWP API
+├── automations/       # 플러그인들
+│   ├── merger/        # 문제 파일 병합
+│   └── mcp/           # MCP 서버
+├── ui/                # Tkinter 런처
+├── Specs/             # 형식 명세
+│   ├── V2/            # V2 아키텍처 명세
+│   ├── AppV1/         # AppV1 명세
+│   └── Integration/   # 통합 명세
+└── HwpIdris/          # HWP API 명세 (순수)
+```
+
+**주요 변경사항**:
+- 모놀리식 → 플러그인 아키텍처
+- AppV1, src 폴더 → automations/ 플러그인화
+- 새 플러그인 추가 시 AutomationBase 상속만으로 자동 등록
+
+**다음 확장 계획**:
+- 표 자동 생성 플러그인
+- 문서 변환 플러그인
+- 일괄 서식 적용 플러그인
+
+---
+
 ### 📋 다음 단계
-11. 전처리 병렬화 구현 (LangGraph Send 또는 multiprocessing)
-12. MCP 연결 디버깅 및 AI Agent 통합 테스트
-13. Claude Desktop 연동 및 사용자 문서화
+12. 전처리 병렬화 최적화 (LangGraph Send)
+13. UI 플러그인별 실행 로직 완성
+14. 테스트 재구성 및 검증
 
 ---
 
