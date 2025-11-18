@@ -8,13 +8,13 @@ HwpAutomation Core Module
 from .hwp_client import HwpClient
 from .automation_client import AutomationClient
 from .types import DocumentState
-from .sync import wait_for_idle
+from .sync import wait_for_hwp_ready
 
 __all__ = [
     "HwpClient",
     "AutomationClient",
     "DocumentState",
-    "wait_for_idle",
+    "wait_for_hwp_ready",
 ]
 
 __version__ = "2.0.0"

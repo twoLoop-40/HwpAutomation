@@ -19,7 +19,7 @@ except ImportError:
         "Install it with: uv pip install pywin32"
     )
 
-from ..common.types import HwpResult
+from .types import HwpResult
 
 
 class AutomationClient:
