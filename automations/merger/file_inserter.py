@@ -9,8 +9,8 @@ from typing import List, Tuple
 from tempfile import mkdtemp
 import shutil
 
-from src.automation.client import AutomationClient
-from src.common.sync import wait_for_hwp_ready
+from core.automation_client import AutomationClient
+from core.sync import wait_for_hwp_ready
 from .types import ProblemFile
 from .column import convert_to_single_column
 from .para_scanner import scan_paras, remove_empty_paras

@@ -14,7 +14,7 @@ if sys.platform == 'win32':
     import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.detach())
 
-from src.automation.client import AutomationClient
+from core.automation_client import AutomationClient
 
 from .types import ProblemFile, ProcessResult, MergeConfig, expected_page_count, validate_page_count
 from .column import convert_to_single_column, break_column

@@ -14,7 +14,7 @@ import operator
 from langgraph.graph import StateGraph, END, START, Send
 from typing_extensions import TypedDict
 
-from src.automation.client import AutomationClient
+from core.automation_client import AutomationClient
 from .types import ProblemFile
 from .column import convert_to_single_column
 from .para_scanner import scan_paras, remove_empty_paras

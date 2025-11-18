@@ -15,7 +15,7 @@ from typing import List, Tuple, Optional
 
 # UTF-8 설정 (모듈 import 시에는 하지 않음 - 메인 스크립트에서만)
 
-from src.automation.client import AutomationClient
+from core.automation_client import AutomationClient
 
 from .types import ProblemFile, MergeConfig
 from .parallel_preprocessor import (

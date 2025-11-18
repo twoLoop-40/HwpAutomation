@@ -12,7 +12,7 @@ from typing import List
 from multiprocessing import Pool, cpu_count
 from tempfile import mkdtemp
 
-from src.automation.client import AutomationClient
+from core.automation_client import AutomationClient
 from .types import ProblemFile
 from .column import convert_to_single_column
 from .para_scanner import scan_paras, remove_empty_paras

@@ -15,7 +15,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # UTF-8 설정 (모듈 import 시에는 하지 않음 - 메인 스크립트에서만)
 
-from src.automation.client import AutomationClient
+from core.automation_client import AutomationClient
 from .column import convert_to_single_column
 from .para_scanner import scan_paras, remove_empty_paras
 
