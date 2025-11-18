@@ -1,4 +1,4 @@
-# AutoHwp MCP Server - TODO List
+# HwpAutomation MCP Server - TODO List
 
 ## 🔮 Future Work
 

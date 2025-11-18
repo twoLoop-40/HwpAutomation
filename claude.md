@@ -1,4 +1,4 @@
-# AutoHwp MCP Server 개발 로그
+# HwpAutomation MCP Server 개발 로그
 
 ## 프로젝트 개요
 한글(HWP) 문서를 MCP(Model Context Protocol)를 통해 자동화하는 서버
@@ -370,7 +370,7 @@ src/
 
 **프로젝트 구조**:
 ```
-AutoHwp/
+HwpAutomation/
 ├── HwpIdris/          # Idris2 타입 명세
 ├── Schema/            # 분석 문서
 ├── Scripts/           # 유틸리티

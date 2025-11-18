@@ -52,7 +52,7 @@ pip install -e .
       "command": "uv",
       "args": [
         "--directory",
-        "C:\\Users\\YourName\\Projects\\AutoHwp",
+        "C:\\Users\\YourName\\Projects\\HwpAutomation",
         "run",
         "python",
         "-m",
@@ -144,7 +144,7 @@ Claude가 자동으로:
 ### 디렉토리 구조
 
 ```
-AutoHwp/
+HwpAutomation/
 ├── Specs/
 │   └── HwpMCP.idr          # Idris2 형식 명세
 ├── HwpBooks/

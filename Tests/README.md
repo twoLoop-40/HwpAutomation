@@ -1,4 +1,4 @@
-# AutoHwp Tests
+# HwpAutomation Tests
 
 통합 테스트 스위트
 
