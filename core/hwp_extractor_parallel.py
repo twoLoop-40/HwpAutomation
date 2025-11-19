@@ -113,7 +113,8 @@ def extract_blocks_parallel(
     output_dir: str | Path,
     blocks_per_group: int = 3,
     max_workers: int = 5,
-    verbose: bool = False
+    verbose: bool = False,
+    naming_rule = None  # Optional[NamingRule]
 ) -> List[Tuple[bool, Optional[Path]]]:
     """
     병렬 블록 추출
@@ -132,6 +133,7 @@ def extract_blocks_parallel(
         blocks_per_group: 그룹당 블록 수 (기본: 3)
         max_workers: 최대 병렬 워커 수 (기본: 5)
         verbose: 상세 로그 출력 여부
+        naming_rule: 파일명 생성 규칙 (선택)
 
     Returns:
         [(성공 여부, 저장 경로), ...] 리스트
@@ -227,8 +229,28 @@ def extract_blocks_parallel(
             futures = {}
 
             for worker_id, group in enumerate(batch):
-                # 출력 파일명
-                filename = f"문제_{group[0]+1:03d}_to_{group[-1]+1:03d}.hwp"
+                # 출력 파일명 (NamingRule 사용)
+                group_idx = groups.index(group)  # 전체 그룹 중 몇 번째인지
+
+                if naming_rule:
+                    # NamingRule 사용 (automations.separator.types에서 import 필요)
+                    try:
+                        # GroupInfo와 ProblemNumber를 동적으로 임포트
+                        from automations.separator.types import GroupInfo, ProblemNumber
+                        group_info = GroupInfo(
+                            group_num=group_idx + 1,
+                            start_problem=ProblemNumber(group[0] + 1),
+                            end_problem=ProblemNumber(group[-1] + 1),
+                            problem_count=len(group)
+                        )
+                        filename = naming_rule.generate_group_filename(group_info)
+                    except ImportError:
+                        # fallback to default
+                        filename = f"문제_{group[0]+1:03d}_to_{group[-1]+1:03d}.hwp"
+                else:
+                    # 기본 파일명
+                    filename = f"문제_{group[0]+1:03d}_to_{group[-1]+1:03d}.hwp"
+
                 output_file = output_path / filename
 
                 # 워커 제출

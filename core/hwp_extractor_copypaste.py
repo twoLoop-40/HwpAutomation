@@ -1,17 +1,13 @@
 """
-HWP Copy/Paste 추출 - AppV1 Merger 패턴
+HWP SaveBlock 추출 - FileSaveAs with "saveblock" argument
 
-Idris2 명세: Specs/Extractor/SequentialExtraction.idr (Solution3_CopyPaste)
-
-검증됨: AppV1 Merger에서 40문항 100% 성공
+Idris2 명세: Specs/Extractor/SequentialExtraction.idr (Solution4_SaveBlock)
 
 방식:
 1. 블록 선택
-2. Copy
-3. 새 문서 생성
-4. Paste
-5. 새 문서 저장
-6. 새 문서 닫기
+2. FileSaveAs_S with Argument="saveblock"
+
+이전 Copy/Paste 방식은 FileNew 후 Paste가 실패하는 문제로 SaveBlock 방식으로 변경
 """
 import win32com.client as win32
 import pythoncom
@@ -29,10 +25,10 @@ def extract_block_copypaste(
     verbose: bool = False
 ) -> bool:
     """
-    Copy/Paste 방식으로 단일 블록 추출
+    SaveBlock 방식으로 단일 블록 추출
 
     Idris2 명세:
-    Solution3_CopyPaste =
+    Solution4_SaveBlock =
       (hwp : AnyPtr)
       -> (block : Block)
       -> (filepath : String)
@@ -51,62 +47,57 @@ def extract_block_copypaste(
     filepath_str = str(filepath)
 
     try:
+        import time
+
         if verbose:
             print(f"  [1] 블록 선택: {start} → {end}")
 
-        # 1. 블록 선택 (MovePos 방식으로 변경)
-        # SetPos로 시작 위치 이동
+        # 1. 블록 선택 (SetPos 2번 호출 방식)
         hwp.SetPos(*start)
-        # Select 시작
         hwp.Run("Select")
-        # MovePos로 끝 위치까지 선택 확장
-        hwp.MovePos(*end)
+        hwp.SetPos(*end)
 
         if verbose:
-            print(f"  [2] Copy")
-        # 2. Copy
-        hwp.Run("Copy")
+            print(f"  [2] SaveBlock 저장: {filepath_str}")
 
-        if verbose:
-            print(f"  [3] 새 문서 생성")
-        # 3. 새 문서 생성
-        hwp.Run("FileNew")
-
-        if verbose:
-            print(f"  [4] Paste")
-        # 4. Paste
-        hwp.Run("Paste")
-
-        if verbose:
-            print(f"  [5] 저장: {filepath_str}")
-        # 5. 새 문서 저장
+        # 2. FileSaveAs_S with Argument="saveblock"
         hwp.HAction.GetDefault("FileSaveAs_S", hwp.HParameterSet.HFileOpenSave.HSet)
         hwp.HParameterSet.HFileOpenSave.filename = filepath_str
         hwp.HParameterSet.HFileOpenSave.Format = "HWP"
         hwp.HParameterSet.HFileOpenSave.Attributes = 1
+        hwp.HParameterSet.HFileOpenSave.Argument = "saveblock"  # ✨ 핵심!
+
         result = hwp.HAction.Execute("FileSaveAs_S", hwp.HParameterSet.HFileOpenSave.HSet)
 
-        if verbose:
-            print(f"  [6] 새 문서 닫기")
-        # 6. 새 문서 닫기
-        hwp.Run("FileClose")
+        # 선택 해제
+        hwp.Run("Cancel")
 
-        # 7. 파일 저장 완료 대기 (디스크 I/O 완료까지)
-        import time
-        time.sleep(0.5)  # 500ms 대기
+        # 파일 저장 완료 대기
+        time.sleep(0.3)
 
-        if verbose:
-            print(f"  [OK] 완료: result={result}")
-        return result
+        # 저장된 파일 크기 확인
+        if Path(filepath_str).exists():
+            file_size = Path(filepath_str).stat().st_size
+            if verbose:
+                print(f"  [OK] 완료: result={result}, 파일크기={file_size:,} bytes")
+
+            if file_size < 15000:  # 15KB 이하면 거의 빈 파일
+                print(f"  [WARN] 파일이 너무 작음: {file_size:,} bytes")
+                return False
+
+            return result
+        else:
+            print(f"  [ERROR] 파일이 생성되지 않음")
+            return False
 
     except Exception as e:
-        print(f"  [FAIL] Copy/Paste 추출 오류: {e}")
+        print(f"  [FAIL] SaveBlock 추출 오류: {e}")
         import traceback
         traceback.print_exc()
 
-        # 오류 발생 시 새 문서 닫기 시도
+        # 선택 해제 시도
         try:
-            hwp.Run("FileClose")
+            hwp.Run("Cancel")
         except:
             pass
 

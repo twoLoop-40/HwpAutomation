@@ -81,7 +81,8 @@ class HwpHwpExtractor:
             output_dir=self.config.output_dir,
             blocks_per_group=blocks_per_group,
             max_workers=self.config.max_workers,
-            verbose=self.verbose
+            verbose=self.verbose,
+            naming_rule=self.config.naming_rule  # NamingRule 전달
         )
 
         # 결과 변환
@@ -161,8 +162,15 @@ class HwpHwpExtractor:
                     results.append((False, None))
                     continue
 
-                # 출력 파일명
-                filename = f"문제_{group[0]+1:03d}_to_{group[-1]+1:03d}.hwp"
+                # 출력 파일명 (NamingRule 사용)
+                from .types import GroupInfo, ProblemNumber
+                group_info = GroupInfo(
+                    group_num=group_idx + 1,
+                    start_problem=ProblemNumber(group[0] + 1),
+                    end_problem=ProblemNumber(group[-1] + 1),
+                    problem_count=len(group)
+                )
+                filename = self.config.naming_rule.generate_group_filename(group_info)
                 output_file = output_path / filename
 
                 # Copy/Paste 추출

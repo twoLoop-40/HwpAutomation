@@ -51,9 +51,39 @@ class SeparatorPlugin(AutomationBase):
         if not config:
             return
 
+        # 진행상황 다이얼로그 생성
+        progress_dialog = tk.Toplevel()
+        progress_dialog.title("처리 중...")
+        progress_dialog.geometry("400x150")
+        progress_dialog.resizable(False, False)
+        progress_dialog.transient()
+        progress_dialog.grab_set()
+
+        # 진행상황 라벨
+        status_label = tk.Label(
+            progress_dialog,
+            text="문제 분리 중...",
+            font=("맑은 고딕", 12, "bold")
+        )
+        status_label.pack(pady=30)
+
+        progress_label = tk.Label(
+            progress_dialog,
+            text="잠시만 기다려주세요",
+            font=("맑은 고딕", 10),
+            fg="gray"
+        )
+        progress_label.pack(pady=10)
+
+        # 화면 갱신
+        progress_dialog.update()
+
         # 실행
         try:
             result = separate_problems(config)
+
+            # 진행 다이얼로그 닫기
+            progress_dialog.destroy()
 
             # 결과 표시
             if result.is_success():
@@ -69,6 +99,11 @@ class SeparatorPlugin(AutomationBase):
                 )
 
         except Exception as e:
+            # 진행 다이얼로그가 열려있으면 닫기
+            try:
+                progress_dialog.destroy()
+            except:
+                pass
             messagebox.showerror("오류", f"실행 중 오류가 발생했습니다:\n{e}")
 
     def run_cli(self, args: Dict[str, Any]) -> Dict[str, Any]:
@@ -140,6 +175,9 @@ class SeparatorPlugin(AutomationBase):
             from .types import NamingStrategy
             config.naming_rule.strategy = NamingStrategy.CUSTOM
             config.naming_rule.custom_prefix = custom_prefix
+            print(f"[DEBUG] Custom prefix 적용: '{custom_prefix}'")
+        else:
+            print(f"[DEBUG] Custom prefix None, 기본 'custom prefix 사용'")
 
         # HWP 병렬 처리 옵션 적용
         if is_hwp:
@@ -234,6 +272,8 @@ class GroupingDialog:
             frame1,
             text="1문제 = 1파일",
             width=20,
+            height=2,
+            font=("맑은 고딕", 10),
             command=lambda: self._set_strategy(OnePerFile(), dialog)
         ).pack()
 
@@ -264,6 +304,8 @@ class GroupingDialog:
             frame2,
             text="그룹으로 나누기",
             width=20,
+            height=2,
+            font=("맑은 고딕", 10),
             command=lambda: self._set_strategy(
                 GroupByCount(group_size_var.get()),
                 dialog
@@ -343,12 +385,12 @@ class GroupingDialog:
 
         dialog.wait_window()
 
-        # 커스텀 접두사 수집
+        # 커스텀 접두사 수집 (기본값도 custom_prefix로 사용)
         custom_prefix_value = self.prefix_var.get().strip()
-        if custom_prefix_value and custom_prefix_value != self.default_prefix:
+        if custom_prefix_value:
             self.custom_prefix = custom_prefix_value
         else:
-            self.custom_prefix = None  # 기본값 사용
+            self.custom_prefix = None  # 빈 값이면 "문제" 사용
 
         # 반환값 구성
         if self.is_hwp:
