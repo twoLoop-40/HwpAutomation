@@ -96,7 +96,7 @@ class HwpParser:
                     number=EndNoteNumber(endnote_num),
                     position=ElementPosition(
                         index=self._pos_to_index(lst, para, pos),
-                        line_number=None
+                        xpath=None  # HWP COM에서는 xpath 불필요
                     ),
                     suffix_char='.',  # 기본값
                     inst_id='',  # HWP COM에서는 불필요

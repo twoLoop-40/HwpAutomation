@@ -93,7 +93,10 @@ class SeparatorPlugin(AutomationBase):
         }
 
     def _collect_config_via_ui(self) -> SeparatorConfig | None:
-        """UI를 통해 설정 수집"""
+        """UI를 통해 설정 수집
+
+        Idris2: buildConfigFromUI (outputDir 자동 생성)
+        """
         # 입력 파일 선택 (HWP + HWPX 지원)
         input_path = filedialog.askopenfilename(
             title="HWP/HWPX 파일 선택",
@@ -109,21 +112,20 @@ class SeparatorPlugin(AutomationBase):
         # 파일 형식 확인
         is_hwp = input_path.lower().endswith('.hwp')
 
-        # 출력 디렉토리 선택
-        output_dir = filedialog.askdirectory(
-            title="출력 디렉토리 선택"
-        )
-        if not output_dir:
-            return None
+        # 기본 접두사 추출 (Idris2: extractDefaultPrefix)
+        default_prefix = Path(input_path).stem
+
+        # 출력 디렉토리 자동 생성 (Idris2: generateOutputDir)
+        output_dir = str(Path(input_path).parent / f"{Path(input_path).stem}_output")
 
         # 그룹화 옵션 다이얼로그 (HWP 파일은 병렬 옵션 제공)
-        dialog = GroupingDialog(is_hwp=is_hwp)
+        dialog = GroupingDialog(is_hwp=is_hwp, default_prefix=default_prefix)
         result = dialog.show()
 
         if not result or not result[0]:  # strategy가 None이면
             return None
 
-        strategy, output_format, use_parallel, max_workers = result
+        strategy, output_format, use_parallel, max_workers, custom_prefix = result
 
         # 설정 생성
         if isinstance(strategy, OnePerFile):
@@ -132,6 +134,12 @@ class SeparatorPlugin(AutomationBase):
             config = SeparatorConfig.grouped(input_path, output_dir, strategy.count)
         else:
             config = SeparatorConfig.for_hwpx(input_path, output_dir)
+
+        # 커스텀 접두사 적용 (Idris2: createCustomNamingRule)
+        if custom_prefix:
+            from .types import NamingStrategy
+            config.naming_rule.strategy = NamingStrategy.CUSTOM
+            config.naming_rule.custom_prefix = custom_prefix
 
         # HWP 병렬 처리 옵션 적용
         if is_hwp:
@@ -156,39 +164,67 @@ class SeparatorPlugin(AutomationBase):
 
 
 class GroupingDialog:
-    """그룹화 옵션 선택 다이얼로그"""
+    """그룹화 옵션 선택 다이얼로그
 
-    def __init__(self, is_hwp: bool = False):
+    Idris2: ConfigCollectionStep
+    """
+
+    def __init__(self, is_hwp: bool = False, default_prefix: str = ""):
         self.is_hwp = is_hwp
+        self.default_prefix = default_prefix
         self.strategy = None
-        self.output_format = OutputFormat.TEXT
+        self.output_format = OutputFormat.HWP  # HWP First
         self.use_parallel = False
         self.max_workers = 5
+        self.custom_prefix = None
 
     def show(self):
         """다이얼로그 표시
 
         Returns:
-            (strategy, output_format, use_parallel, max_workers) or (None, None, False, 5)
+            (strategy, output_format, use_parallel, max_workers, custom_prefix)
         """
         dialog = tk.Toplevel()
         dialog.title("그룹화 옵션")
 
-        # HWP 파일이면 높이 증가 (병렬 옵션 추가)
-        height = "450" if self.is_hwp else "300"
-        dialog.geometry(f"450x{height}")
+        # HWP 파일이면 높이 증가 (병렬 옵션 + 커스텀 접두사)
+        height = "550" if self.is_hwp else "400"
+        dialog.geometry(f"500x{height}")
         dialog.resizable(False, False)
 
         # 중앙 정렬
         dialog.transient()
         dialog.grab_set()
 
+        # 커스텀 접두사 입력 (Idris2: CustomPrefixInput)
+        prefix_frame = tk.Frame(dialog)
+        prefix_frame.pack(pady=10, fill=tk.X, padx=40)
+
+        tk.Label(
+            prefix_frame,
+            text="파일명 접두사:",
+            font=("맑은 고딕", 10, "bold")
+        ).pack(anchor="w")
+
+        prefix_var = tk.StringVar(value=self.default_prefix)
+        self.prefix_var = prefix_var
+
+        prefix_entry = tk.Entry(prefix_frame, textvariable=prefix_var, width=50)
+        prefix_entry.pack(fill=tk.X, pady=5)
+
+        tk.Label(
+            prefix_frame,
+            text=f"예: {self.default_prefix}_1.hwp, {self.default_prefix}_2.hwp, ...",
+            fg="gray",
+            font=("맑은 고딕", 8)
+        ).pack(anchor="w")
+
         # 설명
         tk.Label(
             dialog,
             text="문제를 어떻게 분리하시겠습니까?",
             font=("맑은 고딕", 11, "bold")
-        ).pack(pady=15)
+        ).pack(pady=10)
 
         # 옵션 1: 1문제 = 1파일
         frame1 = tk.Frame(dialog)
@@ -260,9 +296,9 @@ class GroupingDialog:
 
             tk.Radiobutton(
                 dialog,
-                text="텍스트 파일 (.txt) - 텍스트만 추출",
+                text="Markdown 파일 (.md) - 텍스트만 추출 (디버깅용)",
                 variable=format_var,
-                value="txt"
+                value="md"
             ).pack(anchor="w", padx=60)
 
             # 병렬 처리 옵션 (HWP → HWP만)
@@ -307,19 +343,26 @@ class GroupingDialog:
 
         dialog.wait_window()
 
+        # 커스텀 접두사 수집
+        custom_prefix_value = self.prefix_var.get().strip()
+        if custom_prefix_value and custom_prefix_value != self.default_prefix:
+            self.custom_prefix = custom_prefix_value
+        else:
+            self.custom_prefix = None  # 기본값 사용
+
         # 반환값 구성
         if self.is_hwp:
-            # 출력 형식 결정
+            # 출력 형식 결정 (HWP First)
             if self.format_var.get() == "hwp":
-                self.output_format = OutputFormat.HWPX  # 임시 (TODO: OutputFormat.HWP 추가)
+                self.output_format = OutputFormat.HWP  # HWP First!
             else:
-                self.output_format = OutputFormat.TEXT
+                self.output_format = OutputFormat.MARKDOWN
 
             # 병렬 처리 옵션
             self.use_parallel = self.parallel_var.get()
             self.max_workers = self.workers_var.get()
 
-        return (self.strategy, self.output_format, self.use_parallel, self.max_workers)
+        return (self.strategy, self.output_format, self.use_parallel, self.max_workers, self.custom_prefix)
 
     def _set_strategy(self, strategy, dialog):
         """전략 선택 후 닫기"""

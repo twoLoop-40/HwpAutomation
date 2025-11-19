@@ -46,14 +46,13 @@ class Separator:
         file_ext = Path(self.config.input_path).suffix.lower()
 
         # HWP → HWP 특수 경로 (병렬/순차 추출)
-        if file_ext == '.hwp' and self.config.output_format == OutputFormat.HWPX:
-            # HWPX 출력이지만 실제로는 HWP로 저장됨 (naming_rule 확인)
-            # TODO: OutputFormat.HWP 추가 필요
+        if file_ext == '.hwp' and self.config.output_format == OutputFormat.HWP:
+            # HWP First: HWP 입력 → HWP 출력 (COM API 블록 추출)
             self.log("HWP → HWP 블록 추출 모드")
             extractor = HwpHwpExtractor(self.config)
             return extractor.extract()
 
-        # 기존 워크플로우: TEXT 추출
+        # 기존 워크플로우: MARKDOWN/HWPX 추출
         # 1. Input + Parse: 파일 형식에 따라 파서 선택
         self.log(f"\n[1/4] 파싱 중: {self.config.input_path}")
 

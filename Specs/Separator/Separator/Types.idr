@@ -18,7 +18,7 @@ public export
 record ElementPosition where
   constructor MkElementPosition
   index : Nat
-  lineNumber : Maybe Nat
+  xpath : Maybe String
 
 ||| 정답 형식 (향후 확장용)
 |||
