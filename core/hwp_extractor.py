@@ -10,6 +10,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Generator, Tuple, Optional
 from itertools import islice
+from .sync import wait_for_hwp_ready
 
 # 타입 정의
 Block = Tuple[Tuple[int, int, int], Tuple[int, int, int]]
@@ -32,6 +33,9 @@ def open_hwp(file_path: str):
         hwp.RegisterModule('FilePathCheckDLL', 'FilePathCheckerModule')
         hwp.Open(file_path, 'HWP', 'lock:false;forceopen:true')
         hwp.XHwpWindows.Item(0).Visible = False
+
+        # 파일 열기 완료 대기 (병렬 실행 시 필요)
+        wait_for_hwp_ready(hwp, timeout=5.0)
 
         yield hwp
 
