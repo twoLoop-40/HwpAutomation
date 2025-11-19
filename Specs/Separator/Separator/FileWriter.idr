@@ -2,9 +2,9 @@
 |||
 ||| 추출된 문제를 개별 파일로 저장
 
-module FileWriter
+module Separator.FileWriter
 
-import Types
+import Separator.Types
 
 %default total
 
@@ -17,20 +17,43 @@ data WriteStep : Type where
   WriteFile : WriteStep  -- 파일 쓰기
   VerifyWritten : WriteStep  -- 쓰기 검증
 
-||| 파일명 생성
+||| 파일명 생성 (단일 문제)
 |||
 ||| @ rule 파일명 규칙
 ||| @ problemNum 문제 번호
 public export
 generateFilename : NamingRule -> ProblemNumber -> String
 generateFilename rule (MkProblemNumber n) =
-  rule.namePrefix ++ "_" ++ padNumber rule.digitCount n ++ rule.fileExtension
+  rule.namePrefix ++ "_" ++ padNumber rule.digitCount n ++ extensionToString rule.fileExtension
   where
     padNumber : Nat -> Nat -> String
     padNumber digits num =
       -- 실제 구현에서는 적절히 패딩
       -- 예: 3자리면 "001", "002", ...
       show num
+
+||| 그룹 파일명 생성
+|||
+||| DefaultPrefix: "문제_001-030.hwp" (범위 표시)
+||| CustomPrefix: "2025 커팅_수학2_함수의극한_1.hwp" (순번만)
+|||
+||| @ rule 파일명 규칙
+||| @ groupNum 그룹 번호 (1부터 시작)
+||| @ startProb 시작 문제 번호
+||| @ endProb 끝 문제 번호
+public export
+generateGroupFilename : NamingRule -> Nat -> ProblemNumber -> ProblemNumber -> String
+generateGroupFilename rule groupNum (MkProblemNumber start) (MkProblemNumber end) =
+  let ext = extensionToString rule.fileExtension in
+  case rule.strategy of
+    DefaultPrefix =>
+      -- 기본 전략: "문제_001-030.hwp"
+      if start == end
+        then rule.namePrefix ++ "_" ++ show start ++ ext
+        else rule.namePrefix ++ "_" ++ show start ++ "-" ++ show end ++ ext
+    CustomPrefix customPrefix =>
+      -- 커스텀 전략: "2025 커팅_수학2_함수의극한_1.hwp" (그룹 순번만 사용)
+      customPrefix ++ "_" ++ show groupNum ++ ext
 
 ||| 내용 포맷팅
 |||

@@ -52,9 +52,13 @@ class InputFormat(Enum):
 
 
 class OutputFormat(Enum):
-    """출력 파일 형식"""
-    TEXT = "txt"
-    HWPX = "hwpx"
+    """출력 파일 형식
+
+    HWP가 기본값 (Idris2 증명: defaultOutputFormat = HwpFile)
+    """
+    MARKDOWN = "md"   # 텍스트 기반, 디버깅/검토용
+    HWP = "hwp"       # Windows COM API (기본)
+    HWPX = "hwpx"     # XML 기반
 
 
 class ParaType(Enum):
@@ -170,15 +174,27 @@ class GroupInfo:
 # 파일명 규칙
 # ============================================================================
 
+class NamingStrategy(Enum):
+    """파일명 생성 전략
+
+    Idris2: data NamingStrategy
+    """
+    DEFAULT = "default"  # "문제_001-030.hwp"
+    CUSTOM = "custom"    # "커스텀접두사_1.hwp"
+
+
 @dataclass
 class NamingRule:
     """파일명 규칙
 
     Idris2: record NamingRule
+    HWP First 원칙: 기본 확장자는 .hwp (Idris2 증명: defaultRuleUsesHwp)
     """
-    name_prefix: str  # 예: "문제"
+    name_prefix: str  # 기본 접두사: "문제"
     digit_count: int  # 제로 패딩 자릿수 (예: 3 → "001")
-    file_extension: str  # 예: ".hwpx"
+    file_extension: str  # 확장자 (기본: ".hwp")
+    strategy: NamingStrategy = NamingStrategy.DEFAULT  # 파일명 전략
+    custom_prefix: Optional[str] = None  # 커스텀 접두사 (strategy=CUSTOM일 때)
 
     def generate_filename(self, num: int) -> str:
         """단일 파일명 생성"""
@@ -186,18 +202,26 @@ class NamingRule:
         return f"{self.name_prefix}_{padded}{self.file_extension}"
 
     def generate_group_filename(self, group: GroupInfo) -> str:
-        """그룹 파일명 생성"""
+        """그룹 파일명 생성
+
+        Idris2: generateGroupFilename
+        """
         start = group.start_problem.value
         end = group.end_problem.value
 
-        if start == end:
-            # 1문제만: "문제_001.hwpx"
-            return self.generate_filename(start)
+        if self.strategy == NamingStrategy.CUSTOM and self.custom_prefix:
+            # 커스텀 전략: "2025 커팅_수학2_함수의극한_1.hwp"
+            return f"{self.custom_prefix}_{group.group_num}{self.file_extension}"
         else:
-            # 여러 문제: "문제_001-030.hwpx"
-            start_padded = str(start).zfill(self.digit_count)
-            end_padded = str(end).zfill(self.digit_count)
-            return f"{self.name_prefix}_{start_padded}-{end_padded}{self.file_extension}"
+            # 기본 전략: "문제_001-030.hwp"
+            if start == end:
+                # 1문제만: "문제_001.hwp"
+                return self.generate_filename(start)
+            else:
+                # 여러 문제: "문제_001-030.hwp"
+                start_padded = str(start).zfill(self.digit_count)
+                end_padded = str(end).zfill(self.digit_count)
+                return f"{self.name_prefix}_{start_padded}-{end_padded}{self.file_extension}"
 
 
 # ============================================================================
@@ -240,13 +264,16 @@ class SeparatorConfig:
 
     @staticmethod
     def default() -> 'SeparatorConfig':
-        """기본 설정 (1문제 = 1파일)"""
+        """기본 설정 (1문제 = 1파일)
+
+        HWP First: 기본 출력은 .hwp
+        """
         return SeparatorConfig(
             input_path="input.hwpx",
             input_format=InputFormat.HWPX,
             output_dir="output",
-            naming_rule=NamingRule("문제", 3, ".txt"),
-            output_format=OutputFormat.TEXT,
+            naming_rule=NamingRule("문제", 3, ".hwp"),  # HWP First
+            output_format=OutputFormat.HWP,  # HWP First
             include_endnote=True,
             grouping_strategy=OnePerFile(),
             conversion_config=None,
@@ -255,13 +282,16 @@ class SeparatorConfig:
 
     @staticmethod
     def for_hwpx(input_path: str, output_dir: str) -> 'SeparatorConfig':
-        """HWPX 입력용 설정"""
+        """HWPX 입력용 설정
+
+        HWP First: 기본 출력은 .hwp
+        """
         return SeparatorConfig(
             input_path=input_path,
             input_format=InputFormat.HWPX,
             output_dir=output_dir,
-            naming_rule=NamingRule("문제", 3, ".txt"),
-            output_format=OutputFormat.TEXT,
+            naming_rule=NamingRule("문제", 3, ".hwp"),  # HWP First
+            output_format=OutputFormat.HWP,  # HWP First
             include_endnote=True,
             grouping_strategy=OnePerFile(),
             conversion_config=None,
@@ -270,13 +300,16 @@ class SeparatorConfig:
 
     @staticmethod
     def grouped(input_path: str, output_dir: str, group_size: int) -> 'SeparatorConfig':
-        """N개씩 묶는 설정"""
+        """N개씩 묶는 설정
+
+        HWP First: 기본 출력은 .hwp
+        """
         return SeparatorConfig(
             input_path=input_path,
             input_format=InputFormat.HWPX,
             output_dir=output_dir,
-            naming_rule=NamingRule("문제", 3, ".hwpx"),
-            output_format=OutputFormat.HWPX,
+            naming_rule=NamingRule("문제", 3, ".hwp"),  # HWP First
+            output_format=OutputFormat.HWP,  # HWP First
             include_endnote=True,
             grouping_strategy=GroupByCount(group_size),
             conversion_config=None,

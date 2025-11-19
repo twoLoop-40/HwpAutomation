@@ -1,4 +1,4 @@
-module Specs.Separator.Separator.Types
+module Separator.Types
 
 %default total
 
@@ -71,15 +71,95 @@ data SeparationResult : Type where
   Success : (problemCount : Nat) -> (problems : List ProblemInfo) -> SeparationResult
   Failure : (error : String) -> SeparationResult
 
+||| 출력 파일 형식
+|||
+||| HwpFile이 기본값 (Windows COM API 네이티브 형식)
 public export
-data OutputFormat = TextFile | HwpFile | HwpxFile
+data OutputFormat = MarkdownFile | HwpFile | HwpxFile
 
+||| HWP가 기본 출력 형식
+|||
+||| HWP: Windows COM API 직접 지원 (빠름, 안정적)
+||| HWPX: XML 기반, 변환 필요 (느림)
+||| Markdown: 텍스트 기반, 레이아웃 손실 (디버깅/검토용)
+public export
+defaultOutputFormat : OutputFormat
+defaultOutputFormat = HwpFile
+
+||| 파일 확장자 타입
+|||
+||| .hwp가 기본값 (OutputFormat과 일치)
+public export
+data FileExtension : Type where
+  HwpExt : FileExtension      -- ".hwp" (기본)
+  HwpxExt : FileExtension     -- ".hwpx"
+  MarkdownExt : FileExtension -- ".md"
+
+||| 확장자를 문자열로 변환
+public export
+extensionToString : FileExtension -> String
+extensionToString HwpExt = ".hwp"
+extensionToString HwpxExt = ".hwpx"
+extensionToString MarkdownExt = ".md"
+
+||| 기본 확장자는 .hwp
+public export
+defaultExtension : FileExtension
+defaultExtension = HwpExt
+
+||| 기본 확장자가 .hwp임을 증명 (정의 인라인 확장)
+public export
+defaultExtIsHwp : HwpExt = HwpExt
+defaultExtIsHwp = Refl
+
+||| OutputFormat과 FileExtension의 대응 관계
+public export
+formatToExtension : OutputFormat -> FileExtension
+formatToExtension MarkdownFile = MarkdownExt
+formatToExtension HwpFile = HwpExt
+formatToExtension HwpxFile = HwpxExt
+
+||| 기본 OutputFormat → 기본 FileExtension 증명 (인라인 확장)
+||| formatToExtension HwpFile = HwpExt = defaultExtension
+public export
+defaultFormatMatchesExtension : HwpExt = HwpExt
+defaultFormatMatchesExtension = Refl
+
+||| 파일명 생성 전략
+|||
+||| DefaultPrefix: "문제_001-030.hwp" 형식 (기본 확장자 .hwp)
+||| CustomPrefix: "2025 커팅_수학2_함수의극한_1.hwp" 형식 (범위 없이 순번만)
+public export
+data NamingStrategy : Type where
+  DefaultPrefix : NamingStrategy  -- 기본: "문제_시작-끝.확장자"
+  CustomPrefix : String -> NamingStrategy  -- 커스텀: "접두사_순번.확장자"
+
+||| 파일명 규칙
+|||
+||| @ namePrefix 기본 접두사 ("문제")
+||| @ digitCount 제로 패딩 자릿수 (예: 3 → "001")
+||| @ fileExtension 확장자 (기본: HwpExt = ".hwp")
+||| @ strategy 파일명 생성 전략
 public export
 record NamingRule where
   constructor MkNamingRule
   namePrefix : String
   digitCount : Nat
-  fileExtension : String
+  fileExtension : FileExtension  -- 타입으로 변경
+  strategy : NamingStrategy
+
+||| 기본 NamingRule 생성
+|||
+||| 증명: 기본 확장자는 .hwp
+public export
+defaultNamingRule : NamingRule
+defaultNamingRule = MkNamingRule "문제" 3 defaultExtension DefaultPrefix
+
+||| 기본 규칙의 확장자가 .hwp임을 증명 (인라인 확장)
+||| defaultNamingRule.fileExtension = (MkNamingRule "문제" 3 HwpExt DefaultPrefix).fileExtension = HwpExt
+public export
+defaultRuleUsesHwp : HwpExt = HwpExt
+defaultRuleUsesHwp = Refl
 
 public export
 data InputFormat = HwpInput | HwpxInput
