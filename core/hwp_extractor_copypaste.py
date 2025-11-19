@@ -54,10 +54,13 @@ def extract_block_copypaste(
         if verbose:
             print(f"  [1] 블록 선택: {start} → {end}")
 
-        # 1. 블록 선택
+        # 1. 블록 선택 (MovePos 방식으로 변경)
+        # SetPos로 시작 위치 이동
         hwp.SetPos(*start)
+        # Select 시작
         hwp.Run("Select")
-        hwp.SetPos(*end)
+        # MovePos로 끝 위치까지 선택 확장
+        hwp.MovePos(*end)
 
         if verbose:
             print(f"  [2] Copy")
