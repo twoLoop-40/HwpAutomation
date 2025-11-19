@@ -40,6 +40,12 @@ class HwpAutomationLauncher:
         except ImportError as e:
             print(f"Failed to load MCP plugin: {e}")
 
+        # Separator 플러그인
+        try:
+            from automations.separator import SeparatorPlugin
+        except ImportError as e:
+            print(f"Failed to load Separator plugin: {e}")
+
     def _setup_ui(self):
         """UI 구성"""
         # 헤더
@@ -135,12 +141,15 @@ class HwpAutomationLauncher:
                 messagebox.showerror("오류", "플러그인을 찾을 수 없습니다.")
                 return
 
-            # TODO: 플러그인별 UI 또는 CLI 실행
-            messagebox.showinfo(
-                "플러그인 실행",
-                f"{plugin_metadata.name} 플러그인 실행\n\n"
-                f"현재는 테스트 모드입니다."
-            )
+            # UI가 있으면 UI 모드로 실행
+            if plugin.has_ui():
+                plugin.run(ui=True)
+            else:
+                # CLI 모드
+                messagebox.showinfo(
+                    "정보",
+                    f"{plugin_metadata.name}은 CLI 전용입니다.\n명령줄에서 실행하세요."
+                )
 
         except Exception as e:
             messagebox.showerror("오류", f"플러그인 실행 실패:\n{str(e)}")

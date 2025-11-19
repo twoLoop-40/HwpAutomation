@@ -1,9 +1,17 @@
+
+================================================================================
+페이지 1
+================================================================================
+
 최종 수정일 : 2025년 4월 15일
 한글 오토메이션
 Event Handler 추가 방법 (MFC/ATL)
 1. 이벤트 핸들러 클래스 추가
 (Visual Studio)
 프로젝트 > 클래스 추가 > Visual C++ > ATL > ATL 단순 개체
+================================================================================
+페이지 2
+================================================================================
 
 // CHwpEventHandler
 class ATL_NO_VTABLE CHwpEventHandler :
@@ -19,6 +27,9 @@ END_COM_MAP()
 ...
 }
 OBJECT_ENTRY_AUTO(__uuidof(HwpObjectEventHandler), CHwpObjectEventHandler)
+================================================================================
+페이지 3
+================================================================================
 
 2. IHwpObjectEvents 인터페이스 구현
 1에서 생성한 클래스에 IHwpObjectEvents 인터페이스 구현
@@ -62,6 +73,9 @@ return E_NOTIMPL;
 STDMETHOD(DocumentBeforeOpen)(long newVal)
 {
 OutputDebugString(_T("[HWP-EVENT] ObjectEvent DocumentBeforeOpen"));
+================================================================================
+페이지 4
+================================================================================
 
 return E_NOTIMPL;
 }
@@ -95,6 +109,9 @@ return E_NOTIMPL;
 ※ IHwpObjectEvents의 GUID value을 알기 위해서는 #import 속성에 named_guids를 추가해야 함
 #import "progid:HWPFrame.HwpObject.2" raw_interfaces_only, raw_native_types, no_namespace,
 named_guids, auto_search
+================================================================================
+페이지 5
+================================================================================
 
 3. 이벤트 핸들러 연결
 ...
@@ -121,6 +138,9 @@ m_pCP->Advise(p, &m_dwHwpObjectEventHandlerCookie);
 CComObject<CHwpObjectEventHandler>* m_pHwpEventHandler;
 IConnectionPoint* m_pCP;
 DWORD m_dwHwpObjectEventHandlerCookie;
+================================================================================
+페이지 6
+================================================================================
 
 4. 이벤트 핸들러 연결 해제
 if (m_pCP) {

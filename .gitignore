@@ -47,9 +47,13 @@ Tests/Experiments/output/
 Tests/E2E/output/
 FunctionTest/output/
 AppV1/output/
+automations/*/output*/
+output*/
 *_output.hwp
 *_result.hwp
 *_temp.hwp
+test_*.hwp
+test_*_result/
 
 # CSV data files
 *.csv

@@ -1,0 +1,10 @@
+package separator
+
+modules = Types
+        , XmlParser
+        , Extractor
+        , FileWriter
+        , Workflow
+        , Main
+
+sourcedir = "Separator"
