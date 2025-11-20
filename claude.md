@@ -455,10 +455,80 @@ HwpAutomation/
 
 ---
 
+### ✅ Step 12: Separator 플러그인 - Copy/Paste → SaveBlock 전환 (2025-11-19)
+**커밋**: (Pending) Fix Separator extraction with SaveBlock method
+
+**완료 내용**:
+
+**1. 커스텀 접두사 기능 추가**:
+- Idris2 명세 작성 (`Specs/Separator/Separator/`):
+  - `Types.idr`: NamingStrategy (DefaultPrefix | CustomPrefix)
+  - `FileWriter.idr`: generateGroupFilename with strategy pattern
+  - `UI.idr`: buildConfigFromUI, generateOutputDir
+- Python 구현:
+  - `types.py`: NamingStrategy enum, NamingRule.generate_group_filename()
+  - `plugin.py`: 커스텀 접두사 입력 UI, 출력 디렉토리 자동 생성
+- HWP First 원칙: 기본 출력 형식을 .hwp로 강제 (Idris2 증명 추가)
+
+**2. Copy/Paste 방식의 문제점 발견**:
+- **문제**: FileNew 후 Paste 시 내용이 비어 있음 (2 chars)
+- **근본 원인**: 같은 HWP COM 인스턴스에서 FileNew 실행 시 클립보드/선택 상태 초기화
+- **검증 시도**:
+  - GetText() 호출 시 선택 해제 → 검증 제거
+  - SetPos → Select → MovePos 방식 → SetPos 2번 방식으로 변경
+  - 모두 실패: Paste 후 텍스트 길이 2 chars
+
+**3. SaveBlock 방식으로 전환** (`core/hwp_extractor_copypaste.py`):
+- **방식 변경**: Copy → FileNew → Paste → Save
+  → **SetPos → Select → SetPos → FileSaveAs with Argument="saveblock"**
+- **핵심 코드**:
+  ```python
+  hwp.SetPos(*start)
+  hwp.Run("Select")
+  hwp.SetPos(*end)
+
+  hwp.HAction.GetDefault("FileSaveAs_S", hwp.HParameterSet.HFileOpenSave.HSet)
+  hwp.HParameterSet.HFileOpenSave.filename = filepath_str
+  hwp.HParameterSet.HFileOpenSave.Format = "HWP"
+  hwp.HParameterSet.HFileOpenSave.Attributes = 1
+  hwp.HParameterSet.HFileOpenSave.Argument = "saveblock"  # ✨ 핵심!
+
+  result = hwp.HAction.Execute("FileSaveAs_S", hwp.HParameterSet.HFileOpenSave.HSet)
+  hwp.Run("Cancel")  # 선택 해제
+  ```
+
+**4. 주요 발견**:
+- **AppV1 Merger의 성공 비결**: 소스 파일을 닫고 나서 Paste
+  - `source_hwp.Run("SelectAll")` → `Run("Copy")` → `close_document()` → `target_hwp.Run("Paste")`
+  - 별도 HWP 인스턴스 사용으로 클립보드 상태 보존
+- **SaveBlock 방식의 장점**:
+  - FileNew/FileClose 불필요
+  - 클립보드 상태 영향 없음
+  - 단일 HWP 인스턴스에서 동작
+  - 코드 간결 (70줄 → 40줄)
+
+**변경 파일**:
+- `core/hwp_extractor_copypaste.py`: SaveBlock 방식으로 재작성
+- `core/sync.py`: wait_for_hwp_ready 함수 (이미 존재)
+- `core/hwp_extractor.py`: wait_for_hwp_ready 적용
+- `automations/separator/types.py`: NamingStrategy, NamingRule
+- `automations/separator/plugin.py`: 커스텀 접두사 UI
+- `automations/separator/separator.py`: OutputFormat 라우팅 수정
+- `Specs/Separator/Separator/Types.idr`: NamingStrategy, FileExtension, HWP First 증명
+- `Specs/Separator/Separator/FileWriter.idr`: generateGroupFilename
+- `Specs/Separator/Separator/UI.idr`: UI 워크플로우 명세
+
+**다음 테스트 목표**:
+- SaveBlock 방식 테스트 (EBS 올림포스 파일)
+- 병렬 처리 옵션 테스트
+- 커스텀 접두사 파일명 검증
+
+---
+
 ### 📋 다음 단계
-12. 전처리 병렬화 최적화 (LangGraph Send)
-13. UI 플러그인별 실행 로직 완성
-14. 테스트 재구성 및 검증
+13. SaveBlock 방식 안정성 검증
+14. 전처리 병렬화 최적화 (LangGraph Send)
+15. UI 플러그인별 실행 로직 완성
 
 ---
 

@@ -46,6 +46,12 @@ class HwpAutomationLauncher:
         except ImportError as e:
             print(f"Failed to load Separator plugin: {e}")
 
+        # Converter 플러그인
+        try:
+            from automations.converter import ConverterPlugin
+        except ImportError as e:
+            print(f"Failed to load Converter plugin: {e}")
+
     def _setup_ui(self):
         """UI 구성"""
         # 헤더
