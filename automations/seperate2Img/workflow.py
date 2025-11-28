@@ -175,12 +175,14 @@ class Seperate2ImgWorkflow:
     def _cleanup_temp(self, temp_dir: Path):
         """임시 파일 정리"""
         self.update_progress("임시 파일 정리 중...")
-        
+
         # 강제 가비지 컬렉션
         import gc
         gc.collect()
-        
-        time.sleep(2.0)
+
+        # ProcessPoolExecutor 워커들의 COM 객체 해제 대기
+        # Windows에서 HWP COM 핸들 해제에 시간이 걸림
+        time.sleep(5.0)
 
         for attempt in range(3):
             try:
