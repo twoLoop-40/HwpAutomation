@@ -1,8 +1,18 @@
+# -*- coding: utf-8 -*-
 """
 HwpAutomation UI - Main Window
 
 Tkinter 기반 플러그인 런처
 """
+
+import sys
+import io
+
+# UTF-8 출력 설정 (Windows CP949 호환성)
+# Specs/Common/Encoding.idr Option A 구현
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 import tkinter as tk
 from tkinter import ttk, messagebox
@@ -51,6 +61,18 @@ class HwpAutomationLauncher:
             from automations.converter import ConverterPlugin
         except ImportError as e:
             print(f"Failed to load Converter plugin: {e}")
+
+        # Consolidator 플러그인
+        try:
+            from automations.consolidator import ConsolidatorPlugin
+        except ImportError as e:
+            print(f"Failed to load Consolidator plugin: {e}")
+
+        # Seperate2Img 플러그인
+        try:
+            from automations.seperate2Img import Seperate2ImgPlugin
+        except ImportError as e:
+            print(f"Failed to load Seperate2Img plugin: {e}")
 
     def _setup_ui(self):
         """UI 구성"""

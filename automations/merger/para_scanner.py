@@ -65,82 +65,66 @@ def scan_paras(hwp) -> List[ParaInfo]:
 
 def remove_empty_paras(hwp, paras: List[ParaInfo]) -> int:
     """
-    문서 끝에서 MoveSelUp 방식으로 빈 Para 제거
+    문서 끝에서 빈 Para 제거 (루프 방식)
 
-    개선된 방법:
-    1. 문서 끝으로 이동 (MoveDocEnd)
-    2. 뒤에서부터 빈 Para 확인
-    3. 빈 Para 시작점까지 MoveSelUp으로 선택
-    4. Delete로 제거
+    math-collector 검증된 방식:
+    - GetPos()로 빈 Para 판단 (end_pos[2] == 0)
+    - 루프 방식: 빈 Para가 없을 때까지 반복
+    - 페이지 경계를 넘어 모든 빈 Para 제거
+    - 공백 문자만 있는 Para는 제거하지 않음 (안전)
 
-    장점:
-    - 커서 위치가 명확함 (항상 문서 끝에서 시작)
-    - 연속된 빈 Para를 한번에 제거 가능
-    - 최종 커서 위치가 첫 번째 비어있지 않은 Para 끝
+    Returns:
+        제거된 Para 개수
     """
     if not paras:
         return 0
 
     removed = 0
-
-    # 문서 끝으로 이동
-    hwp.Run("MoveDocEnd")
-    time.sleep(0.02)
-
-    # 뒤에서부터 빈 Para 확인하며 제거
     max_iterations = 100  # 안전 장치
-    iteration = 0
 
-    while iteration < max_iterations:
-        # 현재 Para 시작으로 이동
-        hwp.Run("MoveParaBegin")
-        time.sleep(0.02)
+    for i in range(max_iterations):
+        try:
+            # 문서 끝으로 이동
+            hwp.Run("MoveDocEnd")
+            time.sleep(0.02)
 
-        # Para 끝으로 이동해서 빈 Para인지 확인
-        hwp.Run("MoveParaEnd")
-        time.sleep(0.02)
-        end_pos = hwp.GetPos()
-
-        is_empty = (end_pos[2] == 0)
-
-        if is_empty:
-            # 빈 Para - Para 시작으로 돌아가서 선택 후 삭제
+            # Para 시작으로 이동
             hwp.Run("MoveParaBegin")
-            hwp.Run("MoveSelDown")
             time.sleep(0.02)
-            hwp.Run("Delete")
-            time.sleep(0.02)
-            removed += 1
 
-            # 삭제 후 이전 Para로 명시적으로 이동
-            before_pos = hwp.GetPos()
-            hwp.Run("MovePrevParaBegin")
-            time.sleep(0.02)
-            after_pos = hwp.GetPos()
-
-            # 위치가 변하지 않으면 문서 시작 - 종료
-            if before_pos == after_pos:
-                break
-
-            # Para 끝으로 이동해서 다음 루프 준비
-            hwp.Run("MoveParaEnd")
-            time.sleep(0.02)
-        else:
-            # 비어있지 않은 Para - 이전 Para 확인
-            before_pos = hwp.GetPos()
-            hwp.Run("MovePrevParaBegin")
-            time.sleep(0.02)
-            after_pos = hwp.GetPos()
-
-            # 위치가 변하지 않으면 첫 Para - 종료
-            if before_pos == after_pos:
-                break
-
-            # Para 끝으로 이동해서 다음 루프 준비
+            # Para 끝으로 이동
             hwp.Run("MoveParaEnd")
             time.sleep(0.02)
 
-        iteration += 1
+            # Para 끝 위치 확인
+            end_pos = hwp.GetPos()
+
+            # 빈 Para 판단: end_pos[2] == 0 (완전히 빈 Para만)
+            is_empty = (end_pos[2] == 0)
+
+            if is_empty:
+                # 빈 Para - 삭제
+                hwp.Run("MoveDocEnd")
+                time.sleep(0.02)
+
+                hwp.Run("Select")
+                time.sleep(0.01)
+                hwp.Run("MoveLeft")
+                time.sleep(0.01)
+                hwp.Run("Delete")
+                time.sleep(0.02)
+
+                removed += 1
+            else:
+                # 내용 있는 Para - 종료
+                break
+
+        except Exception as e:
+            try:
+                hwp.Run("Cancel")
+            except:
+                pass
+            break
 
     # 최종 위치를 문서 시작으로 (Copy 준비)
     hwp.Run("MoveDocBegin")

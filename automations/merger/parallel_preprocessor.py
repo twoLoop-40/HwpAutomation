@@ -26,6 +26,7 @@ class PreprocessResult:
     전처리 작업 결과
 
     HwpIdris PreprocessResult 구현
+    Specs/HwpIdris/AppV1/EnhancedPreprocessor.idr 확장
     """
     success: bool
     original_path: str
@@ -34,6 +35,10 @@ class PreprocessResult:
     removed_count: int
     processing_time: float
     error_message: Optional[str] = None
+    # Enhanced fields (EnhancedPreprocessor.idr)
+    initial_page_count: int = 0
+    final_page_count: int = 0
+    page_deleted: bool = False
 
 
 @dataclass
@@ -58,14 +63,17 @@ def preprocess_single_file(
     단일 파일 전처리 (별도 프로세스에서 실행)
 
     HwpIdris preprocessSingleFile 구현
+    Specs/HwpIdris/AppV1/EnhancedPreprocessor.idr 구현
 
-    순서:
+    순서 (Enhanced):
     1. 파일 열기
-    2. 1단으로 변환
-    3. Para 스캔
-    4. 빈 Para 제거 (뒤에서부터)
-    5. 임시 파일로 저장
-    6. 파일 닫기
+    2. PageCount 확인
+    3. PageCount >= 2이면 마지막 페이지 삭제 (DeletePage)
+    4. 1단으로 변환
+    5. Para 스캔
+    6. 빈 Para 제거 (뒤에서부터)
+    7. 임시 파일로 저장
+    8. 파일 닫기
 
     Args:
         file_path: 원본 파일 경로
@@ -73,18 +81,40 @@ def preprocess_single_file(
         file_index: 파일 인덱스 (로깅용)
 
     Returns:
-        PreprocessResult
+        PreprocessResult (with page deletion info)
     """
     start_time = time.time()
     client = None
 
     try:
         # 1. 클라이언트 초기화
-        client = AutomationClient()
-        hwp = client.hwp
+        try:
+            client = AutomationClient()
+            hwp = client.hwp
+        except Exception as e:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=0,
+                removed_count=0,
+                processing_time=time.time() - start_time,
+                error_message=f"Client init failed: {e}"
+            )
 
         # 보안 모듈
-        hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModule")
+        try:
+            hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModule")
+        except Exception as e:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=0,
+                removed_count=0,
+                processing_time=time.time() - start_time,
+                error_message=f"Register module failed: {e}"
+            )
 
         # 2. 파일 열기
         file_path_obj = Path(file_path)
@@ -126,24 +156,106 @@ def preprocess_single_file(
                 error_message="Empty document"
             )
 
-        # 3. 1단으로 변환
-        convert_to_single_column(hwp)
+        # 2. PageCount 확인 (EnhancedPreprocessor.idr: Step 1)
+        initial_page_count = hwp.PageCount
+        page_deleted = False
 
-        # 4. Para 스캔
-        paras = scan_paras(hwp)
+        # 3. 조건부 페이지 삭제 (DISABLED - 너무 공격적)
+        # 문제: 내용이 있는 페이지도 삭제해버림
+        # 해결: Para 제거 로직만 사용
+        #
+        # if initial_page_count >= 2:
+        #     try:
+        #         hwp.Run("MoveDocEnd")
+        #         time.sleep(0.05)
+        #         hwp.HAction.GetDefault("DeletePage", hwp.HParameterSet.HDeletePage.HSet)
+        #         hwp.HAction.Execute("DeletePage", hwp.HParameterSet.HDeletePage.HSet)
+        #         time.sleep(0.1)
+        #         page_deleted = True
+        #     except Exception as e:
+        #         pass
 
-        # 5. 빈 Para 제거
-        removed = remove_empty_paras(hwp, paras)
+        # 4. 1단으로 변환
+        try:
+            convert_to_single_column(hwp)
+        except Exception as e:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=0,
+                removed_count=0,
+                processing_time=time.time() - start_time,
+                error_message=f"Convert to single column failed: {str(e)}"
+            )
+
+        # 5. Para 스캔
+        try:
+            paras = scan_paras(hwp)
+        except Exception as e:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=0,
+                removed_count=0,
+                processing_time=time.time() - start_time,
+                error_message=f"Para scan failed: {str(e)}"
+            )
+
+        # 6. 빈 Para 제거
+        try:
+            removed = remove_empty_paras(hwp, paras)
+        except Exception as e:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=len(paras),
+                removed_count=0,
+                processing_time=time.time() - start_time,
+                error_message=f"Remove empty paras failed: {str(e)}"
+            )
 
         # 6. 임시 파일로 저장
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
 
-        output_file = output_path / f"preprocessed_{file_index:03d}_{file_path_obj.name}"
-        hwp.SaveAs(str(output_file.absolute()))
+        # 파일명에서 _N.hwp 패턴 제거 (원본이 xxx_1.hwp 형식인 경우)
+        original_name = file_path_obj.stem  # 확장자 제거
+        if original_name.endswith('_1'):
+            # _1 제거
+            base_name = original_name[:-2]
+        else:
+            base_name = original_name
+
+        output_file = output_path / f"preprocessed_{file_index:03d}_{base_name}.hwp"
+
+        # 기존 파일 삭제 (덮어쓰기 방지)
+        if output_file.exists():
+            try:
+                output_file.unlink()
+            except Exception:
+                pass
+
+        # AutomationClient의 save_document_as 사용
+        result = client.save_document_as(str(output_file.absolute()))
+        if not result.success:
+            return PreprocessResult(
+                success=False,
+                original_path=file_path,
+                preprocessed_path=None,
+                para_count=len(paras),
+                removed_count=removed,
+                processing_time=time.time() - start_time,
+                error_message=f"Save failed: {result.error}"
+            )
         time.sleep(0.2)
 
-        # 7. 파일 닫기
+        # 8. 최종 페이지 수 확인
+        final_page_count = hwp.PageCount
+
+        # 9. 파일 닫기
         client.close_document()
 
         processing_time = time.time() - start_time
@@ -155,7 +267,11 @@ def preprocess_single_file(
             para_count=len(paras),
             removed_count=removed,
             processing_time=processing_time,
-            error_message=None
+            error_message=None,
+            # Enhanced fields
+            initial_page_count=initial_page_count,
+            final_page_count=final_page_count,
+            page_deleted=page_deleted
         )
 
     except Exception as e:
@@ -214,6 +330,7 @@ class ParallelPreprocessor:
         total = len(file_paths)
         results = []
 
+        submit_start = time.time()
         print(f'\n병렬 전처리 시작 (워커: {self.config.max_workers}개)')
         print(f'파일 수: {total}개')
         print('-' * 70)
@@ -231,6 +348,11 @@ class ParallelPreprocessor:
                 )
                 future_to_index[future] = (i, file_path)
 
+            submit_time = time.time() - submit_start
+            print(f'✓ {total}개 작업을 병렬로 제출 완료 ({submit_time:.2f}초)')
+            print(f'  → 최대 {self.config.max_workers}개 파일이 동시에 처리됩니다')
+            print('-' * 70)
+
             # 완료된 작업부터 수집
             completed = 0
             for future in as_completed(future_to_index.keys()):
@@ -243,16 +365,38 @@ class ParallelPreprocessor:
                     completed += 1
                     progress = (completed / total) * 100
 
-                    # 진행률 출력
+                    # 진행률 출력 (EnhancedPreprocessor.idr: 페이지 삭제 정보 포함)
                     status = '✅' if result.success else '❌'
                     file_name = Path(file_path).name[:40]
-                    print(f'[{completed:2d}/{total}] ({progress:5.1f}%) {status} {file_name:40s} '
-                          f'Para:{result.para_count:3d} Rm:{result.removed_count:2d} '
-                          f'{result.processing_time:.2f}s')
 
-                    # 콜백 호출
+                    # 페이지 정보 표시
+                    page_info = ''
+                    if result.page_deleted:
+                        page_info = f'Pg:{result.initial_page_count}→{result.final_page_count} '
+
+                    # 오류 메시지 표시 (실패 시)
+                    error_msg = ''
+                    if not result.success and result.error_message:
+                        error_msg = f' | {result.error_message[:50]}'
+
+                    print(f'[{completed:2d}/{total}] ({progress:5.1f}%) {status} {file_name:40s} '
+                          f'{page_info}'
+                          f'Para:{result.para_count:3d} Rm:{result.removed_count:2d} '
+                          f'{result.processing_time:.2f}s{error_msg}')
+
+                    # UI 진행률 콜백 호출
                     if progress_callback:
-                        progress_callback(completed, total)
+                        try:
+                             # 4 args format
+                            progress_callback(
+                                'preprocess',
+                                completed,
+                                total,
+                                f"{status} {file_name[:30]}"
+                            )
+                        except TypeError:
+                            # 2 args format fallback
+                            progress_callback(completed, total)
 
                 except Exception as e:
                     # 타임아웃 또는 에러
@@ -273,6 +417,20 @@ class ParallelPreprocessor:
         # 성공/실패 분리
         success_results = [r for r in results if r.success]
         failure_results = [r for r in results if not r.success]
+
+        # 병렬 처리 성능 요약
+        total_wall_time = time.time() - submit_start
+        total_cpu_time = sum(r.processing_time for r in results)
+        if total_wall_time > 0:
+            speedup = total_cpu_time / total_wall_time
+            efficiency = (speedup / self.config.max_workers) * 100
+            print(f'\n병렬 처리 성능:')
+            print(f'  실제 소요 시간 (wall time): {total_wall_time:.2f}초')
+            print(f'  총 CPU 시간 (sum of all): {total_cpu_time:.2f}초')
+            print(f'  속도 향상 (speedup): {speedup:.1f}x')
+            print(f'  병렬 효율 (efficiency): {efficiency:.1f}%')
+            print(f'  → 순차 처리 대비 약 {total_cpu_time - total_wall_time:.1f}초 절약')
+            print('-' * 70)
 
         return success_results, failure_results
 
