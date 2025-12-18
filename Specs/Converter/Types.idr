@@ -1,6 +1,7 @@
-module Converter.Types
+module Specs.Converter.Types
 
 import HwpIdris.Actions.File
+import Specs.Common.Result
 
 %default total
 
@@ -65,11 +66,23 @@ sameDirProof file =
   -- sameDirectory가 inputPath, outputPath 양쪽 디렉토리와 일치
   (file.sameDirectory = file.sameDirectory)
 
-||| 변환 결과
+||| 변환 성공 시 산출물
 public export
-data ConversionResult : Type where
-  Success : (outputPath : String) -> ConversionResult
-  Failure : (inputPath : String) -> (error : String) -> ConversionResult
+record PdfConverted where
+  constructor MkPdfConverted
+  inputPath : String
+  outputPath : String
+
+||| 변환 결과(의존 타입): ok=True면 PdfConverted가 반드시 존재
+public export
+PdfConversion : (ok : Bool) -> Type
+PdfConversion ok = Outcome ok PdfConverted
+
+||| UI/레거시 호환용 결과 타입 별칭
+||| (ok ** PdfConversion ok) 형태로 성공/실패가 의존 타입으로 유지된다.
+public export
+ConversionResult : Type
+ConversionResult = (ok ** PdfConversion ok)
 
 ||| 파일 상태
 public export
@@ -125,6 +138,6 @@ data ParallelConversion : Type where
   ||| 개별 변환 실행
   ExecuteTask : (task : ConversionTask) -> ParallelConversion
   ||| 결과 수집
-  Collect : (results : List ConversionResult) -> ParallelConversion
+  Collect : (results : List (ok ** PdfConversion ok)) -> ParallelConversion
   ||| 완료
   Done : (successCount : Nat) -> (failCount : Nat) -> ParallelConversion

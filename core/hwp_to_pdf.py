@@ -56,8 +56,8 @@ def worker_convert_to_pdf(
         if verbose:
             print(f"[변환 시작] {hwp_path.name} → {pdf_path.name}")
 
-        # HWP COM 객체 생성
-        hwp = win32.gencache.EnsureDispatch("HWPFrame.HwpObject")
+        # HWP COM 객체 생성 (gencache 대신 DispatchEx 사용 - 캐시 손상 문제 방지)
+        hwp = win32.DispatchEx("HWPFrame.HwpObject")
         hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModule")
 
         # 파일 열기

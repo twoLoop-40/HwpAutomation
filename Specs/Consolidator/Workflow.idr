@@ -1,6 +1,6 @@
-module Consolidator.Workflow
+module Specs.Consolidator.Workflow
 
-import Consolidator.Types
+import Specs.Consolidator.Types
 
 %default total
 

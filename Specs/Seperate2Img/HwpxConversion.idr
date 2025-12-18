@@ -1,6 +1,8 @@
 module Specs.Seperate2Img.HwpxConversion
 
 import Specs.Seperate2Img.Types
+import Specs.Common.File
+import Specs.Common.Result
 import Data.String
 import Data.Maybe
 import Data.List
@@ -35,22 +37,15 @@ HWPX → HWP 변환 명세
 -}
 
 -- ============================================================
--- Types
+-- Types (공통 Outcome/Error/Format 사용)
 -- ============================================================
 
-||| 파일 형식 (InputFormat 재사용 가능하지만 명시적 정의)
+||| HWPX -> HWP 변환 성공 시 산출물
 public export
-data FileFormat = HWP | HWPX
-
-||| 변환 결과
-public export
-record ConversionResult where
-  constructor MkConvResult
-  success : Bool
+record HwpxConverted where
+  constructor MkHwpxConverted
+  inputPath : String
   outputPath : String
-  inputFormat : FileFormat
-  outputFormat : FileFormat
-  error : Maybe String
 
 -- ============================================================
 -- HWPX → HWP 변환 인터페이스
@@ -71,8 +66,10 @@ interface HwpxConverter where
   |||   hwpxPath: 입력 HWPX 파일 경로
   |||   outputPath: 출력 HWP 파일 경로 (Nothing이면 자동 생성)
   ||| Returns:
-  |||   ConversionResult
-  convertHwpxToHwp : String -> Maybe String -> IO ConversionResult
+  |||   Outcome ok HwpxConverted
+  |||   - ok=True: 변환된 outputPath가 반드시 존재
+  |||   - ok=False: Error가 반드시 존재
+  convertHwpxToHwp : String -> Maybe String -> IO (ok ** Outcome ok HwpxConverted)
 
 -- ============================================================
 -- 워크플로우 통합
@@ -81,12 +78,8 @@ interface HwpxConverter where
 ||| 입력 파일 형식 감지
 ||| 대소문자 무시하고 확장자 확인
 public export
-detectFileFormat : String -> Maybe FileFormat
-detectFileFormat filepath =
-  let lowerPath = toLower filepath in
-  if isSuffixOf ".hwpx" lowerPath then Just HWPX
-  else if isSuffixOf ".hwp" lowerPath then Just HWP
-  else Nothing
+detectFileFormat : String -> Maybe DocFormat
+detectFileFormat = detectDocFormat
 
 ||| 파일 경로에서 파일명만 추출 (확장자 포함)
 ||| 예: "C:/Temp/file.hwpx" -> "file.hwpx"
@@ -121,10 +114,10 @@ stripExtension filename =
 |||   4. 기타:
 |||      - 오류 반환
 public export
-ensureHwpFormat : HwpxConverter => String -> String -> IO (Either String String)
+ensureHwpFormat : HwpxConverter => String -> String -> IO (ok ** Outcome ok String)
 ensureHwpFormat inputPath tempDir = do
   case detectFileFormat inputPath of
-    Just HWP => pure (Right inputPath)  -- 이미 HWP, 변환 불필요
+    Just HWP => pure (True ** Ok inputPath)  -- 이미 HWP, 변환 불필요
     Just HWPX => do
       -- HWPX → HWP 변환 필요
       -- 파일명 충돌 방지를 위해 원본 파일명 활용
@@ -137,13 +130,12 @@ ensureHwpFormat inputPath tempDir = do
       let outputName = baseName ++ ".converted.hwp"
       let hwpPath = tempDir ++ "/" ++ outputName
 
-      result <- convertHwpxToHwp inputPath (Just hwpPath)
+      (ok ** out) <- convertHwpxToHwp inputPath (Just hwpPath)
+      case out of
+        Ok conv => pure (True ** Ok conv.outputPath)
+        Fail e  => pure (False ** Fail e)
 
-      if result.success
-        then pure (Right result.outputPath)
-        else pure (Left $ fromMaybe "Unknown HWPX conversion error" result.error)
-
-    Nothing => pure (Left $ "Unsupported file format: " ++ inputPath)
+    _ => pure (False ** Fail (MkError Unsupported ("Unsupported file format: " ++ inputPath)))
 
 -- ============================================================
 -- 수정된 워크플로우
@@ -163,13 +155,13 @@ runWorkflowWithConversion config = do
   convertResult <- ensureHwpFormat config.inputPath config.tempDir
 
   case convertResult of
-    Left err =>
+    (_ ** Fail _) =>
       -- 변환 실패 시 즉시 종료
       -- ProcessingResult에 에러 메시지를 담을 필드가 없다면(기존 타입 유지 시)
       -- success=False로 반환하고 로그를 남겨야 함.
       pure $ MkResult False 0 0 0 []
 
-    Right hwpPath => do
+    (_ ** Ok hwpPath) => do
       -- 변환된 HWP로 설정 업데이트
       -- 주의: config 레코드 업데이트 구문은 Idris 버전에 따라 다름.
       -- 여기서는 일반적인 레코드 업데이트 구문 사용 가정

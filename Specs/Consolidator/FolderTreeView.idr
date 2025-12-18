@@ -1,4 +1,6 @@
-module Consolidator.FolderTreeView
+module Specs.Consolidator.FolderTreeView
+
+import Data.String
 
 %default total
 
@@ -131,11 +133,11 @@ expandableProof DriveNode Refl = Left Refl
 expandableProof FolderNode Refl = Right Refl
 expandableProof LoadingNode Refl impossible
 
-||| 트리 구조 불변성
-|||
-||| 1. 모든 노드의 parent는 "내 PC" 또는 실제 경로
-||| 2. LoadingNode는 선택할 수 없음
-||| 3. 노드 ID는 유일함
+-- 트리 구조 불변성
+--
+-- 1. 모든 노드의 parent는 "내 PC" 또는 실제 경로
+-- 2. LoadingNode는 선택할 수 없음
+-- 3. 노드 ID는 유일함
 
 -- === 체크박스 기반 선택 모델 ===
 --

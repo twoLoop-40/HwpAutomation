@@ -248,11 +248,11 @@ generateGroupFilename rule group =
     (MkProblemNumber start, MkProblemNumber end) =>
       if start == end
       then -- 1문제만: "문제_001.hwpx"
-        rule.namePrefix ++ "_" ++ padNumber rule.digitCount start ++ rule.fileExtension
+        rule.namePrefix ++ "_" ++ padNumber rule.digitCount start ++ extensionToString rule.fileExtension
       else -- 여러 문제: "문제_001-030.hwpx"
         rule.namePrefix ++ "_" ++
         padNumber rule.digitCount start ++ "-" ++
-        padNumber rule.digitCount end ++ rule.fileExtension
+        padNumber rule.digitCount end ++ extensionToString rule.fileExtension
   where
     padNumber : Nat -> Nat -> String
     padNumber digits num = show num  -- 실제로는 제로 패딩

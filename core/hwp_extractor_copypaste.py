@@ -81,7 +81,7 @@ def extract_block_copypaste(
             if verbose:
                 print(f"  [OK] 완료: result={result}, 파일크기={file_size:,} bytes")
 
-            if file_size < 15000:  # 15KB 이하면 거의 빈 파일
+            if file_size < 10000:  # 10KB 이하면 거의 빈 파일 (14KB 정상 케이스 존재)
                 print(f"  [WARN] 파일이 너무 작음: {file_size:,} bytes")
                 return False
 

@@ -1,4 +1,6 @@
-module Consolidator.Types
+module Specs.Consolidator.Types
+
+import Specs.Common.Result
 
 %default total
 
@@ -32,6 +34,12 @@ fullPath t = t.parentPath ++ "/" ++ t.folderName
 
 ||| 작업 결과
 public export
+OpOutcome : (ok : Bool) -> Type
+OpOutcome ok = Outcome ok String
+
+||| (레거시) 작업 결과
+||| 기존 명세/문서 호환을 위해 남겨두되, 신규 코드/명세에서는 OpOutcome를 사용
+public export
 data OpResult = Success String | Failed String
 
 ||| 작업 통계
@@ -42,10 +50,12 @@ record OperationStats where
   successCount : Nat
   failedCount : Nat
 
-||| 통계 유효성: totalFiles = successCount + failedCount
+||| 통계 유효성(의존 타입): totalFiles = successCount + failedCount 를 증명으로 강제
 public export
-statsValid : OperationStats -> Bool
-statsValid s = s.totalFiles == (s.successCount + s.failedCount)
+record ValidOperationStats where
+  constructor MkValidStats
+  stats : OperationStats
+  prf : stats.totalFiles = stats.successCount + stats.failedCount
 
 ||| 설정
 public export

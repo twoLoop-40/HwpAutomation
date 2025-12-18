@@ -2,9 +2,9 @@
 |||
 ||| 추출된 문제를 개별 파일로 저장
 
-module Separator.FileWriter
+module Specs.Separator.Separator.FileWriter
 
-import Separator.Types
+import Specs.Separator.Separator.Types
 
 %default total
 

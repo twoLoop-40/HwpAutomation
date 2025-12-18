@@ -10,6 +10,7 @@
 module Specs.AutomationState
 
 import public Specs.HwpCommon
+import Specs.Common.Result
 
 %default total
 
@@ -227,8 +228,13 @@ requiresOpenDocument GetStateSnapshot = False  -- 스냅샷도 항상 가능 (co
 
 ||| 상태 조회 실행 검증
 export
-validateStateQuery : AutomationStateTool -> DocumentState -> Either String ()
+validateStateQuery : AutomationStateTool -> DocumentState -> Either Error ()
 validateStateQuery tool state =
   if requiresOpenDocument tool && state == Closed
-    then Left ("Error: " ++ show tool ++ " requires an open document")
+    then Left (MkError InvalidInput ("Error: " ++ show tool ++ " requires an open document"))
     else Right ()
+
+||| Outcome 버전(의존 타입): 성공 시 ()가 반드시 존재, 실패 시 Error가 반드시 존재
+public export
+validateStateQueryOutcome : AutomationStateTool -> DocumentState -> (ok ** Outcome ok ())
+validateStateQueryOutcome tool state = fromEither (validateStateQuery tool state)

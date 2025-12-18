@@ -2,12 +2,14 @@
 |||
 ||| 파싱 → 추출 → 저장 통합
 
-module Workflow
+module Specs.Separator.Separator.Workflow
 
-import Types
-import XmlParser
-import Extractor
-import FileWriter
+import Specs.Separator.Separator.Types
+import Specs.Separator.Separator.XmlParser
+import Specs.Separator.Separator.Extractor
+import Specs.Separator.Separator.FileWriter
+import Specs.Common.Result
+import Specs.Common.Workflow
 
 %default total
 
@@ -26,7 +28,7 @@ data WorkflowState : Type where
   NotStarted : WorkflowState
   Processing : WorkflowStage -> WorkflowState
   Succeeded : BatchWriteResult -> WorkflowState
-  Failed : WorkflowStage -> String -> WorkflowState
+  Failed : WorkflowStage -> Error -> WorkflowState
 
 ||| 전체 파이프라인
 |||
@@ -113,3 +115,26 @@ isSuccessful expected (Succeeded result) =
   result.successCount == expected &&
   result.failedCount == 0
 isSuccessful _ _ = False
+
+||| 상태 전이(의존 타입): 이 Step이 존재하는 전이만 합법
+public export
+data Step : WorkflowState -> WorkflowState -> Type where
+  Start : Step NotStarted (Processing Input)
+  ToParse : Step (Processing Input) (Processing Parse)
+  ToExtract : Step (Processing Parse) (Processing Extract)
+  ToWrite : Step (Processing Extract) (Processing Write)
+  ToComplete : Step (Processing Write) (Processing Complete)
+  Finish : (r : BatchWriteResult) -> Step (Processing Complete) (Succeeded r)
+  FailAt : (s : WorkflowStage) -> (e : Error) -> Step (Processing s) (Failed s e)
+
+||| 전체 파이프라인의 이상적 전이 시퀀스(타입으로 강제)
+public export
+pipelineTrace : (r : BatchWriteResult) -> Trace WorkflowState Step NotStarted (Succeeded r)
+pipelineTrace r =
+  Start :::
+  ToParse :::
+  ToExtract :::
+  ToWrite :::
+  ToComplete :::
+  Finish r :::
+  Done

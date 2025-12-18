@@ -1,6 +1,6 @@
-module Consolidator.UI
+module Specs.Consolidator.UI
 
-import Consolidator.Types
+import Specs.Consolidator.Types
 
 %default total
 
@@ -61,5 +61,5 @@ normalFlow =
 
 ||| 워크플로우 길이 검증 (6단계)
 public export
-flowLengthProof : List.length Consolidator.UI.normalFlow = 6
+flowLengthProof : List.length Specs.Consolidator.UI.normalFlow = 6
 flowLengthProof = Refl

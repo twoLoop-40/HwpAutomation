@@ -2,6 +2,7 @@ module Specs.Seperate2Img.SeparateAndPreprocess
 
 import Specs.Seperate2Img.Types
 import Specs.Seperate2Img.HwpxConversion
+import Specs.Common.Result
 import Data.List
 import Data.String
 
@@ -66,15 +67,15 @@ runWorkflowWithSeparateFirst : (HwpxConverter, ParallelPreprocessor, Seperate2Im
                             -> IO ProcessingResult
 runWorkflowWithSeparateFirst config = do
   -- 0. HWPX → HWP 변환 (필요시)
-  -- ensureHwpFormat은 HwpxConversion.idr에 정의됨 (Either String String 반환)
+  -- ensureHwpFormat은 HwpxConversion.idr에 정의됨 (Outcome 기반 반환)
   convertResult <- ensureHwpFormat config.inputPath config.tempDir
 
   case convertResult of
-    Left err =>
+    (_ ** Fail _) =>
       -- 변환 실패
       pure $ MkResult False 0 0 0 []
 
-    Right hwpPath => do
+    (_ ** Ok hwpPath) => do
       -- 1. 분리 (전처리 없이 원본 HWP 바로 분리)
       -- config 업데이트: 입력 경로를 변환된 HWP로 변경
       let splitConfig = { inputPath := hwpPath } config
@@ -161,6 +162,8 @@ def _preprocess_separated_files(self, hwp_files: List[str], temp_dir: str) -> Li
     return preprocessed_paths
 ```
 -}
+
+
 
 
 

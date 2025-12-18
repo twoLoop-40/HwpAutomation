@@ -4,6 +4,8 @@
 module Specs.MergeWorkflow
 
 import Specs.HwpCommon
+import Specs.Common.Result
+import Specs.Common.Workflow
 import Data.List
 import Data.Nat
 
@@ -32,14 +34,14 @@ data TargetDocState
     | TargetInserted Nat Nat Nat     -- 문항 삽입 완료 (페이지, 칼럼, 문항 번호)
     | TargetCompleted Nat            -- 모든 문항 삽입 완료 (총 문항 수)
 
--- 전체 워크플로우 상태
+-- 전체 워크플로우 상태 (값은 유지하되, 전이/실행결과는 의존 타입으로 강제)
 public export
 data WorkflowState
-    = WorkflowInit                    -- 초기화
-    | SourceProcessing SourceFileState TargetDocState  -- 소스 처리 중
-    | TargetProcessing TargetDocState -- 대상 처리 중
-    | WorkflowCompleted Nat          -- 완료 (총 문항 수)
-    | WorkflowFailed String          -- 실패 (에러 메시지)
+    = WorkflowInit
+    | SourceProcessing SourceFileState TargetDocState
+    | TargetProcessing TargetDocState
+    | WorkflowCompleted Nat
+    | WorkflowFailed Error
 
 -- ============================================================================
 -- 2. Para 정보
@@ -235,27 +237,30 @@ validateWorkflow (_ :: rest) = validateWorkflow rest
 
 -- 실행 결과
 public export
-record WorkflowResult where
-    constructor MkWorkflowResult
-    success : Bool
+record WorkflowStats where
+    constructor MkWorkflowStats
     totalProblems : Nat
     insertedProblems : Nat
     totalPages : Nat
     finalParaCount : Nat
     emptyParaCount : Nat
-    errorMessage : Maybe String
+
+||| 실행 결과(의존 타입): ok=True면 통계가 반드시 존재, ok=False면 Error가 반드시 존재
+public export
+WorkflowResult : (ok : Bool) -> Type
+WorkflowResult ok = Outcome ok WorkflowStats
 
 -- 성공 결과 생성
 public export
-successResult : Nat -> Nat -> Nat -> Nat -> WorkflowResult
+successResult : Nat -> Nat -> Nat -> Nat -> WorkflowResult True
 successResult inserted pages paras emptyParas =
-    MkWorkflowResult True inserted inserted pages paras emptyParas Nothing
+    Ok (MkWorkflowStats inserted inserted pages paras emptyParas)
 
 -- 실패 결과 생성
 public export
-failureResult : String -> WorkflowResult
+failureResult : String -> WorkflowResult False
 failureResult err =
-    MkWorkflowResult False 0 0 0 0 0 (Just err)
+    Fail (MkError Unknown err)
 
 -- ============================================================================
 -- 10. 예제
@@ -277,5 +282,5 @@ exampleIsValid = validateWorkflow example3ProblemsWorkflow
 
 -- 기대 결과: 3문항, 2페이지 (1페이지 2칼럼 + 2페이지 1칼럼)
 public export
-exampleExpectedResult : WorkflowResult
+exampleExpectedResult : WorkflowResult True
 exampleExpectedResult = successResult 3 2 0 0  -- Para 수는 실행 후 결정

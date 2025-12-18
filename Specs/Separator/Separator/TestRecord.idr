@@ -1,4 +1,4 @@
-module TestRecord
+module Specs.Separator.Separator.TestRecord
 
 public export
 record Simple where

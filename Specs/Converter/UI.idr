@@ -1,6 +1,6 @@
-module Converter.UI
+module Specs.Converter.UI
 
-import Converter.Types
+import Specs.Converter.Types
 
 %default total
 

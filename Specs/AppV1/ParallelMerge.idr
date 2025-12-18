@@ -10,9 +10,11 @@
 -- - collect_node에서 결과 수집
 -- - merge_node에서 순차 InsertFile 합병
 
-module HwpIdris.AppV1.ParallelMerge
+module Specs.AppV1.ParallelMerge
 
 import Data.List
+import Specs.Common.Result
+import Specs.Common.Workflow
 
 %default total
 
@@ -69,7 +71,7 @@ data WorkflowState
     | Collecting                -- 결과 수집 중
     | Merging Nat Nat           -- 합병 중 (완료/전체)
     | Completed                 -- 완료
-    | Failed String             -- 실패
+    | Failed Error              -- 실패
 
 -- 상태 전환 검증
 public export
@@ -83,6 +85,18 @@ canTransition (Merging _ _) (Merging _ _) = True
 canTransition (Merging _ _) Completed = True
 canTransition _ (Failed _) = True
 canTransition _ _ = False
+
+||| 의존 타입 기반 전이(존재하는 Step만 합법)
+public export
+data Step : WorkflowState -> WorkflowState -> Type where
+  ToBatching : Step Initial Batching
+  ToPreprocessing : (done : Nat) -> (nTotal : Nat) -> Step Batching (Preprocessing done nTotal)
+  PreprocessProgress : (d1 : Nat) -> (nTotal : Nat) -> (d2 : Nat) -> Step (Preprocessing d1 nTotal) (Preprocessing d2 nTotal)
+  ToCollecting : (done : Nat) -> (nTotal : Nat) -> Step (Preprocessing done nTotal) Collecting
+  ToMerging : (done : Nat) -> (nTotal : Nat) -> Step Collecting (Merging done nTotal)
+  MergeProgress : (d1 : Nat) -> (nTotal : Nat) -> (d2 : Nat) -> Step (Merging d1 nTotal) (Merging d2 nTotal)
+  ToCompleted : (done : Nat) -> (nTotal : Nat) -> Step (Merging done nTotal) Completed
+  ToFailed : (s : WorkflowState) -> (e : Error) -> Step s (Failed e)
 
 -- ============================================================
 -- 전처리 워크플로우 스펙
@@ -114,12 +128,12 @@ public export
 preprocessSingleFile : (Monad m, PreprocessWorkflowSpec m)
                     => ProblemFile
                     -> String  -- 임시 디렉토리
-                    -> m (Either String ProcessedFile)
+                    -> m (ok ** Outcome ok ProcessedFile)
 preprocessSingleFile problem tempDir = do
     -- 1. 파일 열기
     opened <- openDocument problem.path
     case opened of
-        False => pure (Left "Failed to open file")
+        False => pure (False ** Fail (MkError IOError "Failed to open file"))
         True => do
             -- 2. 1단 변환
             _ <- convertToSingleColumn
@@ -137,8 +151,8 @@ preprocessSingleFile problem tempDir = do
             _ <- closeDocument
 
             case saved of
-                False => pure (Left "Failed to save")
-                True => pure (Right $ MkProcessedFile {
+                False => pure (False ** Fail (MkError IOError "Failed to save"))
+                True => pure (True ** Ok $ MkProcessedFile {
                     original = problem,
                     processedPath = processedPath,
                     paraCount = paraCount,
@@ -181,15 +195,15 @@ mergeProcessedFiles : (Monad m, MergeWorkflowSpec m)
                    => String                     -- 양식 경로
                    -> List ProcessedFile         -- 전처리된 파일들
                    -> String                     -- 출력 경로
-                   -> m (Either String Nat)      -- Nat = 최종 페이지 수
+                   -> m (ok ** Outcome ok Nat)   -- Nat = 최종 페이지 수
 mergeProcessedFiles templatePath files outputPath =
-    let insertAllFiles : List ProcessedFile -> m (Either String Nat)
-        insertAllFiles [] = pure (Right 0)
+    let insertAllFiles : List ProcessedFile -> m (ok ** Outcome ok Nat)
+        insertAllFiles [] = pure (True ** Ok 0)
         insertAllFiles (f :: rest) = do
             -- InsertFile
             inserted <- insertFile f.processedPath
             case inserted of
-                False => pure (Left "InsertFile failed")
+                False => pure (False ** Fail (MkError ComError "InsertFile failed"))
                 True => do
                     -- 마지막 파일이 아니면 BreakColumn
                     case rest of
@@ -204,7 +218,7 @@ mergeProcessedFiles templatePath files outputPath =
         -- 1. 양식 열기
         opened <- openTemplate templatePath
         case opened of
-            False => pure (Left "Failed to open template")
+            False => pure (False ** Fail (MkError IOError "Failed to open template"))
             True => do
                 -- 2. 문서 시작으로
                 _ <- moveToDocStart
@@ -213,16 +227,16 @@ mergeProcessedFiles templatePath files outputPath =
                 result <- insertAllFiles files
 
                 case result of
-                    Left err => pure (Left err)
-                    Right _ => do
+                    (_ ** Fail e) => pure (False ** Fail e)
+                    (_ ** Ok _) => do
                         -- 4. 최종 저장
                         saved <- saveDocument outputPath
                         case saved of
-                            False => pure (Left "Failed to save")
+                            False => pure (False ** Fail (MkError IOError "Failed to save"))
                             True => do
                                 -- 5. 페이지 수 반환
                                 pages <- getPageCount
-                                pure (Right pages)
+                                pure (True ** Ok pages)
 
 -- ============================================================
 -- 페이지 수 검증

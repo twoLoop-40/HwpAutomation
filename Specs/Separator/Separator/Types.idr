@@ -1,4 +1,4 @@
-module Separator.Types
+module Specs.Separator.Separator.Types
 
 %default total
 

@@ -2,13 +2,13 @@
 |||
 ||| 전체 명세 통합 및 컴파일 검증
 
-module Main
+module Specs.Separator.Separator.Main
 
-import Types
-import XmlParser
-import Extractor
-import FileWriter
-import Workflow
+import Specs.Separator.Separator.Types
+import Specs.Separator.Separator.XmlParser
+import Specs.Separator.Separator.Extractor
+import Specs.Separator.Separator.FileWriter
+import Specs.Separator.Separator.Workflow
 
 %default total
 
@@ -19,8 +19,8 @@ defaultConfig = MkConfig
   "input.hwpx"
   HwpxInput
   "output"
-  (MkNamingRule "문제" 3 ".txt")
-  TextFile
+  (MkNamingRule "문제" 3 MarkdownExt DefaultPrefix)
+  MarkdownFile
   True
   OnePerFile  -- 1문제 = 1파일
   Nothing
@@ -33,8 +33,8 @@ hwpConfig inputPath outputDir = MkConfig
   inputPath
   HwpInput
   outputDir
-  (MkNamingRule "문제" 3 ".txt")
-  TextFile
+  (MkNamingRule "문제" 3 MarkdownExt DefaultPrefix)
+  MarkdownFile
   True
   OnePerFile  -- 1문제 = 1파일
   (Just (MkConversionConfig True "temp" 300))
@@ -47,8 +47,8 @@ hwpxConfig inputPath outputDir = MkConfig
   inputPath
   HwpxInput
   outputDir
-  (MkNamingRule "문제" 3 ".txt")
-  TextFile
+  (MkNamingRule "문제" 3 MarkdownExt DefaultPrefix)
+  MarkdownFile
   True
   OnePerFile  -- 1문제 = 1파일
   Nothing
@@ -65,7 +65,7 @@ groupedConfig inputPath outputDir groupSize = MkConfig
   inputPath
   HwpxInput
   outputDir
-  (MkNamingRule "문제" 3 ".hwpx")
+  (MkNamingRule "문제" 3 HwpxExt DefaultPrefix)
   HwpxFile
   True
   (GroupByCount groupSize)  -- N개씩 묶기

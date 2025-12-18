@@ -1,6 +1,7 @@
 module Specs.Seperate2Img.Types
 
 import System.File
+import Specs.Common.Result
 
 %default total
 
@@ -25,7 +26,7 @@ data ProcessingState =
   | ConvertingToImg     -- 3. 이미지 변환 중 (PDF files -> Image files)
   | CleaningUp          -- 4. 임시 파일 정리
   | Completed
-  | Failed String
+  | Failed Error
 
 ||| 처리 결과
 public export
@@ -36,3 +37,16 @@ record ProcessingResult where
   successCount : Nat
   failedCount : Nat
   outputFiles : List String
+
+||| 의존 타입 기반 결과(권장): ok=True면 통계가 반드시 존재, ok=False면 Error가 반드시 존재
+public export
+record ProcessingStats where
+  constructor MkStats
+  totalCount : Nat
+  successCount : Nat
+  failedCount : Nat
+  outputFiles : List String
+
+public export
+ProcessingOutcome : (ok : Bool) -> Type
+ProcessingOutcome ok = Outcome ok ProcessingStats

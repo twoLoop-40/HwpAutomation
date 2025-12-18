@@ -2,9 +2,9 @@
 |||
 ||| HWP → HWPX 변환 → XML → EndNote 추출
 
-module XmlParser
+module Specs.Separator.Separator.XmlParser
 
-import Types
+import Specs.Separator.Separator.Types
 
 %default total
 

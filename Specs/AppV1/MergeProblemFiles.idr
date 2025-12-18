@@ -4,10 +4,12 @@
 -- 기반: Tests/E2E/test_merge_40_problems_clean.py (가장 깔끔한 결과)
 -- 개선: v3의 모든 학습 내용 통합
 
-module AppV1.MergeProblemFiles
+module Specs.AppV1.MergeProblemFiles
 
 import Data.List
 import Data.String
+import Specs.Common.Result
+import Specs.Common.Workflow
 
 -- 문항 파일 정보
 public export
@@ -52,7 +54,7 @@ data WorkflowState
     | ProcessingProblems Nat Nat  -- (현재 인덱스, 전체 개수)
     | AllProcessed
     | Saved
-    | Failed String
+    | Failed Error
 
 -- 상태 전환 검증
 public export
@@ -64,6 +66,16 @@ canTransition (ProcessingProblems _ _) AllProcessed = True
 canTransition AllProcessed Saved = True
 canTransition _ (Failed _) = True
 canTransition _ _ = False
+
+||| 의존 타입 기반 전이(존재하는 Step만 합법)
+public export
+data Step : WorkflowState -> WorkflowState -> Type where
+  ToTemplateLoaded : Step NotStarted TemplateLoaded
+  ToProcessing : (i : Nat) -> (nTotal : Nat) -> Step TemplateLoaded (ProcessingProblems i nTotal)
+  ProcessingProgress : (i1 : Nat) -> (nTotal : Nat) -> (i2 : Nat) -> Step (ProcessingProblems i1 nTotal) (ProcessingProblems i2 nTotal)
+  ToAllProcessed : (i : Nat) -> (nTotal : Nat) -> Step (ProcessingProblems i nTotal) AllProcessed
+  ToSaved : Step AllProcessed Saved
+  ToFailed : (s : WorkflowState) -> (e : Error) -> Step s (Failed e)
 
 -- 워크플로우 스펙 인터페이스
 public export
@@ -124,7 +136,7 @@ processSingleProblem problem = do
 public export
 mergeProblemFiles : (Monad m, MergeWorkflowSpec m)
                   => MergeConfig
-                  -> m (Either String Nat)  -- Nat = 최종 페이지 수
+                  -> m (ok ** Outcome ok Nat)  -- Nat = 최종 페이지 수
 mergeProblemFiles config =
     let processAllProblems : List ProblemFile -> m (List ProcessResult)
         processAllProblems [] = pure []
@@ -147,7 +159,7 @@ mergeProblemFiles config =
                   else createNewDocument
 
         case loaded of
-            False => pure (Left "Failed to load template or create document")
+            False => pure (False ** Fail (MkError IOError "Failed to load template or create document"))
             True => do
                 -- 2. 각 문항 파일 처리
                 results <- processAllProblems config.problemFiles
@@ -156,11 +168,11 @@ mergeProblemFiles config =
                 saved <- saveDocument config.outputPath
 
                 case saved of
-                    False => pure (Left "Failed to save document")
+                    False => pure (False ** Fail (MkError IOError "Failed to save document"))
                     True => do
                         -- 4. 최종 페이지 수 반환
                         pages <- getPageCount
-                        pure (Right pages)
+                        pure (True ** Ok pages)
 
 -- 2로 나누기 (올림)
 divBy2Ceil : Nat -> Nat

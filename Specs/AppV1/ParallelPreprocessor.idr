@@ -6,10 +6,13 @@
 ||| @ author Claude
 ||| @ date 2025-11-14
 
-module HwpIdris.AppV1.ParallelPreprocessor
+module Specs.AppV1.ParallelPreprocessor
 
 import Data.List
 import Data.Vect
+import Specs.Common.Result
+import Data.Nat
+import Data.So
 
 %default total
 
@@ -23,19 +26,40 @@ data ParallelState
   = Idle                    -- 대기 중
   | Preprocessing Nat       -- 전처리 중 (진행률)
   | Completed Nat Nat       -- 완료 (성공 개수, 실패 개수)
-  | Failed String           -- 실패 (에러 메시지)
+  | Failed Error            -- 실패 (에러)
 
 ||| 전처리 작업 결과
 public export
 record PreprocessResult where
   constructor MkPreprocessResult
-  success : Bool                    -- 성공 여부
   originalPath : String             -- 원본 파일 경로
-  preprocessedPath : Maybe String   -- 전처리된 파일 경로 (성공 시)
-  paraCount : Nat                   -- Para 개수
-  removedCount : Nat                -- 제거된 빈 Para 개수
+  paraCount : Nat                   -- Para 개수 (실패 시에도 측정 가능하면 기록)
+  removedCount : Nat                -- 제거된 빈 Para 개수 (실패 시 0 가능)
   processingTime : Double           -- 처리 시간 (초)
-  errorMessage : Maybe String       -- 에러 메시지 (실패 시)
+  result : (ok ** Outcome ok String)
+  -- ok=True: 전처리된 파일 경로가 반드시 존재
+  -- ok=False: Error가 반드시 존재
+
+||| 성공/실패 판별(레거시 호환)
+public export
+success : PreprocessResult -> Bool
+success r = case r.result of
+  (True ** Ok _) => True
+  _ => False
+
+||| 전처리된 경로 추출(성공 시)
+public export
+preprocessedPath : PreprocessResult -> Maybe String
+preprocessedPath r = case r.result of
+  (True ** Ok p) => Just p
+  _ => Nothing
+
+||| 에러 메시지 추출(실패 시) - 기존 PreprocessError용 errorMessage와 이름 충돌 방지
+public export
+resultErrorMessage : PreprocessResult -> Maybe String
+resultErrorMessage r = case r.result of
+  (False ** Fail e) => Just e.message
+  _ => Nothing
 
 ||| 전처리 설정
 public export
@@ -132,11 +156,11 @@ preprocessParallel : (preprocessor : ParallelPreprocessor)
 ||| @completed 완료된 작업 수
 ||| @total 전체 작업 수
 public export
-calculateProgress : (completed : Nat) -> (total : Nat) -> Double
-calculateProgress completed total =
-  if total == 0
+calculateProgress : (completed : Nat) -> (nTotal : Nat) -> Double
+calculateProgress completed nTotal =
+  if nTotal == 0
     then 0.0
-    else (cast completed / cast total) * 100.0
+    else (cast completed / cast nTotal) * 100.0
 
 ||| 진행률 콜백 타입
 public export
@@ -183,12 +207,19 @@ record PreprocessSummary where
   totalTime : Double                -- 전체 처리 시간 (초)
   avgTimePerFile : Double           -- 파일당 평균 시간
 
+||| 집계 불변조건(의존 타입): totalFiles = successCount + failureCount
+public export
+record ValidPreprocessSummary where
+  constructor MkValidSummary
+  summary : PreprocessSummary
+  prf : summary.totalFiles = summary.successCount + summary.failureCount
+
 ||| 결과 리스트로부터 집계 생성
 public export
 summarizeResults : List PreprocessResult -> PreprocessSummary
 summarizeResults results =
   let successCount = length $ filter success results
-      failureCount = length results - successCount
+      failureCount = minus (length results) successCount
       totalParas = sum $ map paraCount results
       totalRemoved = sum $ map removedCount results
       totalTime = sum $ map processingTime results
@@ -219,7 +250,7 @@ public export
 predictPerformance : (fileCount : Nat)
                   -> (avgTimePerFile : Double)
                   -> (maxWorkers : Nat)
-                  -> (sequentialTime : Double, parallelTime : Double, improvement : Double)
+                  -> (Double, Double, Double)
 predictPerformance fileCount avgTime workers =
   let seqTime = (cast fileCount) * avgTime
       parTime = ((cast fileCount) / (cast workers)) * avgTime
@@ -282,5 +313,5 @@ validWorkerCount workers = workers
 
 ||| 타임아웃이 양수임을 보장
 public export
-validTimeout : (timeout : Double) -> {auto prf : GT timeout 0.0} -> Double
+validTimeout : (timeout : Double) -> {auto prf : So (timeout > 0.0)} -> Double
 validTimeout timeout = timeout

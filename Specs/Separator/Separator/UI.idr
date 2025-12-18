@@ -2,10 +2,10 @@
 |||
 ||| Tkinter 기반 Separator UI의 동작을 형식적으로 명세
 
-module Separator.UI
+module Specs.Separator.Separator.UI
 
-import Separator.Types
-import Separator.FileWriter
+import Specs.Separator.Separator.Types
+import Specs.Separator.Separator.FileWriter
 
 %default total
 
